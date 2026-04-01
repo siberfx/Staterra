@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "start": "serve dist -l 3000 -s",
     "preview": "vite preview",
     "lint": "eslint ."
   },
@@ -16,7 +17,8 @@
     "plyr": "^3.8.4",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-router-dom": "^7.13.0"
+    "react-router-dom": "^7.13.0",
+    "serve": "^14.2.6"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",
