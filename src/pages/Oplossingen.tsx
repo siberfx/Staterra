@@ -169,10 +169,10 @@ function TargetSolutionCard({ solution }: { solution: Solution }) {
         </p>
 
         {/* Pijl */}
-        <div className="flex items-center gap-1 mt-4 text-caption font-medium text-brand-700">
-          {meta ? `Oplossing voor ${meta.badge.toLowerCase()}` : 'Bekijk oplossing'}
+        <p className="mt-4 text-caption font-medium text-brand-700">
+          {meta ? `Oplossing voor ${meta.badge.toLowerCase()}` : 'Bekijk oplossing'}{' '}
           <svg
-            className="w-3.5 h-3.5 transition-transform duration-[180ms] group-hover:translate-x-0.5"
+            className="inline-block w-3.5 h-3.5 -mt-px transition-transform duration-[180ms] group-hover:translate-x-0.5"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -181,7 +181,7 @@ function TargetSolutionCard({ solution }: { solution: Solution }) {
           >
             <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
           </svg>
-        </div>
+        </p>
       </Link>
     </article>
   );
