@@ -42,11 +42,19 @@ const TARGET_META: Record<string, { badge: string; count: string }> = {
   'woo-waterschappen': { badge: 'Waterschappen', count: '21 waterschappen' },
 };
 
+// Lokale fallback-afbeeldingen als het CMS geen werkende URL levert
+const FALLBACK_IMAGES: Record<string, string> = {
+  'samen-ontwikkelen': '/images/samen-ontwikkelen-hero-2.png',
+  'woo-oplossing': '/images/woo-oplossing-hero.png',
+  'open-source': '/images/open-source-hero.png',
+};
+
 // -- Kaartcomponenten --
 
 function MainSolutionCard({ solution }: { solution: Solution }) {
   const to = `/${solution.anchor}`;
   const icon = SOLUTION_ICONS[solution.anchor];
+  const imageSrc = solution.image || FALLBACK_IMAGES[solution.anchor];
 
   return (
     <article>
@@ -55,12 +63,18 @@ function MainSolutionCard({ solution }: { solution: Solution }) {
         className="flex flex-col h-full overflow-hidden group"
       >
         {/* Afbeelding */}
-        {solution.image && (
+        {imageSrc && (
           <div className="relative h-52 overflow-hidden">
             <img
-              src={solution.image}
+              src={imageSrc}
               alt={solution.title}
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              onError={(e) => {
+                const fallback = FALLBACK_IMAGES[solution.anchor];
+                if (fallback && e.currentTarget.src !== fallback) {
+                  e.currentTarget.src = fallback;
+                }
+              }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/20 to-transparent" />
           </div>
