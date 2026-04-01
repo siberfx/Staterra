@@ -170,7 +170,7 @@ function TargetSolutionCard({ solution }: { solution: Solution }) {
 
         {/* Pijl */}
         <p className="mt-4 text-caption font-medium text-brand-700">
-          {meta ? `Meer over ${meta.badge.toLowerCase()}` : 'Meer informatie'}{' '}
+          {meta ? `Meer voor ${meta.badge.toLowerCase()}` : 'Meer informatie'}{' '}
           <svg
             className="inline-block w-3.5 h-3.5 -mt-px transition-transform duration-[180ms] group-hover:translate-x-0.5"
             fill="none"
