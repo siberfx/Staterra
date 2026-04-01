@@ -25,7 +25,7 @@ const CHILD = (id: number, title: string, subtitle: string, url: string): MenuIt
 const OPLOSSINGEN_CHILDREN: MenuItem[] = [
   CHILD(9101, 'Woo-oplossing', 'De complete Woo-compliance oplossing', '/woo-oplossing'),
   CHILD(9102, 'Samen ontwikkelen', 'Nieuwe digitale oplossingen bouwen', '/samen-ontwikkelen'),
-  CHILD(9103, 'Open source', 'OPMS als open source basis', '/open-source'),
+  CHILD(9103, 'Open source', 'Open source oplossingen voor de overheid', '/open-source'),
 ]
 
 const DOELGROEPEN_ITEM: MenuItem = {
