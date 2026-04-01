@@ -222,54 +222,67 @@ function MobileMenuItem({
   onClose: () => void;
 }) {
   const [expanded, setExpanded] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
   const hasChildren = item.children && item.children.length > 0;
 
   return (
-    <div>
+    <div className="border-b border-neutral-100 last:border-0">
       {hasChildren ? (
-        <button
-          onClick={() => setExpanded((v) => !v)}
-          className="flex items-center justify-between w-full py-3 text-body-sm font-semibold text-neutral-800 hover:text-brand-700 border-b border-neutral-100 transition-colors duration-[150ms]"
-          aria-expanded={expanded}
-        >
-          {item.title}
-          <svg
-            className={`w-4 h-4 text-neutral-400 transition-transform duration-[150ms] ${expanded ? 'rotate-90' : ''}`}
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-            aria-hidden="true"
+        <>
+          <button
+            onClick={() => setExpanded((v) => !v)}
+            className="flex items-center justify-between w-full py-3 text-body-sm font-semibold text-neutral-800 hover:text-brand-700 transition-colors duration-[150ms]"
+            aria-expanded={expanded}
           >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
+            {item.title}
+            <svg
+              className={`w-4 h-4 text-neutral-400 transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`}
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+              aria-hidden="true"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div
+            ref={contentRef}
+            className="overflow-hidden transition-[max-height,opacity] duration-200 ease-out"
+            style={{
+              maxHeight: expanded ? `${contentRef.current?.scrollHeight ?? 500}px` : '0px',
+              opacity: expanded ? 1 : 0,
+            }}
+          >
+            {item.children.map((child) => (
+              <Link
+                key={child.id}
+                to={mapMenuUrl(child.url)}
+                onClick={onClose}
+                className="flex flex-col gap-0.5 py-2.5 pl-5 hover:bg-brand-50 transition-colors duration-[150ms] rounded-[8px]"
+              >
+                <span className="text-body-sm font-medium text-neutral-700 hover:text-brand-700">
+                  {child.title}
+                </span>
+                {(child.subtitle ?? child.description) && (
+                  <span className="text-caption text-neutral-400">
+                    {child.subtitle ?? child.description}
+                  </span>
+                )}
+              </Link>
+            ))}
+            <div className="h-2" />
+          </div>
+        </>
       ) : (
         <Link
           to={mapMenuUrl(item.url)}
           onClick={onClose}
-          className="flex items-center justify-between py-3 text-body-sm font-semibold text-neutral-800 hover:text-brand-700 border-b border-neutral-100 last:border-0 transition-colors duration-[150ms]"
+          className="flex items-center justify-between py-3 text-body-sm font-semibold text-neutral-800 hover:text-brand-700 transition-colors duration-[150ms]"
         >
           {item.title}
         </Link>
       )}
-      {hasChildren && expanded && item.children.map((child) => (
-        <Link
-          key={child.id}
-          to={mapMenuUrl(child.url)}
-          onClick={onClose}
-          className="flex flex-col gap-0.5 py-2.5 pl-5 border-b border-neutral-50 last:border-0 hover:bg-brand-50 transition-colors duration-[150ms] rounded-[8px]"
-        >
-          <span className="text-body-sm font-medium text-neutral-700 hover:text-brand-700">
-            {child.title}
-          </span>
-          {(child.subtitle ?? child.description) && (
-            <span className="text-caption text-neutral-400">
-              {child.subtitle ?? child.description}
-            </span>
-          )}
-        </Link>
-      ))}
     </div>
   );
 }
