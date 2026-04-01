@@ -35,11 +35,11 @@ const SOLUTION_ICONS: Record<string, React.ReactNode> = {
 };
 
 // Labels per doelgroep-oplossing
-const TARGET_META: Record<string, { badge: string; count: string }> = {
-  'woo-gemeenten':     { badge: 'Gemeenten',    count: '342 gemeenten' },
-  'woo-rijksoverheid': { badge: 'Rijksoverheid', count: '15 ministeries + ~40 agentschappen' },
-  'woo-provincies':    { badge: 'Provincies',    count: '12 provincies' },
-  'woo-waterschappen': { badge: 'Waterschappen', count: '21 waterschappen' },
+const TARGET_META: Record<string, { badge: string; count: string; href: string }> = {
+  'woo-gemeenten':     { badge: 'Gemeenten',    count: '342 gemeenten',                     href: '/staterra-gemeenten' },
+  'woo-rijksoverheid': { badge: 'Rijksoverheid', count: '15 ministeries + ~40 agentschappen', href: '/staterra-rijkspartijen' },
+  'woo-provincies':    { badge: 'Provincies',    count: '12 provincies',                     href: '/staterra-provincies' },
+  'woo-waterschappen': { badge: 'Waterschappen', count: '21 waterschappen',                  href: '/staterra-waterschappen' },
 };
 
 // Lokale fallback-afbeeldingen als het CMS geen werkende URL levert
@@ -121,8 +121,8 @@ function MainSolutionCard({ solution }: { solution: Solution }) {
 }
 
 function TargetSolutionCard({ solution }: { solution: Solution }) {
-  const to = `/${solution.anchor}`;
   const meta = TARGET_META[solution.anchor];
+  const to = meta?.href ?? `/${solution.anchor}`;
 
   return (
     <article>
