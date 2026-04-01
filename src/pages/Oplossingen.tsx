@@ -49,6 +49,13 @@ const FALLBACK_IMAGES: Record<string, string> = {
   'open-source': '/images/open-source-hero.png',
 };
 
+// CTA-labels per hoofdoplossing
+const SOLUTION_CTA: Record<string, string> = {
+  'samen-ontwikkelen': 'Ontdek het ontwikkelproces',
+  'woo-oplossing': 'Bekijk de Woo-oplossing',
+  'open-source': 'Ontdek de open source aanpak',
+};
+
 // -- Kaartcomponenten --
 
 function MainSolutionCard({ solution }: { solution: Solution }) {
@@ -102,7 +109,7 @@ function MainSolutionCard({ solution }: { solution: Solution }) {
             className="inline-flex items-center gap-1.5 text-body-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors duration-[180ms] mt-auto group/link"
             aria-label={`Meer over ${solution.title}`}
           >
-            Meer informatie
+            {SOLUTION_CTA[solution.anchor] ?? 'Meer informatie'}
             <svg
               className="w-4 h-4 transition-transform duration-[180ms] group-hover/link:translate-x-0.5"
               fill="none"
@@ -163,7 +170,7 @@ function TargetSolutionCard({ solution }: { solution: Solution }) {
 
         {/* Pijl */}
         <div className="flex items-center gap-1 mt-4 text-caption font-medium text-brand-700">
-          Bekijk oplossing
+          {meta ? `Oplossing voor ${meta.badge.toLowerCase()}` : 'Bekijk oplossing'}
           <svg
             className="w-3.5 h-3.5 transition-transform duration-[180ms] group-hover:translate-x-0.5"
             fill="none"
