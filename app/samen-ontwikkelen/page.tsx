@@ -134,7 +134,7 @@ export default async function SamenOntwikkelenPage() {
                 Samen ontwikkelen
               </span>
               <h1 className="font-heading text-h1 font-semibold text-white mb-5 leading-[1.05]">
-                Uw Woo-opgave wacht niet op
+                Uw digitale opgave wacht niet op
                 <span className="text-brand-400"> uw IT-afdeling</span>
               </h1>
               <p className="text-body-lg text-brand-200 mb-8 leading-relaxed">
@@ -156,20 +156,19 @@ export default async function SamenOntwikkelenPage() {
               </div>
             </div>
 
-            {solution?.image && (
-              <div className="hidden lg:block">
-                <div className="rounded-[20px] overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,0.25)]">
-                  <Image
-                    src={solution.image}
-                    alt="Staterra — samen digitale oplossingen ontwikkelen"
-                    width={580}
-                    height={420}
-                    className="w-full h-auto object-cover"
-                    priority
-                  />
-                </div>
+            <div className="hidden lg:block">
+              <div className="rounded-[20px] overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,0.30)]">
+                <Image
+                  src="/images/samen-ontwikkelen-hero-2.png"
+                  alt="Twee professionals overleggen over een digitale oplossing"
+                  width={1024}
+                  height={682}
+                  className="w-full h-auto object-cover object-top"
+                  sizes="(max-width: 1280px) 50vw, 560px"
+                  priority
+                />
               </div>
-            )}
+            </div>
           </div>
         </Container>
       </section>

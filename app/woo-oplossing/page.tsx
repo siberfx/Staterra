@@ -153,20 +153,19 @@ export default async function WooOplossing() {
             </div>
 
             {/* Hero-afbeelding */}
-            {solution?.image && (
-              <div className="hidden lg:block relative">
-                <div className="rounded-[20px] overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,0.25)]">
-                  <Image
-                    src={solution.image}
-                    alt="OPMS — Woo-oplossing in gebruik"
-                    width={580}
-                    height={420}
-                    className="w-full h-auto object-cover"
-                    priority
-                  />
-                </div>
+            <div className="hidden lg:block relative">
+              <div className="rounded-[20px] overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,0.30)]">
+                <Image
+                  src="/images/woo-oplossing-hero.png"
+                  alt="Medewerker werkt met het OPMS-dashboard"
+                  width={1024}
+                  height={682}
+                  className="w-full h-auto object-cover object-center"
+                  sizes="(max-width: 1280px) 50vw, 560px"
+                  priority
+                />
               </div>
-            )}
+            </div>
           </div>
         </Container>
       </section>
@@ -314,8 +313,10 @@ export default async function WooOplossing() {
         </section>
       )}
 
-      {/* ── 4. Vergelijkingstabel ─────────────────────────────── */}
-      <ComparisonTable />
+      {/* ── 4. Vergelijkingstabel — anchor voor doorlinks vanaf andere pagina's */}
+      <div id="vergelijking">
+        <ComparisonTable />
+      </div>
 
       {/* ── 5. Deelnamemodellen ───────────────────────────────── */}
       <section
@@ -412,11 +413,11 @@ export default async function WooOplossing() {
                 key={group.label}
                 className="rounded-[16px] border border-neutral-200 p-6 hover:border-brand-300 hover:shadow-[0_8px_24px_rgba(22,62,116,0.06)] transition-all duration-[180ms]"
               >
-                <div className="flex items-start justify-between gap-3 mb-4">
-                  <h3 className="font-heading text-h5 font-semibold text-neutral-950">
+                <div className="mb-4">
+                  <h3 className="font-heading text-h5 font-semibold text-neutral-950 mb-1.5">
                     {group.label}
                   </h3>
-                  <span className="flex-shrink-0 text-caption text-brand-600 font-medium bg-brand-100 px-2.5 py-1 rounded-full whitespace-nowrap">
+                  <span className="inline-block text-caption text-brand-600 font-medium bg-brand-100 px-2.5 py-1 rounded-full">
                     {group.count}
                   </span>
                 </div>
@@ -490,7 +491,7 @@ export default async function WooOplossing() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button as="link" href="/contact" variant="secondary" size="lg">
-                Plan een vrijblijvend gesprek
+                Plan een verkenningsgesprek
               </Button>
               <Button
                 as="link"

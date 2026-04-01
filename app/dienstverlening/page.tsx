@@ -201,7 +201,7 @@ export default function DienstverleningPage() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button as="link" href="/contact" variant="secondary" size="lg">
-                Bespreek uw behoefte
+                Plan een verkenningsgesprek
               </Button>
               <Button
                 as="link"
@@ -570,7 +570,7 @@ export default function DienstverleningPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button as="link" href="/contact" variant="secondary" size="lg">
-                Plan een gesprek
+                Plan een verkenningsgesprek
               </Button>
               <Button
                 as="link"

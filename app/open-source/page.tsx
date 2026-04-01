@@ -170,12 +170,11 @@ export default async function OpenSourcePage() {
                 <span className="text-brand-400"> digitale systemen</span>
               </h1>
               <p className="text-body-lg text-brand-200 mb-8 leading-relaxed">
-                {solution?.subtitle ??
-                  'Implementatie en beheer van open source oplossingen met volledige regie voor de overheid.'}
+                Implementatie en beheer van open source oplossingen met volledige regie voor de overheid. <strong>Geen vendor lock-in, geen licentiekosten — wel eigenaarschap van uw broncode en volledige databescherming.</strong>
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button as="link" href="/contact" variant="secondary" size="lg">
-                  Bespreek uw situatie
+                  Plan een verkenningsgesprek
                 </Button>
                 <Button
                   as="link"
@@ -188,20 +187,19 @@ export default async function OpenSourcePage() {
               </div>
             </div>
 
-            {solution?.image && (
-              <div className="hidden lg:block">
-                <div className="rounded-[20px] overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,0.25)]">
-                  <Image
-                    src={solution.image}
-                    alt="Open source oplossingen voor de overheid"
-                    width={580}
-                    height={420}
-                    className="w-full h-auto object-cover"
-                    priority
-                  />
-                </div>
+            <div className="hidden lg:block">
+              <div className="rounded-[20px] overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,0.30)]">
+                <Image
+                  src="/images/open-source-hero.png"
+                  alt="IT-professional inspecteert serverinfrastructuur"
+                  width={1024}
+                  height={682}
+                  className="w-full h-auto object-cover object-center"
+                  sizes="(max-width: 1280px) 50vw, 560px"
+                  priority
+                />
               </div>
-            )}
+            </div>
           </div>
         </Container>
       </section>
@@ -296,7 +294,7 @@ export default async function OpenSourcePage() {
                   </ul>
                   <div className="border-t border-neutral-200 pt-6">
                     <Button as="link" href="/contact" variant="primary" className="w-full justify-center">
-                      Plan een oriëntatiegesprek
+                      Plan een verkenningsgesprek
                     </Button>
                   </div>
                 </Card>
@@ -577,11 +575,11 @@ export default async function OpenSourcePage() {
             </h2>
             <p className="text-body-lg text-brand-200 mb-10 leading-relaxed">
               Ontdek welke open source oplossingen passen bij uw organisatie.
-              Vrijblijvend oriëntatiegesprek — binnen twee werkdagen een reactie.
+              Binnen twee werkdagen een inhoudelijke reactie.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button as="link" href="/contact" variant="secondary" size="lg">
-                Plan een oriëntatiegesprek
+                Plan een verkenningsgesprek
               </Button>
               <Button
                 as="link"

@@ -266,9 +266,10 @@ export interface Page {
   title: string;
   slug: string;
   short_body: string;
+  long_body: string;
   meta_title: string;
   meta_body: string;
-  meta_keywords: string;
+  meta_keywords: string | null;
   image: string | null;
   icon: string | null;
   template: string;

@@ -192,12 +192,12 @@ export default function PrivacyPage() {
           </aside>
 
           {/* ── Artikel ───────────────────────────────────── */}
-          <article className="prose-policy max-w-none">
+          <article className="max-w-none [&>section:not(:first-child)]:border-t [&>section:not(:first-child)]:border-neutral-200 [&>section:not(:first-child)]:pt-8">
 
             {/* § 1 */}
             <section id="verwerkingsverantwoordelijke" className="mb-14 scroll-mt-28">
               <SectieKop nummer="1" titel="Verwerkingsverantwoordelijke" />
-              <p className="text-body text-neutral-700 leading-relaxed mb-4">
+              <p className="text-body-sm text-neutral-700 leading-relaxed mb-4">
                 De verwerkingsverantwoordelijke in de zin van de Algemene
                 Verordening Gegevensbescherming (AVG) is:
               </p>
@@ -229,7 +229,7 @@ export default function PrivacyPage() {
             {/* § 2 */}
             <section id="welke-gegevens" className="mb-14 scroll-mt-28">
               <SectieKop nummer="2" titel="Welke gegevens verwerken wij?" />
-              <p className="text-body text-neutral-700 leading-relaxed mb-5">
+              <p className="text-body-sm text-neutral-700 leading-relaxed mb-5">
                 Staterra verwerkt persoonsgegevens uitsluitend voor zover dat
                 noodzakelijk is voor de bedrijfsvoering en dienstverlening. De
                 onderstaande tabel geeft een overzicht van de categorieën
@@ -272,7 +272,7 @@ export default function PrivacyPage() {
             {/* § 3 */}
             <section id="doel-grondslag" className="mb-14 scroll-mt-28">
               <SectieKop nummer="3" titel="Doel en grondslag" />
-              <p className="text-body text-neutral-700 leading-relaxed mb-5">
+              <p className="text-body-sm text-neutral-700 leading-relaxed mb-5">
                 Staterra verwerkt persoonsgegevens op basis van één of meer van
                 de volgende rechtsgronden (art. 6 AVG):
               </p>
@@ -321,7 +321,7 @@ export default function PrivacyPage() {
             {/* § 4 */}
             <section id="bewaartermijnen" className="mb-14 scroll-mt-28">
               <SectieKop nummer="4" titel="Bewaartermijnen" />
-              <p className="text-body text-neutral-700 leading-relaxed mb-5">
+              <p className="text-body-sm text-neutral-700 leading-relaxed mb-5">
                 Wij bewaren persoonsgegevens niet langer dan noodzakelijk voor
                 het doel waarvoor ze zijn verkregen, of zo lang als wettelijk
                 vereist. Onderstaande termijnen zijn van toepassing:
@@ -355,7 +355,7 @@ export default function PrivacyPage() {
             {/* § 5 */}
             <section id="derden" className="mb-14 scroll-mt-28">
               <SectieKop nummer="5" titel="Derden en verwerkers" />
-              <p className="text-body text-neutral-700 leading-relaxed mb-5">
+              <p className="text-body-sm text-neutral-700 leading-relaxed mb-5">
                 Staterra deelt uw persoonsgegevens niet met derden, tenzij dit
                 noodzakelijk is voor de dienstverlening of wettelijk verplicht.
                 Wanneer wij gebruikmaken van verwerkers (partijen die in onze
@@ -363,7 +363,7 @@ export default function PrivacyPage() {
                 verwerkersovereenkomst af conform art. 28 AVG.
               </p>
 
-              <p className="text-body text-neutral-700 leading-relaxed mb-4">
+              <p className="text-body-sm text-neutral-700 leading-relaxed mb-4">
                 Wij maken gebruik van de volgende categorieën verwerkers:
               </p>
 
@@ -391,7 +391,7 @@ export default function PrivacyPage() {
             {/* § 6 */}
             <section id="buiten-eu" className="mb-14 scroll-mt-28">
               <SectieKop nummer="6" titel="Doorgifte buiten de EU" />
-              <p className="text-body text-neutral-700 leading-relaxed mb-4">
+              <p className="text-body-sm text-neutral-700 leading-relaxed mb-4">
                 Staterra streeft ernaar persoonsgegevens uitsluitend te
                 verwerken binnen de Europese Economische Ruimte (EER). Waar wij
                 gebruikmaken van diensten waarbij gegevens buiten de EER worden
@@ -415,7 +415,7 @@ export default function PrivacyPage() {
             {/* § 7 */}
             <section id="cookies" className="mb-14 scroll-mt-28">
               <SectieKop nummer="7" titel="Cookies" />
-              <p className="text-body text-neutral-700 leading-relaxed mb-5">
+              <p className="text-body-sm text-neutral-700 leading-relaxed mb-5">
                 Staterra.nl maakt gebruik van cookies en vergelijkbare
                 technieken. Wij onderscheiden drie categorieën:
               </p>
@@ -463,12 +463,19 @@ export default function PrivacyPage() {
                 van uw browser. Houd er rekening mee dat het uitschakelen van
                 functionele cookies de werking van de website kan beïnvloeden.
               </p>
+              <p className="mt-3 text-body-sm text-neutral-600 leading-relaxed">
+                Lees meer in ons{' '}
+                <Link href="/cookies" className="text-brand-700 font-medium hover:text-brand-900 transition-colors duration-[150ms]">
+                  uitgebreide cookiebeleid
+                </Link>
+                , inclusief een volledig overzicht van alle cookies per categorie.
+              </p>
             </section>
 
             {/* § 8 */}
             <section id="rechten" className="mb-14 scroll-mt-28">
               <SectieKop nummer="8" titel="Uw rechten als betrokkene" />
-              <p className="text-body text-neutral-700 leading-relaxed mb-6">
+              <p className="text-body-sm text-neutral-700 leading-relaxed mb-6">
                 Als betrokkene heeft u op grond van de AVG de volgende rechten.
                 U kunt deze uitoefenen door contact op te nemen via{' '}
                 <a
@@ -517,7 +524,7 @@ export default function PrivacyPage() {
             {/* § 9 */}
             <section id="klacht" className="mb-14 scroll-mt-28">
               <SectieKop nummer="9" titel="Klacht indienen" />
-              <p className="text-body text-neutral-700 leading-relaxed mb-4">
+              <p className="text-body-sm text-neutral-700 leading-relaxed mb-4">
                 Als u van mening bent dat wij uw persoonsgegevens onrechtmatig
                 verwerken, heeft u het recht een klacht in te dienen bij de
                 toezichthoudende autoriteit. In Nederland is dat de:
@@ -555,7 +562,7 @@ export default function PrivacyPage() {
             {/* § 10 */}
             <section id="wijzigingen" className="mb-14 scroll-mt-28">
               <SectieKop nummer="10" titel="Wijzigingen" />
-              <p className="text-body text-neutral-700 leading-relaxed mb-4">
+              <p className="text-body-sm text-neutral-700 leading-relaxed mb-4">
                 Staterra kan deze privacyverklaring te allen tijde aanpassen.
                 Wijzigingen worden gepubliceerd op deze pagina met een
                 bijgewerkte versiedatum. Wij raden u aan deze verklaring
@@ -570,7 +577,7 @@ export default function PrivacyPage() {
             {/* § 11 */}
             <section id="contact" className="scroll-mt-28">
               <SectieKop nummer="11" titel="Contact" />
-              <p className="text-body text-neutral-700 leading-relaxed mb-6">
+              <p className="text-body-sm text-neutral-700 leading-relaxed mb-6">
                 Heeft u vragen over deze privacyverklaring of wilt u één van uw
                 rechten uitoefenen? Neem dan contact op:
               </p>
@@ -671,7 +678,7 @@ function SectieKop({ nummer, titel }: { nummer: string; titel: string }) {
       >
         {nummer}
       </span>
-      <h2 className="font-heading text-h3 font-semibold text-neutral-950 leading-snug">
+      <h2 className="font-heading text-[1.375rem] font-semibold text-neutral-950 leading-snug">
         {titel}
       </h2>
     </div>

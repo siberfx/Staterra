@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
-import { Container } from '@/components/ui/Container';
 import { mapMenuUrl } from '@/lib/cms';
 import type { HomepageResponse } from '@/lib/types';
 
@@ -10,24 +9,21 @@ interface HeroProps {
 
 export function Hero({ data }: HeroProps) {
   return (
-    <section
-      className="relative overflow-hidden bg-brand-100 pt-12 pb-16 lg:pt-20 lg:pb-24"
-      aria-label="Introductie"
-    >
-      {/* Subtiele achtergrondvorm */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full opacity-30"
-        style={{
-          background:
-            'radial-gradient(circle, #6CB6D9 0%, transparent 70%)',
-        }}
-      />
+    <section aria-label="Introductie">
+      {/*
+        Geen py-* op de section — de grid bepaalt de hoogte.
+        min-h groeit mee: 76vh op mobile → 84vh op md → 93vh op desktop,
+        maar nooit meer dan respectievelijk 620 / 800 / 1000px.
+      */}
+      <div className="grid grid-cols-1 bg-brand-100 min-h-[min(76vh,620px)] md:min-h-[min(84vh,800px)] lg:min-h-[min(93vh,1000px)] lg:grid-cols-2">
 
-      <Container variant="content">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Tekst */}
-          <div className="order-2 lg:order-1">
+        {/* ── Linkerkolom: tekst ───────────────────────────────────
+            xl:pl-[max(...)] centreert de content met de page-container
+            breedte op zeer brede schermen, net als een max-width: 1280px
+            container zou doen.                                          */}
+        <div className="flex min-w-0 flex-col justify-center px-6 py-12 md:px-8 md:py-16 lg:px-10 lg:py-20 xl:pl-[max(2.5rem,calc((100vw-90rem)/2+2.5rem))] xl:pr-12">
+          <div className="max-w-xl">
+
             {data.label && (
               <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-4">
                 {data.label}
@@ -56,12 +52,9 @@ export function Hero({ data }: HeroProps) {
                         viewBox="0 0 24 24"
                         stroke="currentColor"
                         strokeWidth={2.5}
+                        aria-hidden="true"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M5 13l4 4L19 7"
-                        />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </span>
                     <span className="text-body-sm text-neutral-700">
@@ -96,53 +89,29 @@ export function Hero({ data }: HeroProps) {
               )}
             </div>
           </div>
-
-          {/* Afbeelding */}
-          {data.image && (
-            <div className="order-1 lg:order-2 relative">
-              <div className="relative rounded-[20px] overflow-hidden shadow-[0_16px_48px_rgba(22,62,116,0.12)]">
-                <Image
-                  src={data.image}
-                  alt="Staterra — professionals in gesprek over digitale oplossingen voor de overheid"
-                  width={600}
-                  height={440}
-                  className="w-full h-auto object-cover"
-                  priority
-                />
-                {/* Gradient: linkerrand versmelt met de brand-100 sectieachtergrond */}
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-y-0 left-0 w-1/3"
-                  style={{
-                    background:
-                      'linear-gradient(to right, #F4F8FB 0%, transparent 100%)',
-                  }}
-                />
-                {/* Subtiele tint-overlay voor illustraties: geeft ze een "foto-achtige" sfeer */}
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-0"
-                  style={{
-                    background:
-                      'linear-gradient(135deg, rgba(22,62,116,0.04) 0%, rgba(108,182,217,0.06) 100%)',
-                    mixBlendMode: 'multiply',
-                  }}
-                />
-              </div>
-              {/* Decoratief accent */}
-              <div
-                aria-hidden="true"
-                className="absolute -bottom-4 -left-4 w-24 h-24 rounded-[16px] bg-brand-200 -z-10"
-              />
-              {/* Decoratief accent rechtsboven */}
-              <div
-                aria-hidden="true"
-                className="absolute -top-3 -right-3 w-16 h-16 rounded-full bg-brand-400/20 -z-10 hidden lg:block"
-              />
-            </div>
-          )}
         </div>
-      </Container>
+
+        {/* ── Rechterkolom: foto edge-to-edge ──────────────────────
+            position: relative + Image fill → foto vult de hele kolom.
+            min-h op mobile zodat de foto niet te plat wordt.
+            Geen rounded corners, geen shadow, geen card-effect.          */}
+        {data.image ? (
+          <div className="relative min-h-[min(45vh,420px)] w-full min-w-0 lg:min-h-0">
+            <Image
+              src={data.image}
+              alt="Staterra — professionals in gesprek over digitale oplossingen voor de overheid"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
+            />
+          </div>
+        ) : (
+          /* Fallback kleurblok als CMS geen afbeelding levert */
+          <div className="bg-brand-200 min-h-[min(45vh,420px)] lg:min-h-0" aria-hidden="true" />
+        )}
+
+      </div>
     </section>
   );
 }

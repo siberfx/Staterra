@@ -11,65 +11,11 @@ export const metadata: Metadata = {
   alternates: { canonical: '/over-ons' },
 };
 
-// ── Teamleden ─────────────────────────────────────────────────
-
-const TEAM = [
-  {
-    naam: 'Jorgen Kromhout',
-    rol: 'Oprichter & directeur',
-    initialen: 'JK',
-    bio: 'Oprichter van Staterra met een achtergrond in overheidsdigitalisering en infrastructuur. Combineert bestuurlijk inzicht met technische kennis om overheden duurzaam te helpen.',
-    kleur: 'bg-brand-700',
-  },
-  {
-    naam: 'Said / CodeLabs B.V.',
-    rol: 'CTO & technische partner',
-    initialen: 'CL',
-    bio: 'Verantwoordelijk voor de technische architectuur en realisatie van het OPMS-platform. CodeLabs verzorgt als vaste technische partner de volledige back-end ontwikkeling en infrastructuur.',
-    kleur: 'bg-brand-600',
-  },
-  {
-    naam: 'Christian Boosman',
-    rol: 'Senior adviseur & programmamanager',
-    initialen: 'CB',
-    bio: 'Ervaren programmamanager met een track record in complexe overheidsprojecten. Begeleidt de implementatie van OPMS bij ministeries en uitvoeringsorganisaties.',
-    kleur: 'bg-brand-900',
-  },
-  {
-    naam: 'Esther Lap',
-    rol: 'Communicatie & stakeholder management',
-    initialen: 'EL',
-    bio: 'Verantwoordelijk voor communicatie richting bestuur, politiek en externe stakeholders. Bouwt aan de relatie tussen Staterra en de overheidswereld.',
-    kleur: 'bg-neutral-700',
-  },
-  {
-    naam: 'Sietske Rietveld-Engelen',
-    rol: 'Director dienstverlening',
-    initialen: 'SR',
-    bio: 'Leidt de dienstverleningspraktijk van Staterra. Verantwoordelijk voor de kwaliteit van Woo-consultancy, training en procesondersteuning bij klantorganisaties.',
-    kleur: 'bg-brand-700',
-  },
-  {
-    naam: 'Jeroen Segaar',
-    rol: 'Accountmanager medeoverheden',
-    initialen: 'JS',
-    bio: 'Primair aanspreekpunt voor gemeenten, provincies en waterschappen. Begeleidt organisaties van eerste verkenning tot succesvolle implementatie.',
-    kleur: 'bg-brand-600',
-  },
-  {
-    naam: 'Iven Kromhout',
-    rol: 'Operationeel manager',
-    initialen: 'IK',
-    bio: 'Zorgt voor de dagelijkse operationele continuïteit van Staterra. Bewaakt processen, kwaliteit en de interne organisatie zodat het team optimaal kan presteren.',
-    kleur: 'bg-neutral-800',
-  },
-];
-
 // ── Waarden ───────────────────────────────────────────────────
 
 const WAARDEN = [
   {
-    titel: 'Langetermijnpartnerschap',
+    titel: 'Langetermijn­partnerschap',
     tekst: 'We investeren in duurzame relaties, niet in eenmalige opdrachten. Onze verdiensten zijn gekoppeld aan het succes van uw oplossing.',
     icoon: (
       <svg className="w-6 h-6 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
@@ -288,66 +234,6 @@ export default function OverOnsPage() {
         </Container>
       </section>
 
-      {/* ── 4. Team ───────────────────────────────────────────── */}
-      <section
-        className="bg-white py-16 lg:py-24"
-        aria-labelledby="team-heading"
-      >
-        <Container variant="content">
-          <div className="text-center mb-14">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
-              Het team
-            </span>
-            <h2
-              id="team-heading"
-              className="font-heading text-h2 font-semibold text-neutral-950 mb-4"
-            >
-              De mensen achter Staterra
-            </h2>
-            <p className="text-body text-neutral-700 max-w-[560px] mx-auto">
-              Een multidisciplinair team met expertise in projectmanagement,
-              Woo-consultancy, softwareontwikkeling en overheidsprocessen.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {TEAM.map((lid) => (
-              <article
-                key={lid.naam}
-                className="rounded-[16px] border border-neutral-200 overflow-hidden hover:border-brand-300 hover:shadow-[0_8px_24px_rgba(22,62,116,0.08)] transition-all duration-[180ms] group"
-              >
-                {/* Avatar */}
-                <div className={`${lid.kleur} h-32 flex items-center justify-center`}>
-                  <span
-                    className="text-white font-heading font-semibold text-h2 select-none"
-                    aria-hidden="true"
-                  >
-                    {lid.initialen}
-                  </span>
-                </div>
-
-                {/* Info */}
-                <div className="p-5">
-                  <h3 className="font-heading text-h5 font-semibold text-neutral-950 leading-snug mb-0.5">
-                    {lid.naam}
-                  </h3>
-                  <p className="text-caption font-semibold text-brand-600 mb-3">
-                    {lid.rol}
-                  </p>
-                  <p className="text-caption text-neutral-600 leading-relaxed">
-                    {lid.bio}
-                  </p>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          <p className="text-caption text-neutral-500 text-center mt-8">
-            Foto&apos;s volgen. Neem contact op voor meer informatie over het team.
-          </p>
-        </Container>
-      </section>
-
       {/* ── 5. Partnerschapsmodel ─────────────────────────────── */}
       <section
         className="bg-brand-100 py-16 lg:py-24"
@@ -517,12 +403,9 @@ export default function OverOnsPage() {
               </h3>
               <div className="space-y-3">
                 {[
-                  'Ministerie van Binnenlandse Zaken en Koninkrijksrelaties (BZK)',
-                  'Ministerie van Algemene Zaken',
-                  'Ministerie van Infrastructuur en Waterstaat (I&W)',
-                  'ICTU — overheids-ICT-organisatie',
-                  'CIO-Rijk',
-                  'Vereniging van Nederlandse Gemeenten (VNG)',
+                  'Ministerie van Justitie en Veiligheid',
+                  'Drie departementen (details onder embargo)',
+                  'Twee overheids ICT-organisaties (details onder embargo)',
                 ].map((org) => (
                   <div key={org} className="flex items-center gap-2.5">
                     <span
@@ -534,7 +417,7 @@ export default function OverOnsPage() {
                 ))}
               </div>
               <p className="text-caption text-neutral-500 mt-4 pt-4 border-t border-neutral-100">
-                Met steun van de VNG voor de gemeentelijke uitrol.
+                Gesprekken lopen. Details worden gedeeld zodra akkoord is bereikt.
               </p>
             </Card>
           </div>
@@ -584,7 +467,7 @@ export default function OverOnsPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button as="link" href="/contact" variant="secondary" size="lg">
-                Plan een kennismaking
+                Plan een verkenningsgesprek
               </Button>
               <Button
                 as="link"

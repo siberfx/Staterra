@@ -31,7 +31,7 @@ const CONTACT_OPTIES = [
   {
     label: 'Adres',
     href: 'https://maps.app.goo.gl/staterra',
-    waarde: 'Stadsplateau 27, 3521 AZ Utrecht',
+    waarde: 'Stadsplateau 27, 3521 AZ Utrecht!',
     icoon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
         <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -44,7 +44,7 @@ const CONTACT_OPTIES = [
 const REACTIETERMIJN = [
   { label: 'Reactietermijn', waarde: 'Binnen twee werkdagen' },
   { label: 'Eerste gesprek', waarde: 'Vrijblijvend en kosteloos' },
-  { label: 'Verkenningsfase', waarde: '4 – 6 weken, € 7.500' },
+  { label: 'Verkenningsfase', waarde: '2 – 4 weken' },
 ];
 
 // Dedupliceert FAQ-items op basis van vraag-tekst
@@ -138,7 +138,7 @@ export default async function ContactPage() {
                   key={r.label}
                   className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2"
                 >
-                  <span className="text-caption text-brand-300">{r.label}:</span>
+                  <span className="text-caption text-white/70">{r.label}:</span>
                   <span className="text-caption font-semibold text-white">{r.waarde}</span>
                 </div>
               ))}
@@ -326,8 +326,8 @@ export default async function ContactPage() {
           <div className="rounded-[16px] bg-brand-100 border border-brand-200 px-8 py-6 text-center">
             <p className="text-body-sm text-neutral-700">
               <strong className="text-neutral-950 font-semibold">In gesprek met:</strong>{' '}
-              Ministerie van Justitie en Veiligheid, Algemene Zaken, BZK, I&amp;W,
-              ICTU en CIO-Rijk. Met steun van de VNG.
+              Ministerie van Justitie en Veiligheid, drie andere departementen
+              en twee overheids ICT-organisaties.
             </p>
           </div>
         </Container>

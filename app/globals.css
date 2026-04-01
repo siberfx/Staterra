@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /* =============================================================
    Staterra Design Tokens — Tailwind CSS v4 @theme
@@ -36,8 +37,8 @@
   /* ── Type Scale ── */
   --text-h1: 3.5rem;
   --text-h1--line-height: 1.05;
-  --text-h2: 2.625rem;
-  --text-h2--line-height: 1.1;
+  --text-h2: 2rem;
+  --text-h2--line-height: 1.15;
   --text-h3: 2rem;
   --text-h3--line-height: 1.15;
   --text-h4: 1.5rem;
@@ -105,7 +106,7 @@
 
   /* Type Scale */
   --text-h1: 56px;
-  --text-h2: 42px;
+  --text-h2: 32px;
   --text-h3: 32px;
   --text-h4: 24px;
   --text-h5: 20px;

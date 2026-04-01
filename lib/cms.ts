@@ -21,7 +21,9 @@ import type {
 const CMS_URL =
   process.env.NEXT_PUBLIC_CMS_URL || 'https://studio.staterra.nl';
 
-const DEFAULT_REVALIDATE = 300; // 5 minuten
+// In development: no-store zodat CMS-wijzigingen direct zichtbaar zijn.
+// In productie: 5 minuten ISR.
+const DEFAULT_REVALIDATE = process.env.NODE_ENV === 'development' ? 0 : 300;
 
 // ── Basis fetch-functie ──────────────────────────────────────
 
@@ -122,7 +124,10 @@ export async function getPages(): Promise<PaginatedResponse<Page> | null> {
 
 export async function getPage(slug: string): Promise<Page | null> {
   const normalized = slug.startsWith('/') ? slug.slice(1) : slug;
-  return fetchCMSSafe<Page>(`/api/pages/${normalized}`);
+  const res = await fetchCMSSafe<{ data: Page } | Page>(`/api/pages/${normalized}`);
+  if (!res) return null;
+  // Unwrap { data: Page } envelope if present, otherwise use directly
+  return (res as { data: Page }).data ?? (res as Page);
 }
 
 // ── Contact ──────────────────────────────────────────────────

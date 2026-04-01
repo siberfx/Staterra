@@ -187,7 +187,7 @@ export function CTABlock({ data }: CTABlockProps) {
                         Versturen…
                       </span>
                     ) : (
-                      'Plan verkenning'
+                      'Plan een verkenningsgesprek'
                     )}
                   </button>
                 </div>

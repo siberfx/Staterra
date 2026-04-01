@@ -195,9 +195,9 @@ export default function AanpakPage() {
                       : 'bg-white/8 border-white/20',
                   ].join(' ')}
                 >
-                  <span className="block text-caption font-semibold text-brand-300 mb-1">{b.fase}</span>
+                  <span className="block text-caption font-semibold text-brand-200 mb-1">{b.fase}</span>
                   <span className="block text-body-sm font-semibold text-white">{b.duur}</span>
-                  <span className="block text-caption text-brand-200/80 mt-0.5">{b.prijs}</span>
+                  <span className="block text-caption text-white/90 mt-0.5">{b.prijs}</span>
                 </div>
               ))}
             </div>
@@ -366,6 +366,9 @@ export default function AanpakPage() {
 
                     {/* Midden: beschrijving + deliverables */}
                     <div>
+                      <h4 className="text-body-sm font-semibold text-neutral-950 mb-3">
+                        Aanpak
+                      </h4>
                       <p className="text-body-sm text-neutral-700 leading-relaxed mb-6">
                         {fase.beschrijving}
                       </p>
@@ -649,8 +652,7 @@ export default function AanpakPage() {
               id="aanpak-cta-heading"
               className="font-heading text-h2 font-semibold text-white mb-4 leading-[1.1]"
             >
-              Start met een verkenning van{' '}
-              <span className="text-brand-400">€ 7.500</span>
+              Start met een verkenning
             </h2>
             <p className="text-body-lg text-brand-200 mb-10 leading-relaxed">
               Binnen 4 tot 6 weken weet u exact wat de beste aanpak is voor uw

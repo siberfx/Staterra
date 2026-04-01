@@ -72,7 +72,7 @@ export function UserFeaturesBlock({ data }: UserFeaturesBlockProps) {
               </div>
 
               <ul className="space-y-3.5" aria-label={data.left_title}>
-                {data.left_items.map((item, i) => (
+                {data.left_items.slice(0, 3).map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <CheckIcon />
                     <span className="text-body-sm text-neutral-700 leading-relaxed">
@@ -104,7 +104,7 @@ export function UserFeaturesBlock({ data }: UserFeaturesBlockProps) {
               </div>
 
               <ul className="space-y-3.5" aria-label={data.right_title}>
-                {data.right_items.map((item, i) => (
+                {data.right_items.slice(0, 3).map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <CheckIcon />
                     <span className="text-body-sm text-neutral-700 leading-relaxed">

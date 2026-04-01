@@ -6,7 +6,6 @@ import type { Solution } from '@/lib/types';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
-import { ComparisonTable } from '@/components/sections/ComparisonTable';
 
 export const metadata: Metadata = {
   title: 'Oplossingen',
@@ -354,16 +353,45 @@ export default async function OplossingsoverzichtPage() {
                 <strong className="text-neutral-950 font-semibold">
                   In gesprek met:
                 </strong>{' '}
-                Ministerie van Justitie en Veiligheid, Algemene Zaken, BZK,
-                I&amp;W, ICTU en CIO-Rijk. Met steun van de VNG.
+                Ministerie van Justitie en Veiligheid, drie andere departementen
+                en twee overheids ICT-organisaties. Details volgen zodra akkoord is bereikt.
               </p>
             </div>
           </Container>
         </section>
       )}
 
-      {/* ── 5. Vergelijkingstabel ─────────────────────────────── */}
-      <ComparisonTable />
+      {/* ── 5. Vergelijking doorlink ──────────────────────────── */}
+      <section className="bg-white py-16 lg:py-20" aria-label="Vergelijking">
+        <div className="max-w-3xl mx-auto text-center px-6">
+          <p className="text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+            Waarom OPMS
+          </p>
+          <h2 className="font-heading text-h2 font-semibold text-brand-900 mb-4 leading-[1.1]">
+            De logische eerste keuze
+          </h2>
+          <p className="text-body text-neutral-700 leading-relaxed mb-8">
+            OPMS is de enige open source Woo-oplossing in het BZK-ecosysteem.
+            Implementatie in 3–6 maanden, geen vendor lock-in, en voldoet direct
+            aan het comply-or-explain beleid.
+          </p>
+          <a
+            href="/woo-oplossing#vergelijking"
+            className="inline-flex items-center gap-2 text-body-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors duration-[150ms] group"
+          >
+            Bekijk de vergelijking met alternatieven
+            <svg
+              className="w-4 h-4 transition-transform duration-[150ms] group-hover:translate-x-0.5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </section>
 
       {/* ── 6. Sluit-CTA ─────────────────────────────────────── */}
       <section

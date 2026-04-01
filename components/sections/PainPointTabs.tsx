@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, useCallback, useId } from 'react';
+import { useState, useEffect, useCallback, useId } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { HomepageResponse, CompetitionBox } from '@/lib/types';
@@ -13,6 +13,36 @@ interface PainPointTabsProps {
 
 const AUTO_ROTATE_MS = 8000;
 
+// ── Fallback-beschrijvingen ───────────────────────────────────
+// Het CMS levert momenteel milestone-data zonder description-veld.
+// We matchen op substrings van label én value (beide lowercase).
+const FALLBACK_DESCRIPTIONS: Record<string, string> = {
+  'werkend mvp':
+    'In 3 maanden staat een werkend systeem — inclusief publicatiemodule, behandelwerkstroom en eerste integraties. U kunt uw eerste Woo-publicaties doen op dag 91. Geen eindeloze analysefase, geen papieren architecturen.',
+  '3 maanden':
+    'In 3 maanden staat een werkend systeem — inclusief publicatiemodule, behandelwerkstroom en eerste integraties. U kunt uw eerste Woo-publicaties doen op dag 91. Geen eindeloze analysefase, geen papieren architecturen.',
+  'volledig product':
+    'Na 9 maanden is het volledige OPMS-platform operationeel: alle categorieën actieve openbaarmaking, koppelingen met uw DMS en zaaksystemen, opgeleide medewerkers en actief beheer. Klaar voor de dagelijkse praktijk.',
+  '9 maanden':
+    'Na 9 maanden is het volledige OPMS-platform operationeel: alle categorieën actieve openbaarmaking, koppelingen met uw DMS en zaaksystemen, opgeleide medewerkers en actief beheer. Klaar voor de dagelijkse praktijk.',
+  'in gebruik':
+    'Dit is geen pilot of proof of concept. Het platform wordt dagelijks gebruikt door echte bestuursorganen voor echte Woo-publicaties. De hardste test voor elk systeem — en OPMS doorstaat hem.',
+  'opgeleverd':
+    'Dit is geen pilot of proof of concept. Het platform wordt dagelijks gebruikt door echte bestuursorganen voor echte Woo-publicaties. De hardste test voor elk systeem — en OPMS doorstaat hem.',
+  'eigenaarschap':
+    'De broncode is volledig open source en eigendom van de overheid, niet van Staterra. U heeft altijd inzage in de code, u kunt aanpassen, overdragen en doorontwikkelen — onafhankelijk van één leverancier.',
+  'open source':
+    'De broncode is volledig open source en eigendom van de overheid, niet van Staterra. U heeft altijd inzage in de code, u kunt aanpassen, overdragen en doorontwikkelen — onafhankelijk van één leverancier.',
+};
+
+function getFallbackDescription(box: CompetitionBox): string {
+  const haystack = `${box.label} ${box.value}`.toLowerCase();
+  for (const [fragment, text] of Object.entries(FALLBACK_DESCRIPTIONS)) {
+    if (haystack.includes(fragment)) return text;
+  }
+  return '';
+}
+
 // ── Veld-normaliser ───────────────────────────────────────────
 // Huidige CMS levert { value, label } (milestones).
 // Toekomstige CMS levert { title, description, image, link_text, link_url }.
@@ -22,6 +52,7 @@ interface NormalizedBox {
   id: number;
   tabLabel: string;        // tekst op de tab
   title: string;           // H3 in paneel
+  value: string;           // korte metric (bijv. "3 maanden") als subtitel
   description: string;     // bodytekst
   image: string | null;
   linkText: string | null;
@@ -32,8 +63,10 @@ function normalizeBox(box: CompetitionBox, index: number): NormalizedBox {
   return {
     id: index,
     tabLabel: box.title ?? box.label ?? `Punt ${index + 1}`,
-    title:    box.title ?? box.value ?? box.label ?? '',
-    description: box.description ?? '',
+    // label is de beschrijvende zin (bijv. "In gebruik"), value de metric (bijv. "Opgeleverd")
+    title:    box.title ?? box.label ?? box.value ?? '',
+    value:    box.value ?? '',
+    description: box.description ?? getFallbackDescription(box),
     image:    box.image_url ?? box.image ?? null,
     linkText: box.link_text ?? null,
     linkHref: box.link_url ? mapMenuUrl(box.link_url) : null,
@@ -42,23 +75,11 @@ function normalizeBox(box: CompetitionBox, index: number): NormalizedBox {
 
 // ── Paneel-inhoud ─────────────────────────────────────────────
 
-function ContentPanel({
-  box,
-  visible,
-}: {
-  box: NormalizedBox;
-  visible: boolean;
-}) {
+function ContentPanel({ box }: { box: NormalizedBox }) {
   const hasImage = !!box.image;
 
   return (
-    <div
-      className={[
-        'absolute inset-0 transition-opacity duration-[220ms] ease-out',
-        visible ? 'opacity-100' : 'opacity-0 pointer-events-none',
-      ].join(' ')}
-      aria-hidden={!visible}
-    >
+    <div className="animate-[fadeIn_220ms_ease-out]">
       <div
         className={[
           'grid h-full',
@@ -67,14 +88,20 @@ function ContentPanel({
       >
         {/* Tekst */}
         <div className="flex flex-col justify-center px-8 py-10 lg:px-10 lg:py-12">
-          <h3 className="font-heading text-h3 font-semibold text-brand-900 mb-4 leading-snug">
+          {/* Metric als subtitel boven de titel */}
+          {box.value && (
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-2">
+              {box.value}
+            </span>
+          )}
+          <h3 className="font-heading text-h4 font-semibold text-brand-900 mb-4 leading-snug">
             {box.title}
           </h3>
-          {box.description ? (
-            <p className="text-body text-neutral-700 leading-relaxed mb-6">
+          {box.description && (
+            <p className="text-body text-neutral-700 leading-relaxed mb-6 max-w-[560px]">
               {box.description}
             </p>
-          ) : null}
+          )}
           {box.linkHref && box.linkText && (
             <Link
               href={box.linkHref}
@@ -150,12 +177,7 @@ function PainPointTabsInner({
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
-  const panelRef = useRef<HTMLDivElement>(null);
   const tablistId = useId();
-
-  // Paneel-hoogte: max van alle content-hoogtes
-  // We gebruiken een vaste min-height zodat de sectie niet springt
-  const PANEL_MIN_H = 260; // px
 
   // Auto-rotate
   useEffect(() => {
@@ -229,7 +251,9 @@ function PainPointTabsInner({
                     aria-controls={`${tablistId}-panel`}
                     onClick={() => handleTabClick(i)}
                     className={[
-                      'px-4 py-5 text-center text-body-sm font-semibold leading-snug',
+                      // min-h zodat alle tabs even hoog zijn ook als tekst ombreekt
+                      'min-h-[64px] px-4 py-4 text-center text-sm font-semibold leading-snug',
+                      'flex items-center justify-center',
                       'border-r border-neutral-200 last:border-r-0',
                       'transition-colors duration-[150ms] focus-visible:outline-none',
                       'focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-400',
@@ -245,19 +269,17 @@ function PainPointTabsInner({
             </div>
           </div>
 
-          {/* Content-paneel */}
+          {/* Content-paneel — groeit mee met de inhoud (geen vaste hoogte) */}
           <div
-            ref={panelRef}
             id={`${tablistId}-panel`}
             role="tabpanel"
             aria-labelledby={`${tablistId}-tab-${activeIndex}`}
             className="relative border-t border-neutral-200 bg-white"
-            style={{ minHeight: `${PANEL_MIN_H}px` }}
           >
             {/* Voortgangsbalk voor auto-rotate */}
             {!paused && boxes.length > 1 && (
               <div
-                key={activeIndex}
+                key={`progress-${activeIndex}`}
                 className="absolute top-0 inset-x-0 h-0.5 bg-brand-400 origin-left"
                 style={{
                   animation: `progress-bar ${AUTO_ROTATE_MS}ms linear forwards`,
@@ -266,14 +288,10 @@ function PainPointTabsInner({
               />
             )}
 
-            {/* Alle panelen gestapeld, actieve is zichtbaar */}
-            {boxes.map((box, i) => (
-              <ContentPanel
-                key={box.id}
-                box={box}
-                visible={i === activeIndex}
-              />
-            ))}
+            {/* Alleen actief paneel renderen → container past automatisch zijn hoogte aan */}
+            {boxes[activeIndex] && (
+              <ContentPanel key={`panel-${activeIndex}`} box={boxes[activeIndex]} />
+            )}
           </div>
         </div>
 
@@ -297,11 +315,15 @@ function PainPointTabsInner({
 
       </Container>
 
-      {/* Keyframe voor voortgangsbalk */}
+      {/* Keyframes */}
       <style>{`
         @keyframes progress-bar {
           from { transform: scaleX(0); }
           to   { transform: scaleX(1); }
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(6px); }
+          to   { opacity: 1; transform: translateY(0); }
         }
       `}</style>
     </section>

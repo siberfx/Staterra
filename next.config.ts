@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'studio.staterra.nl',
-        pathname: '/storage/**',
+        pathname: '/**',
       },
     ],
     formats: ['image/avif', 'image/webp'],

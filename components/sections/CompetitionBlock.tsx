@@ -11,25 +11,34 @@ interface CompetitionBlockProps {
 
 // ── Fallback-beschrijvingen ───────────────────────────────────
 // Worden gebruikt zolang het CMS geen `description`-veld stuurt.
-// Gebaseerd op de `label` van elke box (case-insensitive match).
+// Keys zijn substrings van de werkelijke CMS-labels (lowercase match).
 const FALLBACK_DESCRIPTIONS: Record<string, string> = {
-  'werkende mvp':
+  'werkend mvp':
     'In 3 maanden staat een werkend systeem — inclusief publicatiemodule, behandelwerkstroom en eerste integraties. U kunt uw eerste Woo-publicaties doen op dag 91. Geen eindeloze analysefase, geen papieren architecturen.',
-  'volledig inzetbaar product':
+  '3 maanden':
+    'In 3 maanden staat een werkend systeem — inclusief publicatiemodule, behandelwerkstroom en eerste integraties. U kunt uw eerste Woo-publicaties doen op dag 91. Geen eindeloze analysefase, geen papieren architecturen.',
+  'volledig product':
+    'Na 9 maanden is het volledige OPMS-platform operationeel: alle categorieën actieve openbaarmaking, koppelingen met uw DMS en zaaksystemen, opgeleide medewerkers en actief beheer. Klaar voor de dagelijkse praktijk.',
+  '9 maanden':
     'Na 9 maanden is het volledige OPMS-platform operationeel: alle categorieën actieve openbaarmaking, koppelingen met uw DMS en zaaksystemen, opgeleide medewerkers en actief beheer. Klaar voor de dagelijkse praktijk.',
   'in gebruik':
     'Dit is geen pilot of proof of concept. Het platform wordt dagelijks gebruikt door echte bestuursorganen voor echte Woo-publicaties. De hardste test voor elk systeem — en OPMS doorstaat hem.',
-  'eigendom bij de overheid':
+  'opgeleverd':
+    'Dit is geen pilot of proof of concept. Het platform wordt dagelijks gebruikt door echte bestuursorganen voor echte Woo-publicaties. De hardste test voor elk systeem — en OPMS doorstaat hem.',
+  'eigenaarschap':
+    'De broncode is volledig open source en eigendom van de overheid, niet van Staterra. U heeft altijd inzage in de code, u kunt aanpassen, overdragen en doorontwikkelen — onafhankelijk van één leverancier.',
+  'open source':
     'De broncode is volledig open source en eigendom van de overheid, niet van Staterra. U heeft altijd inzage in de code, u kunt aanpassen, overdragen en doorontwikkelen — onafhankelijk van één leverancier.',
 };
 
 function getDescription(box: CompetitionBox): string {
   if (box.description) return box.description;
-  const key = box.label.toLowerCase();
+  // Zoek in zowel label als value (bijv. "3 maanden" zit in value, niet in label)
+  const haystack = `${box.label} ${box.value}`.toLowerCase();
   for (const [fragment, text] of Object.entries(FALLBACK_DESCRIPTIONS)) {
-    if (key.includes(fragment)) return text;
+    if (haystack.includes(fragment)) return text;
   }
-  return box.label;
+  return '';
 }
 
 // ── Iconen per tab-index ──────────────────────────────────────
@@ -133,11 +142,11 @@ export function CompetitionBlock({ data }: CompetitionBlockProps) {
                     {TAB_ICONS[i] ?? TAB_ICONS[0]}
                   </span>
 
-                  {/* Metric */}
+                  {/* Metric — zelfde grootte actief/inactief zodat kaartjes stabiel blijven */}
                   <span
                     className={[
-                      'font-heading font-semibold leading-none',
-                      isActive ? 'text-brand-400 text-h4' : 'text-brand-700 text-h5',
+                      'font-heading font-semibold text-h5 leading-tight',
+                      isActive ? 'text-brand-400' : 'text-brand-700',
                     ].join(' ')}
                   >
                     {box.value}
@@ -180,14 +189,14 @@ export function CompetitionBlock({ data }: CompetitionBlockProps) {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0, transition: { duration: 0.22, ease: EASE_OUT } }}
                   exit={{ opacity: 0, y: -6, transition: { duration: 0.14, ease: EASE_IN } }}
-                  className="grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-0"
+                  className="grid grid-cols-1 lg:grid-cols-[180px_1fr] gap-0"
                 >
-                  {/* Metric-kolom */}
-                  <div className="flex flex-col justify-center items-center bg-brand-900 px-8 py-10 rounded-l-none lg:rounded-l-[20px]">
-                    <span className="font-heading font-bold text-brand-400 text-h1 leading-none text-center">
+                  {/* Metric-kolom — tekst schaalt naar de kolombreedte */}
+                  <div className="flex flex-col justify-center items-center bg-brand-900 px-5 py-10 overflow-hidden rounded-l-none lg:rounded-l-[20px]">
+                    <span className="font-heading font-bold text-brand-400 text-3xl leading-tight text-center break-words w-full">
                       {active.value}
                     </span>
-                    <span className="text-caption text-white/70 mt-2 text-center font-medium">
+                    <span className="text-[11px] text-white/70 mt-2 text-center font-medium leading-snug">
                       {active.label}
                     </span>
                   </div>
@@ -195,12 +204,18 @@ export function CompetitionBlock({ data }: CompetitionBlockProps) {
                   {/* Beschrijving-kolom */}
                   <div className="px-8 py-10 flex items-center">
                     <div>
-                      <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-3 leading-snug">
-                        {active.label}
+                      {/* value als H3, label als subtitel → geen dubbele tekst */}
+                      <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-1 leading-snug">
+                        {active.value}
                       </h3>
-                      <p className="text-body text-neutral-700 leading-relaxed max-w-[560px]">
-                        {getDescription(active)}
+                      <p className="text-caption text-neutral-500 mb-4 font-medium">
+                        {active.label}
                       </p>
+                      {getDescription(active) && (
+                        <p className="text-body text-neutral-700 leading-relaxed max-w-[560px]">
+                          {getDescription(active)}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </motion.div>

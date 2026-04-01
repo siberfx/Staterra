@@ -23,6 +23,56 @@ function filterTopLevelItems(items: MenuItem[]): MenuItem[] {
   return items.filter((item) => item.url !== '#');
 }
 
+// ── Hardcoded Doelgroepen-dropdown ───────────────────────────
+// Wordt als tweede item na "Oplossingen" ingevoegd, zodat het
+// bestaande NavItem-systeem (hover-delay, gedeelde openId,
+// mobile accordion) automatisch werkt.
+const DOELGROEPEN_ITEM: MenuItem = {
+  id: 9999,
+  title: 'Doelgroepen',
+  subtitle: null,
+  description: '',
+  url: '#',
+  slug: null,
+  page_type: '',
+  template: '',
+  order: 99,
+  tags: [],
+  sidebar: null,
+  children: [
+    {
+      id: 9001, title: 'Gemeenten',
+      subtitle: 'Woo-compliance voor 342 gemeenten',
+      description: '', url: '/staterra-gemeenten',
+      slug: 'staterra-gemeenten', page_type: '', template: '', order: 1, tags: [], sidebar: null, children: [],
+    },
+    {
+      id: 9002, title: 'Provincies',
+      subtitle: 'Oplossingen voor 12 provincies',
+      description: '', url: '/staterra-provincies',
+      slug: 'staterra-provincies', page_type: '', template: '', order: 2, tags: [], sidebar: null, children: [],
+    },
+    {
+      id: 9003, title: 'Waterschappen',
+      subtitle: 'Digitale regie voor 21 waterschappen',
+      description: '', url: '/staterra-waterschappen',
+      slug: 'staterra-waterschappen', page_type: '', template: '', order: 3, tags: [], sidebar: null, children: [],
+    },
+    {
+      id: 9004, title: 'Rijksoverheid',
+      subtitle: 'Ministeries en agentschappen',
+      description: '', url: '/staterra-rijkspartijen',
+      slug: 'staterra-rijkspartijen', page_type: '', template: '', order: 4, tags: [], sidebar: null, children: [],
+    },
+  ],
+};
+
+// Voeg Doelgroepen in na het eerste CMS-item (Oplossingen)
+function injectDoelgroepen(items: MenuItem[]): MenuItem[] {
+  if (items.length === 0) return [DOELGROEPEN_ITEM];
+  return [items[0], DOELGROEPEN_ITEM, ...items.slice(1)];
+}
+
 // ── Dropdown-paneel ──────────────────────────────────────────
 // Structuur: outer wrapper heeft pt-3 (padding = onderdeel van het element,
 // dus muis in de "brug" blijft in de parent div → geen mouseLeave).
@@ -260,7 +310,7 @@ export function Header({ menu, settings }: HeaderProps) {
   }, []);
 
   const allItems = menu?.items ?? [];
-  const items = filterTopLevelItems(allItems);
+  const items = injectDoelgroepen(filterTopLevelItems(allItems));
 
   const logoUrl = settings?.site?.logo;
   const siteName = settings?.site?.name ?? 'Staterra';
