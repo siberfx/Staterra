@@ -1,85 +1,178 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 
-// ── Data ──────────────────────────────────────────────────────
+// ── Data per oplossing ───────────────────────────────────────
 
-const FASEN = [
+type Oplossing = 'woo' | 'samen' | 'opensource';
+
+const OPLOSSINGEN: {
+  id: Oplossing;
+  titel: string;
+  subtitel: string;
+  link: string;
+  doorlooptijd: string;
+  doorlooptijdSub?: string;
+  badgeTitel: string;
+  investering: string;
+  investeringSub?: string;
+  samenvatting: string;
+  fasen: { titel: string; duur: string; beschrijving: string; deliverables: string[] }[];
+}[] = [
   {
-    nummer: '01',
-    titel: 'Verkenning',
-    ondertitel: 'Van vraagstuk naar scherpe scope',
-    duur: '4 – 6 weken',
-    prijs: '€ 7.500',
-    prijsToelichting: 'Vaste prijs, geen meerwerk',
-    beschrijving:
-      'We brengen uw vraagstuk, processen, systemen en stakeholders in kaart. Het resultaat is een heldere projectdefinitie met een concrete aanbeveling voor fase 2 — of de conclusie dat een andere route beter past. Na de verkenning beslist u zelf of u verdergaat.',
-    deliverables: [
-      'Vraagstuk-analyse en knelpunten in kaart',
-      'Inventarisatie van systemen, data en processen',
-      'Stakeholder-overzicht en besluitvormingsstructuur',
-      'Scope-document met aanbeveling en indicatieve begroting',
-      'Go/no-go advies zonder verplichtingen',
+    id: 'woo',
+    titel: 'Woo-oplossing implementeren',
+    badgeTitel: 'Woo-oplossing',
+    subtitel: 'OPMS — het bewezen platform voor Woo-compliance',
+    link: '/woo-oplossing',
+    doorlooptijd: '2 – 4 maanden',
+    doorlooptijdSub: '(SaaS direct beschikbaar)',
+    investering: 'Vanaf € 40.000',
+    investeringSub: '(SaaS vanaf € 800/mnd)',
+    samenvatting:
+      'Implementatie van het bestaande OPMS-platform. Bewezen, snel inzetbaar en schaalbaar. De meest gekozen route voor organisaties die op korte termijn aan de Woo moeten voldoen.',
+    fasen: [
+      {
+        titel: 'Verkenning & inrichting',
+        duur: '4 – 6 weken',
+        beschrijving:
+          'We analyseren uw processen, systemen en publicatieverplichtingen. Op basis daarvan bepalen we welk schaalmodel (SaaS, eigen omgeving of maatwerk) het beste past.',
+        deliverables: [
+          'Inventarisatie huidige systemen en informatiestromen',
+          'Advies over schaalmodel (SaaS / eigen omgeving / maatwerk)',
+          'Inrichtingsplan: categorieën, processen, rollen',
+          'Integratieoverzicht (DMS, zaaksysteem, e-mail)',
+          'Offerte met vaste prijs voor implementatie',
+        ],
+      },
+      {
+        titel: 'Implementatie & koppeling',
+        duur: '2 – 4 maanden',
+        beschrijving:
+          'OPMS wordt uitgerold in uw omgeving, gekoppeld met bestaande systemen en ingericht volgens het verkenningsrapport. Uw team wordt getraind en het systeem gaat live.',
+        deliverables: [
+          'Werkend OPMS in productieomgeving',
+          'Koppelingen met DMS, zaaksysteem en overige bronnen',
+          'Ingerichte categorieën en publicatieprocessen',
+          'Gebruikerstraining en beheerdocumentatie',
+          'Go-live begeleiding en nazorg',
+        ],
+      },
+      {
+        titel: 'Beheer & doorontwikkeling',
+        duur: 'Doorlopend',
+        beschrijving:
+          'Na go-live verzorgt Staterra het technisch en functioneel beheer. Updates, beveiligingspatches en nieuwe OPMS-functionaliteit worden automatisch doorgevoerd.',
+        deliverables: [
+          'Technisch en functioneel beheer',
+          'Automatische updates en beveiligingspatches',
+          'Helpdesk voor gebruikers en beheerders',
+          'Kwartaalrapportage over gebruik en compliance',
+          'Toegang tot nieuwe OPMS-functionaliteit',
+        ],
+      },
     ],
-    rollen: [
-      { naam: 'Projectmanager', beschrijving: 'Coördineert het traject en bewaakt scope en planning' },
-      { naam: 'Woo-consultant', beschrijving: 'Analyseert informatieprocessen en publicatieverplichtingen' },
-      { naam: 'Architect', beschrijving: 'Beoordeelt bestaande systemen en integratiekansen' },
-    ],
-    resultaat: 'Scherpe scope + go/no-go advies',
-    kleur: 'brand',
   },
   {
-    nummer: '02',
-    titel: 'MVP',
-    ondertitel: 'Werkend systeem in productie',
-    duur: '3 maanden',
-    prijs: 'Vanaf € 60.000',
-    prijsToelichting: 'Vaste prijs na scope-akkoord',
-    beschrijving:
-      'Binnen 3 maanden leveren we een werkend systeem op dat direct inzetbaar is in de praktijk. Geen lange voortrajecten, geen uitgebreide specificatiedocumenten — maar een MVP waarop u kunt bijsturen op basis van echte gebruikerservaringen. U ervaart de waarde voordat u besluit over verdere doorontwikkeling.',
-    deliverables: [
-      'Werkend systeem in productieomgeving',
-      'Koppeling met kernsystemen (DMS, zaaksysteem)',
-      'Beheermodule en publicatieproces ingericht',
-      'Gebruikerstraining en documentatie',
-      'Technische overdracht en beheerprocedures',
+    id: 'samen',
+    titel: 'Samen nieuwe oplossingen ontwikkelen',
+    badgeTitel: 'Samen ontwikkelen',
+    subtitel: 'Op maat gebouwde digitale oplossingen voor de overheid',
+    link: '/samen-ontwikkelen',
+    doorlooptijd: '6 – 12 maanden',
+    investering: 'Op maat',
+    samenvatting:
+      'Voor vraagstukken waarvoor geen standaard oplossing bestaat. Samen bouwen we een nieuw digitaal product — van eerste verkenning tot werkend systeem in productie.',
+    fasen: [
+      {
+        titel: 'Verkenning',
+        duur: '4 – 6 weken · € 7.500 vast',
+        beschrijving:
+          'We brengen uw vraagstuk, processen, systemen en stakeholders in kaart. U ontvangt een scope-document met advies en beslist zelf of u verdergaat.',
+        deliverables: [
+          'Vraagstuk-analyse en knelpunten in kaart',
+          'Inventarisatie van systemen, data en processen',
+          'Scope-document met aanbeveling en begroting',
+          'Go/no-go advies zonder verplichtingen',
+        ],
+      },
+      {
+        titel: 'MVP',
+        duur: '3 maanden · v.a. € 60.000 vast',
+        beschrijving:
+          'Binnen 3 maanden een werkend systeem in productie. Geen uitgebreide specificaties — maar een MVP waarop u bijstuurt op basis van echte ervaringen.',
+        deliverables: [
+          'Werkend systeem in productieomgeving',
+          'Koppelingen met kernsystemen',
+          'Beheermodule en publicatieproces ingericht',
+          'Gebruikerstraining en documentatie',
+        ],
+      },
+      {
+        titel: 'Volledig product',
+        duur: '6 – 9 maanden · op maat',
+        beschrijving:
+          'Na de MVP bouwen we door tot een volledig product. Op basis van praktijkervaring worden functionaliteit, performance en integraties uitgebreid.',
+        deliverables: [
+          'Uitgebreide functionaliteit op basis van MVP-ervaringen',
+          'Geavanceerde integraties en rapportage',
+          'Schaalbare architectuur',
+          'Doorlopend beheer en doorontwikkelingsafspraken',
+        ],
+      },
     ],
-    rollen: [
-      { naam: 'Projectmanager', beschrijving: 'Eindverantwoordelijk voor oplevering, planning en communicatie' },
-      { naam: 'Developer (CodeLabs)', beschrijving: 'Full-stack ontwikkeling van het platform en integraties' },
-      { naam: 'Woo-consultant', beschrijving: 'Inrichting van categorieën, processen en publicatieregels' },
-      { naam: 'Architect', beschrijving: 'Ontwerp van de integratielaag en infrastructuur' },
-    ],
-    resultaat: 'Werkend systeem in productie',
-    kleur: 'brand',
-    featured: true,
   },
   {
-    nummer: '03',
-    titel: 'Volledig product',
-    ondertitel: 'Robuust, schaalbaar en toekomstbestendig',
-    duur: '6 – 9 maanden',
-    prijs: 'Op maat',
-    prijsToelichting: 'Op basis van scope en organisatieomvang',
-    beschrijving:
-      'Na de MVP bouwen we de oplossing door tot een volledig inzetbaar product. Op basis van praktijkervaring en terugkoppeling van gebruikers worden functionaliteit, performance en integraties verder uitgebreid. De organisatie groeit mee met het systeem.',
-    deliverables: [
-      'Uitgebreide functionaliteit op basis van MVP-ervaringen',
-      'Geavanceerde integraties met GWV en landelijke voorzieningen',
-      'Schaalbare architectuur voor meerdere organisatie-eenheden',
-      'Geavanceerde rapportage- en beheerfunctionaliteit',
-      'Doorlopend beheer en doorontwikkelingsafspraken',
+    id: 'opensource',
+    titel: 'Open source implementatie',
+    badgeTitel: 'Open source oplossingen',
+    subtitel: 'OPMS als open source fundament met volledige regie',
+    link: '/open-source',
+    doorlooptijd: '3 – 9 maanden',
+    investering: 'Vanaf € 30.000',
+    samenvatting:
+      'Adoptie van OPMS als open source basis. Uw organisatie behoudt volledige regie over de code, hosting en doorontwikkeling. Staterra ondersteunt bij implementatie, configuratie en kennisoverdracht.',
+    fasen: [
+      {
+        titel: 'Technische verkenning',
+        duur: '2 – 4 weken',
+        beschrijving:
+          'We beoordelen uw technische infrastructuur en ontwikkelcapaciteit. U ontvangt een implementatieplan met keuzes over hosting, configuratie en eventuele aanpassingen.',
+        deliverables: [
+          'Technische audit van huidige infrastructuur',
+          'Implementatieplan (self-hosted, cloud of hybride)',
+          'Overzicht benodigde aanpassingen en configuratie',
+          'Kennisoverdrachtsplan voor uw ontwikkelteam',
+        ],
+      },
+      {
+        titel: 'Implementatie & overdracht',
+        duur: '2 – 6 maanden',
+        beschrijving:
+          'OPMS wordt gedeployed in uw eigen infrastructuur. We configureren het platform, verzorgen koppelingen en dragen alle kennis over aan uw team.',
+        deliverables: [
+          'OPMS gedeployed in uw eigen omgeving',
+          'Configuratie en basisinrichting afgerond',
+          'Koppelingen met bestaande systemen',
+          'Kennisoverdracht aan uw ontwikkelteam',
+          'Documentatie voor zelfstandig beheer',
+        ],
+      },
+      {
+        titel: 'Ondersteuning op afroep',
+        duur: 'Naar behoefte',
+        beschrijving:
+          'Na overdracht beheert uw team het systeem zelfstandig. Staterra blijft beschikbaar voor consultancy, complexe integraties of tijdelijke versterking.',
+        deliverables: [
+          'Consultancy op afroepbasis',
+          'Ondersteuning bij complexe upgrades',
+          'Toegang tot OPMS community en releases',
+          'Optionele SLA voor productieondersteuning',
+        ],
+      },
     ],
-    rollen: [
-      { naam: 'Projectmanager', beschrijving: 'Sturing op roadmap, prioritering en stakeholderbelangen' },
-      { naam: 'Developer (CodeLabs)', beschrijving: 'Doorontwikkeling, performance-optimalisatie en integraties' },
-      { naam: 'Business consultant', beschrijving: 'Organisatieverandering, procesoptimalisatie en training' },
-      { naam: 'Woo-consultant', beschrijving: 'Uitbreiding van categorie-inrichting en actieve openbaarmaking' },
-    ],
-    resultaat: 'Volledig inzetbaar voor de gehele organisatie',
-    kleur: 'neutral',
   },
 ];
 
@@ -87,8 +180,8 @@ const SCHAALMODELLEN = [
   {
     type: 'Klein',
     doelgroep: 'Kleine gemeenten, waterschappen',
-    beschrijving: 'Gedeelde OPMS-omgeving via SaaS-model. Laagste totaalkosten, snel operationeel, beheer door Staterra.',
-    kenmerken: ['Gedeelde omgeving', 'SaaS-abonnement', '< 3 mnd implementatie'],
+    beschrijving: 'Gedeelde OPMS-omgeving via SaaS-model. Laagste totaalkosten, snel operationeel, beheer door Staterra. Vanaf € 800 per maand.',
+    kenmerken: ['Gedeelde omgeving', 'Vanaf € 800/mnd', '< 3 mnd implementatie'],
   },
   {
     type: 'Middelgroot',
@@ -108,7 +201,7 @@ const SCHAALMODELLEN = [
 const PRINCIPES = [
   {
     titel: 'Resultaat eerst, commitment daarna',
-    tekst: 'U betaalt € 7.500 voor een verkenning en beslist dan pas of u verdergaat. Geen langlopende contracten vooraf.',
+    tekst: 'Elke route begint met een verkenning. U beslist pas daarna of u verdergaat. Geen langlopende contracten vooraf.',
   },
   {
     titel: 'Vaste prijzen na scope-akkoord',
@@ -116,38 +209,24 @@ const PRINCIPES = [
   },
   {
     titel: 'Eigenaarschap bij de overheid',
-    tekst: 'De oplossing is open source en wordt eigendom van uw organisatie. Staterra verzorgt het beheer, maar u behoudt de regie.',
+    tekst: 'Alle oplossingen zijn open source en worden eigendom van uw organisatie. Staterra verzorgt het beheer, maar u behoudt de regie.',
   },
   {
-    titel: 'Bewezen aanpak, niet experimenteel',
-    tekst: 'OPMS is opgeleverd en in gebruik bij een overheidsorganisatie. Uw implementatie profiteert van die ervaring.',
+    titel: 'Bewezen platform, geen experiment',
+    tekst: 'OPMS is opgeleverd en in gebruik. Of u het nu implementeert, zelf host of samen doorontwikkelt — u bouwt op een bewezen basis.',
   },
 ];
-
-// ── Hulpcomponenten ───────────────────────────────────────────
-
-function RolBadge({ naam, beschrijving }: { naam: string; beschrijving: string }) {
-  return (
-    <div className="flex items-start gap-2.5">
-      <span className="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full bg-brand-700 flex items-center justify-center">
-        <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-        </svg>
-      </span>
-      <div>
-        <span className="block text-body-sm font-semibold text-neutral-950">{naam}</span>
-        <span className="block text-caption text-neutral-500 mt-0.5">{beschrijving}</span>
-      </div>
-    </div>
-  );
-}
 
 // ── Pagina ────────────────────────────────────────────────────
 
 export default function AanpakPage() {
+  const [actief, setActief] = useState<Oplossing>('woo');
+
   useEffect(() => {
-    document.title = 'Aanpak';
+    document.title = 'Aanpak — Staterra';
   }, []);
+
+  const huidige = OPLOSSINGEN.find((o) => o.id === actief)!;
 
   return (
     <>
@@ -167,35 +246,35 @@ export default function AanpakPage() {
               Aanpak
             </span>
             <h1 className="font-heading text-h1 font-semibold text-white mb-5 leading-[1.05]">
-              Van verkenning naar
-              <span className="text-brand-400"> werkend product</span>
+              Drie oplossingen,
+              <span className="text-brand-400"> één heldere aanpak</span>
             </h1>
             <p className="text-body-lg text-brand-200 mb-10 leading-relaxed">
-              Staterra realiseert samen met overheden digitale oplossingen — van
-              eerste verkenning tot een werkend product. Met een bewezen aanpak
-              leveren we snel resultaat en blijven oplossingen doorontwikkelen.
+              Staterra biedt drie routes naar digitale oplossingen voor de overheid.
+              Elke route heeft een eigen aanpak, maar dezelfde werkprincipes:
+              transparant, gefaseerd en met volledige regie bij uw organisatie.
             </p>
 
-            {/* Overzicht-badges */}
-            <div className="grid grid-cols-3 gap-3 mb-10">
-              {[
-                { fase: 'Verkenning', duur: '4 – 6 weken', prijs: '€ 7.500' },
-                { fase: 'MVP', duur: '3 maanden', prijs: 'v.a. € 60K', accent: true },
-                { fase: 'Product', duur: '6 – 9 maanden', prijs: 'Op maat' },
-              ].map((b) => (
-                <div
-                  key={b.fase}
+            {/* Drie routes als badges */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10">
+              {OPLOSSINGEN.map((o) => (
+                <button
+                  key={o.id}
+                  type="button"
+                  onClick={() => setActief(o.id)}
                   className={[
-                    'rounded-[12px] border px-4 py-3 text-center',
-                    b.accent
-                      ? 'bg-white/15 border-white/40'
-                      : 'bg-white/8 border-white/20',
+                    'rounded-[12px] border px-4 py-3 text-left transition-all duration-[180ms] cursor-pointer',
+                    actief === o.id
+                      ? 'bg-white/15 border-white/60 ring-1 ring-white/30'
+                      : 'bg-white/5 border-white/20 hover:bg-white/10',
                   ].join(' ')}
                 >
-                  <span className="block text-caption font-semibold text-brand-200 mb-1">{b.fase}</span>
-                  <span className="block text-body-sm font-semibold text-white">{b.duur}</span>
-                  <span className="block text-caption text-white/90 mt-0.5">{b.prijs}</span>
-                </div>
+                  <span className="block text-caption font-semibold text-white mb-0.5">{o.badgeTitel}</span>
+                  <span className="block text-caption text-brand-200/80">{o.doorlooptijd}</span>
+                  {o.doorlooptijdSub && (
+                    <span className="block text-caption text-brand-200/60 mt-0.5">{o.doorlooptijdSub}</span>
+                  )}
+                </button>
               ))}
             </div>
 
@@ -205,11 +284,11 @@ export default function AanpakPage() {
               </Button>
               <Button
                 as="link"
-                href="/samen-ontwikkelen"
+                href={huidige.link}
                 size="lg"
                 className="bg-transparent text-white border border-white/40 hover:bg-white/10"
               >
-                Meer over samenwerking →
+                Meer over {huidige.badgeTitel.toLowerCase()} →
               </Button>
             </div>
           </div>
@@ -217,20 +296,14 @@ export default function AanpakPage() {
       </section>
 
       {/* ── 2. Werkprincipes ──────────────────────────────────── */}
-      <section
-        className="bg-white py-14 lg:py-20"
-        aria-labelledby="principes-heading"
-      >
+      <section className="bg-white py-14 lg:py-20" aria-labelledby="principes-heading">
         <Container variant="content">
           <div className="text-center mb-12">
             <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
               Uitgangspunten
             </span>
-            <h2
-              id="principes-heading"
-              className="font-heading text-h2 font-semibold text-neutral-950"
-            >
-              Hoe wij werken
+            <h2 id="principes-heading" className="font-heading text-h2 font-semibold text-neutral-950">
+              Hoe wij werken — bij elke oplossing
             </h2>
           </div>
 
@@ -256,158 +329,123 @@ export default function AanpakPage() {
         </Container>
       </section>
 
-      {/* ── 3. Drie fasen ─────────────────────────────────────── */}
-      <section
-        className="bg-brand-100 py-16 lg:py-24"
-        aria-labelledby="fasen-heading"
-      >
+      {/* ── 3. Aanpak per oplossing (tabs) ────────────────────── */}
+      <section className="bg-brand-100 py-16 lg:py-24" aria-labelledby="aanpak-per-oplossing">
         <Container variant="content">
-          <div className="text-center mb-14">
+          <div className="text-center mb-10">
             <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
-              Het traject
+              De aanpak
             </span>
-            <h2
-              id="fasen-heading"
-              className="font-heading text-h2 font-semibold text-neutral-950 mb-4"
-            >
-              Drie fasen, één richting
+            <h2 id="aanpak-per-oplossing" className="font-heading text-h2 font-semibold text-neutral-950 mb-4">
+              Kies uw route
             </h2>
             <p className="text-body text-neutral-700 max-w-[600px] mx-auto">
-              Elke fase heeft een helder doel, een vaste prijs en een go/no-go moment.
-              U behoudt op elk punt de regie over uw investering.
+              Elke oplossing heeft een eigen traject. Klik op een route om de
+              specifieke aanpak, fasen en deliverables te bekijken.
             </p>
           </div>
 
-          <div className="space-y-8">
-            {FASEN.map((fase, index) => (
-              <article
-                key={fase.nummer}
+          {/* Tab-knoppen */}
+          <div className="flex flex-col sm:flex-row gap-3 mb-10 justify-center">
+            {OPLOSSINGEN.map((o) => (
+              <button
+                key={o.id}
+                type="button"
+                onClick={() => setActief(o.id)}
                 className={[
-                  'rounded-[20px] border overflow-hidden',
-                  fase.featured
-                    ? 'border-brand-700 shadow-[0_12px_32px_rgba(22,62,116,0.12)]'
-                    : 'border-neutral-200 bg-white shadow-[0_8px_24px_rgba(22,62,116,0.04)]',
+                  'px-5 py-3 rounded-[12px] text-body-sm font-semibold transition-all duration-[180ms] cursor-pointer',
+                  actief === o.id
+                    ? 'bg-brand-700 text-white shadow-[0_4px_16px_rgba(22,62,116,0.25)]'
+                    : 'bg-white text-neutral-700 border border-neutral-200 hover:border-brand-300 hover:text-brand-700',
                 ].join(' ')}
               >
-                {fase.featured && (
-                  <div className="bg-brand-700 text-white text-center py-2.5 px-4">
-                    <span className="text-caption font-semibold tracking-wide">
-                      Snelste route naar Woo-compliance — werkend systeem in 3 maanden
-                    </span>
-                  </div>
-                )}
+                {o.titel}
+              </button>
+            ))}
+          </div>
 
-                <div className="bg-white p-8 lg:p-10">
-                  <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr_280px] gap-8 lg:gap-12">
+          {/* Samenvatting van gekozen route */}
+          <div className="rounded-[20px] bg-white border border-neutral-200 shadow-[0_8px_24px_rgba(22,62,116,0.06)] p-8 lg:p-10 mb-8">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8 items-start">
+              <div>
+                <h3 className="font-heading text-h3 font-semibold text-neutral-950 mb-2">
+                  {huidige.titel}
+                </h3>
+                <p className="text-body-sm text-neutral-500 mb-4">{huidige.subtitel}</p>
+                <p className="text-body text-neutral-700 leading-relaxed">{huidige.samenvatting}</p>
+              </div>
+              <div className="flex flex-row lg:flex-col gap-4 lg:gap-3 flex-shrink-0">
+                <div className="rounded-[10px] bg-brand-100 px-4 py-3 text-center">
+                  <span className="block text-caption text-neutral-500">Doorlooptijd</span>
+                  <span className="block text-body-sm font-semibold text-neutral-950">{huidige.doorlooptijd}</span>
+                  {huidige.doorlooptijdSub && (
+                    <span className="block text-caption text-neutral-400 mt-0.5">{huidige.doorlooptijdSub}</span>
+                  )}
+                </div>
+                <div className="rounded-[10px] bg-brand-100 px-4 py-3 text-center">
+                  <span className="block text-caption text-neutral-500">Investering</span>
+                  <span className="block text-body-sm font-semibold text-neutral-950">{huidige.investering}</span>
+                  {huidige.investeringSub && (
+                    <span className="block text-caption text-neutral-400 mt-0.5">{huidige.investeringSub}</span>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
 
-                    {/* Linker kolom: fase-info */}
+          {/* Fasen van gekozen route */}
+          <div className="space-y-6">
+            {huidige.fasen.map((fase, i) => (
+              <article
+                key={fase.titel}
+                className="rounded-[20px] bg-white border border-neutral-200 overflow-hidden"
+              >
+                <div className="p-8 lg:p-10">
+                  <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-8">
+                    {/* Links: fase-info */}
                     <div>
                       <div className="flex items-center gap-4 mb-4">
-                        <div
-                          className={[
-                            'w-14 h-14 rounded-full flex items-center justify-center font-heading font-semibold text-h4 flex-shrink-0',
-                            fase.featured
-                              ? 'bg-brand-700 text-white'
-                              : 'bg-brand-100 text-brand-700',
-                          ].join(' ')}
-                          aria-hidden="true"
-                        >
-                          {fase.nummer}
+                        <div className="w-10 h-10 rounded-full bg-brand-700 text-white font-heading font-semibold text-body-sm flex items-center justify-center flex-shrink-0">
+                          {String(i + 1).padStart(2, '0')}
                         </div>
                         <div>
-                          <h3 className="font-heading text-h3 font-semibold text-neutral-950 leading-tight">
+                          <h4 className="font-heading text-h4 font-semibold text-neutral-950 leading-tight">
                             {fase.titel}
-                          </h3>
-                          <p className="text-body-sm text-neutral-500 mt-0.5">{fase.ondertitel}</p>
+                          </h4>
+                          <span className="text-caption text-neutral-500">{fase.duur}</span>
                         </div>
                       </div>
-
-                      {/* Doorlooptijd en prijs */}
-                      <div className="space-y-3 mt-6">
-                        <div className="flex items-center gap-2.5">
-                          <span className="flex-shrink-0 w-8 h-8 rounded-[8px] bg-brand-100 flex items-center justify-center">
-                            <svg className="w-4 h-4 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                          </span>
-                          <div>
-                            <span className="block text-caption text-neutral-500">Doorlooptijd</span>
-                            <span className="block text-body-sm font-semibold text-neutral-950">{fase.duur}</span>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-2.5">
-                          <span className="flex-shrink-0 w-8 h-8 rounded-[8px] bg-brand-100 flex items-center justify-center">
-                            <svg className="w-4 h-4 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                          </span>
-                          <div>
-                            <span className="block text-caption text-neutral-500">Investering</span>
-                            <span className="block text-body-sm font-semibold text-neutral-950">{fase.prijs}</span>
-                            <span className="block text-caption text-neutral-400">{fase.prijsToelichting}</span>
-                          </div>
-                        </div>
-
-                        {/* Resultaat-badge */}
-                        <div className={[
-                          'mt-2 rounded-[10px] px-3.5 py-2.5 text-caption font-medium flex items-center gap-2',
-                          fase.featured ? 'bg-brand-700/10 text-brand-700' : 'bg-brand-100 text-brand-700',
-                        ].join(' ')}>
-                          <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          {fase.resultaat}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Midden: beschrijving + deliverables */}
-                    <div>
-                      <h4 className="text-body-sm font-semibold text-neutral-950 mb-3">
-                        Aanpak
-                      </h4>
-                      <p className="text-body-sm text-neutral-700 leading-relaxed mb-6">
+                      <p className="text-body-sm text-neutral-700 leading-relaxed">
                         {fase.beschrijving}
                       </p>
-                      <h4 className="text-body-sm font-semibold text-neutral-950 mb-3">
-                        Wat we opleveren
-                      </h4>
-                      <ul className="space-y-2.5">
+                    </div>
+
+                    {/* Rechts: deliverables */}
+                    <div>
+                      <h5 className="text-body-sm font-semibold text-neutral-950 mb-3">Wat we opleveren</h5>
+                      <ul className="space-y-2">
                         {fase.deliverables.map((d) => (
                           <li key={d} className="flex items-start gap-2.5">
-                            <span
-                              aria-hidden="true"
-                              className="mt-0.5 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-brand-400 mt-2"
-                            />
+                            <svg className="w-4 h-4 flex-shrink-0 text-brand-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
                             <span className="text-body-sm text-neutral-700">{d}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
-
-                    {/* Rechter kolom: rollen */}
-                    <div>
-                      <h4 className="text-body-sm font-semibold text-neutral-950 mb-4">
-                        Betrokken rollen
-                      </h4>
-                      <div className="space-y-4">
-                        {fase.rollen.map((r) => (
-                          <RolBadge key={r.naam} naam={r.naam} beschrijving={r.beschrijving} />
-                        ))}
-                      </div>
-                    </div>
                   </div>
                 </div>
 
-                {/* Go/no-go marker */}
-                {index < FASEN.length - 1 && (
-                  <div className="bg-neutral-50 border-t border-neutral-100 px-8 lg:px-10 py-3.5 flex items-center gap-3">
+                {/* Go/no-go markering */}
+                {i < huidige.fasen.length - 1 && (
+                  <div className="bg-neutral-50 border-t border-neutral-100 px-8 lg:px-10 py-3 flex items-center gap-3">
                     <svg className="w-4 h-4 text-brand-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     <span className="text-caption text-neutral-600">
                       <strong className="font-semibold text-neutral-800">Go/no-go moment</strong>
-                      {' '}— u besluit na deze fase zelf of u verdergaat. Geen verplichting.
+                      {' '}— u besluit zelf of u verdergaat.
                     </span>
                   </div>
                 )}
@@ -415,33 +453,34 @@ export default function AanpakPage() {
             ))}
           </div>
 
-          <p className="text-caption text-neutral-500 text-center mt-6">
-            * Prijzen zijn indicatief en afhankelijk van scope en organisatieomvang.
-            Na de verkenning ontvangt u een offerte met vaste prijs.
-          </p>
+          {/* Link naar detail-pagina */}
+          <div className="text-center mt-8">
+            <Link
+              to={huidige.link}
+              className="inline-flex items-center gap-2 text-body-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors duration-[150ms] group"
+            >
+              Meer over {huidige.badgeTitel.toLowerCase()}
+              <svg className="w-4 h-4 transition-transform duration-[150ms] group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </Link>
+          </div>
         </Container>
       </section>
 
-      {/* ── 4. Schaalgrootte ──────────────────────────────────── */}
-      <section
-        className="bg-white py-16 lg:py-24"
-        aria-labelledby="schaal-heading"
-      >
+      {/* ── 4. Schaalgrootte (Woo-oplossing) ─────────────────── */}
+      <section className="bg-white py-16 lg:py-24" aria-labelledby="schaal-heading">
         <Container variant="content">
           <div className="text-center mb-12">
             <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
               Schaalgrootte
             </span>
-            <h2
-              id="schaal-heading"
-              className="font-heading text-h2 font-semibold text-neutral-950 mb-4"
-            >
+            <h2 id="schaal-heading" className="font-heading text-h2 font-semibold text-neutral-950 mb-4">
               Van kleine gemeente tot ministerie
             </h2>
             <p className="text-body text-neutral-700 max-w-[600px] mx-auto">
-              Dezelfde aanpak en hetzelfde platform, afgestemd op de omvang en
-              complexiteit van uw organisatie. Van SaaS voor kleine gemeenten tot
-              volledig maatwerk voor ministeries.
+              Bij de Woo-oplossing stemt Staterra de aanpak af op de omvang en
+              complexiteit van uw organisatie. Hetzelfde platform, aangepast aan uw schaal.
             </p>
           </div>
 
@@ -484,110 +523,14 @@ export default function AanpakPage() {
         </Container>
       </section>
 
-      {/* ── 5. Rollen & team ──────────────────────────────────── */}
-      <section
-        className="bg-brand-100 py-16 lg:py-24"
-        aria-labelledby="team-heading"
-      >
-        <Container variant="content">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
-              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-4">
-                Het team
-              </span>
-              <h2
-                id="team-heading"
-                className="font-heading text-h2 font-semibold text-neutral-950 mb-5 leading-[1.1]"
-              >
-                Altijd de juiste expertise op het juiste moment
-              </h2>
-              <p className="text-body text-neutral-700 leading-relaxed mb-4">
-                Per fase schalen we de betrokken rollen op en af. U heeft altijd
-                één vaste contactpersoon (de projectmanager) — maar in de
-                achtergrond werkt een team van specialisten aan uw oplossing.
-              </p>
-              <p className="text-body text-neutral-700 leading-relaxed">
-                <strong className="text-neutral-950 font-semibold">CodeLabs B.V.</strong> is
-                onze vaste technische partner en verzorgt architectuur, development
-                en technisch beheer. Staterra beheert het project, de Woo-consultancy
-                en de relatie met uw organisatie.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {[
-                {
-                  rol: 'Projectmanager',
-                  beschrijving: 'Eindverantwoordelijk voor planning, oplevering en communicatie. Spreekt de taal van IT én bestuurstafel.',
-                  fasen: ['Verkenning', 'MVP', 'Product'],
-                },
-                {
-                  rol: 'Woo-consultant',
-                  beschrijving: 'Advies over publicatieprocessen, categorieën actieve openbaarmaking, informatiehuishouding en werkprocessen.',
-                  fasen: ['Verkenning', 'MVP', 'Product'],
-                },
-                {
-                  rol: 'Architect',
-                  beschrijving: 'Ontwerp van de integratielaag met DMS, zaaksystemen, e-mail, GWV en landelijke voorzieningen.',
-                  fasen: ['Verkenning', 'MVP'],
-                },
-                {
-                  rol: 'Developer (CodeLabs)',
-                  beschrijving: 'Full-stack ontwikkeling, integraties en technisch beheer van het platform.',
-                  fasen: ['MVP', 'Product'],
-                },
-                {
-                  rol: 'Business consultant',
-                  beschrijving: 'Begeleiding bij organisatieverandering, procesoptimalisatie en stakeholder management.',
-                  fasen: ['Product'],
-                },
-                {
-                  rol: 'Trainer (Academy)',
-                  beschrijving: 'Basistraining, gevorderd beheer en train-de-trainer. Klassikaal, e-learning of on-site.',
-                  fasen: ['MVP', 'Product'],
-                },
-              ].map((r) => (
-                <div
-                  key={r.rol}
-                  className="rounded-[16px] bg-white border border-neutral-200 p-5"
-                >
-                  <h3 className="font-heading text-h5 font-semibold text-neutral-950 mb-2">
-                    {r.rol}
-                  </h3>
-                  <p className="text-caption text-neutral-600 leading-relaxed mb-3">
-                    {r.beschrijving}
-                  </p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {r.fasen.map((f) => (
-                      <span
-                        key={f}
-                        className="text-caption bg-brand-100 text-brand-700 px-2.5 py-0.5 rounded-full font-medium"
-                      >
-                        {f}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* ── 6. Veelgestelde vragen ────────────────────────────── */}
-      <section
-        className="bg-white py-16 lg:py-24"
-        aria-labelledby="faq-aanpak-heading"
-      >
+      {/* ── 5. Veelgestelde vragen ────────────────────────────── */}
+      <section className="bg-brand-100 py-16 lg:py-24" aria-labelledby="faq-aanpak-heading">
         <Container variant="content">
           <div className="text-center mb-10">
             <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
               Vragen
             </span>
-            <h2
-              id="faq-aanpak-heading"
-              className="font-heading text-h2 font-semibold text-neutral-950"
-            >
+            <h2 id="faq-aanpak-heading" className="font-heading text-h2 font-semibold text-neutral-950">
               Praktische vragen
             </h2>
           </div>
@@ -595,33 +538,33 @@ export default function AanpakPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {[
               {
-                vraag: 'Moet ik alle drie de fasen afnemen?',
-                antwoord: 'Nee. Na elke fase besluit u zelf of u verdergaat. De verkenning is een op zichzelf staand product — u ontvangt een scope-document met advies, ongeacht het vervolg.',
+                vraag: 'Welke route past bij onze organisatie?',
+                antwoord: 'Dat hangt af van uw situatie. De Woo-oplossing is de snelste route als u snel aan de Woo moet voldoen. Samen ontwikkelen past bij unieke vraagstukken. Open source is voor organisaties met eigen ontwikkelcapaciteit. Twijfelt u? Start met een verkenningsgesprek — wij adviseren kosteloos.',
               },
               {
-                vraag: 'Wat als onze organisatie al een systeem heeft?',
+                vraag: 'Moet ik alle fasen afnemen?',
+                antwoord: 'Nee. Elke route start met een verkenning. Daarna besluit u zelf of u verdergaat. De verkenning is een op zichzelf staand product met concreet advies.',
+              },
+              {
+                vraag: 'Wat als we al een systeem hebben?',
                 antwoord: 'Dan starten we de verkenning met een analyse van het bestaande systeem. In veel gevallen kan OPMS naast of bovenop bestaande systemen worden uitgerold.',
               },
               {
-                vraag: 'Hoe snel kunnen we daadwerkelijk starten?',
-                antwoord: 'Na uw akkoord starten we de verkenning doorgaans binnen twee tot vier weken. De planning hangt af van beschikbaarheid van uw eigen organisatie.',
+                vraag: 'Hoe snel kunnen we starten?',
+                antwoord: 'Na akkoord starten we de verkenning doorgaans binnen twee tot vier weken. De planning hangt af van beschikbaarheid van uw organisatie.',
               },
               {
                 vraag: 'Is er een aanbestedingsverplichting?',
-                antwoord: 'Voor de verkenning (€ 7.500) geldt geen aanbestedingsdrempel. Voor de MVP en het volledige product adviseren wij in de verkenning welke contractvorm het beste past bij uw situatie en drempelwaarden.',
-              },
-              {
-                vraag: 'Wat gebeurt er na oplevering?',
-                antwoord: 'Staterra biedt doorlopend beheer en doorontwikkeling. De organisatie groeit mee met het systeem. U kunt ook kiezen voor een overdrachtmodel waarbij u volledig zelf beheert.',
+                antwoord: 'Voor de verkenning niet. Voor de implementatiefase adviseren wij welke contractvorm het beste past bij uw drempelwaarden.',
               },
               {
                 vraag: 'Werken jullie met vaste of uurprijzen?',
-                antwoord: 'Na de verkenning werken we met vaste projectprijzen. Geen open-einde budgetten of nacalculatie — u weet vooraf wat u betaalt.',
+                antwoord: 'Na de verkenning werken we met vaste projectprijzen. Geen open-einde budgetten of nacalculatie.',
               },
             ].map((faq) => (
               <div
                 key={faq.vraag}
-                className="rounded-[16px] border border-neutral-200 p-6 hover:border-brand-300 transition-colors duration-[180ms]"
+                className="rounded-[16px] border border-neutral-200 bg-white p-6 hover:border-brand-300 transition-colors duration-[180ms]"
               >
                 <h3 className="font-heading text-h5 font-semibold text-neutral-950 mb-2 leading-snug">
                   {faq.vraag}
@@ -633,7 +576,7 @@ export default function AanpakPage() {
         </Container>
       </section>
 
-      {/* ── 7. CTA ────────────────────────────────────────────── */}
+      {/* ── 6. CTA ────────────────────────────────────────────── */}
       <section
         className="relative overflow-hidden py-20 lg:py-28"
         aria-labelledby="aanpak-cta-heading"
@@ -649,12 +592,12 @@ export default function AanpakPage() {
               id="aanpak-cta-heading"
               className="font-heading text-h2 font-semibold text-white mb-4 leading-[1.1]"
             >
-              Start met een verkenning
+              Welke route past bij u?
             </h2>
             <p className="text-body-lg text-brand-200 mb-10 leading-relaxed">
-              Binnen 4 tot 6 weken weet u exact wat de beste aanpak is voor uw
-              organisatie — en beslist u zelf of u verdergaat. Geen verplichtingen,
-              geen verkoopdruk.
+              In een vrijblijvend verkenningsgesprek bespreken we uw situatie en
+              adviseren we welke aanpak het beste past. Binnen twee werkdagen een
+              inhoudelijke reactie.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button as="link" href="/contact" variant="secondary" size="lg">
@@ -662,15 +605,15 @@ export default function AanpakPage() {
               </Button>
               <Button
                 as="link"
-                href="/woo-oplossing"
+                href="/oplossingen"
                 size="lg"
                 className="bg-transparent text-white border border-white/40 hover:bg-white/10"
               >
-                Bekijk de Woo-oplossing →
+                Bekijk alle oplossingen →
               </Button>
             </div>
             <p className="mt-8 text-caption text-brand-200/70">
-              Binnen twee werkdagen een inhoudelijke reactie van een Staterra-adviseur.
+              Geen verkoopdruk. Binnen twee werkdagen een inhoudelijke reactie.
             </p>
           </div>
         </Container>

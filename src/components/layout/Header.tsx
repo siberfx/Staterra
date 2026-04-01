@@ -214,6 +214,66 @@ function NavItem({
 
 // ── Mobiel menu ───────────────────────────────────────────────
 
+function MobileMenuItem({
+  item,
+  onClose,
+}: {
+  item: MenuItem;
+  onClose: () => void;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  const hasChildren = item.children && item.children.length > 0;
+
+  return (
+    <div>
+      {hasChildren ? (
+        <button
+          onClick={() => setExpanded((v) => !v)}
+          className="flex items-center justify-between w-full py-3 text-body-sm font-semibold text-neutral-800 hover:text-brand-700 border-b border-neutral-100 transition-colors duration-[150ms]"
+          aria-expanded={expanded}
+        >
+          {item.title}
+          <svg
+            className={`w-4 h-4 text-neutral-400 transition-transform duration-[150ms] ${expanded ? 'rotate-90' : ''}`}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+            aria-hidden="true"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      ) : (
+        <Link
+          to={mapMenuUrl(item.url)}
+          onClick={onClose}
+          className="flex items-center justify-between py-3 text-body-sm font-semibold text-neutral-800 hover:text-brand-700 border-b border-neutral-100 last:border-0 transition-colors duration-[150ms]"
+        >
+          {item.title}
+        </Link>
+      )}
+      {hasChildren && expanded && item.children.map((child) => (
+        <Link
+          key={child.id}
+          to={mapMenuUrl(child.url)}
+          onClick={onClose}
+          className="flex flex-col gap-0.5 py-2.5 pl-5 border-b border-neutral-50 last:border-0 hover:bg-brand-50 transition-colors duration-[150ms] rounded-[8px]"
+        >
+          <span className="text-body-sm font-medium text-neutral-700 hover:text-brand-700">
+            {child.title}
+          </span>
+          {(child.subtitle ?? child.description) && (
+            <span className="text-caption text-neutral-400">
+              {child.subtitle ?? child.description}
+            </span>
+          )}
+        </Link>
+      ))}
+    </div>
+  );
+}
+
 function MobileMenu({
   items,
   isOpen,
@@ -229,52 +289,24 @@ function MobileMenu({
         'absolute top-full inset-x-0 bg-white/95 backdrop-blur-[10px]',
         'border-b border-neutral-200 shadow-[0_8px_24px_rgba(22,62,116,0.06)]',
         'transition-all duration-[200ms] ease-out overflow-hidden',
-        isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0',
+        isOpen ? 'max-h-[calc(100dvh-4rem)] opacity-100' : 'max-h-0 opacity-0',
       ].join(' ')}
       aria-hidden={!isOpen}
     >
-      <Container variant="page" className="py-4">
-        <nav aria-label="Mobiele navigatie">
-          {items.map((item) => (
-            <div key={item.id}>
-              <Link
-                to={mapMenuUrl(item.url)}
-                onClick={onClose}
-                className="flex items-center justify-between py-3 text-body-sm font-semibold text-neutral-800 hover:text-brand-700 border-b border-neutral-100 last:border-0 transition-colors duration-[150ms]"
-              >
-                {item.title}
-                {item.children?.length > 0 && (
-                  <svg className="w-4 h-4 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                )}
-              </Link>
-              {item.children?.map((child) => (
-                <Link
-                  key={child.id}
-                  to={mapMenuUrl(child.url)}
-                  onClick={onClose}
-                  className="flex flex-col gap-0.5 py-2.5 pl-5 border-b border-neutral-50 last:border-0 hover:bg-brand-50 transition-colors duration-[150ms] rounded-[8px]"
-                >
-                  <span className="text-body-sm font-medium text-neutral-700 hover:text-brand-700">
-                    {child.title}
-                  </span>
-                  {(child.subtitle ?? child.description) && (
-                    <span className="text-caption text-neutral-400">
-                      {child.subtitle ?? child.description}
-                    </span>
-                  )}
-                </Link>
-              ))}
-            </div>
-          ))}
-        </nav>
-        <div className="pt-4 pb-2">
-          <Button as="link" href="/contact" variant="primary" className="w-full justify-center">
-            Neem contact op
-          </Button>
-        </div>
-      </Container>
+      <div className="overflow-y-auto max-h-[calc(100dvh-4rem)]">
+        <Container variant="page" className="py-4">
+          <nav aria-label="Mobiele navigatie">
+            {items.map((item) => (
+              <MobileMenuItem key={item.id} item={item} onClose={onClose} />
+            ))}
+          </nav>
+          <div className="pt-4 pb-2">
+            <Button as="link" href="/contact" variant="primary" className="w-full justify-center">
+              Neem contact op
+            </Button>
+          </div>
+        </Container>
+      </div>
     </div>
   );
 }
