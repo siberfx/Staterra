@@ -6,17 +6,17 @@ services:
     container_name: staterra-frontend
     restart: unless-stopped
     ports:
-      - "3000:3000"
+      - "3000:80"
     environment:
       - NODE_ENV=production
-      - NEXT_PUBLIC_CMS_URL=https://studio.staterra.nl
-      - NEXT_PUBLIC_SITE_URL=https://staterra.nl
+      - VITE_API_URL=https://studio.staterra.nl
+      - VITE_SITE_URL=https://staterra.nl
     healthcheck:
-      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/api/health"]
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost/"]
       interval: 30s
       timeout: 5s
       retries: 3
-      start_period: 15s
+      start_period: 10s
     networks:
       - staterra-net
 
