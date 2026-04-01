@@ -173,7 +173,7 @@ export default function OplossingsoverzichtPage() {
   const [bannerUrl, setBannerUrl] = useState<string | undefined>();
 
   useEffect(() => {
-    document.title = 'Oplossingen — Staterra';
+    document.title = 'Oplossingen — Digitale oplossingen voor de overheid | Staterra';
   }, []);
 
   useEffect(() => {
@@ -219,14 +219,14 @@ export default function OplossingsoverzichtPage() {
               Oplossingen
             </span>
             <h1 className="font-heading text-h1 font-semibold text-white mb-6 leading-[1.05]">
-              Van idee naar werkende
-              <span className="text-brand-400"> Woo-oplossing</span>
+              Digitale oplossingen voor
+              <span className="text-brand-400"> de overheid</span>
             </h1>
             <p className="text-body-lg text-brand-200 mb-8 leading-relaxed max-w-[600px]">
-              Staterra biedt drie benaderingen: samen nieuwe oplossingen
-              ontwikkelen, aansluiten op een bestaande Woo-implementatie, of
-              kiezen voor open source als strategische basis. Zonder vendor
-              lock-in, met volledige regie voor uw organisatie.
+              Van Woo-compliance tot open source platformen en maatwerk
+              digitale dienstverlening. Staterra bouwt, implementeert en
+              beheert oplossingen die passen bij uw organisatie — zonder
+              vendor lock-in, met volledige regie.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button as="link" href="/contact" variant="secondary" size="lg">
@@ -259,7 +259,7 @@ export default function OplossingsoverzichtPage() {
               id="main-solutions-heading"
               className="font-heading text-h2 font-semibold text-neutral-950 mb-4"
             >
-              Drie routes naar Woo-compliance
+              Drie routes naar digitale regie
             </h2>
             <p className="text-body text-neutral-700 max-w-[640px] mx-auto">
               Elke organisatie heeft een andere situatie. Kies de aanpak die
@@ -293,39 +293,37 @@ export default function OplossingsoverzichtPage() {
         </Container>
       </section>
 
-      {/* -- 3. Comply-or-explain blok -- */}
-      <section className="bg-brand-100 py-14 lg:py-20" aria-label="Comply-or-explain">
+      {/* -- 3. Waarom open source -- */}
+      <section className="bg-brand-100 py-14 lg:py-20" aria-label="Waarom open source">
         <Container variant="text">
           <div className="text-center">
             <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-4">
-              Waarom OPMS
+              Onze overtuiging
             </span>
             <h2 className="font-heading text-h2 font-semibold text-neutral-950 mb-6 leading-[1.1]">
-              De logische eerste keuze
+              Open source als fundament
             </h2>
             <p className="text-body text-neutral-700 leading-relaxed mb-4">
-              OPMS is opgenomen in het open source ecosysteem van BZK. Het
+              Al onze oplossingen zijn gebouwd op open source technologie. Het
               <strong className="text-neutral-950 font-semibold">
                 {' '}comply-or-explain beleid{' '}
               </strong>
-              schrijft voor dat bestuursorganen eerst bestaande open source
-              oplossingen beoordelen voordat zij alternatieven inkopen. Dit
-              maakt OPMS de logische eerste keuze voor Woo-compliance — en
-              Staterra de partij die het professioneel implementeert en beheert.
+              van BZK schrijft voor dat bestuursorganen eerst bestaande open
+              source oplossingen beoordelen voordat zij alternatieven inkopen.
+              Dat geldt voor Woo-compliance, maar net zo goed voor
+              documentbeheer, publicatieplatformen en digitale dienstverlening.
             </p>
             <p className="text-body text-neutral-700 leading-relaxed mb-6">
-              Met meer dan{' '}
-              <strong className="text-neutral-950 font-semibold">
-                530 bestuursorganen
-              </strong>{' '}
-              die binnen 8 tot 18 maanden moeten voldoen, is er geen tijd voor
-              langdurige aanbestedingstrajecten. OPMS is vandaag beschikbaar.
+              Staterra implementeert en beheert deze oplossingen professioneel
+              — van OPMS voor Woo-compliance tot bredere open source
+              platformen. Geen vendor lock-in, geen licentiekosten, wel
+              eigenaarschap van uw broncode.
             </p>
             <Link
-              to="/woo-oplossing#vergelijking"
+              to="/open-source"
               className="inline-flex items-center gap-2 text-body-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors duration-[150ms] group"
             >
-              Bekijk de vergelijking met alternatieven
+              Meer over onze open source aanpak
               <svg
                 className="w-4 h-4 transition-transform duration-[150ms] group-hover:translate-x-0.5"
                 fill="none"
@@ -359,8 +357,9 @@ export default function OplossingsoverzichtPage() {
               </h2>
               <p className="text-body text-neutral-700 max-w-[640px] mx-auto">
                 Elke bestuurslaag heeft eigen processen, systemen en
-                schaalgrootte. Staterra heeft voor elke doelgroep een
-                specifieke invulling van de Woo-oplossing.
+                schaalgrootte. Staterra levert voor elke doelgroep een
+                specifieke invulling — van Woo-compliance tot bredere
+                digitale dienstverlening.
               </p>
             </div>
 
@@ -412,11 +411,11 @@ export default function OplossingsoverzichtPage() {
               </Button>
               <Button
                 as="link"
-                href="/woo-oplossing"
+                href="/open-source"
                 size="lg"
                 className="bg-transparent text-white border border-white/40 hover:bg-white/10"
               >
-                Bekijk de Woo-oplossing →
+                Bekijk onze open source aanpak →
               </Button>
             </div>
           </div>

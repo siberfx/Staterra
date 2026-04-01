@@ -43,7 +43,7 @@ const FALLBACK_ITEMS: MenuItem[] = [
   { id: 9801, title: 'Oplossingen', subtitle: null, description: '', url: '#',
     slug: null, page_type: '', template: '', order: 1, tags: [], sidebar: null,
     children: [
-      CHILD(9100, 'Alle oplossingen', 'Vergelijk alle routes naar Woo-compliance', '/oplossingen'),
+      CHILD(9100, 'Alle oplossingen', 'Overzicht van al onze oplossingen', '/oplossingen'),
       ...OPLOSSINGEN_CHILDREN,
     ] },
   DOELGROEPEN_ITEM,
