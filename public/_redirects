@@ -1,0 +1,22 @@
+# Netlify/Cloudflare Pages SPA fallback
+# Oude URL-structuur → nieuwe routes (301 permanent)
+/over-ons/woo-oplossing     /woo-oplossing      301
+/over-ons/samen-ontwikkelen /samen-ontwikkelen   301
+/over-ons/open-source       /open-source         301
+/oplossingen/woo-oplossing  /woo-oplossing       301
+/solutions                  /oplossingen         301
+/blog                       /kennisbank          301
+/ons-verhaal                /over-ons            301
+/helpcentrum                /contact             301
+/faq                        /contact             301
+/help                       /contact             301
+/support                    /contact             301
+/ondersteuning              /contact             301
+/werken-bij                 /contact             301
+/demo                       /contact             301
+/proefversie                /contact             301
+/search                     /kennisbank          302
+/zoeken                     /kennisbank          302
+
+# SPA fallback: onbekende paden → index.html
+/*                          /index.html          200

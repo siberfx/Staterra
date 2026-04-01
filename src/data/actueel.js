@@ -1,0 +1,81 @@
+export const actueelFilters = [
+  { id: 'all', key: 'all' },
+  { id: 'algemeen', key: 'algemeen' },
+  { id: 'events', key: 'events' },
+  { id: 'wooUitgelegd', key: 'wooUitgelegd' },
+]
+
+export const actueelArticles = [
+  {
+    slug: 'waarom-openpublicaties',
+    title: {
+      nl: 'Waarom wij bouwen aan OpenPublicaties - een open en innovatief antwoord op de Wet open overheid',
+      en: 'Why we are building OpenPublications - an open and innovative answer to the Open Government Act',
+    },
+    date: { nl: '1 oktober 2025', en: '1 October 2025' },
+    category: 'algemeen',
+    featured: true,
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuBoJesZiVXFDtLvV3ktJ1EW8Hnhhg5y5p_7pFpr869NfFG5UkpCpljXvZECoSzqUsuL69694pJcPq4tzTQh7kHeX754yiZk9vv7jkUnJtvQJIjQoEz7_lRQvUT6YDtGBsHMryezOpfq9A6NFAH4nNJ6TGm4olWUkz4HUMJxyjCWuYBnYImwycSg0zAid2ETLFRCPkf2cqZx0ExrH2-lrOrswufB_muvGNNfYbfGfeLpVG9ogxH_J5hMkD6CDI30wrfC4DFgG9Jkx7__',
+  },
+  {
+    slug: 'wet-woo-compliancegids',
+    title: {
+      nl: 'De Wet Woo ontleed: Compliancegids voor Bestuursorganen',
+      en: 'The Open Government Act explained: Compliance guide for governing bodies',
+    },
+    date: { nl: '28 september 2025', en: '28 September 2025' },
+    category: 'wooUitgelegd',
+    featured: false,
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuAPXhyh8MM43GHXSsQMr-SO3pLm4T7hFMdG4UsYsxgnXoTSTRnYnk3cukz2SWDhAuPi2q-opg8hAopJqMWEaZ9dhAOaN6lxl94CO6dTWjkYJak6DPtCGU615TTzilOgWFEUt3d62fX6oDvdOf9w93INuTBUeGIgSQytNnwEomkAmLZXD4kXxneR17GgQH-QKcALNv6YhBb1jZ1XMyAOKV3G7QN7wwcpfRPbfUTJybI1B4OjiWPCvmpAU7LVL9T_tWbj306Byh1SS8ZI',
+  },
+  {
+    slug: 'webinar-woo-compliant',
+    title: {
+      nl: 'Uitnodiging webinar 15 oktober - Hoe u nu al Woo-compliant kunt zijn',
+      en: 'Webinar invitation 15 October - How you can already be Woo-compliant now',
+    },
+    date: { nl: '25 september 2025', en: '25 September 2025' },
+    category: 'events',
+    featured: false,
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuDPky9GRCZwC0QJ4WI2cXp3tLISiMQRdRbQVkwGvvDvg0qRT4_Vo-DYDQeS2VMofNfOKh-x3F1m-eMfb1RBX58yQhi3ZftBGD2WmLnz0rbb_vYJ0XKECvObuQ2pX-6kMDUMeOwIRBdDN5thkdBdH8M_B6cMO3kF-vUOfsORSuLx2NZoUQSoFUvU0VMxWKcjYwizKzW4qYKv62YSNy6CvIci5DbxIRMqBmwkOd_hbaoHSZBgXoFdvbTVhRTBVaLAuaSd-_G7FbqnmgPJ',
+  },
+  {
+    slug: 'opms-ministerie-justitie',
+    title: {
+      nl: 'Zo werd OPMS ontvangen bij het Ministerie van Justitie en Veiligheid',
+      en: 'How OPMS was received at the Ministry of Justice and Security',
+    },
+    date: { nl: '18 september 2025', en: '18 September 2025' },
+    category: 'algemeen',
+    featured: false,
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuC8Vc1P2Rw8531mtFxJm-ckHDMfeQfBKUkc7TIbwBG5ZNPyFbjebvlPRo6O2ClXlnsqAx4t_i1xFMTn-2RK81-XXeJmTNXrCcDH_4n7W90wETZrXWhP0zuT6G5HiZ3OCNNCmqMGdnY2jk3OosZQxJLwomW23w6Glc_IRC0xS4LagX5j886DByYkhcKULBYX8hYzQZb76oHJ8HDxLHxFh0wSayr4xP8VGJlh11q1aM3ld-SeOMjJkQm9SNu9C83zRFOvcVlFErLIaHis',
+  },
+  {
+    slug: 'abc-bestuursorganen',
+    title: {
+      nl: 'Het ABC voor bestuursorganen',
+      en: 'The ABC for governing bodies',
+    },
+    date: { nl: '10 september 2025', en: '10 September 2025' },
+    category: 'wooUitgelegd',
+    featured: false,
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuC4WgyZhW9Bz6DpQMJRh5gL4RF6bGpOsb1nkQjlFv3i8lxxpgIFT19jGbUNOILvyK201H6_BQpfgIrNimkmN_RVn37kaXRSQneHT_MR2H9vFT3aeBczpPis1mNZ4_3zonapLM74I0sj6gtAPQKVPr7ATJDUjhWc6NA40gnop2vy84qyCLgXA5oky9lQ9qq-W0MW5jTWmaumrkkYPZUiSHIxrJ4WV9rECluAv8gVXybmBBuF5UZeln9-QTli4rPd0Acb5aYzwTRjqEIr',
+  },
+  {
+    slug: 'presentatie-dgmc-2025',
+    title: {
+      nl: 'Presentatie DGMC 2025: Nieuwe mogelijkheden voor openbaarmaking',
+      en: 'DGMC 2025 presentation: New possibilities for disclosure',
+    },
+    date: { nl: '5 september 2025', en: '5 September 2025' },
+    category: 'events',
+    featured: false,
+    image: null,
+    placeholder: { color: '#316499', label: 'DGMC', icon: 'groups' },
+  },
+]

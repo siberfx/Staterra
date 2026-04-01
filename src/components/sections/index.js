@@ -1,0 +1,6 @@
+export { default as SplitSection } from './SplitSection'
+export { default as StepsSection } from './StepsSection'
+export { default as ComparisonSection } from './ComparisonSection'
+export { default as RecentPosts } from './RecentPosts'
+export { default as InfoBlock } from './InfoBlock'
+export { default as ContentBlock } from './ContentBlock'

@@ -1,0 +1,66 @@
+export const academyCategories = [
+  { id: 'woo', key: 'woo', image: null, placeholder: { color: '#001a3f', icon: 'gavel' } },
+  { id: 'archief', key: 'archief', image: null, placeholder: { color: '#316499', icon: 'folder' } },
+  { id: 'raad', key: 'raad', image: null, placeholder: { color: '#1e3a5f', icon: 'groups' } },
+  { id: 'productiviteit', key: 'productiviteit', image: null, placeholder: { color: '#0f172a', icon: 'work' } },
+]
+
+export const academyTypes = [
+  { id: 'elearning', key: 'elearning' },
+  { id: 'classroom', key: 'classroom' },
+  { id: 'online', key: 'online' },
+  { id: 'blended', key: 'blended' },
+]
+
+export const academyTrainings = [
+  {
+    slug: 'woo-basis',
+    title: { nl: 'Woo-verzoeken: van binnenkomst tot afhandeling', en: 'FOIA requests: from intake to completion' },
+    subtitle: { nl: 'E-learning', en: 'E-learning' },
+    category: 'woo',
+    type: 'elearning',
+    duration: { nl: '2 uur', en: '2 hours' },
+    language: 'nl',
+    level: 'intermediate',
+    date: { nl: '20 februari 2026', en: '20 February 2026' },
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC1iiW6HXH0FzGy8sAB1-C0xHVv_PdtEyQHBEiodvZ8XEdEgw1jSL77UKD7KD7WxfgUCnYP5agJEj_WmxuaDl_cMb2_9yK4vnqUgtasNINlNqbg4v12Vz_l7WF41fvmhuI1RlPLAmMC81C7Wco8Cyzyq3Z4_qCzcdS5KqOnJX3jAsZgrMfPjjotJjIyJqEGJVnUseu1b3m_JRvN-pvv4q51IpYoDD-aid_MECTjExF3QRgFy-UeQzUMLnSxk-P7_V5SY4o107b6PXVu',
+  },
+  {
+    slug: 'objectenbeheer-niet-woningen',
+    title: { nl: 'Objecten- en modellenbeheer niet-woningen', en: 'Property and model management non-residential' },
+    subtitle: { nl: 'Klassikale training', en: 'Classroom training' },
+    category: 'archief',
+    type: 'classroom',
+    duration: { nl: '8 uur', en: '8 hours' },
+    language: 'nl',
+    level: 'intermediate',
+    date: { nl: '15 maart 2026', en: '15 March 2026' },
+    price: '1850',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC8Vc1P2Rw8531mtFxJm-ckHDMfeQfBKUkc7TIbwBG5ZNPyFbjebvlPRo6O2ClXlnsqAx4t_i1xFMTn-2RK81-XXeJmTNXrCcDH_4n7W90wETZrXWhP0zuT6G5HiZ3OCNNCmqMGdnY2jk3OosZQxJLwomW23w6Glc_IRC0xS4LagX5j886DByYkhcKULBYX8hYzQZb76oHJ8HDxLHxFh0wSayr4xP8VGJlh11q1aM3ld-SeOMjJkQm9SNu9C83zRFOvcVlFErLIaHis',
+  },
+  {
+    slug: 'raadsinformatie-digitaal',
+    title: { nl: 'Raadsinformatie digitaal beheren en publiceren', en: 'Managing and publishing council information digitally' },
+    subtitle: { nl: 'Online training', en: 'Online training' },
+    category: 'raad',
+    type: 'online',
+    duration: { nl: '4 uur', en: '4 hours' },
+    language: 'nl',
+    level: 'beginner',
+    date: { nl: '10 maart 2026', en: '10 March 2026' },
+    image: null,
+    placeholder: { color: '#e66035', icon: 'description' },
+  },
+  {
+    slug: 'zoeken-redigeren-woo',
+    title: { nl: 'Zoeken en redigeren in Woo-dossiers', en: 'Search and redaction in FOIA files' },
+    subtitle: { nl: 'Blended learning', en: 'Blended learning' },
+    category: 'woo',
+    type: 'blended',
+    duration: { nl: '3 uur', en: '3 hours' },
+    language: 'nl',
+    level: 'intermediate',
+    date: { nl: '5 maart 2026', en: '5 March 2026' },
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD8h8wOTeWRJDUibStmIXr-RN58Wvx6sj-w9unqdOwbyS8JaFTXPuaJHhgSoHt35KriLoXL1SafPQyNhDZlV5dGkzuDBq2o-1vONzjhLaIF-8vouWSsXQ5NJu9tCrO9Vz6luWRQYivkYwAlSlB4ZquOQXFP3KoxSLEYm6CWcevdBfe170uxJTkAULENuvUEj6tDe5NsjsX9xCMd2RT_-sXEX2SLdhWQ6gk6q57NEws7SeUr4kxEU4hs2JNm4WMlQKbATRKEnFrMBY7I',
+  },
+]

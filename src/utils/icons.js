@@ -1,0 +1,95 @@
+/**
+ * API icon name → Font Awesome 6 class mapping
+ * Font Awesome Free 6.5.2
+ */
+export const API_ICON_MAP = {
+  check: 'fa-solid fa-check',
+  check_circle: 'fa-solid fa-circle-check',
+  cog: 'fa-solid fa-gear',
+  clock: 'fa-solid fa-clock',
+  timer: 'fa-solid fa-clock',
+  settings: 'fa-solid fa-gear',
+  hub: 'fa-solid fa-hub',
+  'network-wired': 'fa-solid fa-network-wired',
+  layers: 'fa-solid fa-layer-group',
+  arrow_forward: 'fa-solid fa-arrow-right',
+  admin_panel_settings: 'fa-solid fa-user-shield',
+  person: 'fa-solid fa-user',
+  gavel: 'fa-solid fa-gavel',
+  folder: 'fa-solid fa-folder',
+  groups: 'fa-solid fa-users',
+  work: 'fa-solid fa-briefcase',
+  description: 'fa-solid fa-file-lines',
+  public: 'fa-solid fa-globe',
+  web: 'fa-solid fa-globe',
+  account_balance: 'fa-solid fa-building-columns',
+  location_city: 'fa-solid fa-city',
+  water_drop: 'fa-solid fa-droplet',
+  mail: 'fa-solid fa-envelope',
+  call: 'fa-solid fa-phone',
+  location_on: 'fa-solid fa-location-dot',
+  business: 'fa-solid fa-building',
+  speed: 'fa-solid fa-gauge-high',
+  schedule: 'fa-solid fa-clock',
+  article: 'fa-solid fa-file-lines',
+  monitoring: 'fa-solid fa-chart-line',
+  list: 'fa-solid fa-list',
+  play_circle: 'fa-solid fa-circle-play',
+  school: 'fa-solid fa-graduation-cap',
+  video_library: 'fa-solid fa-video',
+  search_off: 'fa-solid fa-magnifying-glass',
+  report_problem: 'fa-solid fa-triangle-exclamation',
+  lock: 'fa-solid fa-lock',
+  block: 'fa-solid fa-ban',
+  refresh: 'fa-solid fa-rotate',
+  cloud_off: 'fa-solid fa-cloud',
+  engineering: 'fa-solid fa-screwdriver-wrench',
+  error_outline: 'fa-solid fa-circle-exclamation',
+  link: 'fa-solid fa-link',
+  share: 'fa-solid fa-share-nodes',
+  thumb_up: 'fa-solid fa-thumbs-up',
+  thumb_down: 'fa-solid fa-thumbs-down',
+  star: 'fa-solid fa-star',
+  menu: 'fa-solid fa-bars',
+  close: 'fa-solid fa-xmark',
+  expand_more: 'fa-solid fa-chevron-down',
+  expand_less: 'fa-solid fa-chevron-up',
+  search: 'fa-solid fa-magnifying-glass',
+  arrow_back: 'fa-solid fa-arrow-left',
+  local_library: 'fa-solid fa-book',
+  'book-open-reader': 'fa-solid fa-book-open-reader',
+  health_and_safety: 'fa-solid fa-shield-halved',
+  forest: 'fa-solid fa-tree',
+  calendar_today: 'fa-solid fa-calendar-day',
+  language: 'fa-solid fa-language',
+  dashboard: 'fa-solid fa-gauge-high',
+  'th-large': 'fa-solid fa-th-large',
+  grip: 'fa-solid fa-grip',
+  event: 'fa-solid fa-calendar-check',
+  download: 'fa-solid fa-download',
+  code: 'fa-solid fa-code',
+  help: 'fa-solid fa-circle-question',
+  menu_book: 'fa-solid fa-book-open',
+  support: 'fa-solid fa-headset',
+}
+
+/**
+ * API icon name → Font Awesome class.
+ * Map'e sadece adı farklı olanları ekle (cog→gear, arrow_forward→arrow-right).
+ * Diğerleri otomatik: "rocket" → "fa-solid fa-rocket", "file_download" → "fa-solid fa-file-download"
+ * variant: 'solid' (kalın) | 'regular' (ince çizgi)
+ */
+export function getFaIcon(iconName, fallback = 'fa-solid fa-circle-check', variant = 'solid') {
+  if (!iconName || typeof iconName !== 'string') return fallback
+  const key = iconName.trim().toLowerCase()
+  let faClass = API_ICON_MAP[key]
+  if (faClass && variant === 'regular') {
+    faClass = faClass.replace('fa-solid', 'fa-regular')
+  } else if (!faClass && key.startsWith('fa-')) {
+    faClass = key
+  } else if (!faClass) {
+    const style = variant === 'regular' ? 'fa-regular' : 'fa-solid'
+    faClass = `${style} fa-${key.replace(/_/g, '-')}`
+  }
+  return faClass
+}

@@ -1,0 +1,49 @@
+import { Link } from 'react-router-dom'
+import { nl } from '../translations'
+
+const ERROR_CONFIG = {
+  400: { icon: 'report_problem', titleKey: 'title400', descKey: 'desc400' },
+  401: { icon: 'lock', titleKey: 'title401', descKey: 'desc401' },
+  403: { icon: 'block', titleKey: 'title403', descKey: 'desc403' },
+  404: { icon: 'search_off', titleKey: 'title404', descKey: 'desc404' },
+  405: { icon: 'block', titleKey: 'title405', descKey: 'desc405' },
+  408: { icon: 'schedule', titleKey: 'title408', descKey: 'desc408' },
+  419: { icon: 'refresh', titleKey: 'title419', descKey: 'desc419' },
+  429: { icon: 'speed', titleKey: 'title429', descKey: 'desc429' },
+  500: { icon: 'error_outline', titleKey: 'title500', descKey: 'desc500' },
+  502: { icon: 'cloud_off', titleKey: 'title502', descKey: 'desc502' },
+  503: { icon: 'engineering', titleKey: 'title503', descKey: 'desc503' },
+}
+
+function ErrorPage({ status = 404 }) {
+  const config = ERROR_CONFIG[status] || ERROR_CONFIG[404]
+
+  return (
+    <div className="container-page pt-24 pb-32 flex flex-col items-center justify-center min-h-[60vh]">
+      <span
+        className="material-symbols-outlined text-6xl text-gray-300 mb-6"
+        aria-hidden
+      >
+        {config.icon}
+      </span>
+      <p className="text-8xl font-bold text-gray-200 tracking-tight mb-4">
+        {status}
+      </p>
+      <h1 className="text-2xl font-bold text-primary mb-3 text-center">
+        {nl(`errors.${config.titleKey}`)}
+      </h1>
+      <p className="text-gray-600 text-center max-w-md mb-10">
+        {nl(`errors.${config.descKey}`)}
+      </p>
+      <Link
+        to="/"
+        className="inline-flex items-center gap-2 text-primary font-medium hover:underline"
+      >
+        <span className="material-symbols-outlined text-lg">arrow_back</span>
+        {nl('errors.backHome')}
+      </Link>
+    </div>
+  )
+}
+
+export default ErrorPage
