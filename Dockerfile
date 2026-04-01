@@ -12,33 +12,22 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
 
 RUN npm run build
 
-# ── Stap 3: productie-image ──────────────────────────────────
-FROM node:20-alpine AS runner
-WORKDIR /app
+# ── Stap 3: productie-image (nginx voor statische bestanden) ─
+FROM nginx:alpine AS runner
 
-ENV NODE_ENV=production
-ENV NEXT_TELEMETRY_DISABLED=1
-ENV PORT=3000
-ENV HOSTNAME="0.0.0.0"
+# Kopieer Vite build-output naar nginx
+COPY --from=builder /app/dist /usr/share/nginx/html
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+# Kopieer nginx-configuratie
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Kopieer standalone output
-COPY --from=builder /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+EXPOSE 80
 
-USER nextjs
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+  CMD wget -q --spider http://localhost/ || exit 1
 
-EXPOSE 3000
-
-HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-  CMD wget -q --spider http://localhost:3000/api/health || exit 1
-
-CMD ["node", "server.js"]
+CMD ["nginx", "-g", "daemon off;"]
