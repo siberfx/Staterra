@@ -13,6 +13,8 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 ENV NODE_ENV=production
+ENV VITE_API_URL=https://studio.staterra.nl
+ENV VITE_SITE_URL=https://staterra.nl
 
 RUN npm run build
 
