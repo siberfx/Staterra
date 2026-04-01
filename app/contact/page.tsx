@@ -31,7 +31,7 @@ const CONTACT_OPTIES = [
   {
     label: 'Adres',
     href: 'https://maps.app.goo.gl/staterra',
-    waarde: 'Stadsplateau 27, 3521 AZ Utrecht!',
+    waarde: 'Stadsplateau 27, 3521 AZ Utrecht',
     icoon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
         <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
