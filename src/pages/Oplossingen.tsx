@@ -274,9 +274,21 @@ export default function OplossingsoverzichtPage() {
               ))}
             </div>
           ) : (
-            <p className="text-center text-neutral-500">
-              Oplossingen worden geladen…
-            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="rounded-[20px] border border-neutral-200 overflow-hidden animate-pulse">
+                  <div className="h-52 bg-neutral-100" />
+                  <div className="p-8 space-y-4">
+                    <div className="w-12 h-12 rounded-[10px] bg-neutral-100" />
+                    <div className="h-6 bg-neutral-100 rounded w-3/4" />
+                    <div className="space-y-2">
+                      <div className="h-4 bg-neutral-100 rounded w-full" />
+                      <div className="h-4 bg-neutral-100 rounded w-2/3" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           )}
         </Container>
       </section>
@@ -301,7 +313,7 @@ export default function OplossingsoverzichtPage() {
               maakt OPMS de logische eerste keuze voor Woo-compliance — en
               Staterra de partij die het professioneel implementeert en beheert.
             </p>
-            <p className="text-body text-neutral-700 leading-relaxed">
+            <p className="text-body text-neutral-700 leading-relaxed mb-6">
               Met meer dan{' '}
               <strong className="text-neutral-950 font-semibold">
                 530 bestuursorganen
@@ -309,6 +321,21 @@ export default function OplossingsoverzichtPage() {
               die binnen 8 tot 18 maanden moeten voldoen, is er geen tijd voor
               langdurige aanbestedingstrajecten. OPMS is vandaag beschikbaar.
             </p>
+            <Link
+              to="/woo-oplossing#vergelijking"
+              className="inline-flex items-center gap-2 text-body-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors duration-[150ms] group"
+            >
+              Bekijk de vergelijking met alternatieven
+              <svg
+                className="w-4 h-4 transition-transform duration-[150ms] group-hover:translate-x-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
           </div>
         </Container>
       </section>
@@ -357,39 +384,7 @@ export default function OplossingsoverzichtPage() {
         </section>
       )}
 
-      {/* -- 5. Vergelijking doorlink -- */}
-      <section className="bg-white py-16 lg:py-20" aria-label="Vergelijking">
-        <div className="max-w-3xl mx-auto text-center px-6">
-          <p className="text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
-            Waarom OPMS
-          </p>
-          <h2 className="font-heading text-h2 font-semibold text-brand-900 mb-4 leading-[1.1]">
-            De logische eerste keuze
-          </h2>
-          <p className="text-body text-neutral-700 leading-relaxed mb-8">
-            OPMS is de enige open source Woo-oplossing in het BZK-ecosysteem.
-            Implementatie in 3–6 maanden, geen vendor lock-in, en voldoet direct
-            aan het comply-or-explain beleid.
-          </p>
-          <a
-            href="/woo-oplossing#vergelijking"
-            className="inline-flex items-center gap-2 text-body-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors duration-[150ms] group"
-          >
-            Bekijk de vergelijking met alternatieven
-            <svg
-              className="w-4 h-4 transition-transform duration-[150ms] group-hover:translate-x-0.5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-      </section>
-
-      {/* -- 6. Sluit-CTA -- */}
+      {/* -- 5. Sluit-CTA -- */}
       <section
         className="relative overflow-hidden py-20 lg:py-28"
         aria-labelledby="oplossingen-cta-heading"

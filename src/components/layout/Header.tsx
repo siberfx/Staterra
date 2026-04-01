@@ -40,9 +40,12 @@ const DOELGROEPEN_ITEM: MenuItem = {
 }
 
 const FALLBACK_ITEMS: MenuItem[] = [
-  { id: 9801, title: 'Oplossingen', subtitle: null, description: '', url: '/oplossingen',
+  { id: 9801, title: 'Oplossingen', subtitle: null, description: '', url: '#',
     slug: null, page_type: '', template: '', order: 1, tags: [], sidebar: null,
-    children: OPLOSSINGEN_CHILDREN },
+    children: [
+      CHILD(9100, 'Alle oplossingen', 'Vergelijk alle routes naar Woo-compliance', '/oplossingen'),
+      ...OPLOSSINGEN_CHILDREN,
+    ] },
   DOELGROEPEN_ITEM,
   { id: 9802, title: 'Aanpak', subtitle: null, description: '', url: '/aanpak',
     slug: null, page_type: '', template: '', order: 3, tags: [], sidebar: null, children: [] },
