@@ -19,6 +19,16 @@ const STATS: Stat[] = [
     sublabel: 'elk zelfstandig verantwoordelijk',
   },
   {
+    value: String(BESTUURSORGANEN_STATS.provincies),
+    label: 'Provincies',
+    sublabel: 'alle provincies',
+  },
+  {
+    value: String(BESTUURSORGANEN_STATS.waterschappen),
+    label: 'Waterschappen',
+    sublabel: 'alle waterschappen',
+  },
+  {
     value: '4',
     label: 'OPMS-modules',
     sublabel: 'in productie',
@@ -37,7 +47,7 @@ export function StatsBlock() {
       aria-label="Kerngetallen"
     >
       <Container variant="content">
-        <dl className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-neutral-200 rounded-[16px] overflow-hidden">
+        <dl className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-neutral-200 rounded-[16px] overflow-hidden">
           {STATS.map((stat) => (
             <div
               key={stat.value}
