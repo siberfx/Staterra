@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { PageMeta } from '@/components/PageMeta';
 import { Container } from '@/components/ui/Container';
 // CookiePreferencesButton removed — feature not yet ported
 
@@ -110,12 +110,9 @@ function CategorieBlok({
 // ── Pagina ────────────────────────────────────────────────────
 
 export default function CookiesPage() {
-  useEffect(() => {
-    document.title = 'Cookiebeleid \u2014 Staterra';
-  }, []);
-
   return (
     <>
+      <PageMeta title="Cookiebeleid" path="/cookies" />
       {/* ── Hero ────────────────────────────────────────────── */}
       <section
         className="border-b border-neutral-200 bg-neutral-50 py-14 lg:py-20"

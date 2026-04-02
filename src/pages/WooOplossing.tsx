@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getSolution } from '@/services/cms';
+import { PageMeta } from '@/components/PageMeta';
 import type { SolutionDetail } from '@/lib/types';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
@@ -97,10 +98,6 @@ export default function WooOplossing() {
   const [solution, setSolution] = useState<SolutionDetail | null>(null);
 
   useEffect(() => {
-    document.title = 'Woo-oplossing (OPMS) — Staterra';
-  }, []);
-
-  useEffect(() => {
     getSolution('woo-oplossing').then((data) => {
       setSolution(data as SolutionDetail | null);
     });
@@ -108,6 +105,7 @@ export default function WooOplossing() {
 
   return (
     <>
+      <PageMeta title="Woo-oplossing (OPMS)" description="De complete Woo-compliance oplossing. Open source, direct inzetbaar voor 611 bestuursorganen." path="/woo-oplossing" />
       {/* -- 1. Hero -- */}
       <section
         className="relative overflow-hidden py-20 lg:py-28"

@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getSolution } from '@/services/cms';
+import { PageMeta } from '@/components/PageMeta';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -108,7 +109,6 @@ export default function SamenOntwikkelenPage() {
   const [solution, setSolution] = useState<any>(null);
 
   useEffect(() => {
-    document.title = 'Samen ontwikkelen';
     getSolution('samen-ontwikkelen').then((data) => {
       if (data) setSolution(data);
     });
@@ -116,6 +116,7 @@ export default function SamenOntwikkelenPage() {
 
   return (
     <>
+      <PageMeta title="Samen ontwikkelen" description="Samen met overheden ontwikkelen we digitale oplossingen — van eerste verkenning tot een werkend product." path="/samen-ontwikkelen" />
       {/* ── 1. Hero ─────────────────────────────────────────── */}
       <section
         className="relative overflow-hidden py-20 lg:py-28"

@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { PageMeta } from '@/components/PageMeta';
 import { Container } from '@/components/ui/Container';
 
 // ── Inhoudsopgave ─────────────────────────────────────────────
@@ -113,12 +113,9 @@ function SectieKop({ nummer, titel }: { nummer: string; titel: string }) {
 }
 
 export default function PrivacyPage() {
-  useEffect(() => {
-    document.title = 'Privacyverklaring';
-  }, []);
-
   return (
     <>
+      <PageMeta title="Privacyverklaring" path="/privacy" />
       {/* ── Hero ────────────────────────────────────────────── */}
       <section
         className="border-b border-neutral-200 bg-neutral-50 py-14 lg:py-20"

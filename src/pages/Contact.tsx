@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getContact, getSettings } from '@/services/cms';
+import { PageMeta } from '@/components/PageMeta';
 import { Container } from '@/components/ui/Container';
 import { Card } from '@/components/ui/Card';
 import { FaqAccordion } from '@/components/ui/FaqAccordion';
@@ -54,10 +55,6 @@ export default function ContactPage() {
   const [settings, setSettings] = useState<any>(null);
 
   useEffect(() => {
-    document.title = 'Contact — Staterra';
-  }, []);
-
-  useEffect(() => {
     Promise.all([getContact(), getSettings()]).then(([contactData, settingsData]) => {
       setContact(contactData);
       setSettings(settingsData);
@@ -103,6 +100,7 @@ export default function ContactPage() {
 
   return (
     <>
+      <PageMeta title="Contact" description="Neem contact op met Staterra. Binnen twee werkdagen een inhoudelijke reactie." path="/contact" />
       {/* ── 1. Hero ─────────────────────────────────────────── */}
       <section
         className="relative overflow-hidden bg-brand-900 py-20 lg:py-28"

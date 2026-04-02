@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getBlogPosts } from '@/services/cms';
+import { PageMeta } from '@/components/PageMeta';
 import type { BlogPost } from '@/lib/types';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
@@ -269,10 +270,6 @@ export default function KennisbankPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    document.title = 'Kennisbank';
-  }, []);
-
-  useEffect(() => {
     let cancelled = false;
     async function fetchPosts() {
       try {
@@ -306,6 +303,7 @@ export default function KennisbankPage() {
 
   return (
     <>
+      <PageMeta title="Kennisbank" description="Artikelen, handleidingen en inzichten over Woo-compliance en open source voor de overheid." path="/kennisbank" />
       {/* ── Hero ──────────────────────────────────────────── */}
       <section
         className="border-b border-neutral-200 bg-neutral-50 py-14 lg:py-20"

@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { PageMeta } from '@/components/PageMeta';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -222,14 +223,11 @@ const PRINCIPES = [
 export default function AanpakPage() {
   const [actief, setActief] = useState<Oplossing>('woo');
 
-  useEffect(() => {
-    document.title = 'Aanpak — Staterra';
-  }, []);
-
   const huidige = OPLOSSINGEN.find((o) => o.id === actief)!;
 
   return (
     <>
+      <PageMeta title="Aanpak" description="Van verkenning tot implementatie. Ontdek hoe Staterra in 3 maanden een werkend systeem oplevert." path="/aanpak" />
       {/* ── 1. Hero ─────────────────────────────────────────── */}
       <section
         className="relative overflow-hidden py-20 lg:py-28"

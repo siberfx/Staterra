@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getSolution } from '@/services/cms';
+import { PageMeta } from '@/components/PageMeta';
 import { BESTUURSORGANEN_STATS } from '@/lib/data/bestuursorganen-stats';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
@@ -129,7 +130,6 @@ export default function OpenSourcePage() {
   const [solution, setSolution] = useState<any>(null);
 
   useEffect(() => {
-    document.title = 'Open source';
     getSolution('open-source').then((data) => {
       if (data) setSolution(data);
     });
@@ -137,6 +137,7 @@ export default function OpenSourcePage() {
 
   return (
     <>
+      <PageMeta title="Open source" description="Open source oplossingen voor de overheid. Geen vendor lock-in, geen licentiekosten, wel eigenaarschap van uw broncode." path="/open-source" />
       {/* ── 1. Hero ─────────────────────────────────────────── */}
       <section
         className="relative overflow-hidden py-20 lg:py-28"

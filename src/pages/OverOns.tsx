@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { PageMeta } from '@/components/PageMeta';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -46,12 +46,9 @@ const WAARDEN = [
 ];
 
 export default function OverOnsPage() {
-  useEffect(() => {
-    document.title = 'Over Staterra';
-  }, []);
-
   return (
     <>
+      <PageMeta title="Over Staterra" description="Staterra is infrastructuurpartner voor de publieke sector. Open source Woo-compliance voor 611 bestuursorganen." path="/over-ons" />
       {/* ── 1. Hero ─────────────────────────────────────────── */}
       <section
         className="relative overflow-hidden py-20 lg:py-28"

@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getHomepage } from '@/services/cms';
+import { PageMeta } from '@/components/PageMeta';
 import { Hero } from '@/components/sections/Hero';
 import { StatsBlock } from '@/components/sections/StatsBlock';
 import { SolutionCards } from '@/components/sections/SolutionCards';
@@ -12,15 +13,12 @@ export default function HomePage() {
   const [homepage, setHomepage] = useState<any>(null);
 
   useEffect(() => {
-    document.title = 'Staterra — Woo-compliance oplossing voor de overheid';
-  }, []);
-
-  useEffect(() => {
     getHomepage().then(setHomepage);
   }, []);
 
   return (
     <>
+      <PageMeta title="Woo-compliance oplossing voor de overheid" description="Staterra implementeert en beheert OPMS, het open source platform voor Woo-compliance. Direct inzetbaar voor 611 bestuursorganen." path="/" />
       {/* 1 — Hero: brand-100 achtergrond */}
       {homepage?.hero && <Hero data={homepage.hero} />}
 

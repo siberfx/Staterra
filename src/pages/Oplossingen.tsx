@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getSolutions } from '@/services/cms';
+import { PageMeta } from '@/components/PageMeta';
 import type { Solution, SolutionsListResponse } from '@/lib/types';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
@@ -195,10 +196,6 @@ export default function OplossingsoverzichtPage() {
   const [bannerUrl, setBannerUrl] = useState<string | undefined>();
 
   useEffect(() => {
-    document.title = 'Oplossingen — Digitale oplossingen voor de overheid | Staterra';
-  }, []);
-
-  useEffect(() => {
     getSolutions().then((result: SolutionsListResponse | null) => {
       setSolutions(result?.data ?? []);
       setBannerUrl(result?.banner);
@@ -215,6 +212,7 @@ export default function OplossingsoverzichtPage() {
 
   return (
     <>
+      <PageMeta title="Oplossingen" description="Van Woo-compliance tot open source platformen. Ontdek welke digitale oplossing past bij uw organisatie." path="/oplossingen" />
       {/* -- 1. Hero -- */}
       <section
         className="relative overflow-hidden bg-brand-900 py-20 lg:py-28"

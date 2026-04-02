@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { PageMeta } from '@/components/PageMeta';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -152,12 +152,9 @@ const FASE_DIENSTEN = [
 ];
 
 export default function DienstverleningPage() {
-  useEffect(() => {
-    document.title = 'Dienstverlening';
-  }, []);
-
   return (
     <>
+      <PageMeta title="Dienstverlening" description="Van implementatie tot beheer. Staterra biedt volledige dienstverlening voor open source Woo-compliance." path="/dienstverlening" />
       {/* ── 1. Hero ─────────────────────────────────────────── */}
       <section
         className="relative overflow-hidden py-20 lg:py-28"
