@@ -16,6 +16,7 @@ const Dienstverlening = lazy(() => import('@/pages/Dienstverlening'))
 const Privacy = lazy(() => import('@/pages/Privacy'))
 const Cookies = lazy(() => import('@/pages/Cookies'))
 const Kennisbank = lazy(() => import('@/pages/Kennisbank'))
+const KennisbankArticle = lazy(() => import('@/pages/KennisbankArticle'))
 const DynamicPage = lazy(() => import('@/pages/DynamicPage'))
 
 // ── Oude pagina's (JavaScript, oud design) ──────────────────
@@ -126,7 +127,7 @@ export default function App() {
           <Route path="succesverhalen/:slug" element={<SuccesverhalenDetail />} />
           <Route path="actueel" element={<Actueel />} />
           <Route path="actueel/:slug" element={<ActueelDetail />} />
-          <Route path="kennisbank/:slug" element={<ArticleDetail />} />
+          <Route path="kennisbank/:slug" element={<KennisbankArticle />} />
 
           {/* ── Changelog ecosystem ──────────────────────────── */}
           <Route path="changelog" element={<Changelog />} />

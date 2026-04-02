@@ -21,6 +21,9 @@ const ROUTE_MAP: Record<string, { label: string; parent?: { label: string; path:
   '/staterra-provincies': { label: 'Provincies', parent: { label: 'Doelgroepen', path: '/oplossingen' } },
   '/staterra-waterschappen': { label: 'Waterschappen', parent: { label: 'Doelgroepen', path: '/oplossingen' } },
   '/staterra-rijkspartijen': { label: 'Rijksoverheid', parent: { label: 'Doelgroepen', path: '/oplossingen' } },
+  '/kennisbank/wat-is-de-woo': { label: 'Wat is de Woo?', parent: { label: 'Kennisbank', path: '/kennisbank' } },
+  '/kennisbank/opms-uitgelegd': { label: 'OPMS uitgelegd', parent: { label: 'Kennisbank', path: '/kennisbank' } },
+  '/kennisbank/5-fouten-woo-compliance': { label: '5 fouten bij Woo-compliance', parent: { label: 'Kennisbank', path: '/kennisbank' } },
 };
 
 function slugToLabel(slug: string): string {

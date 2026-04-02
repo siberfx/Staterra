@@ -25,4 +25,9 @@ export const SEARCH_INDEX: SearchEntry[] = [
   { title: 'Provincies', url: '/staterra-provincies', excerpt: 'Alle 12 provincies vallen onder de Woo. OPMS sluit aan op bestaande systemen.', section: 'Doelgroepen' },
   { title: 'Waterschappen', url: '/staterra-waterschappen', excerpt: '21 waterschappen, één Woo-verplichting. Eenvoudige en controleerbare openbaarmaking.', section: 'Doelgroepen' },
   { title: 'Rijksoverheid', url: '/staterra-rijkspartijen', excerpt: '236 rijksbestuursorganen over 14 departementen. Ontwikkeld i.s.m. het ministerie van JenV.', section: 'Doelgroepen' },
+
+  // Kennisbank artikelen
+  { title: 'Wat is de Woo?', url: '/kennisbank/wat-is-de-woo', excerpt: 'De Wet open overheid verplicht 611 bestuursorganen tot actieve openbaarmaking. Wat houdt dat in?', section: 'Kennisbank' },
+  { title: 'OPMS uitgelegd', url: '/kennisbank/opms-uitgelegd', excerpt: 'Zo werkt het open source platform voor openbaarmaking. De vier bouwstenen en implementatie.', section: 'Kennisbank' },
+  { title: '5 fouten bij Woo-compliance', url: '/kennisbank/5-fouten-woo-compliance', excerpt: 'De vijf veelgemaakte fouten bij Woo-compliance — en hoe u ze voorkomt.', section: 'Kennisbank' },
 ];

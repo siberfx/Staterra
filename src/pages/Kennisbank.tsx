@@ -5,6 +5,8 @@ import { PageMeta } from '@/components/PageMeta';
 import type { BlogPost } from '@/lib/types';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
+import { Card } from '@/components/ui/Card';
+import { KENNISBANK_ARTICLES } from '@/data/kennisbankArticles';
 
 // ── Verwachte onderwerpen (voor empty state) ──────────────────
 
@@ -198,67 +200,47 @@ function BlogPostCard({ post, featured = false }: { post: BlogPost; featured?: b
 
 // ── Empty state ───────────────────────────────────────────────
 
-function EmptyState() {
+function HardcodedArticles() {
   return (
-    <div className="py-20 lg:py-28">
-      <Container variant="text">
-        <div className="text-center">
-          {/* Illustratie */}
-          <div className="mx-auto mb-8 w-20 h-20 rounded-[20px] bg-brand-100 flex items-center justify-center">
-            <svg
-              className="w-10 h-10 text-brand-600"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={1.2}
-              aria-hidden="true"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-            </svg>
-          </div>
-
-          <h2 className="font-heading text-h2 font-semibold text-neutral-950 mb-4 leading-[1.1]">
-            De kennisbank wordt gevuld
-          </h2>
-          <p className="text-body-lg text-neutral-600 leading-relaxed mb-4 max-w-[480px] mx-auto">
-            Binnenkort verschijnen hier artikelen, handleidingen en
-            achtergronden over Woo-compliance, open source en digitale
-            publieke infrastructuur.
-          </p>
-          <p className="text-body text-neutral-500 leading-relaxed mb-10 max-w-[480px] mx-auto">
-            Heeft u een vraag die nu al beantwoord moet worden? Neem direct
-            contact op — wij reageren binnen twee werkdagen inhoudelijk.
-          </p>
-
-          {/* Aankomende thema's */}
-          <div className="mb-10">
-            <p className="text-caption font-semibold uppercase tracking-widest text-neutral-500 mb-5">
-              Aankomende onderwerpen
-            </p>
-            <div className="flex flex-wrap justify-center gap-2.5">
-              {AANKOMENDE_THEMAS.map((t) => (
-                <span
-                  key={t.label}
-                  className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-4 py-2 text-caption font-medium text-neutral-700 hover:border-brand-300 hover:bg-brand-50 transition-all duration-[150ms]"
-                >
-                  <span className="text-brand-600">{t.icoon}</span>
-                  {t.label}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button as="link" href="/contact" variant="primary" size="lg">
-              Stel uw vraag
-            </Button>
-            <Button as="link" href="/woo-oplossing" variant="secondary" size="lg">
-              Bekijk onze Woo-oplossing
-            </Button>
-          </div>
+    <section className="bg-white py-12 lg:py-20" aria-label="Artikelen">
+      <Container variant="content">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {KENNISBANK_ARTICLES.map((article) => (
+            <article key={article.slug}>
+              <Card padding="none" className="flex flex-col h-full overflow-hidden group">
+                <div className="flex flex-col flex-1 p-7">
+                  <span className="inline-block text-caption font-semibold text-brand-600 uppercase tracking-widest mb-3">
+                    {article.category}
+                  </span>
+                  <h2 className="font-heading text-h5 font-semibold text-neutral-950 mb-3 group-hover:text-brand-700 transition-colors duration-150">
+                    {article.title}
+                  </h2>
+                  <p className="text-body-sm text-neutral-600 leading-relaxed mb-5 flex-1">
+                    {article.description}
+                  </p>
+                  <Link
+                    to={`/kennisbank/${article.slug}`}
+                    className="inline-flex items-center gap-1.5 text-body-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors duration-150 mt-auto group/link"
+                  >
+                    Lees verder
+                    <svg
+                      className="w-4 h-4 transition-transform duration-150 group-hover/link:translate-x-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      aria-hidden="true"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                  </Link>
+                </div>
+              </Card>
+            </article>
+          ))}
         </div>
       </Container>
-    </div>
+    </section>
   );
 }
 
@@ -382,9 +364,12 @@ export default function KennisbankPage() {
         </Container>
       </section>
 
-      {/* ── Content ───────────────────────────────────────── */}
+      {/* ── Hardcoded artikelen ──────────────────────────── */}
+      <HardcodedArticles />
+
+      {/* ── CMS Content ──────────────────────────────────── */}
       {hasPosts ? (
-        <section className="bg-white py-12 lg:py-20" aria-label="Artikelen">
+        <section className="bg-neutral-50 py-12 lg:py-20" aria-label="Meer artikelen">
           <Container variant="content">
             {/* Uitgelicht artikel */}
             {featuredPost && (
@@ -431,9 +416,7 @@ export default function KennisbankPage() {
             )}
           </Container>
         </section>
-      ) : (
-        <EmptyState />
-      )}
+      ) : null}
 
       {/* ── Nieuwsbrief / notificatie-CTA ─────────────────── */}
       <section
