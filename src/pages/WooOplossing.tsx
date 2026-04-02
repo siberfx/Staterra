@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { FaqAccordion } from '@/components/ui/FaqAccordion';
 import { ComparisonTable } from '@/components/sections/ComparisonTable';
+import { BESTUURSORGANEN_STATS } from '@/lib/data/bestuursorganen-stats';
 
 // -- Deelnamemodellen --
 
@@ -182,12 +183,11 @@ export default function WooOplossing() {
               De klok tikt: 8–18 maanden
             </h2>
             <p className="text-body-lg text-neutral-700 leading-relaxed mb-8">
-              Meer dan{' '}
+              In totaal{' '}
               <strong className="text-neutral-950 font-semibold">
-                530 bestuursorganen
+                {BESTUURSORGANEN_STATS.totaal} bestuursorganen
               </strong>{' '}
-              — 15 ministeries, circa 40 agentschappen, 100 ZBO&apos;s, 12
-              provincies, 21 waterschappen en 342 gemeenten — moeten binnen{' '}
+              — {BESTUURSORGANEN_STATS.kerndepartementen} kerndepartementen, {BESTUURSORGANEN_STATS.rijksbestuursorganen} rijksorganen, {BESTUURSORGANEN_STATS.provincies} provincies, {BESTUURSORGANEN_STATS.waterschappen} waterschappen en {BESTUURSORGANEN_STATS.gemeenten} gemeenten — moeten binnen{' '}
               <strong className="text-neutral-950 font-semibold">
                 8 tot 18 maanden
               </strong>{' '}
@@ -208,7 +208,7 @@ export default function WooOplossing() {
         <Container variant="content" className="mt-12">
           <dl className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-neutral-200 rounded-[16px] overflow-hidden">
             {[
-              { value: '530+', label: 'Bestuursorganen', sub: 'verplicht Woo-compliant' },
+              { value: String(BESTUURSORGANEN_STATS.totaal), label: 'Bestuursorganen', sub: 'verplicht Woo-compliant' },
               { value: '8–18', label: 'Maanden', sub: 'wettelijke deadline' },
               { value: '3 mnd', label: 'Implementatie', sub: 'van start tot werkend' },
               { value: '100%', label: 'Open source', sub: 'eigendom bij de overheid' },

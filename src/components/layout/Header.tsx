@@ -4,6 +4,7 @@ import { mapMenuUrl } from '@/services/cms';
 import type { MenuItem, HeaderMenuResponse, SettingsResponse } from '@/lib/types';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
+import { BESTUURSORGANEN_STATS } from '@/lib/data/bestuursorganen-stats';
 
 // NodeJS.Timeout / browser timeout compatible type
 type TimeoutHandle = ReturnType<typeof setTimeout>;
@@ -32,10 +33,10 @@ const DOELGROEPEN_ITEM: MenuItem = {
   id: 9999, title: 'Doelgroepen', subtitle: null, description: '', url: '#',
   slug: null, page_type: '', template: '', order: 99, tags: [], sidebar: null,
   children: [
-    CHILD(9001, 'Gemeenten', 'Woo-compliance voor 342 gemeenten', '/staterra-gemeenten'),
-    CHILD(9002, 'Provincies', 'Oplossingen voor 12 provincies', '/staterra-provincies'),
-    CHILD(9003, 'Waterschappen', 'Digitale regie voor 21 waterschappen', '/staterra-waterschappen'),
-    CHILD(9004, 'Rijksoverheid', 'Ministeries en agentschappen', '/staterra-rijkspartijen'),
+    CHILD(9001, 'Gemeenten', `${BESTUURSORGANEN_STATS.gemeenten} gemeenten`, '/staterra-gemeenten'),
+    CHILD(9002, 'Provincies', `${BESTUURSORGANEN_STATS.provincies} provincies`, '/staterra-provincies'),
+    CHILD(9003, 'Waterschappen', `${BESTUURSORGANEN_STATS.waterschappen} waterschappen`, '/staterra-waterschappen'),
+    CHILD(9004, 'Rijksoverheid', `${BESTUURSORGANEN_STATS.rijksbestuursorganen} organen over ${BESTUURSORGANEN_STATS.kerndepartementen} departementen`, '/staterra-rijkspartijen'),
   ],
 }
 

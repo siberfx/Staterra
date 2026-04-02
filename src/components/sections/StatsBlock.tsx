@@ -1,4 +1,5 @@
 import { Container } from '@/components/ui/Container';
+import { BESTUURSORGANEN_STATS } from '@/lib/data/bestuursorganen-stats';
 
 interface Stat {
   value: string;
@@ -8,19 +9,19 @@ interface Stat {
 
 const STATS: Stat[] = [
   {
-    value: '530+',
+    value: String(BESTUURSORGANEN_STATS.totaal),
     label: 'Bestuursorganen',
-    sublabel: 'die een Woo-oplossing nodig hebben',
+    sublabel: 'vallen onder de Woo',
+  },
+  {
+    value: String(BESTUURSORGANEN_STATS.gemeenten),
+    label: 'Gemeenten',
+    sublabel: 'elk zelfstandig verantwoordelijk',
   },
   {
     value: '4',
     label: 'OPMS-modules',
     sublabel: 'in productie',
-  },
-  {
-    value: '10x',
-    label: 'Lagere kosten',
-    sublabel: 'dan het centrale alternatief',
   },
   {
     value: '3 mnd',

@@ -6,6 +6,7 @@ import { SolutionCards } from '@/components/sections/SolutionCards';
 import { AboutBlock } from '@/components/sections/AboutBlock';
 import { UserFeaturesBlock } from '@/components/sections/UserFeaturesBlock';
 import { CTABlock } from '@/components/sections/CTABlock';
+import { BESTUURSORGANEN_STATS } from '@/lib/data/bestuursorganen-stats';
 
 export default function HomePage() {
   const [homepage, setHomepage] = useState<any>(null);
@@ -37,7 +38,7 @@ export default function HomePage() {
           </h2>
           <p className="text-body text-neutral-700 leading-relaxed mb-8">
             Steeds meer verplichtingen, beperkte capaciteit, en een deadline die nadert.
-            U bent niet de enige — meer dan 530 bestuursorganen staan voor dezelfde uitdaging.
+            U bent niet de enige — {BESTUURSORGANEN_STATS.totaal} bestuursorganen staan voor dezelfde uitdaging.
           </p>
           <a
             href="/woo-oplossing"
