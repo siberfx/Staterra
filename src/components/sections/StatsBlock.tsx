@@ -16,7 +16,7 @@ const STATERRA_STATS = [
 export function StatsBlock() {
   return (
     <section
-      className="bg-white py-14 lg:py-20 border-y border-neutral-200"
+      className="bg-white py-10 lg:py-14 border-y border-neutral-200"
       aria-label="Kerngetallen"
     >
       <Container variant="content">

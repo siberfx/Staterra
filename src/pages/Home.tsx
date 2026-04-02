@@ -24,16 +24,16 @@ export default function HomePage() {
         description="Staterra implementeert en beheert OPMS, het open source platform voor Woo-compliance. Direct inzetbaar voor 611 bestuursorganen."
         schemas={[{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Staterra', url: 'https://staterra.nl' }]}
       />
-      {/* 1 — Hero: brand-100 achtergrond */}
+      {/* 1 — Hero */}
       {homepage?.hero && <Hero data={homepage.hero} />}
 
-      {/* 2 — Statistieken: witte achtergrond */}
+      {/* 2 — Statistieken */}
       <StatsBlock />
 
-      {/* 3 — Herkenbaar? compact doorlink: neutral-50 achtergrond */}
-      <section className="bg-neutral-50 py-16 lg:py-20" aria-label="Herkenbaar?">
+      {/* 3 — Herkenbaar? */}
+      <section className="bg-neutral-50 py-12 lg:py-16" aria-label="Herkenbaar?">
         <div className="max-w-3xl mx-auto text-center px-6">
-          <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+          <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
             Herkenbaar?
           </span>
           <h2 className="font-heading text-h2 font-semibold text-brand-900 mb-4 leading-[1.1]">
@@ -52,20 +52,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4 — Oplossingskaarten: brand-100 achtergrond */}
+      {/* 4 — Oplossingskaarten */}
       {homepage?.feature_cards && (
         <SolutionCards data={homepage.feature_cards} />
       )}
 
-      {/* 6 — Over Staterra: witte achtergrond */}
+      {/* 5 — Over Staterra */}
       {homepage?.about_opms && (
         <AboutBlock data={homepage.about_opms} />
       )}
 
-      {/* 7 — Vergelijking doorlink: brand-100 achtergrond */}
-      <section className="bg-brand-100 py-16 lg:py-20" aria-label="Vergelijking">
+      {/* 6 — Vergelijking doorlink */}
+      <section className="bg-brand-100 py-12 lg:py-16" aria-label="Vergelijking">
         <div className="max-w-3xl mx-auto text-center px-6">
-          <p className="text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+          <p className="text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
             Vergelijking
           </p>
           <h2 className="font-heading text-h2 font-semibold text-brand-900 mb-4 leading-[1.1]">
@@ -93,15 +93,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 8 — Gebruikersvoordelen: brand-100 achtergrond */}
+      {/* 7 — Gebruikersvoordelen */}
       {homepage?.user_features && (
         <UserFeaturesBlock data={homepage.user_features} />
       )}
 
-      {/* 9 — FAQ */}
+      {/* 8 — FAQ */}
       <HomeFaq />
 
-      {/* 10 — CTA-blok: brand-gradient achtergrond */}
+      {/* 9 — CTA-blok */}
       {homepage?.bottom_cta && <CTABlock data={homepage.bottom_cta} />}
     </>
   );
