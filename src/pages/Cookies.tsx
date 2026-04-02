@@ -112,7 +112,7 @@ function CategorieBlok({
 export default function CookiesPage() {
   return (
     <>
-      <PageMeta title="Cookiebeleid" path="/cookies" />
+      <PageMeta title="Cookiebeleid" />
       {/* ── Hero ────────────────────────────────────────────── */}
       <section
         className="border-b border-neutral-200 bg-neutral-50 py-14 lg:py-20"

@@ -115,7 +115,7 @@ function SectieKop({ nummer, titel }: { nummer: string; titel: string }) {
 export default function PrivacyPage() {
   return (
     <>
-      <PageMeta title="Privacyverklaring" path="/privacy" />
+      <PageMeta title="Privacyverklaring" />
       {/* ── Hero ────────────────────────────────────────────── */}
       <section
         className="border-b border-neutral-200 bg-neutral-50 py-14 lg:py-20"

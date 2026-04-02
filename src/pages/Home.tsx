@@ -18,7 +18,7 @@ export default function HomePage() {
 
   return (
     <>
-      <PageMeta title="Woo-compliance oplossing voor de overheid" description="Staterra implementeert en beheert OPMS, het open source platform voor Woo-compliance. Direct inzetbaar voor 611 bestuursorganen." path="/" />
+      <PageMeta title="Woo-compliance oplossing voor de overheid" description="Staterra implementeert en beheert OPMS, het open source platform voor Woo-compliance. Direct inzetbaar voor 611 bestuursorganen." />
       {/* 1 — Hero: brand-100 achtergrond */}
       {homepage?.hero && <Hero data={homepage.hero} />}
 

@@ -116,7 +116,7 @@ export default function SamenOntwikkelenPage() {
 
   return (
     <>
-      <PageMeta title="Samen ontwikkelen" description="Samen met overheden ontwikkelen we digitale oplossingen — van eerste verkenning tot een werkend product." path="/samen-ontwikkelen" />
+      <PageMeta title="Samen ontwikkelen" description="Samen met overheden ontwikkelen we digitale oplossingen — van eerste verkenning tot een werkend product." />
       {/* ── 1. Hero ─────────────────────────────────────────── */}
       <section
         className="relative overflow-hidden py-20 lg:py-28"

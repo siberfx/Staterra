@@ -48,7 +48,7 @@ const WAARDEN = [
 export default function OverOnsPage() {
   return (
     <>
-      <PageMeta title="Over Staterra" description="Staterra is infrastructuurpartner voor de publieke sector. Open source Woo-compliance voor 611 bestuursorganen." path="/over-ons" />
+      <PageMeta title="Over Staterra" description="Staterra is infrastructuurpartner voor de publieke sector. Open source Woo-compliance voor 611 bestuursorganen." />
       {/* ── 1. Hero ─────────────────────────────────────────── */}
       <section
         className="relative overflow-hidden py-20 lg:py-28"

@@ -227,7 +227,7 @@ export default function AanpakPage() {
 
   return (
     <>
-      <PageMeta title="Aanpak" description="Van verkenning tot implementatie. Ontdek hoe Staterra in 3 maanden een werkend systeem oplevert." path="/aanpak" />
+      <PageMeta title="Aanpak" description="Van verkenning tot implementatie. Ontdek hoe Staterra in 3 maanden een werkend systeem oplevert." />
       {/* ── 1. Hero ─────────────────────────────────────────── */}
       <section
         className="relative overflow-hidden py-20 lg:py-28"

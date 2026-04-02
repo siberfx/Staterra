@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { useLocation } from 'react-router-dom';
 
 const SITE_NAME = 'Staterra';
 const SITE_URL = 'https://staterra.nl';
@@ -9,14 +10,14 @@ const DEFAULT_DESCRIPTION =
 interface PageMetaProps {
   title: string;
   description?: string;
-  path?: string;
   image?: string;
 }
 
-export function PageMeta({ title, description, path, image }: PageMetaProps) {
+export function PageMeta({ title, description, image }: PageMetaProps) {
+  const { pathname } = useLocation();
   const fullTitle = `${title} — ${SITE_NAME}`;
   const desc = description ?? DEFAULT_DESCRIPTION;
-  const url = path ? `${SITE_URL}${path}` : SITE_URL;
+  const url = `${SITE_URL}${pathname === '/' ? '' : pathname}`;
   const img = image ?? DEFAULT_IMAGE;
 
   return (

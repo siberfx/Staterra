@@ -303,7 +303,7 @@ export default function KennisbankPage() {
 
   return (
     <>
-      <PageMeta title="Kennisbank" description="Artikelen, handleidingen en inzichten over Woo-compliance en open source voor de overheid." path="/kennisbank" />
+      <PageMeta title="Kennisbank" description="Artikelen, handleidingen en inzichten over Woo-compliance en open source voor de overheid." />
       {/* ── Hero ──────────────────────────────────────────── */}
       <section
         className="border-b border-neutral-200 bg-neutral-50 py-14 lg:py-20"

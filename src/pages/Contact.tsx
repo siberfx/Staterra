@@ -100,7 +100,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <PageMeta title="Contact" description="Neem contact op met Staterra. Binnen twee werkdagen een inhoudelijke reactie." path="/contact" />
+      <PageMeta title="Contact" description="Neem contact op met Staterra. Binnen twee werkdagen een inhoudelijke reactie." />
       {/* ── 1. Hero ─────────────────────────────────────────── */}
       <section
         className="relative overflow-hidden bg-brand-900 py-20 lg:py-28"

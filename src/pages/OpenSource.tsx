@@ -137,7 +137,7 @@ export default function OpenSourcePage() {
 
   return (
     <>
-      <PageMeta title="Open source" description="Open source oplossingen voor de overheid. Geen vendor lock-in, geen licentiekosten, wel eigenaarschap van uw broncode." path="/open-source" />
+      <PageMeta title="Open source" description="Open source oplossingen voor de overheid. Geen vendor lock-in, geen licentiekosten, wel eigenaarschap van uw broncode." />
       {/* ── 1. Hero ─────────────────────────────────────────── */}
       <section
         className="relative overflow-hidden py-20 lg:py-28"

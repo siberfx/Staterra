@@ -154,7 +154,7 @@ const FASE_DIENSTEN = [
 export default function DienstverleningPage() {
   return (
     <>
-      <PageMeta title="Dienstverlening" description="Van implementatie tot beheer. Staterra biedt volledige dienstverlening voor open source Woo-compliance." path="/dienstverlening" />
+      <PageMeta title="Dienstverlening" description="Van implementatie tot beheer. Staterra biedt volledige dienstverlening voor open source Woo-compliance." />
       {/* ── 1. Hero ─────────────────────────────────────────── */}
       <section
         className="relative overflow-hidden py-20 lg:py-28"

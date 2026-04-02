@@ -212,7 +212,7 @@ export default function OplossingsoverzichtPage() {
 
   return (
     <>
-      <PageMeta title="Oplossingen" description="Van Woo-compliance tot open source platformen. Ontdek welke digitale oplossing past bij uw organisatie." path="/oplossingen" />
+      <PageMeta title="Oplossingen" description="Van Woo-compliance tot open source platformen. Ontdek welke digitale oplossing past bij uw organisatie." />
       {/* -- 1. Hero -- */}
       <section
         className="relative overflow-hidden bg-brand-900 py-20 lg:py-28"

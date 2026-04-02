@@ -105,7 +105,7 @@ export default function WooOplossing() {
 
   return (
     <>
-      <PageMeta title="Woo-oplossing (OPMS)" description="De complete Woo-compliance oplossing. Open source, direct inzetbaar voor 611 bestuursorganen." path="/woo-oplossing" />
+      <PageMeta title="Woo-oplossing (OPMS)" description="De complete Woo-compliance oplossing. Open source, direct inzetbaar voor 611 bestuursorganen." />
       {/* -- 1. Hero -- */}
       <section
         className="relative overflow-hidden py-20 lg:py-28"
