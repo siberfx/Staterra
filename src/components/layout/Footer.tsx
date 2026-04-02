@@ -59,6 +59,7 @@ export function Footer({ menu, settings }: FooterProps) {
 
   return (
     <footer
+      role="contentinfo"
       className="bg-brand-900 text-white"
       aria-labelledby="footer-heading"
     >

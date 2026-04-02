@@ -368,6 +368,7 @@ export function Header({ menu, settings }: HeaderProps) {
 
   return (
     <header
+      role="banner"
       className={[
         'fixed top-0 inset-x-0 z-50',
         'bg-white/90 backdrop-blur-[10px]',

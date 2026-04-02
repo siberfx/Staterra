@@ -8,13 +8,16 @@ export function Layout() {
 
   return (
     <>
-      <a href="#main-content" className="skip-nav">
-        Naar hoofdinhoud
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[9999] focus:bg-brand-700 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:ring-2 focus:ring-white focus:outline-none"
+      >
+        Spring naar inhoud
       </a>
 
       <Header menu={headerMenu} settings={settings} />
 
-      <main id="main-content" className="flex-1 pt-16 lg:pt-18">
+      <main id="main-content" role="main" className="flex-1 pt-16 lg:pt-18">
         <Outlet />
       </main>
 
