@@ -21,7 +21,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
       },
       {
         question: 'Wat kost de implementatie?',
-        answer: 'De kosten hangen af van de omvang van uw organisatie en het gekozen model. Een gedeelde SaaS-omgeving start vanaf €70K eenmalig. Een dedicated omgeving met maatwerk begint rond €140K. Geen doorlopende licentiekosten — alleen beheer en onderhoud.',
+        answer: 'De kosten hangen af van de omvang van uw organisatie en het gekozen model. Een gedeelde SaaS-omgeving start vanaf €800 per maand. Een dedicated omgeving zonder maatwerk begint rond de €40K. Geen doorlopende licentiekosten — alleen beheer en onderhoud.',
       },
       {
         question: 'Is OPMS geschikt voor kleine gemeenten?',
