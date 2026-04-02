@@ -38,7 +38,7 @@ const SOLUTION_ICONS: Record<string, React.ReactNode> = {
 // Labels per doelgroep-oplossing
 const TARGET_META: Record<string, { badge: string; count: string; href: string }> = {
   'woo-gemeenten':     { badge: 'Gemeenten',    count: '342 gemeenten',                     href: '/staterra-gemeenten' },
-  'woo-rijksoverheid': { badge: 'Rijksoverheid', count: '15 ministeries + ~40 agentschappen', href: '/staterra-rijkspartijen' },
+  'woo-rijksoverheid': { badge: 'Rijksoverheid', count: '236 bestuursorganen', href: '/staterra-rijkspartijen' },
   'woo-provincies':    { badge: 'Provincies',    count: '12 provincies',                     href: '/staterra-provincies' },
   'woo-waterschappen': { badge: 'Waterschappen', count: '21 waterschappen',                  href: '/staterra-waterschappen' },
 };
