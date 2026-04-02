@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { Container } from '@/components/ui/Container';
 
 interface FaqCategory {
@@ -72,8 +73,10 @@ const FAQ_CATEGORIES: FaqCategory[] = [
   },
 ];
 
-// Flat array voor schema
-const ALL_FAQ_ITEMS = FAQ_CATEGORIES.flatMap((cat) => cat.items);
+// Flat array + globale key per vraag
+const ALL_FAQ_ITEMS = FAQ_CATEGORIES.flatMap((cat, ci) =>
+  cat.items.map((item, ii) => ({ ...item, key: `${ci}-${ii}` })),
+);
 
 const FAQ_SCHEMA = {
   '@context': 'https://schema.org',
@@ -88,21 +91,41 @@ const FAQ_SCHEMA = {
   })),
 };
 
-function FaqItem({ question, answer }: { question: string; answer: string }) {
-  const [open, setOpen] = useState(false);
+// ── Single FAQ item (controlled) ─────────────────────────────
 
+function FaqItem({
+  question,
+  answer,
+  isOpen,
+  onToggle,
+}: {
+  question: string;
+  answer: string;
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
   return (
     <div className="border-b border-neutral-200 last:border-0">
       <button
-        onClick={() => setOpen((v) => !v)}
-        className="flex items-center justify-between w-full py-5 text-left group"
-        aria-expanded={open}
+        onClick={onToggle}
+        className={[
+          'flex items-center justify-between w-full py-5 px-2 -mx-2 rounded-lg text-left cursor-pointer',
+          'transition-colors duration-150',
+          isOpen ? 'bg-neutral-50' : 'hover:bg-neutral-50',
+        ].join(' ')}
+        aria-expanded={isOpen}
       >
-        <span className="text-body-sm font-semibold text-neutral-900 pr-4 group-hover:text-brand-700 transition-colors duration-150">
+        <span className={[
+          'text-body-sm font-semibold pr-4 transition-colors duration-150',
+          isOpen ? 'text-brand-700' : 'text-neutral-900',
+        ].join(' ')}>
           {question}
         </span>
         <svg
-          className={`w-5 h-5 text-neutral-400 flex-shrink-0 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+          className={[
+            'w-5 h-5 flex-shrink-0 transition-transform duration-200',
+            isOpen ? 'rotate-180 text-brand-600' : 'text-neutral-400',
+          ].join(' ')}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -115,11 +138,11 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
       <div
         className="overflow-hidden transition-[max-height,opacity] duration-200 ease-out"
         style={{
-          maxHeight: open ? '500px' : '0px',
-          opacity: open ? 1 : 0,
+          maxHeight: isOpen ? '500px' : '0px',
+          opacity: isOpen ? 1 : 0,
         }}
       >
-        <p className="text-body-sm text-neutral-600 leading-relaxed pb-5 pr-8">
+        <p className="text-body-sm text-neutral-600 leading-relaxed pb-5 px-2 pr-10">
           {answer}
         </p>
       </div>
@@ -127,9 +150,20 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
   );
 }
 
+// ── HomeFaq ──────────────────────────────────────────────────
+
 export function HomeFaq() {
+  // Single-open across all categories
+  const [openKey, setOpenKey] = useState<string | null>(null);
+
+  const toggle = useCallback((key: string) => {
+    setOpenKey((prev) => (prev === key ? null : key));
+  }, []);
+
+  let globalIndex = 0;
+
   return (
-    <section className="bg-white py-16 lg:py-24" aria-labelledby="faq-heading">
+    <section className="bg-white py-12 lg:py-16" aria-labelledby="faq-heading">
       <Container variant="text">
         <div className="text-center mb-10">
           <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
@@ -143,19 +177,43 @@ export function HomeFaq() {
           </h2>
         </div>
 
-        <div className="space-y-8">
-          {FAQ_CATEGORIES.map((category) => (
-            <div key={category.title}>
-              <h3 className="text-body-sm font-semibold text-brand-600 uppercase tracking-widest mb-3">
+        <div className="space-y-6">
+          {FAQ_CATEGORIES.map((category, ci) => (
+            <div key={category.title} className={ci > 0 ? 'mt-8' : ''}>
+              <h3 className="inline-flex items-center border-l-[3px] border-brand-600 bg-brand-50 px-3 py-1.5 rounded-r-md text-body-sm font-semibold text-brand-700 uppercase tracking-widest mb-3">
                 {category.title}
               </h3>
               <div className="rounded-[20px] border border-neutral-200 bg-white px-6 lg:px-8">
-                {category.items.map((item) => (
-                  <FaqItem key={item.question} question={item.question} answer={item.answer} />
-                ))}
+                {category.items.map((item, ii) => {
+                  const key = `${ci}-${ii}`;
+                  globalIndex++;
+                  return (
+                    <FaqItem
+                      key={key}
+                      question={item.question}
+                      answer={item.answer}
+                      isOpen={openKey === key}
+                      onToggle={() => toggle(key)}
+                    />
+                  );
+                })}
               </div>
             </div>
           ))}
+        </div>
+
+        {/* CTA onderaan */}
+        <div className="text-center pt-8 pb-4">
+          <p className="text-body-sm text-neutral-600">
+            Staat uw vraag er niet bij?{' '}
+            <Link
+              to="/contact"
+              className="text-brand-700 font-semibold hover:underline transition-colors duration-150"
+            >
+              Neem contact op
+            </Link>
+            {' '}— wij reageren binnen twee werkdagen.
+          </p>
         </div>
       </Container>
 
