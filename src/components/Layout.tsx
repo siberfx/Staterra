@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom'
 import { useSite } from '@/contexts/SiteContext'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { Breadcrumb } from '@/components/Breadcrumb'
 
 export function Layout() {
   const { settings, headerMenu, footerMenu } = useSite()
@@ -17,7 +18,11 @@ export function Layout() {
 
       <Header menu={headerMenu} settings={settings} />
 
-      <main id="main-content" role="main" className="flex-1 pt-16 lg:pt-18">
+      <div className="pt-16 lg:pt-18">
+        <Breadcrumb />
+      </div>
+
+      <main id="main-content" role="main" className="flex-1">
         <Outlet />
       </main>
 

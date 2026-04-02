@@ -186,38 +186,47 @@ export function Footer({ menu, settings }: FooterProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="font-heading font-semibold text-h5 text-white mb-2">
-                Blijf op de hoogte
+                Ontvang binnen twee werkdagen een vrijblijvend voorstel op maat
               </h3>
               <p className="text-body-sm text-brand-200/80 leading-relaxed">
-                Praktische kennis over Woo-compliance en digitale publieke
-                infrastructuur. Geen spam — alleen inhoud met waarde.
+                Wij nemen persoonlijk contact op — geen automatische mails.
               </p>
             </div>
             <form
               action="/api/contact-form"
               method="POST"
-              aria-label="Nieuwsbrief aanmelding"
-              className="flex flex-col sm:flex-row gap-3"
+              aria-label="Verkenningsgesprek aanvragen"
+              className="flex flex-col gap-3"
             >
-              <input type="hidden" name="reden" value="Nieuwsbrief" />
-              <label htmlFor="footer-email" className="sr-only">
-                E-mailadres
-              </label>
-              <input
-                id="footer-email"
-                name="email"
-                type="email"
-                placeholder="uw@organisatie.nl"
-                required
-                autoComplete="email"
-                className="flex-1 rounded-[10px] border border-white/20 bg-white/10 px-4 py-2.5 text-body-sm text-white placeholder:text-brand-300/60 focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/30 transition-colors"
-              />
-              <button
-                type="submit"
-                className="flex-shrink-0 rounded-[10px] bg-brand-400 px-5 py-2.5 text-body-sm font-semibold text-brand-900 hover:bg-white hover:text-brand-900 transition-all duration-[180ms] whitespace-nowrap focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-900"
-              >
-                Aanmelden
-              </button>
+              <input type="hidden" name="reden" value="Verkenningsgesprek" />
+              <div className="flex flex-col sm:flex-row gap-3">
+                <div className="flex-1">
+                  <label htmlFor="footer-email" className="block text-caption text-brand-200/60 mb-1.5">
+                    Uw zakelijke e-mailadres
+                  </label>
+                  <input
+                    id="footer-email"
+                    name="email"
+                    type="email"
+                    placeholder="naam@organisatie.nl"
+                    required
+                    autoComplete="email"
+                    className="w-full rounded-[10px] border border-white/20 bg-white/10 px-4 py-2.5 text-body-sm text-white placeholder:text-brand-300/60 focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/30 transition-colors"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="flex-shrink-0 self-end rounded-[10px] bg-brand-400 px-5 py-2.5 text-body-sm font-semibold text-brand-900 hover:bg-white hover:text-brand-900 transition-all duration-[180ms] whitespace-nowrap focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-900"
+                >
+                  Plan een verkenningsgesprek
+                </button>
+              </div>
+              <div className="flex items-center gap-1.5 text-caption text-brand-200/50">
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                </svg>
+                Uw gegevens zijn veilig
+              </div>
             </form>
           </div>
         </div>

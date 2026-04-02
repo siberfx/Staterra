@@ -105,7 +105,11 @@ export default function WooOplossing() {
 
   return (
     <>
-      <PageMeta title="Woo-oplossing (OPMS)" description="De complete Woo-compliance oplossing. Open source, direct inzetbaar voor 611 bestuursorganen." />
+      <PageMeta
+        title="Woo-oplossing (OPMS)"
+        description="De complete Woo-compliance oplossing. Open source, direct inzetbaar voor 611 bestuursorganen."
+        schemas={[{ '@context': 'https://schema.org', '@type': 'Service', serviceType: 'Woo-compliance oplossing', provider: { '@type': 'Organization', name: 'Staterra' }, areaServed: 'NL', name: 'OPMS Woo-oplossing' }]}
+      />
       {/* -- 1. Hero -- */}
       <section
         className="relative overflow-hidden py-20 lg:py-28"
