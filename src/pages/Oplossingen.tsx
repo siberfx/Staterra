@@ -289,7 +289,7 @@ export default function OplossingsoverzichtPage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {([
               { value: BESTUURSORGANEN_STATS.rijksbestuursorganen, label: 'Rijksbestuursorganen', detail: `${BESTUURSORGANEN_STATS.kerndepartementen} departementen` },
-              { value: BESTUURSORGANEN_STATS.gemeenten, label: 'Gemeenten', detail: '12 provincies' },
+              { value: BESTUURSORGANEN_STATS.gemeenten, label: 'Gemeenten', detail: 'Alle gemeenten' },
               { value: BESTUURSORGANEN_STATS.waterschappen, label: 'Waterschappen', detail: 'Alle waterschappen' },
               { value: BESTUURSORGANEN_STATS.provincies, label: 'Provincies', detail: 'Alle provincies' },
             ] as const).map((cat) => (
