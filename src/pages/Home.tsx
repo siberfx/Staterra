@@ -7,6 +7,7 @@ import { SolutionCards } from '@/components/sections/SolutionCards';
 import { AboutBlock } from '@/components/sections/AboutBlock';
 import { UserFeaturesBlock } from '@/components/sections/UserFeaturesBlock';
 import { CTABlock } from '@/components/sections/CTABlock';
+import { HomeFaq } from '@/components/sections/HomeFaq';
 import { BESTUURSORGANEN_STATS } from '@/lib/data/bestuursorganen-stats';
 
 export default function HomePage() {
@@ -97,7 +98,10 @@ export default function HomePage() {
         <UserFeaturesBlock data={homepage.user_features} />
       )}
 
-      {/* 9 — CTA-blok: brand-gradient achtergrond */}
+      {/* 9 — FAQ */}
+      <HomeFaq />
+
+      {/* 10 — CTA-blok: brand-gradient achtergrond */}
       {homepage?.bottom_cta && <CTABlock data={homepage.bottom_cta} />}
     </>
   );

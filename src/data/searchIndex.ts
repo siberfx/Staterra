@@ -1,0 +1,28 @@
+export interface SearchEntry {
+  title: string;
+  url: string;
+  excerpt: string;
+  section?: string;
+}
+
+export const SEARCH_INDEX: SearchEntry[] = [
+  // Hoofdpagina's
+  { title: 'Home', url: '/', excerpt: 'Woo-compliance oplossing voor de overheid. Direct inzetbaar voor 611 bestuursorganen.', section: 'Hoofdpagina' },
+  { title: 'Oplossingen', url: '/oplossingen', excerpt: 'Overzicht van al onze digitale oplossingen — van Woo-compliance tot open source platformen.', section: 'Oplossingen' },
+  { title: 'Woo-oplossing (OPMS)', url: '/woo-oplossing', excerpt: 'De complete Woo-compliance oplossing. Open source, direct inzetbaar, zonder vendor lock-in.', section: 'Oplossingen' },
+  { title: 'Samen ontwikkelen', url: '/samen-ontwikkelen', excerpt: 'Samen met overheden ontwikkelen we digitale oplossingen — van eerste verkenning tot een werkend product.', section: 'Oplossingen' },
+  { title: 'Open source', url: '/open-source', excerpt: 'Open source oplossingen voor de overheid. Geen vendor lock-in, geen licentiekosten.', section: 'Oplossingen' },
+  { title: 'Aanpak', url: '/aanpak', excerpt: 'Van verkenning tot implementatie. Ontdek hoe Staterra in 3 maanden een werkend systeem oplevert.', section: 'Over Staterra' },
+  { title: 'Dienstverlening', url: '/dienstverlening', excerpt: 'Van implementatie tot beheer. Volledige dienstverlening voor open source Woo-compliance.', section: 'Over Staterra' },
+  { title: 'Over ons', url: '/over-ons', excerpt: 'Staterra is infrastructuurpartner voor de publieke sector. Open source Woo-compliance voor 611 bestuursorganen.', section: 'Over Staterra' },
+  { title: 'Contact', url: '/contact', excerpt: 'Neem contact op met Staterra. Binnen twee werkdagen een inhoudelijke reactie.', section: 'Over Staterra' },
+  { title: 'Kennisbank', url: '/kennisbank', excerpt: 'Artikelen, handleidingen en inzichten over Woo-compliance en open source voor de overheid.', section: 'Kennisbank' },
+  { title: 'Privacyverklaring', url: '/privacy', excerpt: 'Hoe Staterra omgaat met uw persoonsgegevens en privacy.', section: 'Juridisch' },
+  { title: 'Cookiebeleid', url: '/cookies', excerpt: 'Welke cookies staterra.nl gebruikt en hoe u uw voorkeuren beheert.', section: 'Juridisch' },
+
+  // Doelgroepen
+  { title: 'Gemeenten', url: '/staterra-gemeenten', excerpt: '342 gemeenten moeten voldoen aan de Woo. Onze oplossing is direct inzetbaar.', section: 'Doelgroepen' },
+  { title: 'Provincies', url: '/staterra-provincies', excerpt: 'Alle 12 provincies vallen onder de Woo. OPMS sluit aan op bestaande systemen.', section: 'Doelgroepen' },
+  { title: 'Waterschappen', url: '/staterra-waterschappen', excerpt: '21 waterschappen, één Woo-verplichting. Eenvoudige en controleerbare openbaarmaking.', section: 'Doelgroepen' },
+  { title: 'Rijksoverheid', url: '/staterra-rijkspartijen', excerpt: '236 rijksbestuursorganen over 14 departementen. Ontwikkeld i.s.m. het ministerie van JenV.', section: 'Doelgroepen' },
+];

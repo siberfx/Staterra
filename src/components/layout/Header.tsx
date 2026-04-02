@@ -4,6 +4,7 @@ import { mapMenuUrl } from '@/services/cms';
 import type { MenuItem, HeaderMenuResponse, SettingsResponse } from '@/lib/types';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
+import { SearchModal } from '@/components/SearchModal';
 import { BESTUURSORGANEN_STATS } from '@/lib/data/bestuursorganen-stats';
 
 // NodeJS.Timeout / browser timeout compatible type
@@ -333,6 +334,7 @@ function MobileMenu({
 export function Header({ menu, settings }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   // Gedeelde open-state: slechts één dropdown tegelijk
   const [openId, setOpenId] = useState<number | null>(null);
 
@@ -344,9 +346,13 @@ export function Header({ menu, settings }: HeaderProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Sluit alle dropdowns bij escape
+  // Cmd/Ctrl+K opent zoeken, Escape sluit alles
   useEffect(() => {
     function handleKey(e: KeyboardEvent) {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
       if (e.key === 'Escape') {
         setOpenId(null);
         setMobileOpen(false);
@@ -411,7 +417,16 @@ export function Header({ menu, settings }: HeaderProps) {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-3">
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="p-2 text-neutral-500 hover:text-brand-700 transition-colors duration-150"
+              aria-label="Zoeken (⌘K)"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+              </svg>
+            </button>
             <Button as="link" href="/contact" variant="primary" size="sm">
               Neem contact op
             </Button>
@@ -451,6 +466,9 @@ export function Header({ menu, settings }: HeaderProps) {
           onClose={() => setMobileOpen(false)}
         />
       </div>
+
+      {/* Zoekmodal */}
+      <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
 }
