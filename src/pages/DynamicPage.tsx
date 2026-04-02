@@ -8,6 +8,7 @@ import { Card } from '@/components/ui/Card';
 import { FaqAccordion } from '@/components/ui/FaqAccordion';
 import { PageTemplate } from '@/components/templates/PageTemplate';
 import { PageMeta } from '@/components/PageMeta';
+import LeadMagnetBanner from '@/components/LeadMagnetBanner';
 import { DOELGROEP_CONFIG } from '@/lib/doelgroep-config';
 
 // ── Bestuurslaag-specifieke badge-kleuren en aantallen
@@ -125,6 +126,7 @@ export default function DynamicPage() {
             </div>
           </Container>
         </section>
+        <LeadMagnetBanner />
         <section className="bg-white py-16 lg:py-24">
           <Container variant="text">
             <div className="text-center">

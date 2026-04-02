@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { FaqAccordion } from '@/components/ui/FaqAccordion';
 import { ComparisonTable } from '@/components/sections/ComparisonTable';
+import LeadMagnetBanner from '@/components/LeadMagnetBanner';
 import { BESTUURSORGANEN_STATS } from '@/lib/data/bestuursorganen-stats';
 
 // -- Deelnamemodellen --
@@ -470,7 +471,10 @@ export default function WooOplossing() {
         </section>
       )}
 
-      {/* -- 8. Sluit-CTA -- */}
+      {/* -- 8. Lead magnet -- */}
+      <LeadMagnetBanner />
+
+      {/* -- 9. Sluit-CTA -- */}
       <section
         className="relative overflow-hidden py-20 lg:py-28"
         aria-labelledby="woo-cta-heading"
