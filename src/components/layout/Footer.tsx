@@ -66,28 +66,6 @@ export function Footer({ menu, settings }: FooterProps) {
         Voettekst
       </h2>
 
-      {/* ── Social proof banner ───────────────────────────── */}
-      <div className="border-b border-white/10">
-        <Container variant="page" className="py-5">
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-center">
-            <div>
-              <span className="font-heading font-semibold text-xl text-white">{BESTUURSORGANEN_STATS.totaal}</span>
-              <span className="text-brand-200/70 text-body-sm ml-2">bestuursorganen onder de Woo</span>
-            </div>
-            <span className="hidden sm:block text-brand-200/30" aria-hidden="true">|</span>
-            <div>
-              <span className="font-heading font-semibold text-xl text-white">{BESTUURSORGANEN_STATS.gemeenten}</span>
-              <span className="text-brand-200/70 text-body-sm ml-2">gemeenten</span>
-            </div>
-            <span className="hidden sm:block text-brand-200/30" aria-hidden="true">|</span>
-            <div>
-              <span className="font-heading font-semibold text-xl text-white">{BESTUURSORGANEN_STATS.rijksbestuursorganen}</span>
-              <span className="text-brand-200/70 text-body-sm ml-2">rijksorganen</span>
-            </div>
-          </div>
-        </Container>
-      </div>
-
       {/* ── Hoofd-rij ──────────────────────────────────────── */}
       <Container variant="page" className="pt-16 pb-10">
         <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-12 lg:gap-16">
