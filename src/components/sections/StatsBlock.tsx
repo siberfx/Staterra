@@ -10,7 +10,7 @@ const OVERHEID_STATS = [
 
 const STATERRA_STATS = [
   { value: '4', label: 'OPMS-modules', sublabel: 'in productie' },
-  { value: '3 mnd', label: 'Van start', sublabel: 'tot werkend systeem' },
+  { value: '3 mnd', label: 'Van start', sublabel: 'tot werkend systeem (SaaS direct beschikbaar)' },
 ];
 
 export function StatsBlock() {
