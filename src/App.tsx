@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, Component } from 'react'
+import type { ReactNode, ErrorInfo } from 'react'
 import { Layout } from '@/components/Layout'
 
 // ── Nieuwe pagina's (TypeScript, nieuw design) ──────────────
@@ -60,8 +61,29 @@ function PageLoader() {
   )
 }
 
+class PageErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
+  state = { hasError: false }
+  static getDerivedStateFromError() { return { hasError: true } }
+  componentDidCatch(error: Error, info: ErrorInfo) { console.error('Page crash:', error, info) }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="flex flex-col items-center justify-center min-h-[60vh] px-6 text-center">
+          <h1 className="font-heading text-h3 font-semibold text-neutral-950 mb-3">Er ging iets mis</h1>
+          <p className="text-body text-neutral-600 mb-6">Deze pagina kon niet geladen worden.</p>
+          <button onClick={() => window.location.reload()} className="text-brand-700 font-semibold hover:text-brand-900">
+            Pagina herladen →
+          </button>
+        </div>
+      )
+    }
+    return this.props.children
+  }
+}
+
 export default function App() {
   return (
+    <PageErrorBoundary>
     <Suspense fallback={<PageLoader />}>
       <Routes>
         <Route element={<Layout />}>
@@ -148,5 +170,6 @@ export default function App() {
         </Route>
       </Routes>
     </Suspense>
+    </PageErrorBoundary>
   )
 }
