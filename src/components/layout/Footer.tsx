@@ -246,21 +246,6 @@ export function Footer({ menu, settings }: FooterProps) {
           </div>
         </div>
 
-        {/* ── Nieuwsbrief-sectie ──────────────────────────── */}
-        <div className="mt-12 border-t border-white/10 pt-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="font-heading font-semibold text-h5 text-white mb-2">
-                Ontvang binnen twee werkdagen een vrijblijvend voorstel op maat
-              </h3>
-              <p className="text-body-sm text-brand-200/80 leading-relaxed">
-                Wij nemen persoonlijk contact op — geen automatische mails.
-              </p>
-            </div>
-            <FooterForm />
-          </div>
-        </div>
-
         {/* ── Bottom bar ──────────────────────────────────── */}
         <div className="border-t border-white/10 mt-10 pt-8 flex flex-col md:flex-row items-center justify-between gap-5">
           {/* Copyright */}
