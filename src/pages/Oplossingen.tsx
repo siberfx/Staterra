@@ -440,16 +440,6 @@ export default function OplossingsoverzichtPage() {
               ))}
             </div>
 
-            {/* In gesprek met */}
-            <div className="mt-12 rounded-[16px] bg-brand-100 border border-brand-200 px-8 py-6 text-center">
-              <p className="text-body-sm text-neutral-700">
-                <strong className="text-neutral-950 font-semibold">
-                  In gesprek met:
-                </strong>{' '}
-                Ministerie van Justitie en Veiligheid, drie andere departementen
-                en twee overheids ICT-organisaties. Details volgen zodra akkoord is bereikt.
-              </p>
-            </div>
           </Container>
         </section>
       )}
