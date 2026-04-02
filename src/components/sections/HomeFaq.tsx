@@ -1,37 +1,84 @@
 import { useState } from 'react';
 import { Container } from '@/components/ui/Container';
 
-const FAQ_ITEMS = [
+interface FaqCategory {
+  title: string;
+  items: { question: string; answer: string }[];
+}
+
+const FAQ_CATEGORIES: FaqCategory[] = [
   {
-    question: 'Wat is de Woo en waarom moet mijn organisatie hieraan voldoen?',
-    answer: 'De Wet open overheid (Woo) verplicht alle bestuursorganen tot actieve en passieve openbaarmaking van overheidsinformatie. Dit geldt voor 611 bestuursorganen — van gemeenten tot rijksoverheid. Niet voldoen kan leiden tot juridische procedures en reputatieschade.',
+    title: 'Woo-compliance',
+    items: [
+      {
+        question: 'Wat is de Woo en waarom moet mijn organisatie hieraan voldoen?',
+        answer: 'De Wet open overheid (Woo) verplicht alle bestuursorganen tot actieve en passieve openbaarmaking van overheidsinformatie. Dit geldt voor 611 bestuursorganen — van gemeenten tot rijksoverheid. Niet voldoen kan leiden tot juridische procedures en reputatieschade.',
+      },
+      {
+        question: 'Hoe snel kan OPMS ingezet worden?',
+        answer: 'OPMS is als SaaS direct beschikbaar. Een volledige on-premise implementatie duurt gemiddeld 3 maanden. We beginnen met een verkenningsgesprek, gevolgd door configuratie en een pilotfase. Daarna bent u operationeel.',
+      },
+      {
+        question: 'Wat kost de implementatie?',
+        answer: 'De kosten hangen af van de omvang van uw organisatie en het gekozen model. Een gedeelde SaaS-omgeving start vanaf €70K eenmalig. Een dedicated omgeving met maatwerk begint rond €140K. Geen doorlopende licentiekosten — alleen beheer en onderhoud.',
+      },
+      {
+        question: 'Is OPMS geschikt voor kleine gemeenten?',
+        answer: 'Absoluut. De gedeelde SaaS-omgeving is specifiek ontworpen voor kleinere organisaties. U deelt de infrastructuur met andere gemeenten, wat de kosten laag houdt, terwijl uw data volledig gescheiden blijft.',
+      },
+    ],
   },
   {
-    question: 'Hoe snel kan OPMS ingezet worden?',
-    answer: 'OPMS is als SaaS direct beschikbaar. Een volledige on-premise implementatie duurt gemiddeld 3 maanden. We beginnen met een verkenningsgesprek, gevolgd door configuratie en een pilotfase. Daarna bent u operationeel.',
+    title: 'Samen ontwikkelen',
+    items: [
+      {
+        question: 'Kunnen wij samen met Staterra een geheel nieuwe oplossing bouwen?',
+        answer: 'Ja. We bouwen samen met overheden digitale oplossingen op maat — van eerste verkenning tot werkend product. U bepaalt de richting, wij leveren de technische realisatie. Het resultaat is open source en volledig van u.',
+      },
+      {
+        question: 'Hoe verloopt een co-creatietraject?',
+        answer: 'We starten met een verkenningsfase waarin we uw vraagstuk en bestaande systemen in kaart brengen. Daarna volgt een ontwerp- en prototypefase met korte iteraties. Na validatie bouwen we het product uit en zorgen we voor een soepele livegang.',
+      },
+      {
+        question: 'Wat als onze organisatie weinig technische kennis in huis heeft?',
+        answer: 'Dat is geen probleem. Staterra neemt de volledige technische realisatie op zich. Uw rol is het sturen op inhoud en prioriteiten — wij vertalen dat naar werkende software. U hoeft geen ontwikkelaars in dienst te hebben.',
+      },
+      {
+        question: 'Houden wij eigenaarschap over het eindresultaat?',
+        answer: 'Altijd. Alles wat we samen bouwen is open source. U bezit de broncode, kunt zelf doorontwikkelen of een andere partij inschakelen. Geen vendor lock-in, geen licentiekosten achteraf.',
+      },
+    ],
   },
   {
-    question: 'Wat kost de implementatie?',
-    answer: 'De kosten hangen af van de omvang van uw organisatie en het gekozen model. Een gedeelde SaaS-omgeving start vanaf €70K eenmalig. Een dedicated omgeving met maatwerk begint rond €140K. Geen doorlopende licentiekosten — alleen beheer en onderhoud.',
-  },
-  {
-    question: 'Houden wij als organisatie de regie?',
-    answer: 'Ja. OPMS is open source — u bezit de broncode en bent nooit afhankelijk van Staterra of een andere leverancier. U kunt op elk moment overstappen of zelf verder ontwikkelen. Dat is het fundament van onze aanpak.',
-  },
-  {
-    question: 'Is OPMS geschikt voor kleine gemeenten?',
-    answer: 'Absoluut. De gedeelde SaaS-omgeving is specifiek ontworpen voor kleinere organisaties. U deelt de infrastructuur met andere gemeenten, wat de kosten laag houdt, terwijl uw data volledig gescheiden blijft.',
-  },
-  {
-    question: 'Wat als wij al een ander systeem gebruiken?',
-    answer: 'OPMS kan naast bestaande systemen draaien en integreert via standaard API\'s met uw documentbeheersysteem. Migratie is mogelijk maar niet verplicht — veel organisaties starten OPMS als aanvulling op hun huidige landschap.',
+    title: 'Open source beheer',
+    items: [
+      {
+        question: 'Welke open source applicaties kan Staterra implementeren en beheren?',
+        answer: 'Naast OPMS implementeren en beheren wij open source platformen zoals Nextcloud (bestanden en samenwerking), Rocket.Chat (communicatie), Jitsi (videovergaderen) en andere applicaties die passen binnen de publieke sector. Altijd op uw eigen infrastructuur of een door u gekozen omgeving.',
+      },
+      {
+        question: 'Waarom zou ik Nextcloud via Staterra afnemen in plaats van zelf installeren?',
+        answer: 'Installeren is het begin — beheren is het werk. Staterra zorgt voor beveiligingsupdates, monitoring, back-ups, schaalbaarheid en 24/7 ondersteuning. U krijgt een productiewaardige omgeving zonder zelf een devops-team te hoeven opzetten.',
+      },
+      {
+        question: 'Kunnen jullie bestaande open source omgevingen overnemen?',
+        answer: 'Ja. We doen een assessment van uw huidige omgeving, brengen de staat van onderhoud en beveiliging in kaart, en nemen het beheer over. Indien nodig migreren we naar een stabielere of veiligere opzet.',
+      },
+      {
+        question: 'Wat als wij al een ander systeem gebruiken?',
+        answer: 'Open source oplossingen kunnen naast bestaande systemen draaien en integreren via standaard API\'s. Migratie is mogelijk maar niet verplicht — veel organisaties starten met een parallelle opzet en schakelen geleidelijk over.',
+      },
+    ],
   },
 ];
+
+// Flat array voor schema
+const ALL_FAQ_ITEMS = FAQ_CATEGORIES.flatMap((cat) => cat.items);
 
 const FAQ_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: FAQ_ITEMS.map((item) => ({
+  mainEntity: ALL_FAQ_ITEMS.map((item) => ({
     '@type': 'Question',
     name: item.question,
     acceptedAnswer: {
@@ -96,9 +143,18 @@ export function HomeFaq() {
           </h2>
         </div>
 
-        <div className="rounded-[20px] border border-neutral-200 bg-white px-6 lg:px-8">
-          {FAQ_ITEMS.map((item) => (
-            <FaqItem key={item.question} question={item.question} answer={item.answer} />
+        <div className="space-y-8">
+          {FAQ_CATEGORIES.map((category) => (
+            <div key={category.title}>
+              <h3 className="text-body-sm font-semibold text-brand-600 uppercase tracking-widest mb-3">
+                {category.title}
+              </h3>
+              <div className="rounded-[20px] border border-neutral-200 bg-white px-6 lg:px-8">
+                {category.items.map((item) => (
+                  <FaqItem key={item.question} question={item.question} answer={item.answer} />
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </Container>
