@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getSolution, getPage, mapMenuUrl } from '@/services/cms';
 import type { SolutionDetail, Page } from '@/lib/types';
 import { Container } from '@/components/ui/Container';
@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { FaqAccordion } from '@/components/ui/FaqAccordion';
 import { PageTemplate } from '@/components/templates/PageTemplate';
+import { PageMeta } from '@/components/PageMeta';
+import { DOELGROEP_CONFIG } from '@/lib/doelgroep-config';
 
 // ── Bestuurslaag-specifieke badge-kleuren en aantallen
 const LAYER_META: Record<string, { badge: string; count: string; color: string }> = {
@@ -87,6 +89,63 @@ export default function DynamicPage() {
           <p className="text-body text-neutral-500">Laden...</p>
         </Container>
       </div>
+    );
+  }
+
+  // Fallback voor staterra-* doelgroeppagina's als CMS niet beschikbaar is
+  const doelgroepConfig = slug ? DOELGROEP_CONFIG[slug] : undefined;
+  if (notFound && doelgroepConfig) {
+    return (
+      <>
+        <PageMeta title={doelgroepConfig.heroTitle} description={doelgroepConfig.heroSubtitle} />
+        <section
+          className="relative overflow-hidden py-20 lg:py-28"
+          style={{ background: 'var(--gradient-brand)' }}
+        >
+          <div aria-hidden="true" className="pointer-events-none absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full opacity-[0.07] bg-white" />
+          <Container variant="content" className="relative z-10">
+            <div className="max-w-[720px]">
+              <span className={`inline-block text-caption font-semibold px-3 py-1 rounded-full mb-5 ${doelgroepConfig.badgeColor}`}>
+                {doelgroepConfig.badge}
+              </span>
+              <h1 className="font-heading text-h1 font-semibold text-white mb-6 leading-[1.05]">
+                {doelgroepConfig.heroTitle}
+              </h1>
+              <p className="text-body-lg text-brand-200 mb-8 leading-relaxed">
+                {doelgroepConfig.heroSubtitle}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button as="link" href="/contact" variant="secondary" size="lg">
+                  Plan een verkenningsgesprek
+                </Button>
+                <Button as="link" href="/woo-oplossing" size="lg" className="bg-transparent text-white border border-white/40 hover:bg-white/10">
+                  Bekijk de Woo-oplossing →
+                </Button>
+              </div>
+            </div>
+          </Container>
+        </section>
+        <section className="bg-white py-16 lg:py-24">
+          <Container variant="text">
+            <div className="text-center">
+              <h2 className="font-heading text-h2 font-semibold text-neutral-950 mb-4">
+                Meer weten?
+              </h2>
+              <p className="text-body text-neutral-700 mb-8 max-w-[540px] mx-auto">
+                Ontdek hoe Staterra uw organisatie ondersteunt bij Woo-compliance en digitale dienstverlening.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button as="link" href="/oplossingen" variant="secondary">
+                  Bekijk alle oplossingen
+                </Button>
+                <Button as="link" href="/contact" variant="primary">
+                  Neem contact op
+                </Button>
+              </div>
+            </div>
+          </Container>
+        </section>
+      </>
     );
   }
 
