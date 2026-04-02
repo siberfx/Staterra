@@ -348,79 +348,14 @@ export default function OverOnsPage() {
         </Container>
       </section>
 
-      {/* ── 6. Referenties & social proof ─────────────────────── */}
+      {/* ── 6. Rechtspersoon ─────────────────────────────────── */}
       <section
         className="bg-white py-16 lg:py-24"
         aria-labelledby="referenties-heading"
       >
         <Container variant="content">
-          <div className="text-center mb-12">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
-              Track record
-            </span>
-            <h2
-              id="referenties-heading"
-              className="font-heading text-h2 font-semibold text-neutral-950 mb-4"
-            >
-              Wie we kennen en wie ons kent
-            </h2>
-            <p className="text-body text-neutral-700 max-w-[540px] mx-auto">
-              Staterra bouwt aan een netwerk van vertrouwen binnen de publieke
-              sector. Onze referenties spreken voor de kwaliteit van onze aanpak.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-[900px] mx-auto">
-            {/* Referentie */}
-            <Card padding="loose" hover={false} className="bg-brand-100 border-brand-200">
-              <div className="flex items-start gap-4 mb-5">
-                <div className="flex-shrink-0 w-12 h-12 rounded-[10px] bg-brand-700 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-heading text-h5 font-semibold text-neutral-950">
-                    Ministerie van Justitie en Veiligheid
-                  </h3>
-                  <p className="text-caption text-neutral-500">Referentieklant</p>
-                </div>
-              </div>
-              <p className="text-body-sm text-neutral-700 leading-relaxed">
-                Staterra werkt samen met het Ministerie van Justitie en Veiligheid
-                aan de implementatie van de Woo-oplossing. De samenwerking loopt
-                nog — details worden gedeeld zodra toestemming is verkregen.
-              </p>
-            </Card>
-
-            {/* In gesprek met */}
-            <Card padding="loose" hover={false}>
-              <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-5">
-                In gesprek met
-              </h3>
-              <div className="space-y-3">
-                {[
-                  'Ministerie van Justitie en Veiligheid',
-                  'Drie departementen (details onder embargo)',
-                  'Twee overheids ICT-organisaties (details onder embargo)',
-                ].map((org) => (
-                  <div key={org} className="flex items-center gap-2.5">
-                    <span
-                      aria-hidden="true"
-                      className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-brand-400"
-                    />
-                    <span className="text-body-sm text-neutral-700">{org}</span>
-                  </div>
-                ))}
-              </div>
-              <p className="text-caption text-neutral-500 mt-4 pt-4 border-t border-neutral-100">
-                Gesprekken lopen. Details worden gedeeld zodra akkoord is bereikt.
-              </p>
-            </Card>
-          </div>
-
           {/* Kvk / rechtspersoon */}
-          <div className="mt-8 max-w-[900px] mx-auto">
+          <div className="max-w-[900px] mx-auto">
             <div className="rounded-[16px] border border-neutral-200 bg-neutral-50 px-6 py-4 flex flex-wrap items-center gap-x-8 gap-y-2">
               <span className="text-caption text-neutral-500">
                 <strong className="text-neutral-800 font-semibold">Staterra B.V.</strong>

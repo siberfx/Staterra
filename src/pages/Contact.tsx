@@ -322,18 +322,6 @@ export default function ContactPage() {
         </section>
       )}
 
-      {/* ── 4. Social proof ───────────────────────────────────── */}
-      <section className="bg-white py-12" aria-label="Referenties">
-        <Container variant="content">
-          <div className="rounded-[16px] bg-brand-100 border border-brand-200 px-8 py-6 text-center">
-            <p className="text-body-sm text-neutral-700">
-              <strong className="text-neutral-950 font-semibold">In gesprek met:</strong>{' '}
-              Ministerie van Justitie en Veiligheid, drie andere departementen
-              en twee overheids ICT-organisaties.
-            </p>
-          </div>
-        </Container>
-      </section>
     </>
   );
 }
