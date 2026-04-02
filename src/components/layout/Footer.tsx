@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { mapMenuUrl } from '@/services/cms';
+import { mapMenuUrl, submitContactForm } from '@/services/cms';
 import type { FooterMenuResponse, SettingsResponse } from '@/lib/types';
 import { Container } from '@/components/ui/Container';
 import { BESTUURSORGANEN_STATS } from '@/lib/data/bestuursorganen-stats';
@@ -10,6 +11,70 @@ interface FooterProps {
 }
 
 const currentYear = new Date().getFullYear();
+
+function FooterForm() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!email.trim()) return;
+    setStatus('sending');
+    try {
+      const result = await submitContactForm({ email, reden: 'Verkenningsgesprek' });
+      setStatus(result.success ? 'success' : 'error');
+    } catch {
+      setStatus('error');
+    }
+  }
+
+  if (status === 'success') {
+    return (
+      <div className="rounded-[10px] bg-white/10 px-5 py-4 text-center">
+        <p className="text-body-sm font-semibold text-white mb-1">Bedankt voor uw aanvraag</p>
+        <p className="text-caption text-brand-200/70">Wij nemen binnen twee werkdagen contact met u op.</p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} aria-label="Verkenningsgesprek aanvragen" className="flex flex-col gap-3">
+      <div className="flex flex-col sm:flex-row gap-3">
+        <div className="flex-1">
+          <label htmlFor="footer-email" className="block text-caption text-brand-200/60 mb-1.5">
+            Uw zakelijke e-mailadres
+          </label>
+          <input
+            id="footer-email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="naam@organisatie.nl"
+            required
+            autoComplete="email"
+            className="w-full rounded-[10px] border border-white/20 bg-white/10 px-4 py-2.5 text-body-sm text-white placeholder:text-brand-300/60 focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/30 transition-colors"
+          />
+        </div>
+        <button
+          type="submit"
+          disabled={status === 'sending'}
+          className="flex-shrink-0 self-end rounded-[10px] bg-brand-400 px-5 py-2.5 text-body-sm font-semibold text-brand-900 hover:bg-white hover:text-brand-900 transition-all duration-[180ms] whitespace-nowrap disabled:opacity-60 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-900"
+        >
+          {status === 'sending' ? 'Verzenden...' : 'Plan een verkenningsgesprek'}
+        </button>
+      </div>
+      {status === 'error' && (
+        <p className="text-caption text-red-300">Er ging iets mis. Probeer het opnieuw of mail ons direct.</p>
+      )}
+      <div className="flex items-center gap-1.5 text-caption text-brand-200/50">
+        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+        </svg>
+        Uw gegevens zijn veilig
+      </div>
+    </form>
+  );
+}
 
 // ── Kolomtitels op basis van positie ─────────────────────────
 // De CMS stuurt alleen een kolomnummer, geen titel.
@@ -192,42 +257,7 @@ export function Footer({ menu, settings }: FooterProps) {
                 Wij nemen persoonlijk contact op — geen automatische mails.
               </p>
             </div>
-            <form
-              action="/api/contact-form"
-              method="POST"
-              aria-label="Verkenningsgesprek aanvragen"
-              className="flex flex-col gap-3"
-            >
-              <input type="hidden" name="reden" value="Verkenningsgesprek" />
-              <div className="flex flex-col sm:flex-row gap-3">
-                <div className="flex-1">
-                  <label htmlFor="footer-email" className="block text-caption text-brand-200/60 mb-1.5">
-                    Uw zakelijke e-mailadres
-                  </label>
-                  <input
-                    id="footer-email"
-                    name="email"
-                    type="email"
-                    placeholder="naam@organisatie.nl"
-                    required
-                    autoComplete="email"
-                    className="w-full rounded-[10px] border border-white/20 bg-white/10 px-4 py-2.5 text-body-sm text-white placeholder:text-brand-300/60 focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/30 transition-colors"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="flex-shrink-0 self-end rounded-[10px] bg-brand-400 px-5 py-2.5 text-body-sm font-semibold text-brand-900 hover:bg-white hover:text-brand-900 transition-all duration-[180ms] whitespace-nowrap focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-900"
-                >
-                  Plan een verkenningsgesprek
-                </button>
-              </div>
-              <div className="flex items-center gap-1.5 text-caption text-brand-200/50">
-                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-                </svg>
-                Uw gegevens zijn veilig
-              </div>
-            </form>
+            <FooterForm />
           </div>
         </div>
 
