@@ -77,6 +77,9 @@ function MainSolutionCard({ solution }: { solution: Solution }) {
             <img
               src={imageSrc}
               alt={solution.title}
+              width={600}
+              height={208}
+              loading="lazy"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               onError={(e) => {
                 const fallback = FALLBACK_IMAGES[solution.anchor];
@@ -147,6 +150,9 @@ function TargetSolutionCard({ solution }: { solution: Solution }) {
               <img
                 src={solution.image}
                 alt=""
+                width={48}
+                height={48}
+                loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover"
                 aria-hidden="true"
               />
@@ -223,6 +229,8 @@ export default function OplossingsoverzichtPage() {
           <img
             src={bannerUrl}
             alt=""
+            width={1920}
+            height={600}
             className="absolute inset-0 w-full h-full object-cover opacity-20"
             aria-hidden="true"
           />

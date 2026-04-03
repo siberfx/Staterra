@@ -25,7 +25,11 @@ export default function HomePage() {
         schemas={[{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Staterra', url: 'https://staterra.nl' }]}
       />
       {/* 1 — Hero */}
-      {homepage?.hero && <Hero data={homepage.hero} />}
+      {homepage?.hero ? (
+        <Hero data={homepage.hero} />
+      ) : (
+        <div className="bg-brand-100 min-h-[min(76vh,620px)] lg:min-h-[min(93vh,1000px)]" />
+      )}
 
       {/* 2 — Statistieken */}
       <StatsBlock />

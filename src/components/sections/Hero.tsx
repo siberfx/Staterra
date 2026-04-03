@@ -99,6 +99,10 @@ export function Hero({ data }: HeroProps) {
             <img
               src={data.image}
               alt="Staterra — professionals in gesprek over digitale oplossingen voor de overheid"
+              width={960}
+              height={640}
+              fetchPriority="high"
+              loading="eager"
               className="absolute inset-0 w-full h-full object-cover object-center"
             />
           </div>

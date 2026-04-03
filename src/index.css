@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap");
+/* Fonts loaded via <link> in index.html for faster preconnect */
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
@@ -168,6 +168,12 @@
   :focus-visible {
     outline: 2px solid var(--brand-400);
     outline-offset: 2px;
+  }
+
+  /* Prevent CLS: images reserve space before loading */
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
 

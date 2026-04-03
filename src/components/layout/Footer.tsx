@@ -143,6 +143,8 @@ export function Footer({ menu, settings }: FooterProps) {
               <img
                 src={site.footer_logo}
                 alt={site?.name ?? 'Staterra'}
+                width={160}
+                height={40}
                 className="object-contain mb-6 h-10 w-auto"
               />
             ) : (

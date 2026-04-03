@@ -392,6 +392,8 @@ export function Header({ menu, settings }: HeaderProps) {
               <img
                 src={logoUrl}
                 alt={siteName}
+                width={140}
+                height={32}
                 className="object-contain h-8 w-auto"
               />
             ) : (
