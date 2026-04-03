@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getHomepage } from '@/services/cms';
 import { PageMeta } from '@/components/PageMeta';
+import heroImage from '@/assets/hero-bestuurder.png';
 import { SolutionCards } from '@/components/sections/SolutionCards';
 import { AboutBlock } from '@/components/sections/AboutBlock';
 import { UserFeaturesBlock } from '@/components/sections/UserFeaturesBlock';
@@ -23,23 +24,19 @@ export default function HomePage() {
       />
 
       {/* 1 — Hero met foto */}
-      <section className="relative overflow-hidden" aria-label="Introductie">
-        <div
-          className="absolute inset-0"
-          style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(22,62,116,0.03) 0%, transparent 70%)' }}
-        />
-        <div className="relative z-10 max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-8 pt-12 lg:pt-20 pb-12 lg:pb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] gap-8 lg:gap-12 items-center">
+      <section className="relative overflow-hidden bg-white" aria-label="Introductie">
+        <div className="max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-8 pt-10 lg:pt-16 pb-10 lg:pb-14">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.85fr] gap-6 lg:gap-10 items-center">
 
             {/* Linkerkolom: tekst + CTAs */}
-            <div className="max-w-[520px]">
-              <p className="text-caption font-semibold uppercase tracking-widest text-brand-600 mb-4">
-                Digitale oplossingen voor een overheid in beweging
+            <div>
+              <p className="text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+                Voor een overheid in beweging
               </p>
-              <h1 className="font-heading text-h2 sm:text-[2.25rem] lg:text-h1 font-bold text-neutral-950 mb-5 leading-[1.15]">
+              <h1 className="font-heading text-3xl sm:text-4xl lg:text-[2.5rem] font-bold text-neutral-950 mb-4 leading-[1.15]">
                 Steeds meer verplichtingen,<br className="hidden sm:block" /> steeds minder tijd
               </h1>
-              <p className="text-body text-neutral-500 leading-relaxed mb-8">
+              <p className="text-body text-neutral-500 leading-relaxed mb-7 max-w-[480px]">
                 Staterra ontwikkelt en implementeert digitale open source oplossingen die
                 direct werken in de praktijk — zonder dat u technisch hoeft mee te denken.
                 Een werkende oplossing binnen 3 maanden, volledig inzetbaar binnen 9.
@@ -53,7 +50,7 @@ export default function HomePage() {
                 </a>
                 <a
                   href="/oplossingen"
-                  className="bg-white text-brand-700 border border-neutral-200 rounded-[10px] px-6 py-3.5 text-body-sm font-medium hover:bg-brand-50 hover:border-brand-200 transition-all duration-200 group"
+                  className="bg-white text-brand-700 border border-brand-200 rounded-[10px] px-6 py-3.5 text-body-sm font-medium hover:bg-brand-50 hover:border-brand-300 transition-all duration-200 group"
                 >
                   Bekijk onze oplossingen
                   <span className="inline-block ml-1 group-hover:translate-x-1 transition-transform">→</span>
@@ -61,17 +58,21 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Rechterkolom: foto (alleen desktop) */}
+            {/* Rechterkolom: foto met gradient-fade */}
             <div className="relative hidden lg:block">
-              <div className="rounded-[20px] overflow-hidden shadow-[0_20px_60px_rgba(22,62,116,0.10)]">
+              <div className="relative rounded-[20px] overflow-hidden shadow-[0_20px_60px_rgba(22,62,116,0.08)]">
                 <img
-                  src={homepage?.hero?.image ?? '/images/samen-ontwikkelen-hero-2.png'}
+                  src={heroImage}
                   alt="Overheidsbestuurder aan het werk"
                   width={800}
                   height={600}
                   className="w-full h-auto object-cover"
                   loading="eager"
                   fetchPriority="high"
+                />
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{ background: 'linear-gradient(to right, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.4) 12%, transparent 28%)' }}
                 />
               </div>
             </div>
@@ -81,7 +82,7 @@ export default function HomePage() {
       </section>
 
       {/* 2 — Pillar strip */}
-      <section className="border-t border-neutral-100 bg-brand-50/40" aria-label="Onze pijlers">
+      <section className="border-t border-neutral-200 bg-brand-50" aria-label="Onze pijlers">
         <div className="max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             <div className="flex items-start gap-4">
