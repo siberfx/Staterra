@@ -10,6 +10,7 @@ import { PageTemplate } from '@/components/templates/PageTemplate';
 import { PageMeta } from '@/components/PageMeta';
 import LeadMagnetBanner from '@/components/LeadMagnetBanner';
 import { DOELGROEP_CONFIG } from '@/lib/doelgroep-config';
+import { ROUTE_SCHEMAS } from '@/config/structuredData';
 
 // ── Bestuurslaag-specifieke badge-kleuren en aantallen
 const LAYER_META: Record<string, { badge: string; count: string; color: string }> = {
@@ -98,7 +99,7 @@ export default function DynamicPage() {
   if (notFound && doelgroepConfig) {
     return (
       <>
-        <PageMeta title={doelgroepConfig.heroTitle} description={doelgroepConfig.heroSubtitle} />
+        <PageMeta title={doelgroepConfig.heroTitle} description={doelgroepConfig.heroSubtitle} schemas={ROUTE_SCHEMAS[slug] ?? []} />
         <section
           className="relative overflow-hidden py-20 lg:py-28"
           style={{ background: 'var(--gradient-brand)' }}
@@ -182,6 +183,11 @@ export default function DynamicPage() {
 
   return (
     <>
+      <PageMeta
+        title={solution.meta_title || solution.title}
+        description={solution.subtitle || undefined}
+        schemas={slug ? (ROUTE_SCHEMAS[slug] ?? []) : []}
+      />
       {/* ── 1. Hero ──────────────────────────────────────────── */}
       <section
         className="relative overflow-hidden py-20 lg:py-28"
