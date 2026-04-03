@@ -84,24 +84,30 @@ export default function HomePage() {
         <div className="relative z-10 max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-8 py-20 pb-28 lg:py-0 lg:pb-20">
           <div className="max-w-xl lg:max-w-[540px]">
             <p className="text-caption font-semibold uppercase tracking-widest text-brand-600 mb-5">
-              Digitale oplossingen voor de overheid
+              Digitale oplossingen voor een overheid in beweging
             </p>
 
             <h1 className="font-heading text-h1 font-bold text-neutral-950 mb-6 leading-[1.1]">
-              Wij bouwen en beheren wat de overheid nodig heeft
+              Steeds meer verplichtingen, steeds minder tijd
             </h1>
 
-            <p className="text-body text-neutral-500 leading-relaxed mb-10 max-w-[480px]">
-              Van Woo-compliance tot maatwerk platformen. Staterra ontwerpt, bouwt en
-              beheert open source oplossingen — zodat u de regie houdt zonder zelf een
-              ontwikkelteam op te bouwen.
+            <p className="text-body text-neutral-500 leading-relaxed mb-8 max-w-[500px]">
+              Overheidsorganisaties staan onder druk om compliant te blijven, processen
+              te moderniseren en tegelijk de regie te behouden. Staterra ontwikkelt en
+              implementeert digitale open source oplossingen die direct werken in de
+              praktijk — zonder dat u technisch hoeft mee te denken.
+            </p>
+
+            {/* Tijdlijn-belofte */}
+            <p className="text-body-sm text-neutral-950 font-semibold mb-8">
+              Een werkende MVP binnen 3 maanden. Volledig inzetbaar binnen 9 maanden.
             </p>
 
             {/* Drie pijler-kaarten */}
             <div className="space-y-3 mb-10">
               <PillarCard icon="woo" title="Woo-compliance met OPMS" subtitle="Werkend publicatieplatform direct beschikbaar" />
-              <PillarCard icon="opensource" title="Open source alternatieven" subtitle="Eigendom bij de overheid, geen vendor lock-in" />
-              <PillarCard icon="maatwerk" title="Maatwerk oplossingen" subtitle="Open source en gebouwd op de standaarden van de publieke sector" />
+              <PillarCard icon="opensource" title="Open source development" subtitle="Eigendom bij de overheid, geen vendor lock-in" />
+              <PillarCard icon="maatwerk" title="Maatwerk applicaties" subtitle="Open source en ontworpen om schaalbaar door te groeien" />
             </div>
 
             {/* CTAs */}
