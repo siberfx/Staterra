@@ -195,10 +195,6 @@ export function CTABlock({ data }: CTABlockProps) {
                   </button>
                 </div>
 
-                {/* Belofte */}
-                <p className="mt-3 text-caption italic text-brand-200/75">
-                  U ontvangt binnen twee werkdagen een eerste voorstel.
-                </p>
               </form>
 
               {/* Secondary link */}
