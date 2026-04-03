@@ -111,16 +111,16 @@ export default function HomePage() {
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-start">
               <a
                 href="/contact"
-                className="bg-brand-700 text-white rounded-[10px] px-7 py-4 text-body-sm font-medium text-center hover:bg-brand-900 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
+                className="bg-brand-700 text-white rounded-[10px] px-7 py-4 text-body-sm font-medium hover:bg-brand-900 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
               >
                 Laten we kennismaken
               </a>
               <a
                 href="/oplossingen"
-                className="bg-white text-brand-700 border border-brand-700 rounded-[10px] px-7 py-4 text-body-sm font-medium text-center hover:bg-brand-50 transition-all duration-200 group"
+                className="bg-white text-brand-700 border border-brand-700 rounded-[10px] px-7 py-4 text-body-sm font-medium hover:bg-brand-50 transition-all duration-200 group"
               >
                 Bekijk onze oplossingen
                 <span className="inline-block ml-1 group-hover:translate-x-1 transition-transform">→</span>
