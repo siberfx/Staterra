@@ -11,7 +11,7 @@ interface ComparisonRow {
 const ROWS: ComparisonRow[] = [
   {
     label: 'Doorlooptijd',
-    opms: '3–6 maanden',
+    opms: '3–6 maanden (SaaS direct beschikbaar)',
     centraal: 'Meerdere jaren',
     maatwerk: '6–18 maanden',
     highlight: true,
