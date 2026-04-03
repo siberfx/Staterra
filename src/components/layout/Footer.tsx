@@ -21,7 +21,14 @@ function FooterForm() {
     if (!email.trim()) return;
     setStatus('sending');
     try {
-      const result = await submitContactForm({ email, reden: 'Verkenningsgesprek' });
+      const result = await submitContactForm({
+        first_name: 'Verkenning',
+        last_name: 'Aanvraag',
+        email,
+        reden: 'Verkenningsgesprek',
+        bericht: `Verkenningsgesprek aangevraagd via footer op ${window.location.pathname}`,
+        'avg-optin': '1',
+      });
       setStatus(result.success ? 'success' : 'error');
     } catch {
       setStatus('error');
