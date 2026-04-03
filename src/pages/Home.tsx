@@ -27,16 +27,16 @@ export default function HomePage() {
       {/* 1 — Hero (hardcoded content, CMS levert alleen de afbeelding) */}
       <Hero data={{
         label: 'Digitale oplossingen voor de overheid',
-        heading: 'Wij bouwen en beheren wat de overheid nodig heeft',
+        heading: 'Digitale slagkracht voor de overheid',
         paragraph: 'Van Woo-compliance tot maatwerk platformen. Staterra ontwerpt, bouwt en beheert open source oplossingen voor overheidsorganisaties — zodat u de regie houdt zonder zelf een ontwikkelteam op te bouwen.',
-        cta_text: 'Laten we kennismaken',
-        cta_url: '/contact',
+        cta_primary_text: 'Laten we kennismaken',
+        cta_primary_url: '/contact',
         cta_secondary_text: 'Bekijk onze oplossingen →',
         cta_secondary_url: '/oplossingen',
         bullets: [
-          'Woo-compliance met OPMS — werkend platform binnen 3 maanden',
-          'Open source development — eigendom bij de overheid, geen vendor lock-in',
-          'Maatwerk applicaties — gebouwd op de standaarden van de publieke sector',
+          { icon: 'check', text: 'Woo-compliance met OPMS — werkend platform binnen 3 maanden' },
+          { icon: 'check', text: 'Open source development — eigendom bij de overheid, geen vendor lock-in' },
+          { icon: 'check', text: 'Maatwerk applicaties — gebouwd op de standaarden van de publieke sector' },
         ],
         image: homepage?.hero?.image ?? null,
       }} />
