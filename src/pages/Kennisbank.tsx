@@ -294,7 +294,7 @@ export default function KennisbankPage() {
         <Container variant="content">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8 items-end">
             <div>
-              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-4">
+              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-4">
                 Kennisbank
               </span>
               <h1 className="font-heading text-h1 font-semibold text-neutral-950 mb-4 leading-[1.05]">
@@ -425,7 +425,7 @@ export default function KennisbankPage() {
       >
         <Container variant="text">
           <div className="text-center">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
               Op de hoogte blijven
             </span>
             <h2 className="font-heading text-h3 font-semibold text-neutral-950 mb-3 leading-snug">

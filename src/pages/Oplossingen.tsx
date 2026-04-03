@@ -277,7 +277,7 @@ export default function OplossingsoverzichtPage() {
       <section className="bg-brand-50 py-16 lg:py-20" aria-labelledby="urgentie-heading">
         <Container variant="content">
           <div className="text-center mb-12">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
               De omvang
             </span>
             <h2
@@ -329,7 +329,7 @@ export default function OplossingsoverzichtPage() {
       >
         <Container variant="content">
           <div className="text-center mb-12">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
               Onze aanpak
             </span>
             <h2
@@ -374,7 +374,7 @@ export default function OplossingsoverzichtPage() {
       <section className="bg-brand-100 py-14 lg:py-20" aria-label="Waarom open source">
         <Container variant="text">
           <div className="text-center">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-4">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-4">
               Onze overtuiging
             </span>
             <h2 className="font-heading text-h2 font-semibold text-neutral-950 mb-6 leading-[1.1]">
@@ -423,7 +423,7 @@ export default function OplossingsoverzichtPage() {
         >
           <Container variant="content">
             <div className="text-center mb-12">
-              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
                 Per bestuurslaag
               </span>
               <h2

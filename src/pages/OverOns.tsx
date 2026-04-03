@@ -106,7 +106,7 @@ export default function OverOnsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Tekst */}
             <div>
-              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-4">
+              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-4">
                 Positionering
               </span>
               <h2
@@ -192,7 +192,7 @@ export default function OverOnsPage() {
       >
         <Container variant="content">
           <div className="text-center mb-14">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
               Missie
             </span>
             <h2
@@ -235,7 +235,7 @@ export default function OverOnsPage() {
       >
         <Container variant="content">
           <div className="text-center mb-14">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
               Samenwerking
             </span>
             <h2

@@ -24,7 +24,7 @@ export function Hero({ data }: HeroProps) {
           <div className="max-w-xl">
 
             {data.label && (
-              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-4">
+              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-4">
                 {data.label}
               </span>
             )}

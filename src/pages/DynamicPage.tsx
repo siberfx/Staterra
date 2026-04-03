@@ -377,7 +377,7 @@ export default function DynamicPage() {
         >
           <Container variant="text">
             <div className="text-center mb-10">
-              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
                 Vragen
               </span>
               <h2

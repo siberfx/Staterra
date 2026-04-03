@@ -103,7 +103,7 @@ export function ComparisonTable() {
     >
       <Container variant="content">
         <div className="text-center mb-12">
-          <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+          <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
             Vergelijking
           </span>
           <h2

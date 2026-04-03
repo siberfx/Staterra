@@ -166,7 +166,7 @@ export function HomeFaq() {
     <section className="bg-white py-12 lg:py-16" aria-labelledby="faq-heading">
       <Container variant="text">
         <div className="text-center mb-10">
-          <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+          <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
             Veelgestelde vragen
           </span>
           <h2

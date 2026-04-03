@@ -180,7 +180,7 @@ export default function WooOplossing() {
       <section className="bg-white py-14 lg:py-20" aria-label="Markturgentie">
         <Container variant="text">
           <div className="text-center">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-4">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-4">
               De urgentie
             </span>
             <h2 className="font-heading text-h2 font-semibold text-neutral-950 mb-6 leading-[1.1]">
@@ -248,7 +248,7 @@ export default function WooOplossing() {
           <Container variant="content">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
               <div>
-                <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-4">
+                <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-4">
                   De oplossing
                 </span>
                 <h2
@@ -330,7 +330,7 @@ export default function WooOplossing() {
       >
         <Container variant="content">
           <div className="text-center mb-12">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
               Deelname
             </span>
             <h2
@@ -401,7 +401,7 @@ export default function WooOplossing() {
       >
         <Container variant="content">
           <div className="text-center mb-12">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
               Toepassingsgebied
             </span>
             <h2
@@ -454,7 +454,7 @@ export default function WooOplossing() {
         >
           <Container variant="text">
             <div className="text-center mb-10">
-              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
                 Vragen
               </span>
               <h2

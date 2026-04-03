@@ -294,7 +294,7 @@ export default function ContactPage() {
         >
           <Container variant="content">
             <div className="text-center mb-10">
-              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
                 {contact?.faqs?.title ?? 'Veelgestelde vragen'}
               </span>
               <h2

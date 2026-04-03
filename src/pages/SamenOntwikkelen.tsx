@@ -181,7 +181,7 @@ export default function SamenOntwikkelenPage() {
         <Container variant="content">
           {/* Intro-citaat */}
           <div className="max-w-[760px] mx-auto text-center mb-14">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-4">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-4">
               Onze aanpak
             </span>
             <h2
@@ -231,7 +231,7 @@ export default function SamenOntwikkelenPage() {
           <Container variant="content">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
               <div>
-                <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-4">
+                <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-4">
                   Wat wij realiseren
                 </span>
                 <h2
@@ -285,7 +285,7 @@ export default function SamenOntwikkelenPage() {
       >
         <Container variant="content">
           <div className="text-center mb-14">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
               Tijdlijn
             </span>
             <h2
@@ -410,7 +410,7 @@ export default function SamenOntwikkelenPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Tekst */}
             <div>
-              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-4">
+              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-4">
                 Samenwerking
               </span>
               <h2
@@ -488,7 +488,7 @@ export default function SamenOntwikkelenPage() {
         >
           <Container variant="text">
             <div className="text-center mb-10">
-              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
                 Vragen
               </span>
               <h2

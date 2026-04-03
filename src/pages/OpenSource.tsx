@@ -215,7 +215,7 @@ export default function OpenSourcePage() {
       >
         <Container variant="content">
           <div className="text-center mb-12">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
               Voordelen
             </span>
             <h2
@@ -261,7 +261,7 @@ export default function OpenSourcePage() {
           <Container variant="content">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
               <div>
-                <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-4">
+                <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-4">
                   Staterra&apos;s aanpak
                 </span>
                 <h2
@@ -317,7 +317,7 @@ export default function OpenSourcePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Citaatblok */}
             <div>
-              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-4">
+              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-4">
                 Comply-or-explain
               </span>
               <h2
@@ -396,7 +396,7 @@ export default function OpenSourcePage() {
       >
         <Container variant="content">
           <div className="text-center mb-12">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
               Vergelijking
             </span>
             <h2
@@ -467,7 +467,7 @@ export default function OpenSourcePage() {
       >
         <Container variant="content">
           <div className="text-center mb-4">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
               Transparantie
             </span>
             <h2
@@ -542,7 +542,7 @@ export default function OpenSourcePage() {
         >
           <Container variant="text">
             <div className="text-center mb-10">
-              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
                 Vragen
               </span>
               <h2

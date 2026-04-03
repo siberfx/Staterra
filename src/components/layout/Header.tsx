@@ -95,6 +95,8 @@ function DropdownMenu({ items, isOpen }: { items: MenuItem[]; isOpen: boolean })
         isOpen ? 'pointer-events-auto' : 'pointer-events-none',
       ].join(' ')}
       aria-hidden={!isOpen}
+      // @ts-expect-error -- inert is valid HTML but React types lag behind
+      inert={!isOpen ? '' : undefined}
     >
       {/* Inner: alleen de visuele transitie */}
       <div
@@ -310,6 +312,8 @@ function MobileMenu({
         isOpen ? 'max-h-[calc(100dvh-4rem)] opacity-100' : 'max-h-0 opacity-0',
       ].join(' ')}
       aria-hidden={!isOpen}
+      // @ts-expect-error -- inert is valid HTML but React types lag behind
+      inert={!isOpen ? '' : undefined}
     >
       <div className="overflow-y-auto max-h-[calc(100dvh-4rem)]">
         <Container variant="page" className="py-4">

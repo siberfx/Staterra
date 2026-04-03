@@ -297,7 +297,7 @@ export default function AanpakPage() {
       <section className="bg-white py-14 lg:py-20" aria-labelledby="principes-heading">
         <Container variant="content">
           <div className="text-center mb-12">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
               Uitgangspunten
             </span>
             <h2 id="principes-heading" className="font-heading text-h2 font-semibold text-neutral-950">
@@ -331,7 +331,7 @@ export default function AanpakPage() {
       <section className="bg-brand-100 py-16 lg:py-24" aria-labelledby="aanpak-per-oplossing">
         <Container variant="content">
           <div className="text-center mb-10">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
               De aanpak
             </span>
             <h2 id="aanpak-per-oplossing" className="font-heading text-h2 font-semibold text-neutral-950 mb-4">
@@ -470,7 +470,7 @@ export default function AanpakPage() {
       <section className="bg-white py-16 lg:py-24" aria-labelledby="schaal-heading">
         <Container variant="content">
           <div className="text-center mb-12">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
               Schaalgrootte
             </span>
             <h2 id="schaal-heading" className="font-heading text-h2 font-semibold text-neutral-950 mb-4">
@@ -525,7 +525,7 @@ export default function AanpakPage() {
       <section className="bg-brand-100 py-16 lg:py-24" aria-labelledby="faq-aanpak-heading">
         <Container variant="content">
           <div className="text-center mb-10">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
               Vragen
             </span>
             <h2 id="faq-aanpak-heading" className="font-heading text-h2 font-semibold text-neutral-950">

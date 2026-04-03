@@ -214,7 +214,7 @@ export default function DienstverleningPage() {
       <section className="bg-white py-14 lg:py-20" aria-label="Introductie dienstverlening">
         <Container variant="text">
           <div className="text-center">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-4">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-4">
               Onze visie
             </span>
             <h2 className="font-heading text-h2 font-semibold text-neutral-950 mb-6 leading-[1.1]">
@@ -243,7 +243,7 @@ export default function DienstverleningPage() {
       >
         <Container variant="content">
           <div className="text-center mb-14">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
               Kerndiensten
             </span>
             <h2
@@ -355,7 +355,7 @@ export default function DienstverleningPage() {
                   Staterra Academy
                 </span>
               </div>
-              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
                 Vijfde dienst
               </span>
               <h2
@@ -490,7 +490,7 @@ export default function DienstverleningPage() {
       >
         <Container variant="content">
           <div className="text-center mb-12">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
               Inzetbaarheid
             </span>
             <h2

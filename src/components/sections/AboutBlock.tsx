@@ -19,7 +19,7 @@ export function AboutBlock({ data }: AboutBlockProps) {
           {/* ── Tekstkolom (60%) ──────────────────────────── */}
           <div className="order-2 lg:order-1 max-w-[600px]">
             {data.label && (
-              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-4">
+              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-4">
                 {data.label}
               </span>
             )}

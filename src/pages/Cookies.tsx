@@ -120,7 +120,7 @@ export default function CookiesPage() {
       >
         <Container variant="content">
           <div className="max-w-[680px]">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-600 mb-4">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-4">
               Juridisch
             </span>
             <h1 className="font-heading text-h1 font-semibold text-neutral-950 mb-4 leading-[1.05]">
