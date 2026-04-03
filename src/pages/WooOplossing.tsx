@@ -305,7 +305,7 @@ export default function WooOplossing() {
 
       {/* -- 4. Deelnamemodellen -- */}
       <section
-        className="bg-brand-100 py-16 lg:py-24"
+        className="bg-white py-16 lg:py-24"
         aria-labelledby="models-heading"
       >
         <Container variant="content">
@@ -376,7 +376,7 @@ export default function WooOplossing() {
 
       {/* -- 6. Doelgroepen per bestuurslaag -- */}
       <section
-        className="bg-white py-16 lg:py-24"
+        className="bg-neutral-50 py-16 lg:py-24"
         aria-labelledby="audience-heading"
       >
         <Container variant="content">
