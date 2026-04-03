@@ -3,6 +3,7 @@ import { useSite } from '@/contexts/SiteContext'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { Breadcrumb } from '@/components/Breadcrumb'
+import { DefaultPageMeta } from '@/components/PageMeta'
 
 export function Layout() {
   const { settings, headerMenu, footerMenu } = useSite()
@@ -21,6 +22,9 @@ export function Layout() {
       <div className="pt-16 lg:pt-18">
         <Breadcrumb />
       </div>
+
+      {/* Fallback SEO — wordt overschreven door pagina's met eigen <PageMeta /> */}
+      <DefaultPageMeta />
 
       <main id="main-content" role="main" className="flex-1">
         <Outlet />

@@ -1,42 +1,41 @@
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
+import { getSeoForPath } from '@/config/seoConfig';
 
-const SITE_NAME = 'Staterra';
 const SITE_URL = 'https://staterra.nl';
 const DEFAULT_IMAGE = `${SITE_URL}/images/og-image.png`;
-const LOGO_URL = `${SITE_URL}/favicon.svg`;
-const DEFAULT_DESCRIPTION =
-  'Staterra implementeert en beheert OPMS, het open source platform voor Woo-compliance. Direct inzetbaar voor 611 bestuursorganen.';
 
-// Organization schema — verschijnt op elke pagina
 const ORGANIZATION_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: SITE_NAME,
+  name: 'Staterra',
   url: SITE_URL,
-  logo: LOGO_URL,
-  description: DEFAULT_DESCRIPTION,
+  logo: `${SITE_URL}/favicon.svg`,
+  description: 'Staterra implementeert en beheert OPMS, het open source publicatieplatform voor Woo-compliance.',
   areaServed: 'NL',
 };
 
 interface PageMetaProps {
-  title: string;
+  /** Override title (otherwise uses seoConfig) */
+  title?: string;
+  /** Override description (otherwise uses seoConfig) */
   description?: string;
   image?: string;
-  /** Extra JSON-LD schema's (WebSite, Service, etc.) */
   schemas?: Record<string, unknown>[];
 }
 
 export function PageMeta({ title, description, image, schemas }: PageMetaProps) {
   const { pathname } = useLocation();
-  const fullTitle = `${title} — ${SITE_NAME}`;
-  const desc = description ?? DEFAULT_DESCRIPTION;
+  const seo = getSeoForPath(pathname);
+
+  const fullTitle = title ? `${title} — Staterra` : seo.title;
+  const desc = description ?? seo.description;
   const url = `${SITE_URL}${pathname === '/' ? '' : pathname}`;
   const img = image ?? DEFAULT_IMAGE;
 
-  // Breadcrumb schema op basis van huidige route
+  // Breadcrumb schema
   const segments = pathname.split('/').filter(Boolean);
-  const breadcrumbSchema = {
+  const breadcrumbSchema = segments.length > 0 ? {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
@@ -48,11 +47,11 @@ export function PageMeta({ title, description, image, schemas }: PageMetaProps) 
         item: `${SITE_URL}/${segments.slice(0, i + 1).join('/')}`,
       })),
     ],
-  };
+  } : null;
 
   const allSchemas = [
     ORGANIZATION_SCHEMA,
-    ...(segments.length > 0 ? [breadcrumbSchema] : []),
+    ...(breadcrumbSchema ? [breadcrumbSchema] : []),
     ...(schemas ?? []),
   ];
 
@@ -78,4 +77,12 @@ export function PageMeta({ title, description, image, schemas }: PageMetaProps) 
       ))}
     </Helmet>
   );
+}
+
+/**
+ * Route-level fallback: voegt SEO meta toe voor pagina's
+ * die geen eigen <PageMeta /> hebben.
+ */
+export function DefaultPageMeta() {
+  return <PageMeta />;
 }
