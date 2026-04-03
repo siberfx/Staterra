@@ -1,54 +1,11 @@
 import { useState, useEffect } from 'react';
 import { getHomepage } from '@/services/cms';
 import { PageMeta } from '@/components/PageMeta';
-import AbstractShapes from '@/components/AbstractShapes';
 import { SolutionCards } from '@/components/sections/SolutionCards';
 import { AboutBlock } from '@/components/sections/AboutBlock';
 import { UserFeaturesBlock } from '@/components/sections/UserFeaturesBlock';
 import { CTABlock } from '@/components/sections/CTABlock';
 import { HomeFaq } from '@/components/sections/HomeFaq';
-
-// ── Pillar card ──────────────────────────────────────────────
-
-const PILLAR_ICONS: Record<string, React.ReactNode> = {
-  woo: (
-    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <rect x="3" y="1" width="14" height="18" rx="2" stroke="white" strokeWidth="1.5" />
-      <polyline points="7,10 9,12 13,8" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  ),
-  opensource: (
-    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <circle cx="10" cy="5" r="3" stroke="white" strokeWidth="1.5" />
-      <circle cx="4" cy="15" r="3" stroke="white" strokeWidth="1.5" />
-      <circle cx="16" cy="15" r="3" stroke="white" strokeWidth="1.5" />
-      <line x1="10" y1="8" x2="10" y2="11" stroke="white" strokeWidth="1.5" />
-      <path d="M10,11 Q10,13 4,12" stroke="white" strokeWidth="1.5" fill="none" />
-      <path d="M10,11 Q10,13 16,12" stroke="white" strokeWidth="1.5" fill="none" />
-    </svg>
-  ),
-  maatwerk: (
-    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <polyline points="6,7 2,10 6,13" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <polyline points="14,7 18,10 14,13" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <line x1="12" y1="4" x2="8" y2="16" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
-  ),
-};
-
-function PillarCard({ icon, title, subtitle }: { icon: string; title: string; subtitle: string }) {
-  return (
-    <div className="flex items-center gap-3 sm:gap-4 bg-white/80 backdrop-blur-sm border border-neutral-200/60 rounded-[16px] sm:rounded-[20px] px-4 sm:px-5 py-3 sm:py-4 transition-all duration-300 hover:border-brand-200 hover:shadow-sm">
-      <div className="flex-shrink-0 w-10 h-10 bg-brand-700 rounded-[10px] flex items-center justify-center">
-        {PILLAR_ICONS[icon]}
-      </div>
-      <div>
-        <p className="font-semibold text-neutral-950 text-body-sm">{title}</p>
-        <p className="text-neutral-400 text-body-sm mt-0.5">{subtitle}</p>
-      </div>
-    </div>
-  );
-}
 
 export default function HomePage() {
   const [homepage, setHomepage] = useState<any>(null);
@@ -64,63 +21,36 @@ export default function HomePage() {
         description="Staterra implementeert en beheert OPMS, het open source platform voor Woo-compliance. Direct inzetbaar voor 611 bestuursorganen."
         schemas={[{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Staterra', url: 'https://staterra.nl' }]}
       />
-      {/* 1 — Hero */}
-      <section
-        className="relative overflow-hidden min-h-[auto] lg:min-h-[90vh] flex items-center"
-        aria-label="Introductie"
-        style={{
-          background: `
-            radial-gradient(ellipse 70% 50% at 75% 30%, rgba(22,62,116,0.04) 0%, transparent 60%),
-            radial-gradient(ellipse 50% 60% at 25% 70%, rgba(46,123,191,0.03) 0%, transparent 50%)
-          `,
-        }}
-      >
-        {/* Abstract shapes — alleen desktop */}
-        <div className="absolute inset-0 pointer-events-none hidden lg:block" aria-hidden="true">
-          <AbstractShapes />
-        </div>
 
-        {/* Content */}
-        <div className="relative z-10 max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-8 py-20 pb-28 lg:py-0 lg:pb-20">
-          <div className="w-full max-w-[540px]">
-            <p className="text-caption font-semibold uppercase tracking-widest text-brand-600 mb-5">
+      {/* 1 — Compacte hero */}
+      <section className="relative overflow-hidden" aria-label="Introductie">
+        <div
+          className="absolute inset-0"
+          style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(22,62,116,0.03) 0%, transparent 70%)' }}
+        />
+        <div className="relative z-10 max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-8 pt-16 lg:pt-24 pb-14 lg:pb-20">
+          <div className="max-w-[640px]">
+            <p className="text-caption font-semibold uppercase tracking-widest text-brand-600 mb-4">
               Digitale oplossingen voor een overheid in beweging
             </p>
-
-            <h1 className="font-heading text-h1 font-bold text-neutral-950 mb-6 leading-[1.1]">
-              Steeds meer verplichtingen, steeds minder tijd
+            <h1 className="font-heading text-h1 font-bold text-neutral-950 mb-5 leading-[1.15]">
+              Steeds meer verplichtingen,<br className="hidden sm:block" /> steeds minder tijd
             </h1>
-
-            <p className="text-body text-neutral-500 leading-relaxed mb-8">
-              Overheidsorganisaties staan onder druk om compliant te blijven, processen
-              te moderniseren en tegelijk de regie te behouden. Staterra ontwikkelt en
-              implementeert digitale open source oplossingen die direct werken in de
-              praktijk — zonder dat u technisch hoeft mee te denken.
+            <p className="text-body text-neutral-500 leading-relaxed mb-8 max-w-[520px]">
+              Staterra ontwikkelt en implementeert digitale open source oplossingen die
+              direct werken in de praktijk — zonder dat u technisch hoeft mee te denken.
+              Een werkende oplossing binnen 3 maanden, volledig inzetbaar binnen 9.
             </p>
-
-            {/* Tijdlijn-belofte */}
-            <p className="text-body-sm text-neutral-950 font-semibold mb-8">
-              Een werkende MVP binnen 3 maanden. Volledig inzetbaar binnen 9 maanden.
-            </p>
-
-            {/* Drie pijler-kaarten */}
-            <div className="space-y-3 mb-10">
-              <PillarCard icon="woo" title="Woo-compliance met OPMS" subtitle="Werkend publicatieplatform direct beschikbaar" />
-              <PillarCard icon="opensource" title="Open source development" subtitle="Eigendom bij de overheid, geen vendor lock-in" />
-              <PillarCard icon="maatwerk" title="Maatwerk applicaties" subtitle="Open source en ontworpen om schaalbaar door te groeien" />
-            </div>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-start">
+            <div className="flex flex-wrap gap-3">
               <a
                 href="/contact"
-                className="bg-brand-700 text-white rounded-[10px] px-7 py-4 text-body-sm font-medium hover:bg-brand-900 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
+                className="bg-brand-700 text-white rounded-[10px] px-6 py-3.5 text-body-sm font-medium hover:bg-brand-900 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
               >
-                Laten we kennismaken
+                Plan een verkenning
               </a>
               <a
                 href="/oplossingen"
-                className="bg-white text-brand-700 border border-brand-700 rounded-[10px] px-7 py-4 text-body-sm font-medium hover:bg-brand-50 transition-all duration-200 group"
+                className="bg-white text-brand-700 border border-neutral-200 rounded-[10px] px-6 py-3.5 text-body-sm font-medium hover:bg-brand-50 hover:border-brand-200 transition-all duration-200 group"
               >
                 Bekijk onze oplossingen
                 <span className="inline-block ml-1 group-hover:translate-x-1 transition-transform">→</span>
@@ -128,31 +58,82 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-
-        {/* Bottom fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
       </section>
 
+      {/* 2 — Pillar strip */}
+      <section className="border-t border-neutral-100 bg-brand-50/40" aria-label="Onze pijlers">
+        <div className="max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-10 h-10 bg-brand-700 rounded-[10px] flex items-center justify-center mt-0.5">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <rect x="3" y="1" width="14" height="18" rx="2" stroke="white" strokeWidth="1.5" />
+                  <polyline points="7,10 9,12 13,8" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-semibold text-neutral-950 text-body-sm">Woo-compliance met OPMS</p>
+                <p className="text-neutral-500 text-body-sm mt-1 leading-relaxed">
+                  Werkend publicatieplatform direct beschikbaar voor bestuursorganen, gemeenten en waterschappen.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-10 h-10 bg-brand-700 rounded-[10px] flex items-center justify-center mt-0.5">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <circle cx="10" cy="5" r="3" stroke="white" strokeWidth="1.5" />
+                  <circle cx="4" cy="15" r="3" stroke="white" strokeWidth="1.5" />
+                  <circle cx="16" cy="15" r="3" stroke="white" strokeWidth="1.5" />
+                  <line x1="10" y1="8" x2="10" y2="11" stroke="white" strokeWidth="1.5" />
+                  <path d="M10,11 Q10,13 4,12" stroke="white" strokeWidth="1.5" fill="none" />
+                  <path d="M10,11 Q10,13 16,12" stroke="white" strokeWidth="1.5" fill="none" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-semibold text-neutral-950 text-body-sm">Open source development</p>
+                <p className="text-neutral-500 text-body-sm mt-1 leading-relaxed">
+                  Eigendom bij de overheid, geen vendor lock-in. Samen bouwen, zelf doorontwikkelen.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-10 h-10 bg-brand-700 rounded-[10px] flex items-center justify-center mt-0.5">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <polyline points="6,7 2,10 6,13" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <polyline points="14,7 18,10 14,13" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <line x1="12" y1="4" x2="8" y2="16" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-semibold text-neutral-950 text-body-sm">Maatwerk applicaties</p>
+                <p className="text-neutral-500 text-body-sm mt-1 leading-relaxed">
+                  Open source en ontworpen om schaalbaar door te groeien met uw organisatie.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* 3 — Oplossingskaarten */}
       {homepage?.feature_cards && (
         <SolutionCards data={homepage.feature_cards} />
       )}
 
-      {/* 5 — Over Staterra */}
+      {/* 4 — Over Staterra */}
       {homepage?.about_opms && (
         <AboutBlock data={homepage.about_opms} />
       )}
 
-      {/* 6 — Gebruikersvoordelen */}
+      {/* 5 — Gebruikersvoordelen */}
       {homepage?.user_features && (
         <UserFeaturesBlock data={homepage.user_features} />
       )}
 
-      {/* 8 — FAQ */}
+      {/* 6 — FAQ */}
       <HomeFaq />
 
-      {/* 9 — CTA-blok */}
+      {/* 7 — CTA-blok */}
       {homepage?.bottom_cta && <CTABlock data={homepage.bottom_cta} />}
     </>
   );
