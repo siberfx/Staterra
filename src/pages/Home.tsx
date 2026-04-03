@@ -38,7 +38,7 @@ const PILLAR_ICONS: Record<string, React.ReactNode> = {
 
 function PillarCard({ icon, title, subtitle }: { icon: string; title: string; subtitle: string }) {
   return (
-    <div className="flex items-center gap-4 bg-white/80 backdrop-blur-sm border border-neutral-200/60 rounded-[20px] px-5 py-4 transition-all duration-300 hover:border-brand-200 hover:shadow-sm">
+    <div className="flex items-center gap-3 sm:gap-4 bg-white/80 backdrop-blur-sm border border-neutral-200/60 rounded-[16px] sm:rounded-[20px] px-4 sm:px-5 py-3 sm:py-4 transition-all duration-300 hover:border-brand-200 hover:shadow-sm">
       <div className="flex-shrink-0 w-10 h-10 bg-brand-700 rounded-[10px] flex items-center justify-center">
         {PILLAR_ICONS[icon]}
       </div>
@@ -66,7 +66,7 @@ export default function HomePage() {
       />
       {/* 1 — Hero */}
       <section
-        className="relative overflow-hidden min-h-[90vh] flex items-center"
+        className="relative overflow-hidden min-h-[auto] lg:min-h-[90vh] flex items-center"
         aria-label="Introductie"
         style={{
           background: `
@@ -82,7 +82,7 @@ export default function HomePage() {
 
         {/* Content */}
         <div className="relative z-10 max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-8 py-20 pb-28 lg:py-0 lg:pb-20">
-          <div className="max-w-xl lg:max-w-[540px]">
+          <div className="w-full max-w-[540px]">
             <p className="text-caption font-semibold uppercase tracking-widest text-brand-600 mb-5">
               Digitale oplossingen voor een overheid in beweging
             </p>
@@ -91,7 +91,7 @@ export default function HomePage() {
               Steeds meer verplichtingen, steeds minder tijd
             </h1>
 
-            <p className="text-body text-neutral-500 leading-relaxed mb-8 max-w-[500px]">
+            <p className="text-body text-neutral-500 leading-relaxed mb-8">
               Overheidsorganisaties staan onder druk om compliant te blijven, processen
               te moderniseren en tegelijk de regie te behouden. Staterra ontwikkelt en
               implementeert digitale open source oplossingen die direct werken in de
@@ -111,16 +111,16 @@ export default function HomePage() {
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a
                 href="/contact"
-                className="bg-brand-700 text-white rounded-[10px] px-7 py-4 text-body-sm font-medium hover:bg-brand-900 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
+                className="bg-brand-700 text-white rounded-[10px] px-7 py-4 text-body-sm font-medium text-center hover:bg-brand-900 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
               >
                 Laten we kennismaken
               </a>
               <a
                 href="/oplossingen"
-                className="bg-white text-brand-700 border border-brand-700 rounded-[10px] px-7 py-4 text-body-sm font-medium hover:bg-brand-50 transition-all duration-200 group"
+                className="bg-white text-brand-700 border border-brand-700 rounded-[10px] px-7 py-4 text-body-sm font-medium text-center hover:bg-brand-50 transition-all duration-200 group"
               >
                 Bekijk onze oplossingen
                 <span className="inline-block ml-1 group-hover:translate-x-1 transition-transform">→</span>
