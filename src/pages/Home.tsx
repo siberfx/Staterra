@@ -82,7 +82,7 @@ export default function HomePage() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-0">
+        <div className="relative z-10 max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-8 py-20 pb-28 lg:py-0 lg:pb-20">
           <div className="max-w-xl lg:max-w-[540px]">
             <p className="text-caption font-semibold uppercase tracking-widest text-brand-600 mb-5">
               Digitale oplossingen voor de overheid
