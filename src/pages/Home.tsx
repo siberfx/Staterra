@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { getHomepage } from '@/services/cms';
 import { PageMeta } from '@/components/PageMeta';
 import AbstractShapes from '@/components/AbstractShapes';
-import { StatsBlock } from '@/components/sections/StatsBlock';
 import { SolutionCards } from '@/components/sections/SolutionCards';
 import { AboutBlock } from '@/components/sections/AboutBlock';
 import { UserFeaturesBlock } from '@/components/sections/UserFeaturesBlock';
@@ -102,8 +101,8 @@ export default function HomePage() {
             {/* Drie pijler-kaarten */}
             <div className="space-y-3 mb-10">
               <PillarCard icon="woo" title="Woo-compliance met OPMS" subtitle="Werkend publicatieplatform direct beschikbaar" />
-              <PillarCard icon="opensource" title="Open source development" subtitle="Eigendom bij de overheid, geen vendor lock-in" />
-              <PillarCard icon="maatwerk" title="Maatwerk applicaties" subtitle="Gebouwd op de standaarden van de publieke sector" />
+              <PillarCard icon="opensource" title="Open source alternatieven" subtitle="Eigendom bij de overheid, geen vendor lock-in" />
+              <PillarCard icon="maatwerk" title="Maatwerk oplossingen" subtitle="Open source en gebouwd op de standaarden van de publieke sector" />
             </div>
 
             {/* CTAs */}
@@ -129,8 +128,6 @@ export default function HomePage() {
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
       </section>
 
-      {/* 2 — Statistieken */}
-      <StatsBlock />
 
       {/* 3 — Herkenbaar? */}
       <section className="bg-neutral-50 py-12 lg:py-16" aria-label="Herkenbaar?">
