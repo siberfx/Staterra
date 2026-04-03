@@ -6,7 +6,6 @@ import type { Solution, SolutionsListResponse } from '@/lib/types';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
-import { BESTUURSORGANEN_STATS } from '@/lib/data/bestuursorganen-stats';
 
 // Anchors in vaste volgorde
 const MAIN_ANCHORS = ['samen-ontwikkelen', 'woo-oplossing', 'open-source'] as const;
@@ -273,56 +272,7 @@ export default function OplossingsoverzichtPage() {
         </Container>
       </section>
 
-      {/* -- 2. Urgentie-blok met cijfers -- */}
-      <section className="bg-brand-50 py-16 lg:py-20" aria-labelledby="urgentie-heading">
-        <Container variant="content">
-          <div className="text-center mb-12">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
-              De omvang
-            </span>
-            <h2
-              id="urgentie-heading"
-              className="font-heading text-h2 font-semibold text-neutral-950 mb-4"
-            >
-              {BESTUURSORGANEN_STATS.totaal} bestuursorganen moeten voldoen aan de Woo
-            </h2>
-            <p className="text-body text-neutral-700 max-w-[640px] mx-auto">
-              Van ministeries tot gemeenten — elk bestuursorgaan is zelfstandig
-              verantwoordelijk voor actieve en passieve openbaarmaking.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {([
-              { value: BESTUURSORGANEN_STATS.rijksbestuursorganen, label: 'Rijksbestuursorganen', detail: `${BESTUURSORGANEN_STATS.kerndepartementen} departementen` },
-              { value: BESTUURSORGANEN_STATS.gemeenten, label: 'Gemeenten', detail: 'Alle gemeenten' },
-              { value: BESTUURSORGANEN_STATS.waterschappen, label: 'Waterschappen', detail: 'Alle waterschappen' },
-              { value: BESTUURSORGANEN_STATS.provincies, label: 'Provincies', detail: 'Alle provincies' },
-            ] as const).map((cat) => (
-              <div key={cat.label} className="bg-white rounded-[16px] p-6 text-center shadow-sm">
-                <span
-                  className="block font-heading font-semibold text-brand-700 mb-1"
-                  style={{ fontSize: '2.25rem', lineHeight: 1 }}
-                >
-                  {cat.value}
-                </span>
-                <span className="block text-body-sm font-semibold text-neutral-800 mt-2">
-                  {cat.label}
-                </span>
-                <span className="block text-caption text-neutral-500 mt-1">
-                  {cat.detail}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          <p className="text-center text-caption text-neutral-400 mt-8">
-            Bron: gevalideerd overzicht op basis van Rijksoverheid.nl, april 2025
-          </p>
-        </Container>
-      </section>
-
-      {/* -- 3. Drie hoofdoplossingen -- */}
+      {/* -- 2. Drie hoofdoplossingen -- */}
       <section
         className="bg-white py-16 lg:py-24"
         aria-labelledby="main-solutions-heading"

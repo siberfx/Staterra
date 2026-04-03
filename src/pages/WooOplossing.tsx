@@ -176,66 +176,52 @@ export default function WooOplossing() {
         </Container>
       </section>
 
-      {/* -- 2. Markturgentie -- */}
-      <section className="bg-white py-14 lg:py-20" aria-label="Markturgentie">
-        <Container variant="text">
-          <div className="text-center">
-            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-4">
-              De urgentie
+      {/* -- 2. De omvang -- */}
+      <section className="bg-brand-50 py-16 lg:py-20" aria-labelledby="omvang-heading">
+        <Container variant="content">
+          <div className="text-center mb-12">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
+              De omvang
             </span>
-            <h2 className="font-heading text-h2 font-semibold text-neutral-950 mb-6 leading-[1.1]">
-              De klok tikt: 8–18 maanden
+            <h2
+              id="omvang-heading"
+              className="font-heading text-h2 font-semibold text-neutral-950 mb-4"
+            >
+              {BESTUURSORGANEN_STATS.totaal} bestuursorganen moeten voldoen aan de Woo
             </h2>
-            <p className="text-body-lg text-neutral-700 leading-relaxed mb-8">
-              In totaal{' '}
-              <strong className="text-neutral-950 font-semibold">
-                {BESTUURSORGANEN_STATS.totaal} bestuursorganen
-              </strong>{' '}
-              — {BESTUURSORGANEN_STATS.kerndepartementen} kerndepartementen, {BESTUURSORGANEN_STATS.rijksbestuursorganen} rijksorganen, {BESTUURSORGANEN_STATS.provincies} provincies, {BESTUURSORGANEN_STATS.waterschappen} waterschappen en {BESTUURSORGANEN_STATS.gemeenten} gemeenten — moeten binnen{' '}
-              <strong className="text-neutral-950 font-semibold">
-                8 tot 18 maanden
-              </strong>{' '}
-              een werkende Woo-oplossing hebben.
-            </p>
-            <p className="text-body text-neutral-700 leading-relaxed">
-              OPMS is vandaag beschikbaar, bewezen in de praktijk en
-              implementeerbaar in{' '}
-              <strong className="text-neutral-950 font-semibold">
-                3 maanden
-              </strong>
-              . U hoeft niet te wachten op een nieuw ontwikkeltraject.
+            <p className="text-body text-neutral-700 max-w-[640px] mx-auto">
+              Van ministeries tot gemeenten — elk bestuursorgaan is zelfstandig
+              verantwoordelijk voor actieve en passieve openbaarmaking.
             </p>
           </div>
-        </Container>
 
-        {/* Urgentie-getallen */}
-        <Container variant="content" className="mt-12">
-          <dl className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-neutral-200 rounded-[16px] overflow-hidden">
-            {[
-              { value: String(BESTUURSORGANEN_STATS.totaal), label: 'Bestuursorganen', sub: 'verplicht Woo-compliant' },
-              { value: '8–18', label: 'Maanden', sub: 'wettelijke deadline' },
-              { value: '3 mnd', label: 'Implementatie', sub: 'van start tot werkend' },
-              { value: '100%', label: 'Open source', sub: 'eigendom bij de overheid' },
-            ].map((s) => (
-              <div key={s.value} className="bg-white px-6 py-8 text-center">
-                <dt className="sr-only">{s.label}</dt>
-                <dd>
-                  <span
-                    className="block font-heading font-semibold text-brand-700 mb-1"
-                    style={{ fontSize: '2.5rem', lineHeight: 1 }}
-                  >
-                    {s.value}
-                  </span>
-                  <span className="block text-body-sm font-semibold text-neutral-800">
-                    {s.label}
-                  </span>
-                  <span className="block text-caption text-neutral-500 mt-0.5">
-                    {s.sub}
-                  </span>
-                </dd>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {([
+              { value: BESTUURSORGANEN_STATS.rijksbestuursorganen, label: 'Rijksbestuursorganen', detail: `${BESTUURSORGANEN_STATS.kerndepartementen} departementen` },
+              { value: BESTUURSORGANEN_STATS.gemeenten, label: 'Gemeenten', detail: 'Alle gemeenten' },
+              { value: BESTUURSORGANEN_STATS.waterschappen, label: 'Waterschappen', detail: 'Alle waterschappen' },
+              { value: BESTUURSORGANEN_STATS.provincies, label: 'Provincies', detail: 'Alle provincies' },
+            ] as const).map((cat) => (
+              <div key={cat.label} className="bg-white rounded-[16px] p-6 text-center shadow-sm">
+                <span
+                  className="block font-heading font-semibold text-brand-700 mb-1"
+                  style={{ fontSize: '2.25rem', lineHeight: 1 }}
+                >
+                  {cat.value}
+                </span>
+                <span className="block text-body-sm font-semibold text-neutral-800 mt-2">
+                  {cat.label}
+                </span>
+                <span className="block text-caption text-neutral-500 mt-1">
+                  {cat.detail}
+                </span>
               </div>
             ))}
-          </dl>
+          </div>
+
+          <p className="text-center text-caption text-neutral-400 mt-8">
+            Bron: gevalideerd overzicht op basis van Rijksoverheid.nl, april 2025
+          </p>
         </Container>
       </section>
 
