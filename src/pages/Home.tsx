@@ -144,38 +144,7 @@ export default function HomePage() {
         <AboutBlock data={homepage.about_opms} />
       )}
 
-      {/* 6 — Vergelijking doorlink */}
-      <section className="bg-brand-100 py-12 lg:py-16" aria-label="Vergelijking">
-        <div className="max-w-3xl mx-auto text-center px-6">
-          <p className="text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
-            Vergelijking
-          </p>
-          <h2 className="font-heading text-h2 font-semibold text-brand-900 mb-4 leading-[1.1]">
-            Waarom organisaties kiezen voor OPMS
-          </h2>
-          <p className="text-body text-neutral-700 leading-relaxed mb-8">
-            OPMS is opgenomen in het BZK open source ecosysteem. Het comply-or-explain
-            beleid maakt OPMS de logische eerste keuze voor Woo-compliance.
-          </p>
-          <a
-            href="/woo-oplossing#vergelijking"
-            className="inline-flex items-center gap-2 text-body-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors duration-[150ms] group"
-          >
-            Bekijk de volledige vergelijking
-            <svg
-              className="w-4 h-4 transition-transform duration-[150ms] group-hover:translate-x-0.5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-      </section>
-
-      {/* 7 — Gebruikersvoordelen */}
+      {/* 6 — Gebruikersvoordelen */}
       {homepage?.user_features && (
         <UserFeaturesBlock data={homepage.user_features} />
       )}
