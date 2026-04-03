@@ -33,7 +33,7 @@ export default function HomePage() {
               <p className="text-caption font-semibold uppercase tracking-widest text-brand-600 mb-3">
                 Voor een overheid in beweging
               </p>
-              <h1 className="font-heading text-3xl sm:text-4xl lg:text-[2.5rem] font-bold text-neutral-950 mb-4 leading-[1.15]">
+              <h1 className="font-heading text-3xl sm:text-4xl lg:text-h1 font-bold text-neutral-950 mb-4 leading-[1.15]">
                 Steeds meer verplichtingen,<br className="hidden sm:block" /> steeds minder tijd
               </h1>
               <p className="text-body text-neutral-500 leading-relaxed mb-7 max-w-[480px]">
