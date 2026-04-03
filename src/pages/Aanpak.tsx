@@ -380,13 +380,6 @@ export default function AanpakPage() {
                     <span className="block text-caption text-neutral-400 mt-0.5">{huidige.doorlooptijdSub}</span>
                   )}
                 </div>
-                <div className="rounded-[10px] bg-brand-100 px-4 py-3 text-center">
-                  <span className="block text-caption text-neutral-500">Investering</span>
-                  <span className="block text-body-sm font-semibold text-neutral-950">{huidige.investering}</span>
-                  {huidige.investeringSub && (
-                    <span className="block text-caption text-neutral-400 mt-0.5">{huidige.investeringSub}</span>
-                  )}
-                </div>
               </div>
             </div>
           </div>
