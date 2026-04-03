@@ -13,7 +13,7 @@ const FASEN = [
     nummer: '01',
     titel: 'Verkenning',
     duur: '4 – 6 weken',
-    prijs: '€ 7.500',
+    prijs: '',
     beschrijving:
       'We brengen uw vraagstuk scherp in kaart: processen, systemen, stakeholders en scope. U beslist daarna of en hoe u verdergaat — zonder verplichting.',
     rollen: ['Projectmanager', 'Woo-consultant', 'Architect'],
@@ -23,7 +23,7 @@ const FASEN = [
     nummer: '02',
     titel: 'MVP',
     duur: '3 maanden',
-    prijs: 'Vanaf € 60.000',
+    prijs: '',
     beschrijving:
       'Binnen 3 maanden een werkend systeem in productie. Direct inzetbaar, direct waarde. Geen uitgebreide voortrajecten.',
     rollen: ['Projectmanager', 'Developer', 'Woo-consultant'],
@@ -48,7 +48,7 @@ const VOORDELEN = [
   {
     titel: 'Geen langdurig aanbestedingstraject',
     tekst:
-      'U ervaart de waarde van het platform voordat u besluit over een structurele samenwerking. Starten met een verkenning kost € 7.500 en duurt 4 tot 6 weken.',
+      'U ervaart de waarde van het platform voordat u besluit over een structurele samenwerking. Starten met een verkenning duurt 4 tot 6 weken.',
     icoon: (
       <svg className="w-6 h-6 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -524,8 +524,8 @@ export default function SamenOntwikkelenPage() {
               Klaar om te starten?
             </h2>
             <p className="text-body-lg text-brand-200 mb-10 leading-relaxed">
-              Een verkenning duurt 4 tot 6 weken en kost € 7.500. U beslist
-              daarna zelf of u verdergaat. Geen verplichtingen, geen verkoopdruk.
+              Een verkenning duurt 4 tot 6 weken. U beslist daarna zelf of u
+              verdergaat. Geen verplichtingen, geen verkoopdruk.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button as="link" href="/contact" variant="secondary" size="lg">

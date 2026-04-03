@@ -28,10 +28,10 @@ const OPLOSSINGEN: {
     badgeTitel: 'Woo-oplossing',
     subtitel: 'OPMS — het bewezen platform voor Woo-compliance',
     link: '/woo-oplossing',
-    doorlooptijd: '2 – 4 maanden',
+    doorlooptijd: '3 – 6 maanden',
     doorlooptijdSub: '(SaaS direct beschikbaar)',
-    investering: 'Vanaf € 40.000',
-    investeringSub: '(SaaS vanaf € 800/mnd)',
+    investering: '',
+    investeringSub: '',
     samenvatting:
       'Implementatie van het bestaande OPMS-platform. Bewezen, snel inzetbaar en schaalbaar. De meest gekozen route voor organisaties die op korte termijn aan de Woo moeten voldoen.',
     fasen: [
@@ -89,7 +89,7 @@ const OPLOSSINGEN: {
     fasen: [
       {
         titel: 'Verkenning',
-        duur: '4 – 6 weken · € 7.500 vast',
+        duur: '4 – 6 weken',
         beschrijving:
           'We brengen uw vraagstuk, processen, systemen en stakeholders in kaart. U ontvangt een scope-document met advies en beslist zelf of u verdergaat.',
         deliverables: [
@@ -101,7 +101,7 @@ const OPLOSSINGEN: {
       },
       {
         titel: 'MVP',
-        duur: '3 maanden · v.a. € 60.000 vast',
+        duur: '3 maanden',
         beschrijving:
           'Binnen 3 maanden een werkend systeem in productie. Geen uitgebreide specificaties — maar een MVP waarop u bijstuurt op basis van echte ervaringen.',
         deliverables: [
@@ -132,7 +132,7 @@ const OPLOSSINGEN: {
     subtitel: 'OPMS als open source fundament met volledige regie',
     link: '/open-source',
     doorlooptijd: '3 – 9 maanden',
-    investering: 'Vanaf € 30.000',
+    investering: '',
     samenvatting:
       'Adoptie van OPMS als open source basis. Uw organisatie behoudt volledige regie over de code, hosting en doorontwikkeling. Staterra ondersteunt bij implementatie, configuratie en kennisoverdracht.',
     fasen: [
@@ -181,8 +181,8 @@ const SCHAALMODELLEN = [
   {
     type: 'Klein',
     doelgroep: 'Kleine gemeenten, waterschappen',
-    beschrijving: 'Gedeelde OPMS-omgeving via SaaS-model. Laagste totaalkosten, snel operationeel, beheer door Staterra. Vanaf € 800 per maand.',
-    kenmerken: ['Gedeelde omgeving', 'Vanaf € 800/mnd', '< 3 mnd implementatie'],
+    beschrijving: 'Gedeelde OPMS-omgeving via SaaS-model. Laagste totaalkosten, snel operationeel, beheer door Staterra.',
+    kenmerken: ['Gedeelde omgeving', 'SaaS-model', '< 3 mnd implementatie'],
   },
   {
     type: 'Middelgroot',
