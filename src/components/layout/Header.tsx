@@ -437,7 +437,7 @@ export function Header({ menu, settings }: HeaderProps) {
           {/* Mobiel menu-knop */}
           <button
             onClick={() => setMobileOpen((v) => !v)}
-            className="lg:hidden p-2 text-neutral-700 hover:text-brand-700 transition-colors"
+            className="lg:hidden p-2.5 -m-0.5 text-neutral-700 hover:text-brand-700 transition-colors"
             aria-label={mobileOpen ? 'Menu sluiten' : 'Menu openen'}
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
