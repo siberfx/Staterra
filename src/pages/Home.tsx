@@ -7,7 +7,6 @@ import { AboutBlock } from '@/components/sections/AboutBlock';
 import { UserFeaturesBlock } from '@/components/sections/UserFeaturesBlock';
 import { CTABlock } from '@/components/sections/CTABlock';
 import { HomeFaq } from '@/components/sections/HomeFaq';
-import { BESTUURSORGANEN_STATS } from '@/lib/data/bestuursorganen-stats';
 
 // ── Pillar card ──────────────────────────────────────────────
 
@@ -129,29 +128,7 @@ export default function HomePage() {
       </section>
 
 
-      {/* 3 — Herkenbaar? */}
-      <section className="bg-neutral-50 py-12 lg:py-16" aria-label="Herkenbaar?">
-        <div className="max-w-3xl mx-auto text-center px-6">
-          <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
-            Herkenbaar?
-          </span>
-          <h2 className="font-heading text-h2 font-semibold text-brand-900 mb-4 leading-[1.1]">
-            {homepage?.competition?.heading ?? 'De verplichtingen groeien. De capaciteit niet.'}
-          </h2>
-          <p className="text-body text-neutral-700 leading-relaxed mb-8">
-            Steeds meer verplichtingen, beperkte capaciteit, en een deadline die nadert.
-            U bent niet de enige — {BESTUURSORGANEN_STATS.totaal} bestuursorganen staan voor dezelfde uitdaging.
-          </p>
-          <a
-            href="/woo-oplossing"
-            className="inline-flex items-center justify-center rounded-[10px] bg-brand-700 px-6 py-3 text-white font-semibold text-body-sm hover:bg-brand-900 transition-colors duration-[150ms]"
-          >
-            Bekijk de oplossing
-          </a>
-        </div>
-      </section>
-
-      {/* 4 — Oplossingskaarten */}
+      {/* 3 — Oplossingskaarten */}
       {homepage?.feature_cards && (
         <SolutionCards data={homepage.feature_cards} />
       )}
