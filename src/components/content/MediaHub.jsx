@@ -1,8 +1,10 @@
+import { lazy, Suspense } from 'react'
 import { Link } from 'react-router-dom'
 import { nl } from '../../translations'
 import { R, toFrontendUrl } from '../../utils/routes'
 import { resolveMediaUrl } from '../../utils/media'
-import VideoPlayer from '../video/VideoPlayer'
+
+const VideoPlayer = lazy(() => import('../video/VideoPlayer'))
 
 function formatDuration(seconds) {
   if (!seconds) return ''
@@ -510,12 +512,14 @@ export default function MediaHub({
       <div className="flex-1 min-w-0 max-w-4xl">
         <div className="aspect-video rounded-none overflow-hidden bg-gray-900 mb-8">
           {hasVideo ? (
-            <VideoPlayer
-              source={videoData}
-              title={videoData.title ?? videoData.name}
-              poster={getThumbnailUrl(videoData)}
-              className="w-full h-full"
-            />
+            <Suspense fallback={<div className="w-full h-full bg-gray-900" />}>
+              <VideoPlayer
+                source={videoData}
+                title={videoData.title ?? videoData.name}
+                poster={getThumbnailUrl(videoData)}
+                className="w-full h-full"
+              />
+            </Suspense>
           ) : (
             <div className="w-full h-full flex items-center justify-center">
               <span className="material-symbols-outlined text-white text-8xl opacity-50">play_circle</span>

@@ -32,6 +32,14 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'helmet': ['react-helmet-async'],
+        },
+      },
+    },
   },
   publicDir: 'public',
 })
