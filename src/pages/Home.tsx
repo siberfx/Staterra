@@ -22,40 +22,60 @@ export default function HomePage() {
         schemas={[{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Staterra', url: 'https://staterra.nl' }]}
       />
 
-      {/* 1 — Compacte hero */}
+      {/* 1 — Hero met foto */}
       <section className="relative overflow-hidden" aria-label="Introductie">
         <div
           className="absolute inset-0"
           style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(22,62,116,0.03) 0%, transparent 70%)' }}
         />
-        <div className="relative z-10 max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-8 pt-16 lg:pt-24 pb-14 lg:pb-20">
-          <div className="max-w-[640px]">
-            <p className="text-caption font-semibold uppercase tracking-widest text-brand-600 mb-4">
-              Digitale oplossingen voor een overheid in beweging
-            </p>
-            <h1 className="font-heading text-[1.75rem] sm:text-[2.25rem] lg:text-h1 font-bold text-neutral-950 mb-5 leading-[1.15]">
-              Steeds meer verplichtingen,<br className="hidden sm:block" /> steeds minder tijd
-            </h1>
-            <p className="text-body text-neutral-500 leading-relaxed mb-8 max-w-[520px]">
-              Staterra ontwikkelt en implementeert digitale open source oplossingen die
-              direct werken in de praktijk — zonder dat u technisch hoeft mee te denken.
-              Een werkende oplossing binnen 3 maanden, volledig inzetbaar binnen 9.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <a
-                href="/contact"
-                className="bg-brand-700 text-white rounded-[10px] px-6 py-3.5 text-body-sm font-medium hover:bg-brand-900 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
-              >
-                Plan een verkenning
-              </a>
-              <a
-                href="/oplossingen"
-                className="bg-white text-brand-700 border border-neutral-200 rounded-[10px] px-6 py-3.5 text-body-sm font-medium hover:bg-brand-50 hover:border-brand-200 transition-all duration-200 group"
-              >
-                Bekijk onze oplossingen
-                <span className="inline-block ml-1 group-hover:translate-x-1 transition-transform">→</span>
-              </a>
+        <div className="relative z-10 max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-8 pt-12 lg:pt-20 pb-12 lg:pb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] gap-8 lg:gap-12 items-center">
+
+            {/* Linkerkolom: tekst + CTAs */}
+            <div className="max-w-[520px]">
+              <p className="text-caption font-semibold uppercase tracking-widest text-brand-600 mb-4">
+                Digitale oplossingen voor een overheid in beweging
+              </p>
+              <h1 className="font-heading text-[1.75rem] sm:text-[2.25rem] lg:text-h1 font-bold text-neutral-950 mb-5 leading-[1.15]">
+                Steeds meer verplichtingen,<br className="hidden sm:block" /> steeds minder tijd
+              </h1>
+              <p className="text-body text-neutral-500 leading-relaxed mb-8">
+                Staterra ontwikkelt en implementeert digitale open source oplossingen die
+                direct werken in de praktijk — zonder dat u technisch hoeft mee te denken.
+                Een werkende oplossing binnen 3 maanden, volledig inzetbaar binnen 9.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="/contact"
+                  className="bg-brand-700 text-white rounded-[10px] px-6 py-3.5 text-body-sm font-medium hover:bg-brand-900 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
+                >
+                  Plan een verkenning
+                </a>
+                <a
+                  href="/oplossingen"
+                  className="bg-white text-brand-700 border border-neutral-200 rounded-[10px] px-6 py-3.5 text-body-sm font-medium hover:bg-brand-50 hover:border-brand-200 transition-all duration-200 group"
+                >
+                  Bekijk onze oplossingen
+                  <span className="inline-block ml-1 group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+              </div>
             </div>
+
+            {/* Rechterkolom: foto (alleen desktop) */}
+            <div className="relative hidden lg:block">
+              <div className="rounded-[20px] overflow-hidden shadow-[0_20px_60px_rgba(22,62,116,0.10)]">
+                <img
+                  src={homepage?.hero?.image ?? '/images/samen-ontwikkelen-hero-2.png'}
+                  alt="Overheidsbestuurder aan het werk"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto object-cover"
+                  loading="eager"
+                  fetchPriority="high"
+                />
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
