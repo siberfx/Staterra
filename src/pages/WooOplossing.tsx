@@ -6,7 +6,6 @@ import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { FaqAccordion } from '@/components/ui/FaqAccordion';
-import { ComparisonTable } from '@/components/sections/ComparisonTable';
 import LeadMagnetBanner from '@/components/LeadMagnetBanner';
 import { BESTUURSORGANEN_STATS } from '@/lib/data/bestuursorganen-stats';
 
@@ -304,12 +303,7 @@ export default function WooOplossing() {
         </section>
       )}
 
-      {/* -- 4. Vergelijkingstabel — anchor voor doorlinks vanaf andere pagina's */}
-      <div id="vergelijking">
-        <ComparisonTable />
-      </div>
-
-      {/* -- 5. Deelnamemodellen -- */}
+      {/* -- 4. Deelnamemodellen -- */}
       <section
         className="bg-brand-100 py-16 lg:py-24"
         aria-labelledby="models-heading"
