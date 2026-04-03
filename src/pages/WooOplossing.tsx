@@ -167,6 +167,7 @@ export default function WooOplossing() {
                   alt="Medewerker werkt met het OPMS-dashboard"
                   width={1024}
                   height={682}
+                  fetchPriority="high"
                   className="w-full h-auto object-cover object-center"
                 />
               </div>

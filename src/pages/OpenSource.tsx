@@ -199,6 +199,7 @@ export default function OpenSourcePage() {
                   alt="IT-professional inspecteert serverinfrastructuur"
                   width={1024}
                   height={682}
+                  fetchPriority="high"
                   className="w-full h-auto object-cover object-center"
                 />
               </div>

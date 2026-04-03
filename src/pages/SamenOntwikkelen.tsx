@@ -167,6 +167,7 @@ export default function SamenOntwikkelenPage() {
                   alt="Twee professionals overleggen over een digitale oplossing"
                   width={1024}
                   height={682}
+                  fetchPriority="high"
                   className="w-full h-auto object-cover object-top"
                 />
               </div>
