@@ -207,9 +207,9 @@ export function Footer({ menu, settings }: FooterProps) {
             {cmsKolommen.length > 0 ? (
               cmsKolommen.map((kolom) => (
                 <div key={kolom.column}>
-                  <h3 className="text-caption font-semibold uppercase tracking-widest text-brand-400 mb-4">
+                  <p className="text-caption font-semibold uppercase tracking-widest text-brand-400 mb-4" role="heading" aria-level={2}>
                     {KOLOM_TITELS[kolom.column] ?? `Kolom ${kolom.column}`}
-                  </h3>
+                  </p>
                   <ul className="space-y-2.5">
                     {(kolom.links ?? []).map((item) => (
                       <li key={item.id}>
@@ -227,9 +227,9 @@ export function Footer({ menu, settings }: FooterProps) {
             ) : (
               FALLBACK_KOLOMMEN.map((kolom) => (
                 <div key={kolom.titel}>
-                  <h3 className="text-caption font-semibold uppercase tracking-widest text-brand-400 mb-4">
+                  <p className="text-caption font-semibold uppercase tracking-widest text-brand-400 mb-4" role="heading" aria-level={2}>
                     {kolom.titel}
-                  </h3>
+                  </p>
                   <ul className="space-y-2.5">
                     {kolom.links.map((link) => (
                       <li key={link.href}>

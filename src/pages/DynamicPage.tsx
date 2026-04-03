@@ -280,7 +280,13 @@ export default function DynamicPage() {
                     [&_a]:text-brand-700 [&_a]:font-medium [&_a]:no-underline hover:[&_a]:text-brand-900
                     [&_h2~h2]:border-t [&_h2~h2]:border-neutral-200 [&_h2~h2]:pt-8
                   "
-                  dangerouslySetInnerHTML={{ __html: solution.long_body.replace(/<h1[^>]*>[\s\S]*?<\/h1>/i, '') }}
+                  dangerouslySetInnerHTML={{ __html: solution.long_body
+                    .replace(/<h1[^>]*>[\s\S]*?<\/h1>/i, '')
+                    .replace(/<h3([^>]*)>/g, '<h2$1>')
+                    .replace(/<\/h3>/g, '</h2>')
+                    .replace(/<h4([^>]*)>/g, '<h3$1>')
+                    .replace(/<\/h4>/g, '</h3>')
+                  }}
                 />
               )}
             </div>
@@ -289,9 +295,9 @@ export default function DynamicPage() {
             {solution.list_items?.length > 0 && (
               <div>
                 <Card padding="loose" hover={false}>
-                  <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-6">
+                  <h2 className="font-heading text-h4 font-semibold text-neutral-950 mb-6">
                     Wat u krijgt
-                  </h3>
+                  </h2>
                   <ul className="space-y-4">
                     {solution.list_items.map((item, i) => (
                       <li key={i} className="flex items-start gap-3">
