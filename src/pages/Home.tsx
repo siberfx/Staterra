@@ -24,8 +24,8 @@ export default function HomePage() {
         description="Staterra implementeert en beheert OPMS, het open source platform voor Woo-compliance. Direct inzetbaar voor 611 bestuursorganen."
         schemas={[{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Staterra', url: 'https://staterra.nl' }]}
       />
-      {/* 1 — Hero (statisch voor instant LCP, CMS verrijkt als beschikbaar) */}
-      <Hero data={homepage?.hero ?? {
+      {/* 1 — Hero (hardcoded content, CMS levert alleen de afbeelding) */}
+      <Hero data={{
         label: 'Digitale oplossingen voor de overheid',
         heading: 'Wij bouwen en beheren wat de overheid nodig heeft',
         paragraph: 'Van Woo-compliance tot maatwerk platformen. Staterra ontwerpt, bouwt en beheert open source oplossingen voor overheidsorganisaties — zodat u de regie houdt zonder zelf een ontwikkelteam op te bouwen.',
@@ -38,7 +38,7 @@ export default function HomePage() {
           'Open source development — eigendom bij de overheid, geen vendor lock-in',
           'Maatwerk applicaties — gebouwd op de standaarden van de publieke sector',
         ],
-        image: null,
+        image: homepage?.hero?.image ?? null,
       }} />
 
       {/* 2 — Statistieken */}
