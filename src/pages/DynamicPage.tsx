@@ -40,15 +40,21 @@ export default function DynamicPage() {
       setPage(null);
 
       try {
-        // Staterra-* pages: use PageTemplate
+        // Staterra-* pages: als er een heroConfig bestaat, gebruik doelgroep-template
         if (slug.startsWith('staterra-')) {
-          const pageData = await getPage(slug);
-          if (!cancelled) {
-            if (pageData) {
-              setPage(pageData);
-              document.title = pageData.meta_title || `${pageData.title} \u2014 Staterra`;
-            } else {
-              setNotFound(true);
+          if (DOELGROEP_HERO[slug]) {
+            // Doelgroep met unified hero — markeer als notFound zodat de fallback rendert
+            if (!cancelled) setNotFound(true);
+          } else {
+            // Geen heroConfig — probeer CMS PageTemplate
+            const pageData = await getPage(slug);
+            if (!cancelled) {
+              if (pageData) {
+                setPage(pageData);
+                document.title = pageData.meta_title || `${pageData.title} \u2014 Staterra`;
+              } else {
+                setNotFound(true);
+              }
             }
           }
           return;
