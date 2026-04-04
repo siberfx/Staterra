@@ -5,35 +5,13 @@ import { PageMeta } from '@/components/PageMeta';
 import type { Solution, SolutionsListResponse } from '@/lib/types';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
 
-// Anchors in vaste volgorde
-const MAIN_ANCHORS = ['samen-ontwikkelen', 'woo-oplossing', 'open-source'] as const;
 const TARGET_ANCHORS = [
   'woo-gemeenten',
   'woo-rijksoverheid',
   'woo-provincies',
   'woo-waterschappen',
 ] as const;
-
-// Iconen per hoofdoplossing
-const SOLUTION_ICONS: Record<string, React.ReactNode> = {
-  'samen-ontwikkelen': (
-    <svg className="w-7 h-7 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-    </svg>
-  ),
-  'woo-oplossing': (
-    <svg className="w-7 h-7 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
-    </svg>
-  ),
-  'open-source': (
-    <svg className="w-7 h-7 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
-    </svg>
-  ),
-};
 
 // Labels per doelgroep-oplossing
 const TARGET_META: Record<string, { badge: string; count: string; href: string }> = {
@@ -42,94 +20,6 @@ const TARGET_META: Record<string, { badge: string; count: string; href: string }
   'woo-provincies':    { badge: 'Provincies',    count: '12 provincies',                     href: '/staterra-provincies' },
   'woo-waterschappen': { badge: 'Waterschappen', count: '21 waterschappen',                  href: '/staterra-waterschappen' },
 };
-
-// Lokale fallback-afbeeldingen als het CMS geen werkende URL levert
-const FALLBACK_IMAGES: Record<string, string> = {
-  'samen-ontwikkelen': '/images/samen-ontwikkelen-hero-2.png',
-  'woo-oplossing': '/images/woo-oplossing-hero.png',
-  'open-source': '/images/open-source-hero.png',
-};
-
-// CTA-labels per hoofdoplossing
-const SOLUTION_CTA: Record<string, string> = {
-  'samen-ontwikkelen': 'Ontdek het ontwikkelproces',
-  'woo-oplossing': 'Bekijk de Woo-oplossing',
-  'open-source': 'Ontdek de open source aanpak',
-};
-
-// -- Kaartcomponenten --
-
-function MainSolutionCard({ solution }: { solution: Solution }) {
-  const to = `/${solution.anchor}`;
-  const icon = SOLUTION_ICONS[solution.anchor];
-  const imageSrc = solution.image || FALLBACK_IMAGES[solution.anchor];
-
-  return (
-    <article>
-      <Card
-        padding="none"
-        className="flex flex-col h-full overflow-hidden group"
-      >
-        {/* Afbeelding */}
-        {imageSrc && (
-          <div className="relative h-52 overflow-hidden">
-            <img
-              src={imageSrc}
-              alt={solution.title}
-              width={600}
-              height={208}
-              loading="lazy"
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              onError={(e) => {
-                const fallback = FALLBACK_IMAGES[solution.anchor];
-                if (fallback && e.currentTarget.src !== fallback) {
-                  e.currentTarget.src = fallback;
-                }
-              }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/20 to-transparent" />
-          </div>
-        )}
-
-        {/* Content */}
-        <div className="flex flex-col flex-1 p-8">
-          {/* Icoon */}
-          {icon && (
-            <div className="w-12 h-12 rounded-[10px] bg-brand-100 flex items-center justify-center mb-5 group-hover:bg-brand-200 transition-colors duration-[180ms]">
-              {icon}
-            </div>
-          )}
-
-          <h2 className="font-heading text-h4 font-semibold text-neutral-950 mb-3">
-            {solution.title}
-          </h2>
-
-          <p className="text-body-sm text-neutral-700 leading-relaxed mb-6 flex-1">
-            {solution.subtitle}
-          </p>
-
-          <Link
-            to={to}
-            className="inline-flex items-center gap-1.5 text-body-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors duration-[180ms] mt-auto group/link"
-            aria-label={`Meer over ${solution.title}`}
-          >
-            {SOLUTION_CTA[solution.anchor] ?? 'Meer informatie'}
-            <svg
-              className="w-4 h-4 transition-transform duration-[180ms] group-hover/link:translate-x-0.5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-              aria-hidden="true"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
-          </Link>
-        </div>
-      </Card>
-    </article>
-  );
-}
 
 function TargetSolutionCard({ solution }: { solution: Solution }) {
   const meta = TARGET_META[solution.anchor];
@@ -207,10 +97,6 @@ export default function OplossingsoverzichtPage() {
     });
   }, []);
 
-  const mainSolutions = MAIN_ANCHORS
-    .map((a) => solutions.find((s) => s.anchor === a))
-    .filter((s): s is Solution => !!s);
-
   const targetSolutions = TARGET_ANCHORS
     .map((a) => solutions.find((s) => s.anchor === a))
     .filter((s): s is Solution => !!s);
@@ -272,10 +158,10 @@ export default function OplossingsoverzichtPage() {
         </Container>
       </section>
 
-      {/* -- 2. Drie hoofdoplossingen -- */}
+      {/* -- 2. Twee aanpakken -- */}
       <section
         className="bg-white py-16 lg:py-24"
-        aria-labelledby="main-solutions-heading"
+        aria-labelledby="aanpakken-heading"
       >
         <Container variant="content">
           <div className="text-center mb-12">
@@ -283,40 +169,102 @@ export default function OplossingsoverzichtPage() {
               Onze aanpak
             </span>
             <h2
-              id="main-solutions-heading"
+              id="aanpakken-heading"
               className="font-heading text-h2 font-semibold text-neutral-950 mb-4"
             >
-              Drie routes naar digitale regie
+              Twee routes naar digitale regie
             </h2>
             <p className="text-body text-neutral-700 max-w-[640px] mx-auto">
-              Elke organisatie heeft een andere situatie. Kies de aanpak die
-              past bij uw vraagstuk, tijdlijn en organisatieomvang.
+              Staterra werkt op twee manieren: wij bouwen samen met u nieuwe
+              oplossingen, of wij implementeren en beheren bestaande open source
+              platformen voor uw organisatie.
             </p>
           </div>
 
-          {mainSolutions.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {mainSolutions.map((s) => (
-                <MainSolutionCard key={s.id} solution={s} />
-              ))}
+          {/* Twee aanpak-kaarten */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            <div className="rounded-[20px] border border-neutral-200 bg-white p-8 flex flex-col">
+              <div className="w-12 h-12 rounded-[10px] bg-brand-100 flex items-center justify-center mb-5">
+                <svg className="w-6 h-6 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                </svg>
+              </div>
+              <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-3">
+                Samen ontwikkelen
+              </h3>
+              <p className="text-body-sm text-neutral-700 leading-relaxed mb-6 flex-1">
+                Samen met overheden bouwen we nieuwe digitale oplossingen — van
+                eerste verkenning tot werkend product. U bepaalt de richting,
+                wij leveren de technische realisatie. Het resultaat is open source
+                en volledig van u.
+              </p>
+              <Link
+                to="/samen-ontwikkelen"
+                className="inline-flex items-center gap-1.5 text-body-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors duration-150 group/link"
+              >
+                Ontdek het ontwikkelproces
+                <svg className="w-4 h-4 transition-transform duration-150 group-hover/link:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </Link>
             </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="rounded-[20px] border border-neutral-200 overflow-hidden animate-pulse">
-                  <div className="h-52 bg-neutral-100" />
-                  <div className="p-8 space-y-4">
-                    <div className="w-12 h-12 rounded-[10px] bg-neutral-100" />
-                    <div className="h-6 bg-neutral-100 rounded w-3/4" />
-                    <div className="space-y-2">
-                      <div className="h-4 bg-neutral-100 rounded w-full" />
-                      <div className="h-4 bg-neutral-100 rounded w-2/3" />
-                    </div>
-                  </div>
-                </div>
-              ))}
+
+            <div className="rounded-[20px] border border-neutral-200 bg-white p-8 flex flex-col">
+              <div className="w-12 h-12 rounded-[10px] bg-brand-100 flex items-center justify-center mb-5">
+                <svg className="w-6 h-6 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+                </svg>
+              </div>
+              <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-3">
+                Open source implementeren en beheren
+              </h3>
+              <p className="text-body-sm text-neutral-700 leading-relaxed mb-6 flex-1">
+                Wij implementeren en beheren open source platformen zoals
+                Nextcloud, Rocket.Chat en OPMS. Altijd op uw eigen infrastructuur
+                of een door u gekozen omgeving — met professioneel beheer,
+                updates en ondersteuning.
+              </p>
+              <Link
+                to="/open-source"
+                className="inline-flex items-center gap-1.5 text-body-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors duration-150 group/link"
+              >
+                Ontdek de open source aanpak
+                <svg className="w-4 h-4 transition-transform duration-150 group-hover/link:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </Link>
             </div>
-          )}
+          </div>
+
+          {/* Woo-oplossing highlight */}
+          <div className="rounded-[20px] border border-brand-200 bg-brand-50 p-8 lg:p-10">
+            <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
+              <div className="flex-1">
+                <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-2">
+                  Direct beschikbaar
+                </span>
+                <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-3">
+                  Woo-compliance met OPMS
+                </h3>
+                <p className="text-body-sm text-neutral-700 leading-relaxed">
+                  Onze Woo-oplossing is een concrete uitwerking van wat we samen met
+                  en voor de overheid hebben ontwikkeld. Het OPMS-platform is bewezen
+                  in de praktijk en direct inzetbaar — zonder langdurig ontwikkeltraject.
+                </p>
+              </div>
+              <div className="flex-shrink-0">
+                <Link
+                  to="/woo-oplossing"
+                  className="inline-flex items-center gap-2 bg-brand-700 text-white rounded-[10px] px-6 py-3.5 text-body-sm font-medium hover:bg-brand-900 transition-colors duration-150"
+                >
+                  Bekijk de Woo-oplossing
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </div>
         </Container>
       </section>
 
