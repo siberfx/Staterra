@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getHomepage } from '@/services/cms';
 import { PageMeta } from '@/components/PageMeta';
-import { SolutionCards } from '@/components/sections/SolutionCards';
 import { AboutBlock } from '@/components/sections/AboutBlock';
 import { UserFeaturesBlock } from '@/components/sections/UserFeaturesBlock';
 import { CTABlock } from '@/components/sections/CTABlock';
@@ -166,10 +165,107 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3 — Oplossingskaarten */}
-      {homepage?.feature_cards && (
-        <SolutionCards data={homepage.feature_cards} />
-      )}
+      {/* 3 — Ons aanbod (2+1 model) */}
+      <section className="bg-white py-16 lg:py-24" aria-labelledby="aanbod-heading">
+        <div className="max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
+              Ons aanbod
+            </span>
+            <h2 id="aanbod-heading" className="font-heading text-h2 font-semibold text-neutral-950 mb-4">
+              Twee routes naar digitale regie
+            </h2>
+            <p className="text-body text-neutral-700 max-w-[640px] mx-auto">
+              Staterra werkt op twee manieren: wij bouwen samen met u nieuwe
+              oplossingen, of wij implementeren en beheren bestaande open source
+              platformen voor uw organisatie.
+            </p>
+          </div>
+
+          {/* Twee route-kaarten */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="rounded-[20px] border border-neutral-200 bg-white p-8 flex flex-col">
+              <div className="w-12 h-12 rounded-[10px] bg-brand-100 flex items-center justify-center mb-5">
+                <svg className="w-6 h-6 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                </svg>
+              </div>
+              <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-3">
+                Samen ontwikkelen
+              </h3>
+              <p className="text-body-sm text-neutral-700 leading-relaxed mb-6 flex-1">
+                Voor organisaties met specifieke vraagstukken of ambitie. Samen
+                bouwen we nieuwe digitale oplossingen — van eerste verkenning tot
+                werkend product. Het resultaat is open source en volledig van u.
+              </p>
+              <a
+                href="/samen-ontwikkelen"
+                className="inline-flex items-center gap-1.5 text-body-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors duration-150 group/link"
+              >
+                Ontdek het ontwikkelproces
+                <svg className="w-4 h-4 transition-transform duration-150 group-hover/link:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </a>
+            </div>
+
+            <div className="rounded-[20px] border border-neutral-200 bg-white p-8 flex flex-col">
+              <div className="w-12 h-12 rounded-[10px] bg-brand-100 flex items-center justify-center mb-5">
+                <svg className="w-6 h-6 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+                </svg>
+              </div>
+              <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-3">
+                Open source implementeren en beheren
+              </h3>
+              <p className="text-body-sm text-neutral-700 leading-relaxed mb-6 flex-1">
+                Gebruik bestaande oplossingen zonder afhankelijkheid. Wij
+                implementeren en beheren platformen zoals Nextcloud, Rocket.Chat
+                en OPMS — op uw eigen infrastructuur, met professioneel beheer.
+              </p>
+              <a
+                href="/open-source"
+                className="inline-flex items-center gap-1.5 text-body-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors duration-150 group/link"
+              >
+                Ontdek de open source aanpak
+                <svg className="w-4 h-4 transition-transform duration-150 group-hover/link:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          {/* Woo-oplossing highlight — zelfde stijl als /oplossingen */}
+          <div className="rounded-[20px] border border-brand-200 bg-brand-50 p-8 lg:p-10">
+            <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
+              <div className="flex-1">
+                <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-2">
+                  Direct beschikbaar
+                </span>
+                <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-3">
+                  Woo-compliance met OPMS
+                </h3>
+                <p className="text-body-sm text-neutral-700 leading-relaxed">
+                  Onze Woo-oplossing is een concrete uitwerking van wat we samen met
+                  en voor de overheid hebben ontwikkeld. Het OPMS-platform is bewezen
+                  in de praktijk en direct inzetbaar — zonder langdurig ontwikkeltraject.
+                </p>
+              </div>
+              <div className="flex-shrink-0">
+                <a
+                  href="/woo-oplossing"
+                  className="inline-flex items-center gap-2 bg-brand-700 text-white rounded-[10px] px-6 py-3.5 text-body-sm font-medium hover:bg-brand-900 transition-colors duration-150"
+                >
+                  Bekijk de Woo-oplossing
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* 4 — Over Staterra */}
       {homepage?.about_opms && (
