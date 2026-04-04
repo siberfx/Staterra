@@ -9,27 +9,6 @@ interface FaqCategory {
 
 const FAQ_CATEGORIES: FaqCategory[] = [
   {
-    title: 'Woo-compliance',
-    items: [
-      {
-        question: 'Wat is de Woo en waarom moet mijn organisatie hieraan voldoen?',
-        answer: 'De Wet open overheid (Woo) verplicht alle bestuursorganen tot actieve en passieve openbaarmaking van overheidsinformatie. Dit geldt voor 611 bestuursorganen — van gemeenten tot rijksoverheid. Niet voldoen kan leiden tot juridische procedures en reputatieschade.',
-      },
-      {
-        question: 'Hoe snel kan OPMS ingezet worden?',
-        answer: 'OPMS is als SaaS direct beschikbaar. Een volledige on-premise implementatie duurt gemiddeld 3 maanden. We beginnen met een verkenningsgesprek, gevolgd door configuratie en een pilotfase. Daarna bent u operationeel.',
-      },
-      {
-        question: 'Wat kost de implementatie?',
-        answer: 'De kosten hangen af van de omvang van uw organisatie en het gekozen model. Neem contact op voor een vrijblijvende indicatie. Geen doorlopende licentiekosten — alleen beheer en onderhoud.',
-      },
-      {
-        question: 'Is OPMS geschikt voor kleine gemeenten?',
-        answer: 'Absoluut. De gedeelde SaaS-omgeving is specifiek ontworpen voor kleinere organisaties. U deelt de infrastructuur met andere gemeenten, wat de kosten laag houdt, terwijl uw data volledig gescheiden blijft.',
-      },
-    ],
-  },
-  {
     title: 'Samen ontwikkelen',
     items: [
       {
@@ -51,7 +30,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
     ],
   },
   {
-    title: 'Open source beheer',
+    title: 'Open source implementeren',
     items: [
       {
         question: 'Welke open source applicaties kan Staterra implementeren en beheren?',
@@ -68,6 +47,27 @@ const FAQ_CATEGORIES: FaqCategory[] = [
       {
         question: 'Wat als wij al een ander systeem gebruiken?',
         answer: 'Open source oplossingen kunnen naast bestaande systemen draaien en integreren via standaard API\'s. Migratie is mogelijk maar niet verplicht — veel organisaties starten met een parallelle opzet en schakelen geleidelijk over.',
+      },
+    ],
+  },
+  {
+    title: 'Woo-oplossing (OPMS)',
+    items: [
+      {
+        question: 'Wat is de Woo en waarom moet mijn organisatie hieraan voldoen?',
+        answer: 'De Wet open overheid (Woo) verplicht alle bestuursorganen tot actieve en passieve openbaarmaking van overheidsinformatie. Dit geldt voor 611 bestuursorganen — van gemeenten tot rijksoverheid. Niet voldoen kan leiden tot juridische procedures en reputatieschade.',
+      },
+      {
+        question: 'Hoe snel kan OPMS ingezet worden?',
+        answer: 'OPMS is als SaaS direct beschikbaar. Een volledige on-premise implementatie duurt gemiddeld 3 maanden. We beginnen met een verkenningsgesprek, gevolgd door configuratie en een pilotfase. Daarna bent u operationeel.',
+      },
+      {
+        question: 'Wat kost de implementatie?',
+        answer: 'De kosten hangen af van de omvang van uw organisatie en het gekozen model. Neem contact op voor een vrijblijvende indicatie. Geen doorlopende licentiekosten — alleen beheer en onderhoud.',
+      },
+      {
+        question: 'Is OPMS geschikt voor kleine gemeenten?',
+        answer: 'Absoluut. De gedeelde SaaS-omgeving is specifiek ontworpen voor kleinere organisaties. U deelt de infrastructuur met andere gemeenten, wat de kosten laag houdt, terwijl uw data volledig gescheiden blijft.',
       },
     ],
   },
