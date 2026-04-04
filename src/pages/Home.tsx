@@ -50,7 +50,7 @@ export default function HomePage() {
                 <strong className="text-white/95 font-medium">
                   U houdt regie over uw systemen en broncode
                 </strong>{' '}
-                — van bewezen Woo-platform tot maatwerk, werkend binnen 3 maanden.
+                — van bewezen Woo-platform tot maatwerk.
               </p>
               <div className="flex flex-wrap gap-4">
                 <a
@@ -71,26 +71,21 @@ export default function HomePage() {
             {/* Rechts: proof cards */}
             <div className="flex flex-col gap-3.5">
 
-              {/* Card 1: Wat wij bieden */}
+              {/* Card 1: Onze aanpakken (2 routes) */}
               <div className="bg-white/[0.06] backdrop-blur-[12px] border border-white/10 rounded-[16px] p-7">
                 <p className="font-heading text-[11px] font-semibold uppercase tracking-[1.8px] text-brand-400 mb-5">
-                  Wat wij bieden
+                  Onze aanpakken
                 </p>
                 <div className="flex flex-col gap-4">
                   {[
                     {
-                      name: 'Woo-oplossing',
-                      desc: 'Bewezen platform, werkend binnen 3 maanden',
-                      icon: <><path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" /></>,
-                    },
-                    {
-                      name: 'Open source development',
-                      desc: 'Samen bouwen, eigendom bij uw organisatie',
+                      name: 'Samen ontwikkelen',
+                      desc: 'Nieuwe oplossingen bouwen, eigendom bij uw organisatie',
                       icon: <><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></>,
                     },
                     {
-                      name: 'Maatwerk applicaties',
-                      desc: 'Schaalbaar, ontworpen voor uw processen',
+                      name: 'Open source implementeren',
+                      desc: 'Bestaande platformen uitrollen en beheren',
                       icon: <><rect x="2" y="3" width="20" height="14" rx="2" ry="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></>,
                     },
                   ].map((item) => (
@@ -107,6 +102,24 @@ export default function HomePage() {
                     </div>
                   ))}
                 </div>
+
+                {/* Scheidingslijn + bewezen platform */}
+                <div className="mt-5 pt-5 border-t border-white/10">
+                  <p className="font-heading text-[11px] font-semibold uppercase tracking-[1.8px] text-white/40 mb-3">
+                    Direct beschikbaar
+                  </p>
+                  <div className="flex gap-3.5 items-start bg-white/[0.04] rounded-[12px] p-3.5 -mx-1">
+                    <div className="flex-shrink-0 w-9 h-9 rounded-[9px] bg-brand-400/20 border border-brand-400/25 flex items-center justify-center text-brand-400">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+                      </svg>
+                    </div>
+                    <div className="pt-0.5">
+                      <p className="font-heading text-[14px] font-semibold text-white">Woo-oplossing (OPMS)</p>
+                      <p className="text-[13px] text-white/50 leading-[1.45]">Ons bewezen platform, direct inzetbaar</p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* Card 2: Waarom Staterra */}
@@ -116,8 +129,8 @@ export default function HomePage() {
                 </p>
                 <div className="flex flex-col gap-2.5">
                   {[
-                    'Geen vendor lock-in, volledige regie',
-                    'Onderdeel van het BZK open source ecosysteem',
+                    'U behoudt volledige regie, geen vendor lock-in',
+                    'Onderdeel van het open source ecosysteem',
                     'Implementatie, beheer en doorontwikkeling',
                   ].map((text) => (
                     <div key={text} className="flex items-center gap-2.5">

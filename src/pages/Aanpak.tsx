@@ -244,16 +244,17 @@ export default function AanpakPage() {
               Aanpak
             </span>
             <h1 className="font-heading text-h1 font-semibold text-white mb-5 leading-[1.05]">
-              Drie oplossingen,
-              <span className="text-brand-400"> één heldere aanpak</span>
+              Twee routes,
+              <span className="text-brand-400"> één bewezen platform</span>
             </h1>
             <p className="text-body-lg text-brand-200 mb-10 leading-relaxed">
-              Staterra biedt drie routes naar digitale oplossingen voor de overheid.
-              Elke route heeft een eigen aanpak, maar dezelfde werkprincipes:
-              transparant, gefaseerd en met volledige regie bij uw organisatie.
+              Staterra werkt op twee manieren: wij bouwen samen met u nieuwe
+              oplossingen, of wij implementeren en beheren bestaande open source
+              platformen. De Woo-oplossing is onze eerste bewezen uitwerking —
+              direct inzetbaar.
             </p>
 
-            {/* Drie routes als badges */}
+            {/* Routes als badges */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10">
               {OPLOSSINGEN.map((o) => (
                 <button
@@ -261,12 +262,17 @@ export default function AanpakPage() {
                   type="button"
                   onClick={() => setActief(o.id)}
                   className={[
-                    'rounded-[12px] border px-4 py-3 text-left transition-all duration-[180ms] cursor-pointer',
+                    'rounded-[12px] border px-4 py-3 text-left transition-all duration-[180ms] cursor-pointer relative',
                     actief === o.id
                       ? 'bg-white/15 border-white/60 ring-1 ring-white/30'
                       : 'bg-white/5 border-white/20 hover:bg-white/10',
                   ].join(' ')}
                 >
+                  {o.id === 'woo' && (
+                    <span className="absolute -top-2.5 left-3 px-2 py-0.5 bg-brand-400 text-brand-900 text-[10px] font-semibold uppercase tracking-wider rounded-full">
+                      Bewezen platform
+                    </span>
+                  )}
                   <span className="block text-caption font-semibold text-white mb-0.5">{o.badgeTitel}</span>
                   <span className="block text-caption text-brand-200/80">{o.doorlooptijd}</span>
                   {o.doorlooptijdSub && (
@@ -338,8 +344,8 @@ export default function AanpakPage() {
               Kies uw route
             </h2>
             <p className="text-body text-neutral-700 max-w-[600px] mx-auto">
-              Elke oplossing heeft een eigen traject. Klik op een route om de
-              specifieke aanpak, fasen en deliverables te bekijken.
+              De Woo-oplossing is ons bewezen traject — direct beschikbaar.
+              Heeft u een ander vraagstuk? Bekijk onze twee bredere routes.
             </p>
           </div>
 
