@@ -158,6 +158,9 @@ export default function App() {
           <Route path="partners" element={<Partners />} />
           <Route path="tech-stack" element={<TechStack />} />
 
+          {/* ── Redirects ──────────────────────────────────────── */}
+          <Route path="woo-rijkspartijen" element={<Navigate to="/woo-rijksoverheid" replace />} />
+
           {/* ── Statische marketingpagina's (oud pad) ────────── */}
           <Route path="over-ons/samen-ontwikkelen" element={<SamenOntwikkelen />} />
           <Route path="over-ons/woo-oplossing" element={<WooOplossing />} />

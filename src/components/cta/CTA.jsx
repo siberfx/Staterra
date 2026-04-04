@@ -9,8 +9,8 @@ function CTA({ variant = 'centered', title, description, eyebrow, actions = [], 
       <section className={`border-t border-gray-100 py-16 bg-white ${className}`}>
         <div className="container-page flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-2">{title}</h2>
-            {description && <p className="text-gray-600 text-lg">{description}</p>}
+            <h2 className="type-h2 text-primary mb-2">{title}</h2>
+            {description && <p className="type-body-lg text-gray-600">{description}</p>}
           </div>
           <div className="flex flex-wrap gap-4 shrink-0">
             {actions.map((action, i) => {
@@ -46,8 +46,8 @@ function CTA({ variant = 'centered', title, description, eyebrow, actions = [], 
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
               {eyebrow && <span className="text-xs font-semibold text-primary uppercase tracking-wider">{eyebrow}</span>}
-              <h2 className="text-2xl lg:text-4xl font-bold text-gray-900 mt-2 mb-4">{title}</h2>
-              {description && <p className="text-gray-600 mb-6 text-xl">{description}</p>}
+              <h2 className="type-h2 text-gray-900 mt-2 mb-4">{title}</h2>
+              {description && <p className="type-body-lg text-gray-600 mb-6">{description}</p>}
               <div className="flex flex-wrap gap-4">
                 {actions.map((action, i) => {
                   const btnClass = action.variant === 'outline'
@@ -77,8 +77,8 @@ function CTA({ variant = 'centered', title, description, eyebrow, actions = [], 
     <section className={`bg-white py-16 ${className}`}>
       <div className="container-page max-w-4xl mx-auto text-center px-4">
         {eyebrow && <span className="text-xs font-semibold text-primary uppercase tracking-wider mb-4 block">{eyebrow}</span>}
-        <h2 className="text-3xl sm:text-4xl font-medium text-gray-800 mb-6">{title}</h2>
-        {description && <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">{description}</p>}
+        <h2 className="type-h2 text-gray-800 mb-6">{title}</h2>
+        {description && <p className="type-body-lg text-gray-600 mb-8 max-w-2xl mx-auto">{description}</p>}
         <div className="flex flex-col sm:flex-row justify-center gap-4 flex-wrap">
           {actions.map((action, i) => {
             const btnClass = action.variant === 'outline'

@@ -20,7 +20,7 @@ export default function DetailHeader({ title, breadcrumbLabel, category, authorN
           </span>
         </nav>
 
-        <h1 className="text-4xl md:text-5xl font-bold text-black tracking-tight leading-tight mb-6">
+        <h1 className="type-h1 text-black tracking-tight mb-6">
           {title}
         </h1>
 

@@ -42,7 +42,7 @@ function ActueelCard({ slug, title, date, featured, image, placeholder }) {
         )}
       </div>
       <time className="block text-xs text-gray-500 mb-2">{date}</time>
-      <h3 className="text-lg md:text-xl font-medium leading-snug text-primary group-hover:underline decoration-1 underline-offset-4">
+      <h3 className="type-h3 text-primary group-hover:underline decoration-1 underline-offset-4">
         {title}
       </h3>
     </Link>

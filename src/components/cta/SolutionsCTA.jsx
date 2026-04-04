@@ -6,10 +6,10 @@ function SolutionsCTA() {
   return (
     <section className="py-24 lg:py-28 bg-white">
       <div className="container-page max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl text-black tracking-tight mb-6">
+        <h2 className="type-h1 text-black tracking-tight mb-6">
           {nl('solutions.ctaTitle')}
         </h2>
-        <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+        <p className="type-body-lg text-gray-600 mb-10 max-w-2xl mx-auto">
           {nl('solutions.ctaSub')}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">

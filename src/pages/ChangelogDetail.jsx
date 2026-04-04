@@ -133,18 +133,18 @@ function ChangelogDetail() {
           )}
         </div>
 
-        <h1 className="text-3xl md:text-4xl font-bold text-black tracking-tight mb-4">
+        <h1 className="type-h1 text-black tracking-tight mb-4">
           {title}
         </h1>
 
         {entry.description && (
-          <p className="text-lg text-gray-600 leading-relaxed mb-8">
+          <p className="type-body-lg text-gray-600 mb-8">
             {typeof entry.description === 'object' ? entry.description?.nl ?? '' : entry.description}
           </p>
         )}
 
         {entry.content && (
-          <div className="prose prose-lg prose-headings:font-bold prose-headings:text-black prose-p:text-gray-600 prose-p:leading-relaxed max-w-none mb-8">
+          <div className="rich-text max-w-none mb-8">
             {entry.content.includes('<') ? (
               <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(entry.content) }} />
             ) : (
@@ -155,7 +155,7 @@ function ChangelogDetail() {
 
         {entry.features?.length > 0 && (
           <section className="mb-8">
-            <h2 className="text-lg font-bold text-black mb-3">Wat is er nieuw</h2>
+            <h2 className="type-h3 text-black mb-3">Wat is er nieuw</h2>
             <ul className="space-y-2">
               {entry.features.map((f, i) => (
                 <li key={i} className="flex items-start gap-2.5 text-gray-600">

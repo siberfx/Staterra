@@ -5,13 +5,13 @@ export default function DocumentView({ title, content }) {
 
   return (
     <main className="flex-1 min-w-0 max-w-3xl">
-      <h1 className="text-3xl md:text-5xl font-normal text-primary tracking-tight mb-8">
+      <h1 className="type-h1 text-primary tracking-tight mb-8">
         {title}
       </h1>
 
       {content && (
         <div
-          className="prose prose-lg prose-headings:font-bold prose-headings:text-primary prose-p:text-gray-600 prose-p:leading-relaxed max-w-none"
+          className="rich-text [&_h1]:text-primary [&_h2]:text-primary [&_h3]:text-primary"
           dangerouslySetInnerHTML={{ __html: sanitizeHtml(content) }}
         />
       )}

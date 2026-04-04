@@ -14,20 +14,20 @@ function Ondersteuning() {
       </nav>
 
       <header className="mb-12">
-        <h1 className="text-4xl md:text-5xl font-normal tracking-tight text-primary mb-4">
+        <h1 className="type-h1 text-primary tracking-tight mb-4">
           {nl('ondersteuning.title')}
         </h1>
-        <p className="text-lg text-gray-600 max-w-3xl mb-6">
+        <p className="type-body-lg text-gray-600 max-w-3xl mb-6">
           {nl('ondersteuning.subtitle')}
         </p>
       </header>
 
-      <div className="prose prose-lg max-w-3xl mb-12">
+      <div className="rich-text max-w-3xl mb-12">
         <p className="text-gray-700">{nl('ondersteuning.content')}</p>
       </div>
 
       <div className="max-w-3xl mb-12">
-        <h2 className="text-2xl font-bold text-black mb-4">
+        <h2 className="type-h2 text-black mb-4">
           {nl('ondersteuning.itVragenTitle')}
         </h2>
         <p className="text-gray-600 mb-8">{nl('ondersteuning.itVragenIntro')}</p>

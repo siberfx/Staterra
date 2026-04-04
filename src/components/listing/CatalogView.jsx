@@ -17,7 +17,7 @@ function CatalogView({ search }) {
   return (
     <div id="academy-content" className="flex-1 min-w-0 scroll-mt-8">
       <section className="mb-12">
-        <h2 className="text-2xl font-bold text-primary mb-2">
+        <h2 className="type-h2 text-primary mb-2">
           {nl('academy.whatToLearn')}
         </h2>
         <p className="text-gray-600 mb-6">{nl('academy.searchSub')}</p>
@@ -43,7 +43,7 @@ function CatalogView({ search }) {
                 {featured.subtitle?.nl ?? featured.subtitle}
               </span>
               <p className="text-xs text-gray-500 mb-2">{featured.date?.nl ?? featured.date}</p>
-              <h3 className="text-xl font-bold text-primary mb-3">
+              <h3 className="type-h3 text-primary mb-3">
                 {featured.title?.nl ?? featured.title}
               </h3>
               <p className="text-gray-600 text-sm mb-4 line-clamp-3">
@@ -63,7 +63,7 @@ function CatalogView({ search }) {
 
       <section className="mb-12">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-xl font-bold text-primary">
+          <h3 className="type-h3 text-primary">
             {nl('academy.upcomingSessions')}
           </h3>
           <Link to={R.academy} className="text-sm font-medium text-primary hover:underline">
@@ -96,7 +96,7 @@ function CatalogView({ search }) {
 
       <section className="mb-12">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-xl font-bold text-primary">
+          <h3 className="type-h3 text-primary">
             {nl('academy.discoverByTopic')}
           </h3>
           <Link to={R.academy} className="text-sm font-medium text-primary hover:underline">
@@ -127,7 +127,7 @@ function CatalogView({ search }) {
       </section>
 
       <section>
-        <h3 className="text-xl font-bold text-primary mb-6">
+        <h3 className="type-h3 text-primary mb-6">
           {nl('academy.recentlyAdded')}
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

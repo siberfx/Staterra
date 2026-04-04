@@ -36,7 +36,7 @@ export default function SplitContent({ solution, content, title, image, imageAlt
 
   const imageBlock = (
     <div className="flex flex-col gap-6">
-      <h2 className="text-2xl md:text-4xl font-bold text-gray-900 tracking-tight leading-tight">
+      <h2 className="type-h2 text-gray-900 tracking-tight">
         {title}
       </h2>
       <div className="flex-1 min-h-0">
@@ -53,7 +53,7 @@ export default function SplitContent({ solution, content, title, image, imageAlt
     <div className="space-y-6">
       {longBody ? (
         <div
-          className="prose prose-lg prose-p:text-gray-600 prose-p:leading-relaxed prose-headings:font-bold max-w-none"
+          className="rich-text"
           dangerouslySetInnerHTML={{ __html: sanitizeHtml(longBody) }}
         />
       ) : null}
@@ -64,7 +64,7 @@ export default function SplitContent({ solution, content, title, image, imageAlt
               <span className="flex-shrink-0 w-5 h-5 bg-primary flex items-center justify-center mt-0.5 rounded">
                 <FaIcon icon="check" className="text-white text-xs" />
               </span>
-              <span className="text-gray-600">{item}</span>
+              <span className="type-body text-gray-600">{item}</span>
             </li>
           ))}
         </ul>
@@ -73,14 +73,14 @@ export default function SplitContent({ solution, content, title, image, imageAlt
         remaining.map((block, i) => {
           if (block.type === 'h2') {
             return (
-              <h3 key={i} className="text-lg font-bold text-gray-900">
+              <h3 key={i} className="type-h3 text-gray-900">
                 {block.content}
               </h3>
             )
           }
           if (block.type === 'p') {
             return (
-              <p key={i} className="text-gray-600 leading-relaxed">
+              <p key={i} className="type-body text-gray-600">
                 {block.content}
               </p>
             )
@@ -93,7 +93,7 @@ export default function SplitContent({ solution, content, title, image, imageAlt
                     <span className="flex-shrink-0 w-5 h-5 bg-primary flex items-center justify-center mt-0.5 rounded">
                       <FaIcon icon="check" className="text-white text-xs" />
                     </span>
-                    <span className="text-gray-600">{item}</span>
+                    <span className="type-body text-gray-600">{item}</span>
                   </li>
                 ))}
               </ul>

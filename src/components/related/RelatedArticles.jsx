@@ -34,7 +34,7 @@ function RelatedArticles() {
     <section className="py-20 bg-gray-50 border-t border-gray-100">
       <div className="container-page">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-black mb-2">{nl('kennisbank.leesVerder')}</h2>
+          <h2 className="type-h2 text-black mb-2">{nl('kennisbank.leesVerder')}</h2>
           <div className="w-12 h-1 bg-gray-200 mx-auto mt-4" />
         </div>
         <div className="grid md:grid-cols-3 gap-8">
@@ -69,7 +69,7 @@ function RelatedArticles() {
               </div>
               <div className="p-8">
                 <div className="text-xs font-medium text-gray-400 mb-3">{item.date}</div>
-                <h3 className="text-xl font-bold text-black group-hover:text-gray-600 transition-colors leading-snug">
+                <h3 className="type-h3 text-black group-hover:text-gray-600 transition-colors">
                   {item.title}
                 </h3>
               </div>

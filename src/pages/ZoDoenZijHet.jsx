@@ -15,10 +15,10 @@ function ZoDoenZijHet() {
       </nav>
 
       <header className="mb-12">
-        <h1 className="text-4xl md:text-5xl font-normal tracking-tight text-primary mb-4">
+        <h1 className="type-h1 text-primary tracking-tight mb-4">
           {nl('zoDoenZijHet.title')}
         </h1>
-        <p className="text-lg text-gray-600 max-w-3xl mb-6">
+        <p className="type-body-lg text-gray-600 max-w-3xl mb-6">
           {nl('zoDoenZijHet.subtitle')}
         </p>
         <p className="text-gray-600 max-w-3xl">
@@ -40,7 +40,7 @@ function ZoDoenZijHet() {
                 {nl(`zoDoenZijHet.type${c.type.charAt(0).toUpperCase() + c.type.slice(1)}`)}
               </span>
             </div>
-            <h3 className="text-xl font-bold text-primary mb-2">
+            <h3 className="type-h3 text-primary mb-2">
               {nl(`zoDoenZijHet.${c.orgKey}`)}
             </h3>
             <p className="text-primary font-medium mb-4">
@@ -54,7 +54,7 @@ function ZoDoenZijHet() {
       </div>
 
       <div className="mt-16 p-8 bg-gray-50 border border-gray-100">
-        <h2 className="text-xl font-bold text-primary mb-3">
+        <h2 className="type-h2 text-primary mb-3">
           {nl('zoDoenZijHet.ctaTitle')}
         </h2>
         <p className="text-gray-600 mb-6 max-w-2xl">

@@ -10,10 +10,10 @@ function SolutionsGrid({ solutions = [], loading = false }) {
             <p className="text-sm font-medium text-primary uppercase tracking-widest mb-4">
               {nl('solutions.sectionLabel')}
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-black tracking-tight mb-4">
+            <h2 className="type-h2 text-black tracking-tight mb-4">
               {nl('solutions.sectionTitle')}
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="type-body-lg text-gray-600 max-w-2xl mx-auto">
               {nl('solutions.sectionSub')}
             </p>
           </div>
@@ -43,10 +43,10 @@ function SolutionsGrid({ solutions = [], loading = false }) {
           <p className="text-sm font-medium text-primary uppercase tracking-widest mb-4">
             {nl('solutions.sectionLabel')}
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-black tracking-tight mb-4">
+          <h2 className="type-h2 text-black tracking-tight mb-4">
             {nl('solutions.sectionTitle')}
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="type-body-lg text-gray-600 max-w-2xl mx-auto">
             {nl('solutions.sectionSub')}
           </p>
         </div>

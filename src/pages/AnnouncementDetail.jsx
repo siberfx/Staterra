@@ -55,11 +55,11 @@ function AnnouncementDetail() {
           </span>
         </div>
 
-        <h1 className="text-3xl md:text-4xl font-bold text-black tracking-tight mb-6">
+        <h1 className="type-h1 text-black tracking-tight mb-6">
           {entry.title}
         </h1>
 
-        <p className="text-lg text-gray-600 leading-relaxed mb-8">
+        <p className="type-body-lg text-gray-600 mb-8">
           {entry.description}
         </p>
 

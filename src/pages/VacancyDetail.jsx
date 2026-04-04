@@ -152,7 +152,7 @@ function VacancyDetail() {
             </span>
           </nav>
 
-          <h1 className="text-4xl md:text-5xl font-bold text-black tracking-tight leading-tight mb-6">
+          <h1 className="type-h1 text-black tracking-tight mb-6">
             {vacancy.title}
           </h1>
 
@@ -186,22 +186,22 @@ function VacancyDetail() {
       </section>
 
       <article className="container-page mb-16">
-        <div className="max-w-3xl prose prose-lg prose-headings:font-bold prose-headings:text-black prose-p:text-gray-600 prose-p:leading-relaxed max-w-none">
+        <div className="max-w-3xl rich-text max-w-none">
           {vacancy.description && (
             <section className="mb-10">
-              <h2 className="text-xl font-semibold text-primary mb-4">{nl('vacancies.description')}</h2>
+              <h2 className="type-h2 text-primary mb-4">{nl('vacancies.description')}</h2>
               <div className="whitespace-pre-wrap text-gray-600">{vacancy.description}</div>
             </section>
           )}
           {vacancy.requirements && (
             <section className="mb-10">
-              <h2 className="text-xl font-semibold text-primary mb-4">{nl('vacancies.requirements')}</h2>
+              <h2 className="type-h2 text-primary mb-4">{nl('vacancies.requirements')}</h2>
               <div className="whitespace-pre-wrap text-gray-600">{vacancy.requirements}</div>
             </section>
           )}
           {vacancy.responsibilities && (
             <section className="mb-10">
-              <h2 className="text-xl font-semibold text-primary mb-4">{nl('vacancies.responsibilities')}</h2>
+              <h2 className="type-h2 text-primary mb-4">{nl('vacancies.responsibilities')}</h2>
               <div className="whitespace-pre-wrap text-gray-600">{vacancy.responsibilities}</div>
             </section>
           )}
@@ -221,7 +221,7 @@ function VacancyDetail() {
         </div>
 
         <div className="mt-16 pt-12 border-t border-gray-200">
-          <h2 className="text-2xl font-bold text-primary mb-6">{nl('vacancies.applyFormTitle')}</h2>
+          <h2 className="type-h2 text-primary mb-6">{nl('vacancies.applyFormTitle')}</h2>
           {submitted ? (
             <div className="p-6 bg-green-50 border border-green-200 text-green-800">
               {nl('vacancies.applySuccess')}

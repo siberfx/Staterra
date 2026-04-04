@@ -30,15 +30,15 @@ function HomeHero({ data, loading: hpLoading }) {
             {label && (
               <div className="flex items-center gap-3 mb-5">
                 <span className="w-12 h-0.5 bg-primary" />
-                <span className="text-primary font-semibold tracking-wider text-sm uppercase">
+                <span className="type-kicker text-primary">
                   {label}
                 </span>
               </div>
             )}
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[3.75rem] font-bold text-primary tracking-tight mb-6">
+            <h1 className="type-h1 text-primary tracking-tight mb-6">
               {heading}
             </h1>
-            <p className="text-gray-600 text-lg lg:text-xl leading-relaxed mb-8 max-w-lg">
+            <p className="type-body-lg text-gray-600 mb-8 max-w-lg">
               {paragraph}
             </p>
             <ul className="space-y-2.5 mb-10">
@@ -47,7 +47,7 @@ function HomeHero({ data, loading: hpLoading }) {
                   <div className="flex-shrink-0 w-9 h-9 flex items-center justify-center bg-primary/10">
                     <FaIcon icon={b.icon} className="text-primary text-base" />
                   </div>
-                  <span className="text-gray-600">{b.text}</span>
+                  <span className="type-body text-gray-600">{b.text}</span>
                 </li>
               ))}
             </ul>

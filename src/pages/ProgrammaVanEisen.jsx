@@ -14,23 +14,23 @@ function ProgrammaVanEisen() {
       </nav>
 
       <header className="mb-8">
-        <h1 className="text-4xl md:text-5xl font-normal tracking-tight text-primary mb-4">
+        <h1 className="type-h1 text-primary tracking-tight mb-4">
           {nl('programmaVanEisen.title')}
         </h1>
-        <p className="text-lg text-gray-600 max-w-3xl">
+        <p className="type-body-lg text-gray-600 max-w-3xl">
           {nl('programmaVanEisen.subtitle')}
         </p>
       </header>
 
-      <div className="prose prose-lg max-w-3xl space-y-6 mb-12">
+      <div className="rich-text max-w-3xl space-y-6 mb-12">
         <p className="text-gray-700">{nl('programmaVanEisen.content')}</p>
       </div>
 
       <div className="mb-8">
-        <h2 className="text-xl font-bold text-black mb-4">
+        <h2 className="type-h2 text-black mb-4">
           {nl('programmaVanEisen.eisenTitle')}
         </h2>
-        <ul className="list-disc list-inside space-y-2 text-gray-700">
+        <ul className="list-disc list-inside space-y-2 type-body text-gray-700">
           <li>{nl('programmaVanEisen.eis1')}</li>
           <li>{nl('programmaVanEisen.eis2')}</li>
           <li>{nl('programmaVanEisen.eis3')}</li>
@@ -41,7 +41,7 @@ function ProgrammaVanEisen() {
 
       <Link
         to={R.contact}
-        className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white bg-primary hover:bg-primary/90 transition-all rounded-md"
+        className="inline-flex items-center justify-center px-8 py-3.5 text-body-sm font-semibold text-white bg-primary hover:bg-primary/90 transition-all rounded-md"
       >
         {nl('programmaVanEisen.cta')}
       </Link>

@@ -24,7 +24,7 @@ function RelatedBlog({ currentSlug, limit = 3, postRoute }) {
     <section className="py-20 bg-gray-50 border-t border-gray-100">
       <div className="container-page">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-black mb-2">{nl('blog.relatedTitle')}</h2>
+          <h2 className="type-h2 text-black mb-2">{nl('blog.relatedTitle')}</h2>
           <div className="w-12 h-1 bg-gray-200 mx-auto mt-4" />
         </div>
         <div className="grid md:grid-cols-3 gap-8">
@@ -68,7 +68,7 @@ function RelatedBlog({ currentSlug, limit = 3, postRoute }) {
                     )}
                     <span>{date}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-black group-hover:text-primary transition-colors leading-snug mb-2">
+                  <h3 className="type-h3 text-black group-hover:text-primary transition-colors mb-2">
                     {title}
                   </h3>
                   {item.short_body && (

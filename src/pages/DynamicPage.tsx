@@ -11,6 +11,7 @@ import { PageMeta } from '@/components/PageMeta';
 import LeadMagnetBanner from '@/components/LeadMagnetBanner';
 import { DOELGROEP_CONFIG } from '@/lib/doelgroep-config';
 import { ROUTE_SCHEMAS } from '@/config/structuredData';
+import { DOELGROEP_HERO } from '@/config/doelgroepHero';
 
 // ── Bestuurslaag-specifieke badge-kleuren en aantallen
 const LAYER_META: Record<string, { badge: string; count: string; color: string }> = {
@@ -96,36 +97,37 @@ export default function DynamicPage() {
 
   // Fallback voor staterra-* doelgroeppagina's als CMS niet beschikbaar is
   const doelgroepConfig = slug ? DOELGROEP_CONFIG[slug] : undefined;
-  if (notFound && doelgroepConfig) {
+  const heroConfig = slug ? DOELGROEP_HERO[slug] : undefined;
+  if (notFound && doelgroepConfig && heroConfig) {
     return (
       <>
-        <PageMeta title={doelgroepConfig.heroTitle} description={doelgroepConfig.heroSubtitle} schemas={ROUTE_SCHEMAS[slug] ?? []} />
+        <PageMeta title={doelgroepConfig.heroTitle} description={heroConfig.subtitle} schemas={ROUTE_SCHEMAS[slug] ?? []} />
         <section
-          className="relative overflow-hidden py-20 lg:py-28"
-          style={{ background: 'var(--gradient-brand)' }}
+          className="relative overflow-hidden"
+          style={{ background: 'linear-gradient(160deg, #163E74 0%, #1B5392 40%, #2568A8 70%, #3A7DB8 100%)' }}
         >
-          <div aria-hidden="true" className="pointer-events-none absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full opacity-[0.07] bg-white" />
-          <Container variant="content" className="relative z-10">
-            <div className="max-w-[720px]">
-              <span className={`inline-block text-caption font-semibold px-3 py-1 rounded-full mb-5 ${doelgroepConfig.badgeColor}`}>
-                {doelgroepConfig.badge}
-              </span>
-              <h1 className="font-heading text-h1 font-semibold text-white mb-6 leading-[1.05]">
-                {doelgroepConfig.heroTitle}
-              </h1>
-              <p className="text-body-lg text-brand-200 mb-8 leading-relaxed">
-                {doelgroepConfig.heroSubtitle}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button as="link" href="/contact" variant="secondary" size="lg">
-                  Plan een verkenningsgesprek
-                </Button>
-                <Button as="link" href="/woo-oplossing" size="lg" className="bg-transparent text-white border border-white/40 hover:bg-white/10">
-                  Bekijk de Woo-oplossing →
-                </Button>
-              </div>
+          <div className="absolute -top-[100px] -right-[100px] w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(108,182,217,0.12) 0%, transparent 70%)' }} aria-hidden="true" />
+          <div className="absolute -bottom-[80px] right-[200px] w-[400px] h-[400px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(108,182,217,0.08) 0%, transparent 70%)' }} aria-hidden="true" />
+          <div className="relative z-10 max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12 py-16 lg:py-20 lg:pb-[88px]">
+            <p className="font-heading text-[13px] font-semibold uppercase tracking-[0.5px] text-brand-400 mb-5">
+              {heroConfig.label}
+            </p>
+            <h1 className="font-heading text-[32px] lg:text-[48px] font-bold text-white leading-[1.08] max-w-[720px] mb-6">
+              {heroConfig.h1Line1}<br />
+              <span className="text-brand-400">{heroConfig.h1Accent}</span>
+            </h1>
+            <p className="text-[17px] lg:text-[19px] leading-[1.6] text-white/[0.82] max-w-[640px] mb-9">
+              {heroConfig.subtitle}
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <a href="/contact" className="bg-white text-brand-900 rounded-[10px] px-7 py-4 text-[16px] font-semibold hover:bg-brand-100 hover:-translate-y-px transition-all duration-200">
+                Plan een verkenningsgesprek
+              </a>
+              <a href={heroConfig.secondaryCta.href} className="bg-white/[0.08] text-white border border-white/25 rounded-[10px] px-7 py-4 text-[16px] font-medium hover:bg-white/[0.14] hover:border-white/35 transition-all duration-200 flex items-center gap-1.5">
+                {heroConfig.secondaryCta.text} <span>→</span>
+              </a>
             </div>
-          </Container>
+          </div>
         </section>
         <LeadMagnetBanner />
 
@@ -146,7 +148,7 @@ export default function DynamicPage() {
         <section className="bg-white py-16 lg:py-24">
           <Container variant="text">
             <div className="text-center">
-              <h2 className="font-heading text-h2 font-semibold text-neutral-950 mb-4">
+              <h2 className="type-h2 text-neutral-950 mb-4">
                 Meer weten?
               </h2>
               <p className="text-body text-neutral-700 mb-8 max-w-[540px] mx-auto">
@@ -171,7 +173,7 @@ export default function DynamicPage() {
     return (
       <div className="py-20 text-center">
         <Container variant="text">
-          <h1 className="font-heading text-h2 font-semibold text-neutral-950 mb-4">
+          <h1 className="type-h2 text-neutral-950 mb-4">
             Pagina niet gevonden
           </h1>
           <p className="text-body text-neutral-600 mb-8">
@@ -193,78 +195,68 @@ export default function DynamicPage() {
   // Render solution page
   if (!solution) return null;
 
-  const meta = slug ? LAYER_META[slug] : undefined;
+  const solutionHero = slug ? DOELGROEP_HERO[slug] : undefined;
   const ctaHref = solution.link_url ? mapMenuUrl(solution.link_url) : '/contact';
 
   return (
     <>
       <PageMeta
         title={solution.meta_title || solution.title}
-        description={solution.subtitle || undefined}
+        description={solutionHero?.subtitle || solution.subtitle || undefined}
         schemas={slug ? (ROUTE_SCHEMAS[slug] ?? []) : []}
       />
-      {/* ── 1. Hero ──────────────────────────────────────────── */}
+      {/* ── 1. Hero (unified doelgroep template) ──────────────── */}
       <section
-        className="relative overflow-hidden py-20 lg:py-28"
+        className="relative overflow-hidden"
         aria-label="Introductie"
-        style={{ background: 'var(--gradient-brand)' }}
+        style={{ background: 'linear-gradient(160deg, #163E74 0%, #1B5392 40%, #2568A8 70%, #3A7DB8 100%)' }}
       >
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full opacity-[0.07] bg-white"
-        />
-
-        <Container variant="content">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div>
-              {/* Badge */}
-              {meta && (
-                <span className={`inline-block text-caption font-semibold px-3 py-1 rounded-full mb-5 ${meta.color}`}>
-                  {meta.badge} — {meta.count}
-                </span>
-              )}
-              {!meta && (
-                <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-200 mb-5">
-                  Woo-oplossing
-                </span>
-              )}
-
-              <h1 className="font-heading text-h1 font-semibold text-white mb-4 leading-[1.05]">
+        <div className="absolute -top-[100px] -right-[100px] w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(108,182,217,0.12) 0%, transparent 70%)' }} aria-hidden="true" />
+        <div className="absolute -bottom-[80px] right-[200px] w-[400px] h-[400px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(108,182,217,0.08) 0%, transparent 70%)' }} aria-hidden="true" />
+        <div className="relative z-10 max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12 py-16 lg:py-20 lg:pb-[88px]">
+          {solutionHero ? (
+            <>
+              <p className="font-heading text-[13px] font-semibold uppercase tracking-[0.5px] text-brand-400 mb-5">
+                {solutionHero.label}
+              </p>
+              <h1 className="font-heading text-[32px] lg:text-[48px] font-bold text-white leading-[1.08] max-w-[720px] mb-6">
+                {solutionHero.h1Line1}<br />
+                <span className="text-brand-400">{solutionHero.h1Accent}</span>
+              </h1>
+              <p className="text-[17px] lg:text-[19px] leading-[1.6] text-white/[0.82] max-w-[640px] mb-9">
+                {solutionHero.subtitle}
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <a href="/contact" className="bg-white text-brand-900 rounded-[10px] px-7 py-4 text-[16px] font-semibold hover:bg-brand-100 hover:-translate-y-px transition-all duration-200">
+                  Plan een verkenningsgesprek
+                </a>
+                <a href={solutionHero.secondaryCta.href} className="bg-white/[0.08] text-white border border-white/25 rounded-[10px] px-7 py-4 text-[16px] font-medium hover:bg-white/[0.14] hover:border-white/35 transition-all duration-200 flex items-center gap-1.5">
+                  {solutionHero.secondaryCta.text} <span>→</span>
+                </a>
+              </div>
+            </>
+          ) : (
+            <>
+              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-200 mb-5">
+                {solution.nav_title || solution.title}
+              </span>
+              <h1 className="font-heading text-[32px] lg:text-[48px] font-bold text-white leading-[1.08] max-w-[720px] mb-6">
                 {solution.title}
               </h1>
-              <p className="text-body-lg text-brand-200 mb-8 leading-relaxed">
+              <p className="text-[17px] lg:text-[19px] leading-[1.6] text-white/[0.82] max-w-[640px] mb-9">
                 {solution.subtitle}
               </p>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button as="link" href="/contact" variant="secondary" size="lg">
+              <div className="flex flex-wrap gap-4">
+                <a href="/contact" className="bg-white text-brand-900 rounded-[10px] px-7 py-4 text-[16px] font-semibold hover:bg-brand-100 hover:-translate-y-px transition-all duration-200">
                   Plan een verkenningsgesprek
-                </Button>
-                <Button
-                  as="link"
-                  href="/woo-oplossing"
-                  size="lg"
-                  className="bg-transparent text-white border border-white/40 hover:bg-white/10"
-                >
-                  Bekijk de Woo-oplossing →
-                </Button>
+                </a>
+                <a href="/woo-oplossing" className="bg-white/[0.08] text-white border border-white/25 rounded-[10px] px-7 py-4 text-[16px] font-medium hover:bg-white/[0.14] hover:border-white/35 transition-all duration-200 flex items-center gap-1.5">
+                  Bekijk de Woo-oplossing <span>→</span>
+                </a>
               </div>
-            </div>
-
-            {/* Hero-afbeelding */}
-            {solution.image && (
-              <div className="hidden lg:flex items-center justify-center">
-                <div className="relative w-full aspect-[4/3] rounded-[20px] overflow-hidden bg-white/10 shadow-[0_16px_48px_rgba(0,0,0,0.25)]">
-                  <img
-                    src={solution.image}
-                    alt={solution.title}
-                    className="absolute inset-0 w-full h-full object-contain p-6"
-                  />
-                </div>
-              </div>
-            )}
-          </div>
-        </Container>
+            </>
+          )}
+        </div>
       </section>
 
       {/* ── 2. Inhoud: long_body + kenmerken ────────────────── */}
@@ -275,26 +267,14 @@ export default function DynamicPage() {
             {/* Tekst */}
             <div>
               {solution.short_body && (
-                <p className="text-body-lg text-neutral-700 leading-relaxed mb-8">
+                <p className="type-body-lg text-neutral-700 mb-8">
                   {solution.short_body}
                 </p>
               )}
 
               {solution.long_body && (
                 <div
-                  className="
-                    prose max-w-none
-                    [&_h2]:font-heading [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-brand-900 [&_h2]:leading-snug [&_h2]:mt-10 [&_h2]:mb-4
-                    [&_h3]:font-heading [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-brand-900 [&_h3]:leading-snug [&_h3]:mt-8 [&_h3]:mb-3
-                    [&_h4]:font-heading [&_h4]:text-lg [&_h4]:font-semibold [&_h4]:text-brand-900 [&_h4]:mt-6 [&_h4]:mb-2
-                    [&_p]:text-base [&_p]:text-neutral-700 [&_p]:leading-relaxed [&_p]:mb-4 last:[&_p]:mb-0
-                    [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:my-5
-                    [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:my-5
-                    [&_li]:text-base [&_li]:text-neutral-700 [&_li]:my-1 [&_li]:marker:text-brand-700
-                    [&_strong]:text-neutral-950 [&_strong]:font-semibold
-                    [&_a]:text-brand-700 [&_a]:font-medium [&_a]:no-underline hover:[&_a]:text-brand-900
-                    [&_h2~h2]:border-t [&_h2~h2]:border-neutral-200 [&_h2~h2]:pt-8
-                  "
+                  className="rich-text [&_h2~h2]:border-t [&_h2~h2]:border-neutral-200 [&_h2~h2]:pt-8"
                   dangerouslySetInnerHTML={{ __html: solution.long_body
                     .replace(/<h1[^>]*>[\s\S]*?<\/h1>/i, '')
                     .replace(/<h3([^>]*)>/g, '<h2$1>')
@@ -310,7 +290,7 @@ export default function DynamicPage() {
             {solution.list_items?.length > 0 && (
               <div>
                 <Card padding="loose" hover={false}>
-                  <h2 className="font-heading text-h4 font-semibold text-neutral-950 mb-6">
+                  <h2 className="type-h3 text-neutral-950 mb-6">
                     Wat u krijgt
                   </h2>
                   <ul className="space-y-4">
@@ -363,7 +343,7 @@ export default function DynamicPage() {
                 <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
               </svg>
 
-              <blockquote className="font-heading text-h3 font-semibold text-white leading-snug mb-6 max-w-[700px] mx-auto">
+              <blockquote className="type-h3 text-white mb-6 max-w-[700px] mx-auto">
                 &ldquo;{solution.testimonial_quote}&rdquo;
               </blockquote>
 
@@ -397,7 +377,7 @@ export default function DynamicPage() {
               </span>
               <h2
                 id="faq-heading"
-                className="font-heading text-h2 font-semibold text-neutral-950"
+                className="type-h2 text-neutral-950"
               >
                 Veelgestelde vragen
               </h2>
@@ -424,11 +404,11 @@ export default function DynamicPage() {
           <div className="text-center relative z-10">
             <h2
               id="solution-cta-heading"
-              className="font-heading text-h2 font-semibold text-white mb-4 leading-[1.1]"
+              className="type-h2 text-white mb-4"
             >
               Klaar om te starten met OPMS?
             </h2>
-            <p className="text-body-lg text-brand-200 mb-10 leading-relaxed">
+            <p className="type-body-lg text-brand-200 mb-10">
               Plan een vrijblijvend verkenningsgesprek. Binnen twee werkdagen een
               inhoudelijke reactie — geen verkoopdruk.
             </p>

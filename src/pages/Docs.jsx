@@ -132,7 +132,7 @@ function Docs() {
           <div className="flex-1 min-w-0 flex flex-col gap-4">
             {showSearch ? (
               <main className="flex-1 min-w-0 max-w-3xl">
-                <h1 className="text-3xl md:text-5xl font-normal text-primary tracking-tight mb-8">
+                <h1 className="type-h1 text-primary tracking-tight mb-8">
                   Zoekresultaten
                 </h1>
                 {searchData.length > 0 ? (

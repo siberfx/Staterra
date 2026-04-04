@@ -61,7 +61,7 @@ function Support() {
                 <div className="flex-shrink-0 w-10 h-10 border border-primary/20 flex items-center justify-center group-hover:border-secondary/40 transition-colors">
                   <FaIcon icon={item.icon} className="text-primary text-lg" />
                 </div>
-                <h3 className="text-lg font-bold text-primary leading-tight pt-1">
+                <h3 className="type-h3 text-primary pt-1">
                   {item.title}
                 </h3>
               </div>
@@ -97,11 +97,11 @@ function Support() {
       </div>
 
       <div className="mt-16 pt-12 border-t border-gray-100">
-        <div className="prose prose-lg max-w-3xl mb-12">
+        <div className="rich-text max-w-3xl mb-12">
           <p className="text-gray-700">{nl('ondersteuning.content')}</p>
         </div>
         <div className="max-w-3xl mb-12">
-          <h2 className="text-2xl font-bold text-black mb-4">
+          <h2 className="type-h2 text-black mb-4">
             {nl('ondersteuning.itVragenTitle')}
           </h2>
           <p className="text-gray-600 mb-8">{nl('ondersteuning.itVragenIntro')}</p>

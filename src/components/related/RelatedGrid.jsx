@@ -15,7 +15,7 @@ function RelatedGrid({ solutions = [], currentAnchor }) {
     <section className="py-20 md:py-24 bg-white border-t border-gray-100">
       <div className="container-page">
         <div className="text-center mb-14">
-          <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-2 leading-tight">
+          <h2 className="type-h2 text-gray-900 mb-2">
             Andere oplossingen
           </h2>
         </div>
@@ -34,10 +34,10 @@ function RelatedGrid({ solutions = [], currentAnchor }) {
                 <div className="w-14 h-14 bg-primary/5 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
                   <FaIcon icon={icon} className="text-primary group-hover:text-white text-xl" />
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 group-hover:text-primary transition-colors leading-snug">
+                <h3 className="type-h3 text-gray-900 group-hover:text-primary transition-colors">
                   {title}
                 </h3>
-                <p className="text-gray-600 mt-3 text-base line-clamp-3">
+                <p className="type-body text-gray-600 mt-3 line-clamp-3">
                   {desc}
                 </p>
               </Link>

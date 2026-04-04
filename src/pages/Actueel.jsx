@@ -33,10 +33,10 @@ function Actueel() {
         </nav>
 
         <header className="mb-8">
-          <h1 className="text-4xl md:text-5xl font-normal tracking-tight text-primary mb-4">
+          <h1 className="type-h1 text-primary tracking-tight mb-4">
             {nl('actueel.title')}
           </h1>
-          <p className="text-lg text-gray-600 max-w-3xl">
+          <p className="type-body-lg text-gray-600 max-w-3xl">
             {nl('actueel.subtitle')}
           </p>
         </header>

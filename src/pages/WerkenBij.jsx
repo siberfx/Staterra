@@ -69,7 +69,7 @@ function WerkenBij() {
       />
 
       <section id="werkenbij-content" className="container-page py-12 md:py-16 pb-24">
-        <div className="prose prose-lg max-w-3xl mb-10">
+        <div className="rich-text max-w-3xl mb-10">
           <p className="text-gray-700">{nl('werkenBij.content')}</p>
         </div>
 

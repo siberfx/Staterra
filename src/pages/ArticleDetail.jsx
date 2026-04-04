@@ -38,7 +38,7 @@ function ArticleDetail() {
             <span className="text-gray-800">{primaryTag}</span>
           </nav>
 
-          <h1 className="text-4xl md:text-5xl font-bold text-black tracking-tight leading-tight mb-6">
+          <h1 className="type-h1 text-black tracking-tight mb-6">
             {article.title}
           </h1>
 

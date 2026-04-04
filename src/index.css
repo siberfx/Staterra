@@ -30,19 +30,19 @@
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
-  --text-h1: 3.5rem;
-  --text-h1--line-height: 1.05;
-  --text-h2: 2rem;
-  --text-h2--line-height: 1.15;
-  --text-h3: 2rem;
-  --text-h3--line-height: 1.15;
-  --text-h4: 1.5rem;
-  --text-h4--line-height: 1.25;
-  --text-h5: 1.25rem;
+  --text-h1: 1.875rem;
+  --text-h1--line-height: 1.15;
+  --text-h2: 1.5rem;
+  --text-h2--line-height: 1.2;
+  --text-h3: 1.125rem;
+  --text-h3--line-height: 1.3;
+  --text-h4: 1.25rem;
+  --text-h4--line-height: 1.3;
+  --text-h5: 1.125rem;
   --text-h5--line-height: 1.3;
-  --text-body-lg: 1.25rem;
+  --text-body-lg: 1.125rem;
   --text-body-lg--line-height: 1.6;
-  --text-body: 1.125rem;
+  --text-body: 1rem;
   --text-body--line-height: 1.6;
   --text-body-sm: 1rem;
   --text-body-sm--line-height: 1.6;
@@ -91,19 +91,19 @@
   --font-heading: 'Sora', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-  --text-h1: 56px;
-  --text-h2: 32px;
-  --text-h3: 32px;
-  --text-h4: 24px;
-  --text-h5: 20px;
-  --text-body-lg: 20px;
-  --text-body: 18px;
+  --text-h1: 30px;
+  --text-h2: 24px;
+  --text-h3: 18px;
+  --text-h4: 20px;
+  --text-h5: 18px;
+  --text-body-lg: 18px;
+  --text-body: 16px;
   --text-body-sm: 16px;
   --text-caption: 14px;
 
-  --lh-h1: 1.05;
-  --lh-h2: 1.1;
-  --lh-h3: 1.15;
+  --lh-h1: 1.15;
+  --lh-h2: 1.2;
+  --lh-h3: 1.3;
   --lh-body: 1.6;
 
   --space-1: 4px;   --space-2: 8px;   --space-3: 12px;  --space-4: 16px;
@@ -123,6 +123,24 @@
   --container-form: 640px;
 
   --transition-default: all 180ms ease;
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --text-h1: 52px;
+    --text-h2: 32px;
+    --text-h3: 22px;
+    --text-h4: 22px;
+    --text-h5: 20px;
+    --text-body-lg: 18px;
+    --text-body: 18px;
+  }
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --text-h1: 60px;
+  }
 }
 
 /* =============================================================
@@ -177,3 +195,88 @@
   }
 }
 
+@layer components {
+  .type-kicker {
+    @apply font-heading text-[13px] font-semibold uppercase tracking-[2px];
+  }
+
+  .type-h1 {
+    @apply font-heading text-h1 font-semibold leading-[1.15];
+  }
+
+  .type-h2 {
+    @apply font-heading text-h2 font-semibold leading-[1.2];
+  }
+
+  .type-h3 {
+    @apply font-heading text-h3 font-medium leading-[1.3];
+  }
+
+  .type-body-lg {
+    @apply text-body-lg leading-[1.6];
+  }
+
+  .type-body {
+    @apply text-body leading-[1.6];
+  }
+
+  .rich-text {
+    @apply prose max-w-none text-body text-neutral-700;
+  }
+
+  .rich-text h1 {
+    @apply font-heading text-h1 font-semibold leading-[1.15] text-neutral-950 mt-10 mb-5;
+  }
+
+  .rich-text h2 {
+    @apply font-heading text-h2 font-semibold leading-[1.2] text-neutral-950 mt-10 mb-4;
+  }
+
+  .rich-text h3 {
+    @apply font-heading text-h3 font-medium leading-[1.3] text-neutral-950 mt-8 mb-3;
+  }
+
+  .rich-text h4,
+  .rich-text h5,
+  .rich-text h6 {
+    @apply font-heading text-h5 font-semibold leading-[1.3] text-neutral-950 mt-6 mb-3;
+  }
+
+  .rich-text p,
+  .rich-text li {
+    @apply text-body text-neutral-700 leading-[1.6];
+  }
+
+  .rich-text p {
+    @apply mb-4;
+  }
+
+  .rich-text ul,
+  .rich-text ol {
+    @apply my-5 pl-6;
+  }
+
+  .rich-text li + li {
+    @apply mt-2;
+  }
+
+  .rich-text strong {
+    @apply font-semibold text-neutral-950;
+  }
+
+  .rich-text a {
+    @apply font-medium text-brand-700 no-underline transition-colors duration-[150ms];
+  }
+
+  .rich-text a:hover {
+    @apply text-brand-900;
+  }
+
+  .rich-text blockquote {
+    @apply my-8 border-l-4 border-brand-200 pl-5 text-neutral-800;
+  }
+
+  .rich-text blockquote p {
+    @apply mb-0 font-heading text-h3 font-medium italic leading-[1.35] text-neutral-950;
+  }
+}

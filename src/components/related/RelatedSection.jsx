@@ -8,7 +8,7 @@ function RelatedSection({ title, items = [], renderCard, className = '' }) {
       <div className="container-page">
         {title && (
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-black mb-2">{title}</h2>
+            <h2 className="type-h2 text-black mb-2">{title}</h2>
             <div className="w-12 h-1 bg-gray-200 mx-auto mt-4" />
           </div>
         )}
@@ -63,7 +63,7 @@ function RelatedSection({ title, items = [], renderCard, className = '' }) {
                     )}
                     {date && <span>{date}</span>}
                   </div>
-                  <h3 className="text-xl font-bold text-black group-hover:text-primary transition-colors leading-snug mb-2">
+                  <h3 className="type-h3 text-black group-hover:text-primary transition-colors mb-2">
                     {itemTitle}
                   </h3>
                   {item.short_body && (

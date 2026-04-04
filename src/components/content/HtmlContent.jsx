@@ -6,7 +6,7 @@ export default function HtmlContent({ html }) {
     <article className="container-page mb-24">
       {html ? (
         <div
-          className="prose prose-lg prose-headings:font-bold prose-headings:text-black prose-p:text-gray-600 prose-p:leading-relaxed prose-a:text-black hover:prose-a:text-gray-600 max-w-none"
+          className="rich-text"
           dangerouslySetInnerHTML={{ __html: sanitizeHtml(html) }}
         />
       ) : (

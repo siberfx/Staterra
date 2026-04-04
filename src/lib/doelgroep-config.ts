@@ -39,7 +39,7 @@ export const DOELGROEP_CONFIG: Record<string, DoelgroepConfig> = {
     badgeColor: 'bg-amber-100 text-amber-800',
     heroTitle: `${stats.rijksbestuursorganen} rijksbestuursorganen onder de Woo`,
     heroSubtitle: `Verdeeld over ${stats.kerndepartementen} departementen — van agentschappen tot ZBO's. De OPMS-oplossing is ontwikkeld in samenwerking met het ministerie van JenV.`,
-    solutionSlug: '/woo-rijkspartijen',
+    solutionSlug: '/woo-rijksoverheid',
     solutionLabel: 'Bekijk de Woo-oplossing voor de rijksoverheid →',
   },
 };

@@ -36,14 +36,14 @@ export default function HomePage() {
 
             {/* Links: tekst */}
             <div>
-              <p className="font-heading text-[13px] font-semibold uppercase tracking-[2px] text-brand-400 mb-5">
+              <p className="type-kicker text-brand-400 mb-5">
                 Digitale oplossingen voor de overheid
               </p>
-              <h1 className="font-heading text-3xl sm:text-4xl lg:text-[50px] font-bold text-white mb-7 leading-[1.08]">
+              <h1 className="type-h1 text-white mb-7 leading-[1.12]">
                 Open source oplossingen{' '}
                 <span className="text-brand-400">waar u verder mee kunt</span>
               </h1>
-              <p className="text-[18px] leading-[1.7] text-white/75 max-w-[520px] mb-10">
+              <p className="type-body-lg text-white/75 max-w-[520px] mb-10 leading-[1.7]">
                 Staterra bouwt, implementeert en beheert digitale oplossingen voor de
                 publieke sector.{' '}
                 <strong className="text-white/95 font-medium">
@@ -151,13 +151,13 @@ export default function HomePage() {
       <div className="h-px" style={{ background: 'linear-gradient(90deg, transparent, var(--neutral-200, #E9EEF2), transparent)' }} />
       <section className="bg-white py-16 lg:py-20" aria-label="Urgentie">
         <div className="max-w-[680px] mx-auto px-6 text-center">
-          <p className="font-heading text-[13px] font-semibold uppercase tracking-[2px] text-brand-700 mb-4">
+          <p className="type-kicker text-brand-700 mb-4">
             De urgentie
           </p>
-          <h2 className="font-heading text-h2 font-bold text-neutral-950 mb-5 leading-[1.15]">
+          <h2 className="type-h2 text-neutral-950 mb-5">
             Steeds meer verplichtingen, steeds minder tijd
           </h2>
-          <p className="text-[18px] leading-[1.65] text-neutral-700">
+          <p className="type-body-lg text-neutral-700">
             Meer dan 600 bestuursorganen moeten voldoen aan de Wet open overheid.
             Staterra levert oplossingen die vandaag
             werken — niet over twee jaar.
@@ -190,7 +190,7 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
                 </svg>
               </div>
-              <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-3">
+              <h3 className="type-h3 text-neutral-950 mb-3">
                 Samen ontwikkelen
               </h3>
               <p className="text-body-sm text-neutral-700 leading-relaxed mb-6 flex-1">
@@ -215,7 +215,7 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
                 </svg>
               </div>
-              <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-3">
+              <h3 className="type-h3 text-neutral-950 mb-3">
                 Open source implementeren en beheren
               </h3>
               <p className="text-body-sm text-neutral-700 leading-relaxed mb-6 flex-1">
@@ -242,7 +242,7 @@ export default function HomePage() {
                 <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-2">
                   Direct beschikbaar
                 </span>
-                <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-3">
+                <h3 className="type-h3 text-neutral-950 mb-3">
                   Woo-compliance met OPMS
                 </h3>
                 <p className="text-body-sm text-neutral-700 leading-relaxed">

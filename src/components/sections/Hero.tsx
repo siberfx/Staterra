@@ -29,11 +29,11 @@ export function Hero({ data }: HeroProps) {
               </span>
             )}
 
-            <h1 className="font-heading text-h1 font-semibold text-neutral-950 mb-6 leading-[1.05]">
+            <h1 className="type-h1 text-neutral-950 mb-6">
               {data.heading}
             </h1>
 
-            <p className="text-body-lg text-neutral-700 mb-8 leading-relaxed">
+            <p className="type-body-lg text-neutral-700 mb-8">
               {data.paragraph}
             </p>
 

@@ -77,12 +77,12 @@ function SearchHero({
           </nav>
         )}
 
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-3">
+        <h1 className="type-h1 text-white tracking-tight mb-3">
           {title}
         </h1>
 
         {subtitle && (
-          <p className="text-lg text-white/90 mb-6 max-w-2xl">{subtitle}</p>
+          <p className="type-body-lg text-white/90 mb-6 max-w-2xl">{subtitle}</p>
         )}
 
         <form onSubmit={handleSubmit} className="flex max-w-2xl overflow-hidden rounded-none bg-white shadow-xl">
