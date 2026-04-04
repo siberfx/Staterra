@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { getSolution } from '@/services/cms';
 import { PageMeta } from '@/components/PageMeta';
 import { Container } from '@/components/ui/Container';
@@ -401,7 +402,37 @@ export default function SamenOntwikkelenPage() {
         </Container>
       </section>
 
-      {/* ── 5. Samenwerkingsmodel ─────────────────────────────── */}
+      {/* ── 5. In de praktijk — bewijs ─────────────────────────── */}
+      <section className="bg-white py-16 lg:py-20" aria-label="In de praktijk">
+        <Container variant="text">
+          <div className="text-center">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
+              In de praktijk
+            </span>
+            <h2 className="font-heading text-h2 font-semibold text-neutral-950 mb-5 leading-[1.1]">
+              Zo ontstond de Woo-oplossing
+            </h2>
+            <p className="text-body text-neutral-700 leading-relaxed mb-8 max-w-[600px] mx-auto">
+              OPMS is een concreet resultaat van samen ontwikkelen. Samen met de
+              overheid hebben we een publicatieplatform gebouwd dat vandaag in
+              productie draait bij meerdere bestuursorganen. Het platform is open
+              source, eigendom van de overheid, en wordt continu doorontwikkeld
+              door deelnemende organisaties.
+            </p>
+            <Link
+              to="/woo-oplossing"
+              className="inline-flex items-center gap-2 text-body-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors duration-150 group"
+            >
+              Bekijk de Woo-oplossing
+              <svg className="w-4 h-4 transition-transform duration-150 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </Link>
+          </div>
+        </Container>
+      </section>
+
+      {/* ── 6. Samenwerkingsmodel ─────────────────────────────── */}
       <section
         className="bg-brand-100 py-16 lg:py-24"
         aria-labelledby="samenwerking-heading"

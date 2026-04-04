@@ -175,7 +175,7 @@ export default function OpenSourcePage() {
                 <span className="text-brand-400"> digitale systemen</span>
               </h1>
               <p className="text-body-lg text-brand-200 mb-8 leading-relaxed">
-                De Woo verplicht {BESTUURSORGANEN_STATS.totaal} bestuursorganen tot actieve openbaarmaking — van de {BESTUURSORGANEN_STATS.gemeenten} gemeenten tot alle {BESTUURSORGANEN_STATS.provincies} provincies en {BESTUURSORGANEN_STATS.waterschappen} waterschappen. <strong>Staterra implementeert en beheert open source oplossingen met volledige regie. Geen vendor lock-in, geen licentiekosten — wel eigenaarschap van uw broncode.</strong>
+                Staterra implementeert en beheert open source platformen voor de publieke sector — van OPMS voor Woo-compliance tot Nextcloud, Rocket.Chat en Jitsi. <strong>Altijd op uw eigen infrastructuur, met volledige regie. Geen vendor lock-in, geen licentiekosten — wel eigenaarschap van uw broncode.</strong>
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button as="link" href="/contact" variant="secondary" size="lg">

@@ -176,7 +176,7 @@ export default function DienstverleningPage() {
               <span className="text-brand-400"> maar het team eromheen</span>
             </h1>
             <p className="text-body-lg text-brand-200 mb-10 leading-relaxed max-w-[600px]">
-              Een Woo-oplossing slagen of falen hangt niet af van de techniek —
+              Een digitale oplossing slagen of falen hangt niet af van de techniek —
               maar van de mensen die het implementeren, inrichten en verankeren
               in de organisatie. Staterra levert het volledige team.
             </p>

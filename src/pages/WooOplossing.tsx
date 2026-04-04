@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { getSolution } from '@/services/cms';
 import { PageMeta } from '@/components/PageMeta';
 import type { SolutionDetail } from '@/lib/types';
@@ -455,7 +456,46 @@ export default function WooOplossing() {
       {/* -- 8. Lead magnet -- */}
       <LeadMagnetBanner />
 
-      {/* -- 9. Sluit-CTA -- */}
+      {/* -- 9. Breder dan Woo -- */}
+      <section className="bg-brand-100 py-14 lg:py-18" aria-label="Breder dan Woo">
+        <Container variant="text">
+          <div className="text-center">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
+              Breder dan Woo
+            </span>
+            <h2 className="font-heading text-h3 font-semibold text-neutral-950 mb-4 leading-[1.15]">
+              Heeft uw organisatie een ander vraagstuk?
+            </h2>
+            <p className="text-body text-neutral-700 leading-relaxed mb-8 max-w-[560px] mx-auto">
+              OPMS is een concrete uitwerking van hoe Staterra samen met de overheid
+              digitale oplossingen bouwt. Dezelfde aanpak — open source, gefaseerd,
+              met volledige regie — passen we toe op andere vraagstukken.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/samen-ontwikkelen"
+                className="inline-flex items-center gap-2 text-body-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors duration-150 group"
+              >
+                Samen nieuwe oplossingen ontwikkelen
+                <svg className="w-4 h-4 transition-transform duration-150 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </Link>
+              <Link
+                to="/open-source"
+                className="inline-flex items-center gap-2 text-body-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors duration-150 group"
+              >
+                Open source platformen implementeren
+                <svg className="w-4 h-4 transition-transform duration-150 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* -- 10. Sluit-CTA -- */}
       <section
         className="relative overflow-hidden py-20 lg:py-28"
         aria-labelledby="woo-cta-heading"

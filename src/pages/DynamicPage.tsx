@@ -128,6 +128,21 @@ export default function DynamicPage() {
           </Container>
         </section>
         <LeadMagnetBanner />
+
+        {/* Breder dan Woo */}
+        <section className="bg-neutral-50 py-10 lg:py-12" aria-label="Meer dan Woo">
+          <Container variant="text">
+            <p className="text-body text-neutral-700 text-center leading-relaxed">
+              Naast Woo-compliance bouwt en beheert Staterra ook andere digitale
+              oplossingen voor de publieke sector — op basis van open source, met
+              volledige regie.{' '}
+              <Link to="/oplossingen" className="font-semibold text-brand-700 hover:text-brand-900 transition-colors duration-150">
+                Bekijk alle oplossingen →
+              </Link>
+            </p>
+          </Container>
+        </section>
+
         <section className="bg-white py-16 lg:py-24">
           <Container variant="text">
             <div className="text-center">
