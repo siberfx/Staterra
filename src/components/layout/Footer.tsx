@@ -97,9 +97,9 @@ const FALLBACK_KOLOMMEN = [
   {
     titel: 'Oplossingen',
     links: [
-      { href: '/woo-oplossing', label: 'Woo-oplossing' },
       { href: '/samen-ontwikkelen', label: 'Samen ontwikkelen' },
-      { href: '/open-source', label: 'Open source' },
+      { href: '/open-source', label: 'Open source implementeren' },
+      { href: '/woo-oplossing', label: 'Woo-oplossing (OPMS)' },
       { href: '/oplossingen', label: 'Alle oplossingen' },
     ],
   },
@@ -239,7 +239,10 @@ export function Footer({ menu, settings }: FooterProps) {
                   </p>
                   <ul className="space-y-2.5">
                     {kolom.links.map((link) => (
-                      <li key={link.href}>
+                      <li
+                        key={link.href}
+                        className={link.href === '/woo-oplossing' ? 'mt-4 pt-3 border-t border-white/10' : ''}
+                      >
                         <Link
                           to={link.href}
                           className="text-body-sm text-brand-200/80 hover:text-white transition-colors duration-[180ms]"

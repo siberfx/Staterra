@@ -25,9 +25,11 @@ const CHILD = (id: number, title: string, subtitle: string, url: string): MenuIt
 })
 
 const OPLOSSINGEN_CHILDREN: MenuItem[] = [
-  CHILD(9101, 'Woo-oplossing', 'De complete Woo-compliance oplossing', '/woo-oplossing'),
+  // Groep: Onze aanpakken
   CHILD(9102, 'Samen ontwikkelen', 'Nieuwe digitale oplossingen bouwen', '/samen-ontwikkelen'),
-  CHILD(9103, 'Open source', 'Open source oplossingen voor de overheid', '/open-source'),
+  CHILD(9103, 'Open source implementeren', 'Bestaande platformen uitrollen en beheren', '/open-source'),
+  // Groep: Direct beschikbaar (scheiding in DropdownMenu)
+  CHILD(9101, 'Woo-oplossing (OPMS)', 'Bewezen platform, direct inzetbaar', '/woo-oplossing'),
 ]
 
 const DOELGROEPEN_ITEM: MenuItem = {
@@ -110,24 +112,42 @@ function DropdownMenu({ items, isOpen }: { items: MenuItem[]; isOpen: boolean })
         ].join(' ')}
         role="menu"
       >
-        {items.map((item) => {
+        {items.map((item, i) => {
           const meta = item.subtitle ?? item.description ?? null;
+          // Groepslabels voor het Oplossingen-menu
+          const isOverzicht = item.id === 9100;
+          const isFirstRoute = item.id === 9102;
+          const isWoo = item.id === 9101;
           return (
-            <Link
-              key={item.id}
-              to={mapMenuUrl(item.url)}
-              className="flex flex-col gap-0.5 px-4 py-3 rounded-[12px] hover:bg-brand-100 transition-colors duration-[150ms] group"
-              role="menuitem"
-            >
-              <span className="font-semibold text-body-sm text-neutral-800 group-hover:text-brand-900 transition-colors duration-[150ms]">
-                {item.title}
-              </span>
-              {meta && (
-                <span className="text-caption text-neutral-500 leading-snug">
-                  {meta}
-                </span>
+            <div key={item.id}>
+              {isFirstRoute && (
+                <p className="px-4 pt-3 pb-1 text-[10px] font-semibold uppercase tracking-[1.5px] text-neutral-400">
+                  Onze aanpakken
+                </p>
               )}
-            </Link>
+              {isWoo && (
+                <>
+                  <div className="mx-3 my-1.5 border-t border-neutral-100" />
+                  <p className="px-4 pt-1.5 pb-1 text-[10px] font-semibold uppercase tracking-[1.5px] text-neutral-400">
+                    Direct beschikbaar
+                  </p>
+                </>
+              )}
+              <Link
+                to={mapMenuUrl(item.url)}
+                className="flex flex-col gap-0.5 px-4 py-3 rounded-[12px] hover:bg-brand-100 transition-colors duration-[150ms] group"
+                role="menuitem"
+              >
+                <span className="font-semibold text-body-sm text-neutral-800 group-hover:text-brand-900 transition-colors duration-[150ms]">
+                  {item.title}
+                </span>
+                {meta && (
+                  <span className="text-caption text-neutral-500 leading-snug">
+                    {meta}
+                  </span>
+                )}
+              </Link>
+            </div>
           );
         })}
       </div>
