@@ -210,29 +210,8 @@ export function Footer({ menu, settings }: FooterProps) {
 
           {/* ── Rechterkolom: navigatie + nieuwsbrief ────────── */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {/* Navigatiekolommen: CMS of fallback */}
-            {cmsKolommen.length > 0 ? (
-              cmsKolommen.map((kolom) => (
-                <div key={kolom.column}>
-                  <p className="text-caption font-semibold uppercase tracking-widest text-brand-400 mb-4" role="heading" aria-level={2}>
-                    {KOLOM_TITELS[kolom.column] ?? `Kolom ${kolom.column}`}
-                  </p>
-                  <ul className="space-y-2.5">
-                    {(kolom.links ?? []).map((item) => (
-                      <li key={item.id}>
-                        <Link
-                          to={mapMenuUrl(item.url)}
-                          className="text-body-sm text-brand-200/80 hover:text-white transition-colors duration-[180ms]"
-                        >
-                          {item.title}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))
-            ) : (
-              FALLBACK_KOLOMMEN.map((kolom) => (
+            {/* Navigatiekolommen: altijd fallback voor juiste 2+1 hiërarchie */}
+            {FALLBACK_KOLOMMEN.map((kolom) => (
                 <div key={kolom.titel}>
                   <p className="text-caption font-semibold uppercase tracking-widest text-brand-400 mb-4" role="heading" aria-level={2}>
                     {kolom.titel}
@@ -253,8 +232,7 @@ export function Footer({ menu, settings }: FooterProps) {
                     ))}
                   </ul>
                 </div>
-              ))
-            )}
+              ))}
           </div>
         </div>
 

@@ -158,8 +158,8 @@ export default function HomePage() {
             Steeds meer verplichtingen, steeds minder tijd
           </h2>
           <p className="text-[18px] leading-[1.65] text-neutral-700">
-            Meer dan 611 bestuursorganen moeten voldoen aan de Wet open overheid.
-            De capaciteit groeit niet mee. Staterra levert oplossingen die vandaag
+            Meer dan 600 bestuursorganen moeten voldoen aan de Wet open overheid.
+            Staterra levert oplossingen die vandaag
             werken — niet over twee jaar.
           </p>
         </div>
