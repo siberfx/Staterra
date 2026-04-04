@@ -100,7 +100,6 @@ const FALLBACK_KOLOMMEN = [
       { href: '/samen-ontwikkelen', label: 'Samen ontwikkelen' },
       { href: '/open-source', label: 'Open source implementeren' },
       { href: '/woo-oplossing', label: 'Woo-oplossing (OPMS)' },
-      { href: '/oplossingen', label: 'Alle oplossingen' },
     ],
   },
   {
