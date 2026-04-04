@@ -166,7 +166,7 @@ export default function HomePage() {
       </section>
 
       {/* 3 — Ons aanbod (2+1 model) */}
-      <section className="bg-white py-16 lg:py-24" aria-labelledby="aanbod-heading">
+      <section className="bg-brand-100 py-16 lg:py-24" aria-labelledby="aanbod-heading">
         <div className="max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
