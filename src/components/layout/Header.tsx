@@ -5,7 +5,6 @@ import type { MenuItem, HeaderMenuResponse, SettingsResponse } from '@/lib/types
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { SearchModal } from '@/components/SearchModal';
-import { BESTUURSORGANEN_STATS } from '@/lib/data/bestuursorganen-stats';
 
 // NodeJS.Timeout / browser timeout compatible type
 type TimeoutHandle = ReturnType<typeof setTimeout>;
@@ -36,10 +35,10 @@ const DOELGROEPEN_ITEM: MenuItem = {
   id: 9999, title: 'Doelgroepen', subtitle: null, description: '', url: '#',
   slug: null, page_type: '', template: '', order: 99, tags: [], sidebar: null,
   children: [
-    CHILD(9001, 'Gemeenten', `${BESTUURSORGANEN_STATS.gemeenten} gemeenten`, '/staterra-gemeenten'),
-    CHILD(9002, 'Provincies', `${BESTUURSORGANEN_STATS.provincies} provincies`, '/staterra-provincies'),
-    CHILD(9003, 'Waterschappen', `${BESTUURSORGANEN_STATS.waterschappen} waterschappen`, '/staterra-waterschappen'),
-    CHILD(9004, 'Rijksoverheid', `${BESTUURSORGANEN_STATS.rijksbestuursorganen} organen over ${BESTUURSORGANEN_STATS.kerndepartementen} departementen`, '/staterra-rijkspartijen'),
+    CHILD(9001, 'Gemeenten', 'Oplossingen voor gemeenten', '/staterra-gemeenten'),
+    CHILD(9002, 'Provincies', 'Oplossingen voor provincies', '/staterra-provincies'),
+    CHILD(9003, 'Waterschappen', 'Oplossingen voor waterschappen', '/staterra-waterschappen'),
+    CHILD(9004, 'Rijksoverheid', 'Oplossingen voor de rijksoverheid', '/staterra-rijkspartijen'),
   ],
 }
 
