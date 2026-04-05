@@ -95,6 +95,29 @@ const DIENSTEN = [
     ),
     kleur: 'bg-neutral-700',
   },
+  {
+    id: 'devops',
+    nummer: '05',
+    titel: 'DevOps & Technisch Beheer',
+    subtitel: 'Doorontwikkeling, hosting en beheer',
+    tag: 'In samenwerking met CodeLabs',
+    beschrijving:
+      'Integratie met bestaande systemen, doorontwikkeling van de applicatie en technisch beheer van de oplossing. De developers van CodeLabs zorgen voor continue delivery, monitoring, updates en het koppelen met uw DMS, zaaksystemen en andere IT-infrastructuur.',
+    details: [
+      'Systeemintegratie met DMS\u2019en, zaaksystemen en landelijke voorzieningen',
+      'Doorontwikkeling op basis van gebruikersfeedback',
+      'Hosting, monitoring, security patches en incident response',
+      'CI/CD-pipelines voor betrouwbare en snelle releases',
+      'Infrastructuurbeheer: Docker/Proxmox, databases en back-ups',
+    ],
+    passend: 'MVP-fase, doorontwikkeling en structureel beheer',
+    icoon: (
+      <svg className="w-7 h-7 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008z" />
+      </svg>
+    ),
+    kleur: 'bg-brand-600',
+  },
 ];
 
 // ── Academy trainingsvormen ────────────────────────────────────
@@ -142,19 +165,19 @@ const FASE_DIENSTEN = [
   {
     fase: 'MVP',
     kleur: 'text-white bg-brand-700',
-    diensten: ['Projectmanagement', 'Woo-consultancy', 'Architectuur & integratie', 'Training'],
+    diensten: ['Projectmanagement', 'Woo-consultancy', 'Architectuur & integratie', 'Training', 'DevOps & Technisch Beheer'],
   },
   {
     fase: 'Volledig product',
     kleur: 'text-neutral-700 bg-neutral-100',
-    diensten: ['Projectmanagement', 'Business consultancy', 'Woo-consultancy', 'Training'],
+    diensten: ['Projectmanagement', 'Business consultancy', 'Woo-consultancy', 'Training', 'DevOps & Technisch Beheer'],
   },
 ];
 
 export default function DienstverleningPage() {
   return (
     <>
-      <PageMeta title="Dienstverlening" description="Van implementatie tot beheer. Staterra biedt volledige dienstverlening voor open source Woo-compliance." />
+      <PageMeta title="Dienstverlening" description="Projectmanagement, Woo-consultancy, architectuur, training en DevOps. Het volledige team achter het platform — in samenwerking met CodeLabs." />
       {/* ── 1. Hero ─────────────────────────────────────────── */}
       <section
         className="relative overflow-hidden py-20 lg:py-28"
@@ -183,7 +206,7 @@ export default function DienstverleningPage() {
 
             {/* Vijf diensten als badges */}
             <div className="flex flex-wrap gap-2.5 mb-10">
-              {['Projectmanagement', 'Woo-consultancy', 'Architectuur', 'Business consultancy', 'Training'].map((d) => (
+              {['Projectmanagement', 'Woo-consultancy', 'Architectuur', 'Business consultancy', 'Training', 'DevOps'].map((d) => (
                 <span
                   key={d}
                   className="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm px-4 py-1.5 text-caption font-medium text-white"
@@ -250,7 +273,7 @@ export default function DienstverleningPage() {
               id="diensten-heading"
               className="font-heading text-h2 font-semibold text-neutral-950 mb-4"
             >
-              Vier disciplines, één team
+              Vijf disciplines, één team
             </h2>
             <p className="text-body text-neutral-700 max-w-[560px] mx-auto">
               Elk traject vraagt om een andere samenstelling. Staterra schakelt
@@ -292,6 +315,11 @@ export default function DienstverleningPage() {
                         <p className="text-body-sm text-neutral-500 mt-0.5">
                           {dienst.subtitel}
                         </p>
+                        {'tag' in dienst && dienst.tag && (
+                          <span className="inline-block text-caption font-medium text-brand-400 mt-1">
+                            {dienst.tag}
+                          </span>
+                        )}
                       </div>
                     </div>
 

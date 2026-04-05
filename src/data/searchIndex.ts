@@ -13,7 +13,7 @@ export const SEARCH_INDEX: SearchEntry[] = [
   { title: 'Samen ontwikkelen', url: '/samen-ontwikkelen', excerpt: 'Samen met overheden ontwikkelen we digitale oplossingen — van eerste verkenning tot een werkend product.', section: 'Oplossingen' },
   { title: 'Open source', url: '/open-source', excerpt: 'Open source oplossingen voor de overheid. Geen vendor lock-in, geen licentiekosten.', section: 'Oplossingen' },
   { title: 'Aanpak', url: '/aanpak', excerpt: 'Van verkenning tot implementatie. Ontdek hoe Staterra in 3 maanden een werkend systeem oplevert.', section: 'Over Staterra' },
-  { title: 'Dienstverlening', url: '/dienstverlening', excerpt: 'Van implementatie tot beheer. Volledige dienstverlening voor open source Woo-compliance.', section: 'Over Staterra' },
+  { title: 'Dienstverlening', url: '/dienstverlening', excerpt: 'Projectmanagement, Woo-consultancy, architectuur, training en DevOps. Het volledige team achter het platform.', section: 'Over Staterra' },
   { title: 'Over ons', url: '/over-ons', excerpt: 'Staterra is infrastructuurpartner voor de publieke sector. Open source Woo-compliance voor 611 bestuursorganen.', section: 'Over Staterra' },
   { title: 'Contact', url: '/contact', excerpt: 'Neem contact op met Staterra. Binnen twee werkdagen een inhoudelijke reactie.', section: 'Over Staterra' },
   { title: 'Kennisbank', url: '/kennisbank', excerpt: 'Artikelen, handleidingen en inzichten over Woo-compliance en open source voor de overheid.', section: 'Kennisbank' },

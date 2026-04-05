@@ -22,7 +22,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
   },
   '/dienstverlening': {
     title: 'Dienstverlening — Staterra',
-    description: 'Van OPMS-implementatie tot beheer, hosting en doorontwikkeling. Ontdek hoe Staterra overheidsorganisaties helpt met Woo-compliance.',
+    description: 'Projectmanagement, Woo-consultancy, architectuur, training en DevOps. Het volledige team achter het platform — in samenwerking met CodeLabs.',
   },
   '/kennisbank': {
     title: 'Kennisbank — Staterra',
