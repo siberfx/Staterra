@@ -45,20 +45,20 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: 'Samenwerking staat centraal. Staterra ontwikkelt samen met overheidsorganisaties aan open source oplossingen voor de publieke sector.',
   },
   '/staterra-gemeenten': {
-    title: 'Staterra voor Gemeenten — Openbaarmaking en open source oplossingen',
-    description: 'Ontdek hoe Staterra gemeenten ondersteunt bij actieve openbaarmaking, Woo-compliance en digitale transformatie met open source.',
+    title: 'Staterra voor Gemeenten — Woo-compliance en digitale regie',
+    description: 'Van griffie tot vergunningenloket: Staterra helpt gemeenten met Woo-compliance. OPMS integreert met OpenZaak, Rx.Mission en uw DMS. Implementatie binnen 3 maanden.',
   },
   '/staterra-provincies': {
-    title: 'Staterra voor Provincies — Publieke digitale voorzieningen en open source',
-    description: 'Staterra helpt provincies met Woo-compliance, open source platformen en digitale voorzieningen voor de publieke sector.',
+    title: 'Staterra voor Provincies — Transparantie op provinciaal niveau',
+    description: 'Van omgevingsvisies tot Statenbesluiten: Staterra helpt provincies met professionele Woo-compliance. Aansluiting op uw documentbeheersystemen.',
   },
   '/staterra-rijkspartijen': {
-    title: 'Staterra voor Rijkspartijen — Regie op openbaarmaking',
-    description: 'Woo-compliance en open source oplossingen voor rijksorganisaties, uitvoeringsorganisaties en ZBO\'s. Professioneel beheer door Staterra.',
+    title: 'Staterra voor de Rijksoverheid — Regie op openbaarmaking',
+    description: 'Woo-compliance voor ministeries, agentschappen en ZBO\'s. OPMS past binnen het comply-or-explain beleid. Bewezen bij het ministerie van JenV.',
   },
   '/staterra-waterschappen': {
-    title: 'Staterra voor Waterschappen — Openbaarmaking en digitale regie',
-    description: 'Staterra ondersteunt waterschappen bij Woo-compliance en actieve openbaarmaking met schaalbare open source oplossingen.',
+    title: 'Staterra voor Waterschappen — Van keur tot calamiteitenplan',
+    description: 'Woo-compliance voor waterschappen: keurvergunningen, peilbesluiten en waterbeheerplannen publiceren met OPMS. Snel implementeerbaar, passend bij uw schaal.',
   },
   '/cookies': {
     title: 'Cookiebeleid — Staterra',

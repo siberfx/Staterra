@@ -21,10 +21,10 @@ export const SEARCH_INDEX: SearchEntry[] = [
   { title: 'Cookiebeleid', url: '/cookies', excerpt: 'Welke cookies staterra.nl gebruikt en hoe u uw voorkeuren beheert.', section: 'Juridisch' },
 
   // Doelgroepen
-  { title: 'Gemeenten', url: '/staterra-gemeenten', excerpt: '342 gemeenten moeten voldoen aan de Woo. Onze oplossing is direct inzetbaar.', section: 'Doelgroepen' },
-  { title: 'Provincies', url: '/staterra-provincies', excerpt: 'Alle 12 provincies vallen onder de Woo. OPMS sluit aan op bestaande systemen.', section: 'Doelgroepen' },
-  { title: 'Waterschappen', url: '/staterra-waterschappen', excerpt: '21 waterschappen, één Woo-verplichting. Eenvoudige en controleerbare openbaarmaking.', section: 'Doelgroepen' },
-  { title: 'Rijksoverheid', url: '/staterra-rijkspartijen', excerpt: '236 rijksbestuursorganen over 14 departementen. Ontwikkeld i.s.m. het ministerie van JenV.', section: 'Doelgroepen' },
+  { title: 'Gemeenten', url: '/staterra-gemeenten', excerpt: 'Van griffie tot vergunningenloket: Woo-compliance voor gemeenten. Integreert met OpenZaak, Rx.Mission en uw DMS.', section: 'Doelgroepen' },
+  { title: 'Provincies', url: '/staterra-provincies', excerpt: 'Van omgevingsvisies tot Statenbesluiten: professionele Woo-compliance voor provincies.', section: 'Doelgroepen' },
+  { title: 'Waterschappen', url: '/staterra-waterschappen', excerpt: 'Van keurvergunningen tot calamiteitenplannen: Woo-compliance passend bij de schaal van waterschappen.', section: 'Doelgroepen' },
+  { title: 'Rijksoverheid', url: '/staterra-rijkspartijen', excerpt: 'Woo-compliance voor ministeries, agentschappen en ZBO\u2019s. Past binnen comply-or-explain, bewezen bij JenV.', section: 'Doelgroepen' },
 
   // Kennisbank artikelen
   { title: 'Wat is de Woo?', url: '/kennisbank/wat-is-de-woo', excerpt: 'De Wet open overheid verplicht 611 bestuursorganen tot actieve openbaarmaking. Wat houdt dat in?', section: 'Kennisbank' },
