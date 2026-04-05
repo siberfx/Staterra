@@ -95,6 +95,15 @@ const KOLOM_TITELS: Record<number, string> = {
 // ── Statische fallback-navigatie ──────────────────────────────
 const FALLBACK_KOLOMMEN = [
   {
+    titel: 'Doelgroepen',
+    links: [
+      { href: '/staterra-gemeenten', label: 'Gemeenten' },
+      { href: '/staterra-provincies', label: 'Provincies' },
+      { href: '/staterra-waterschappen', label: 'Waterschappen' },
+      { href: '/staterra-rijkspartijen', label: 'Rijksoverheid' },
+    ],
+  },
+  {
     titel: 'Oplossingen',
     links: [
       { href: '/samen-ontwikkelen', label: 'Samen ontwikkelen' },
