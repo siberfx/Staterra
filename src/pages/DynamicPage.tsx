@@ -514,6 +514,7 @@ export default function DynamicPage() {
                     .replace(/<\/h3>/g, '</h2>')
                     .replace(/<h4([^>]*)>/g, '<h3$1>')
                     .replace(/<\/h4>/g, '</h3>')
+                    .replace(/\s*\([A-C]\)/g, '')
                   }}
                 />
               )}
