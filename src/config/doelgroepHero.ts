@@ -10,116 +10,134 @@ export interface DoelgroepHeroConfig {
   wooLink?: string;
   /** Woo-intro tekst voor deze doelgroep */
   wooIntro?: string;
-  /** Herkenbare uitdagingen voor deze doelgroep */
+
+  // ── Brede doelgroepherkenning (staterra-* pagina's) ──────────
+  /** Brede uitdagingen voor deze doelgroep (niet Woo-specifiek) */
   uitdagingen?: string[];
   /** Intro-tekst boven de uitdagingen */
   uitdagingenIntro?: string;
-  /** Systemen en integraties relevant voor deze doelgroep */
+  /** Brede systemen-intro (niet alleen Woo) */
   systemenIntro?: string;
-  /** Koepelorganisatie / bestuurlijk netwerk */
+  /** Koepelorganisatie / bestuurlijk netwerk (brede context) */
   koepelIntro?: string;
+
+  // ── Woo-specifieke herkenning (woo-* pagina's) ──────────────
+  /** Woo-specifieke uitdagingen voor deze doelgroep */
+  wooUitdagingen?: string[];
+  /** Intro-tekst boven de Woo-uitdagingen */
+  wooUitdagingenIntro?: string;
+  /** Woo-specifieke systemen en integraties */
+  wooSystemenIntro?: string;
+  /** Koepel in Woo-context */
+  wooKoepelIntro?: string;
 }
 
 export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
-  // ── Brede doelgroeppagina's ─────────────────────────────────
+  // ══════════════════════════════════════════════════════════════
+  //  BREDE DOELGROEPPAGINA'S (staterra-*)
+  //  Focus: "Wij snappen uw wereld" + drie pijlers (maatwerk, open source, OPMS)
+  // ══════════════════════════════════════════════════════════════
 
   'staterra-gemeenten': {
     label: 'Staterra voor Gemeenten',
-    h1Line1: 'Woo-compliance en digitale regie',
+    h1Line1: 'Digitale regie',
     h1Accent: 'voor gemeenten die vooruit willen',
     subtitle:
-      'Van griffie tot vergunningenloket: de Woo raakt de hele gemeentelijke organisatie. Staterra helpt met een werkende oplossing die past bij uw schaal, uw systemen en uw organisatie — of u nu een compacte gemeente bent of tot de G40 behoort.',
-    secondaryCta: { text: 'Bekijk onze oplossingen', href: '/oplossingen' },
+      'Gemeenten staan voor grote digitale opgaven: van informatiehuishouding en open source tot Woo-compliance. Staterra helpt als langetermijnpartner — met maatwerk, open source implementatie en een bewezen Woo-platform. Passend bij uw schaal, of u nu een compacte gemeente bent of tot de G40 behoort.',
+    secondaryCta: { text: 'Woo-oplossing voor gemeenten', href: '/woo-gemeenten' },
     doelgroepNaam: 'gemeenten',
     wooLink: '/woo-gemeenten',
     wooIntro:
       'De Woo verplicht alle 342 gemeenten tot actieve openbaarmaking. OPMS is direct inzetbaar — van kleine gemeenten in een gedeeld SaaS-model tot grote gemeenten met een eigen omgeving. Implementatie binnen 3\u00a0maanden, aansluiting op uw bestaande zaaksysteem inclusief.',
-    uitdagingenIntro: 'Dit herkennen gemeenten die met de Woo aan de slag gaan:',
+    uitdagingenIntro: 'Dit herkennen gemeenten die hun digitale voorzieningen willen professionaliseren:',
     uitdagingen: [
-      'Geen centraal overzicht van publicatieverplichtingen per categorie actieve openbaarmaking',
-      'Handmatige processen tussen griffie, vergunningen en Woo-co\u00f6rdinator',
-      'Zaaksystemen zoals OpenZaak of Rx.Mission die niet automatisch publiceren naar een openbaar register',
-      'Onduidelijkheid over welke documenten actief openbaar moeten worden gemaakt',
+      'Afhankelijkheid van leveranciers met proprietary systemen, beperkte invloed op doorontwikkeling en hoge licentiekosten',
+      'Beperkte interne ICT-capaciteit om grote digitaliseringsprojecten zelfstandig op te pakken',
+      'Toenemende druk vanuit wet- en regelgeving: Woo, Wmebv, Digitale Overheid — zonder duidelijk plan van aanpak',
+      'Behoefte aan regie over eigen systemen en data, zonder vendor lock-in',
     ],
     systemenIntro:
-      'OPMS integreert met de systemen die gemeenten dagelijks gebruiken: zaaksystemen als OpenZaak en Rx.Mission, documentmanagementsystemen als Corsa en Decos JOIN, en sluit aan op de GEMMA-referentiearchitectuur. Publicaties worden vanuit het werkproces aangemaakt — niet als extra taak ernaast.',
+      'Staterra implementeert en beheert open source oplossingen die aansluiten op de gemeentelijke IT-omgeving: van Nextcloud en Rocket.Chat tot OPMS voor Woo-compliance. Wij werken met de GEMMA-referentiearchitectuur en sluiten aan op zaaksystemen, DMS\'en en bestaande werkprocessen.',
     koepelIntro:
-      'De VNG ondersteunt gemeenten actief bij de Woo-implementatie. Staterra werkt samen met gemeenten die via VNG-samenwerkingsverbanden gezamenlijk openbaarmaking inrichten.',
+      'De VNG stimuleert gemeenten om samen te werken aan digitale oplossingen. Staterra ondersteunt gemeenten die via samenwerkingsverbanden gezamenlijk investeren in open source en digitale regie.',
   },
 
   'staterra-provincies': {
     label: 'Staterra voor Provincies',
-    h1Line1: 'Transparantie en openbaarmaking',
+    h1Line1: 'Digitale voorzieningen',
     h1Accent: 'op provinciaal niveau',
     subtitle:
-      'Als provincie heeft u een voorbeeldfunctie richting gemeenten en waterschappen in uw regio. De Woo vraagt om een professionele aanpak van openbaarmaking — van omgevingsvisies tot Statenbesluiten. Staterra levert de oplossing \u00e9n het team.',
-    secondaryCta: { text: 'Bekijk onze oplossingen', href: '/oplossingen' },
+      'Als middenbestuur heeft de provincie een bijzondere positie: voorbeeldfunctie richting gemeenten, coördinerende rol in de regio en eigen opgaven rond transparantie en informatiehuishouding. Staterra helpt met maatwerk, open source implementatie en een bewezen Woo-platform.',
+    secondaryCta: { text: 'Woo-oplossing voor provincies', href: '/woo-provincies' },
     doelgroepNaam: 'provincies',
     wooLink: '/woo-provincies',
     wooIntro:
-      'Alle 12 provincies vallen onder de Woo. Als middenbestuur met een voorbeeldfunctie is professionele openbaarmaking geen keuze maar een vereiste. OPMS sluit naadloos aan op uw bestaande documentbeheersystemen en maakt publicatie onderdeel van het reguliere werkproces.',
-    uitdagingenIntro: 'Dit herkennen provincies die hun Woo-implementatie professionaliseren:',
+      'Alle 12 provincies vallen onder de Woo. Als middenbestuur met een voorbeeldfunctie is professionele openbaarmaking geen keuze maar een vereiste. OPMS maakt publicatie onderdeel van het reguliere werkproces — van omgevingsvisies tot Statenbesluiten.',
+    uitdagingenIntro: 'Dit herkennen provincies die hun digitale voorzieningen willen versterken:',
     uitdagingen: [
-      'Complexe documentstromen tussen Gedeputeerde Staten, Provinciale Staten en de ambtelijke organisatie',
-      'Grote diversiteit aan publicatiecategorie\u00ebn: omgevingsvisies, verordeningen, subsidiebesluiten en milieu-informatie',
-      'Voorbeeldfunctie richting gemeenten en waterschappen in de regio, die meekijken naar de provinciale aanpak',
-      'Integratie met bestaande provinciale documentbeheer- en archiveringssystemen',
+      'Voorbeeldfunctie richting gemeenten en waterschappen in de regio, die meekijken naar de provinciale aanpak van digitalisering',
+      'Grote diversiteit aan applicaties en systemen die historisch gegroeid zijn, zonder eenduidig beheermodel',
+      'Behoefte aan transparantie en verantwoording — niet alleen door de Woo, maar ook in het kader van goed provinciaal bestuur',
+      'Beperkte capaciteit om naast het dagelijkse werk ook fundamentele digitaliseringsprojecten te draaien',
     ],
     systemenIntro:
-      'OPMS sluit aan op de documentbeheersystemen die provincies gebruiken, van Corsa tot OpenText. De koppeling met uw bestaande informatiehuishouding zorgt ervoor dat publicaties vanuit het werkproces worden aangemaakt. Statenbesluiten, omgevingsvisies en verordeningen worden automatisch klaargezet voor openbaarmaking.',
+      'Staterra implementeert en beheert open source oplossingen die passen in het provinciale IT-landschap. Van samenwerkingsplatformen tot het Woo-publicatieplatform OPMS — wij sluiten aan op bestaande documentbeheersystemen en werkprocessen.',
     koepelIntro:
-      'Het Interprovinciaal Overleg (IPO) co\u00f6rdineert de gezamenlijke aanpak van provincies op het gebied van digitalisering en openbaarmaking. Staterra ondersteunt provincies die hun Woo-implementatie willen professionaliseren.',
+      'Het Interprovinciaal Overleg (IPO) coördineert de gezamenlijke aanpak van provincies op het gebied van digitalisering. Staterra ondersteunt provincies die hun digitale voorzieningen willen professionaliseren.',
   },
 
   'staterra-waterschappen': {
     label: 'Staterra voor Waterschappen',
-    h1Line1: 'Woo-compliance voor waterschappen',
-    h1Accent: 'van keur tot calamiteitenplan',
+    h1Line1: 'Digitale regie',
+    h1Accent: 'voor waterschappen',
     subtitle:
-      'Waterschappen beheren een uniek domein: van watervergunningen en peilbesluiten tot projectplannen en calamiteitenplannen. Staterra levert een Woo-oplossing die aansluit op de specifieke publicatiebehoeften van het waterschap.',
-    secondaryCta: { text: 'Bekijk onze oplossingen', href: '/oplossingen' },
+      'Waterschappen beheren een uniek domein met eigen wet- en regelgeving, specifieke systemen en een compacte organisatie. Staterra helpt met open source oplossingen die passen bij de schaal en het werkveld van het waterschap — van samenwerkingstools tot Woo-compliance.',
+    secondaryCta: { text: 'Woo-oplossing voor waterschappen', href: '/woo-waterschappen' },
     doelgroepNaam: 'waterschappen',
     wooLink: '/woo-waterschappen',
     wooIntro:
-      'Alle 21 waterschappen moeten voldoen aan de Woo. OPMS maakt openbaarmaking van besluitdocumenten, keurvergunningen en beleidsstukken eenvoudig en controleerbaar. De oplossing is snel implementeerbaar en past bij de schaal van een waterschap.',
-    uitdagingenIntro: 'Dit herkennen waterschappen die met de Woo aan de slag gaan:',
+      'Alle 21 waterschappen moeten voldoen aan de Woo. OPMS maakt openbaarmaking van besluitdocumenten, keurvergunningen en beleidsstukken eenvoudig en controleerbaar. Snel implementeerbaar, passend bij de schaal van een waterschap.',
+    uitdagingenIntro: 'Dit herkennen waterschappen die hun digitale voorzieningen willen versterken:',
     uitdagingen: [
-      'Specifieke publicatiecategorie\u00ebn die afwijken van andere bestuurslagen: keurvergunningen, peilbesluiten, waterbeheerplannen en calamiteitenplannen',
-      'Relatief kleine organisatie met beperkte ICT-capaciteit voor een groot implementatietraject',
-      'Documentstromen tussen dagelijks bestuur, algemeen bestuur en dijkgraaf die transparant moeten worden',
-      'Behoefte aan een werkbare oplossing zonder langdurig IT-project',
+      'Compacte organisatie met beperkte ICT-bezetting die toch aan dezelfde digitale eisen moet voldoen als grotere bestuursorganen',
+      'Specifiek domein (waterbeheer, waterveiligheid, waterkwaliteit) dat vraagt om oplossingen die aansluiten op het werkveld',
+      'Afhankelijkheid van externe leveranciers voor kritieke systemen, met beperkte invloed op kosten en doorontwikkeling',
+      'Toenemende eisen rond transparantie en openbaarmaking, naast de reguliere operationele taken',
     ],
     systemenIntro:
-      'OPMS integreert met de document- en zaaksystemen die waterschappen gebruiken. De oplossing is specifiek geschikt voor organisaties met een beperkte ICT-bezetting: snel implementeerbaar, eenvoudig te beheren en schaalbaar wanneer het waterschap groeit in publicatievolume.',
+      'Staterra implementeert en beheert open source oplossingen die passen bij de schaal van een waterschap. Snel implementeerbaar, eenvoudig te beheren en schaalbaar wanneer nodig — van samenwerkingstools tot het Woo-publicatieplatform OPMS.',
     koepelIntro:
-      'De Unie van Waterschappen stimuleert samenwerking op het gebied van digitalisering en openbaarmaking. Staterra biedt waterschappen de mogelijkheid om gezamenlijk op te trekken bij de Woo-implementatie.',
+      'De Unie van Waterschappen stimuleert samenwerking op het gebied van digitalisering. Staterra biedt waterschappen de mogelijkheid om gezamenlijk op te trekken bij de implementatie van open source oplossingen.',
   },
 
   'staterra-rijkspartijen': {
     label: 'Staterra voor de Rijksoverheid',
-    h1Line1: 'Regie op openbaarmaking',
+    h1Line1: 'Digitale regie',
     h1Accent: 'voor ministeries en uitvoeringsorganisaties',
     subtitle:
-      'Met 236 rijksbestuursorganen over 14 departementen is de Woo-opgave bij de rijksoverheid de grootste van het land. Het comply-or-explain beleid van BZK maakt open source de logische eerste keuze. OPMS is ontwikkeld in samenwerking met het ministerie van JenV.',
-    secondaryCta: { text: 'Bekijk onze oplossingen', href: '/oplossingen' },
+      'Het comply-or-explain beleid van BZK maakt open source de logische eerste keuze voor rijksorganisaties. Staterra helpt met implementatie, beheer en doorontwikkeling van open source oplossingen — van samenwerkingsplatformen tot het bewezen Woo-platform OPMS, ontwikkeld met het ministerie van JenV.',
+    secondaryCta: { text: 'Woo-oplossing voor de rijksoverheid', href: '/woo-rijksoverheid' },
     doelgroepNaam: 'de rijksoverheid',
     wooLink: '/woo-rijksoverheid',
     wooIntro:
-      'Met 236 rijksbestuursorganen verdeeld over 14 departementen is de schaal van de Woo-opgave bij de rijksoverheid enorm. OPMS is ontwikkeld in samenwerking met het ministerie van JenV en sluit aan op het bestaande DMS-landschap. Voor agentschappen en ZBO\u2019s is een SaaS-model beschikbaar met lagere instapkosten.',
-    uitdagingenIntro: 'Dit herkennen rijksorganisaties die aan de Woo werken:',
+      'Met 236 rijksbestuursorganen verdeeld over 14 departementen is de schaal van de Woo-opgave bij de rijksoverheid enorm. OPMS is ontwikkeld in samenwerking met het ministerie van JenV en past binnen het comply-or-explain beleid. Voor agentschappen en ZBO\u2019s is een SaaS-model beschikbaar.',
+    uitdagingenIntro: 'Dit herkennen rijksorganisaties die hun digitale voorzieningen willen professionaliseren:',
     uitdagingen: [
-      'Het comply-or-explain beleid vereist dat bestaande open source alternatieven worden beoordeeld v\u00f3\u00f3r inkoop van proprietary oplossingen',
-      'Departementsoverstijgende afstemming met CIO Rijk en BZK-kaders voor informatiehuishouding',
-      'Complexe DMS-landschappen (Corsa, OpenText, DMS Next) die per organisatieonderdeel verschillen',
-      'Grote schaalverschillen tussen kerndepartementen, agentschappen en ZBO\u2019s die elk een passende aanpak vragen',
+      'Het comply-or-explain beleid vereist dat bestaande open source alternatieven worden beoordeeld vóór inkoop van proprietary oplossingen',
+      'Complexe en historisch gegroeide IT-landschappen die per organisatieonderdeel verschillen, met hoge beheerkosten',
+      'Departementsoverstijgende afstemming met CIO Rijk en BZK-kaders die een eenduidige aanpak bemoeilijken',
+      'Grote schaalverschillen tussen kerndepartementen, agentschappen en ZBO\u2019s die elk een passend model vragen',
     ],
     systemenIntro:
-      'OPMS sluit aan op het DMS-landschap van de rijksoverheid: Corsa, OpenText en DMS Next. De integratie is bewezen bij het ministerie van JenV. Voor agentschappen en ZBO\u2019s biedt Staterra een SaaS-model met lagere instapkosten, terwijl kerndepartementen kiezen voor een eigen omgeving met volledige regie.',
+      'Staterra implementeert en beheert open source oplossingen die passen binnen de rijksoverheid IT-kaders. Van samenwerkingsplatformen tot het Woo-publicatieplatform OPMS — wij sluiten aan op bestaande DMS-landschappen (Corsa, OpenText, DMS Next) en werken conform BZK-richtlijnen.',
     koepelIntro:
-      'OPMS is opgenomen in het open source ecosysteem van BZK. Het comply-or-explain beleid van de rijksoverheid schrijft voor dat bestuursorganen eerst bestaande open source oplossingen beoordelen — OPMS is die oplossing.',
+      'OPMS is opgenomen in het open source ecosysteem van BZK. Staterra werkt samen met rijksorganisaties die het comply-or-explain beleid niet als verplichting maar als kans zien om regie terug te pakken op hun digitale voorzieningen.',
   },
 
-  // ── Woo-doelgroeppagina's ──────────────────────────────────
+  // ══════════════════════════════════════════════════════════════
+  //  WOO-DOELGROEPPAGINA'S (woo-*)
+  //  Focus: Woo-specifieke herkenning, concrete publicatiecategorieën, integraties
+  // ══════════════════════════════════════════════════════════════
 
   'woo-gemeenten': {
     label: 'Woo-oplossing voor Gemeenten',
@@ -129,6 +147,17 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
       'Van raadsstukken en vergunningen tot Woo-verzoeken: OPMS maakt actieve openbaarmaking beheersbaar voor gemeenten van elke omvang. Implementeerbaar binnen 3\u00a0maanden, aansluitend op OpenZaak, Rx.Mission en uw DMS.',
     secondaryCta: { text: 'Bekijk het OPMS-platform', href: '/woo-oplossing' },
     doelgroepNaam: 'gemeenten',
+    wooUitdagingenIntro: 'Dit herkennen gemeenten die met de Woo aan de slag gaan:',
+    wooUitdagingen: [
+      'Geen centraal overzicht van publicatieverplichtingen per categorie actieve openbaarmaking',
+      'Handmatige processen tussen griffie, vergunningen en Woo-coördinator die foutgevoelig en tijdrovend zijn',
+      'Zaaksystemen zoals OpenZaak of Rx.Mission die niet automatisch publiceren naar een openbaar register',
+      'Onduidelijkheid over welke documenten actief openbaar moeten worden gemaakt en in welke categorie',
+    ],
+    wooSystemenIntro:
+      'OPMS integreert met de systemen die gemeenten dagelijks gebruiken: zaaksystemen als OpenZaak en Rx.Mission, documentmanagementsystemen als Corsa en Decos JOIN, en sluit aan op de GEMMA-referentiearchitectuur. Publicaties worden vanuit het werkproces aangemaakt — niet als extra taak ernaast.',
+    wooKoepelIntro:
+      'De VNG ondersteunt gemeenten actief bij de Woo-implementatie. Staterra werkt samen met gemeenten die via VNG-samenwerkingsverbanden gezamenlijk openbaarmaking inrichten.',
   },
 
   'woo-rijksoverheid': {
@@ -139,6 +168,17 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
       'Van Kamerstukken en beleidsnotities tot Woo-besluiten: OPMS is de open source Woo-oplossing die past binnen het comply-or-explain beleid. Bewezen bij het ministerie van JenV, schaalbaar naar agentschappen en ZBO\u2019s.',
     secondaryCta: { text: 'Bekijk het OPMS-platform', href: '/woo-oplossing' },
     doelgroepNaam: 'de rijksoverheid',
+    wooUitdagingenIntro: 'Dit herkennen rijksorganisaties die aan de Woo werken:',
+    wooUitdagingen: [
+      'Veelheid aan publicatiecategorieën: Kamerstukken, beleidsnotities, Woo-besluiten, convenanten en adviezen — elk met eigen procesafspraken',
+      'Complexe DMS-landschappen (Corsa, OpenText, DMS Next) die per organisatieonderdeel verschillen en niet automatisch publiceren',
+      'Onduidelijkheid over verantwoordelijkheden: wie beoordeelt, wie publiceert, wie controleert?',
+      'Schaalverschillen: een kernministerie met duizenden documenten per jaar vraagt een ander model dan een klein agentschap',
+    ],
+    wooSystemenIntro:
+      'OPMS sluit aan op het DMS-landschap van de rijksoverheid: Corsa, OpenText en DMS Next. De integratie is bewezen bij het ministerie van JenV. Voor agentschappen en ZBO\u2019s biedt Staterra een SaaS-model met lagere instapkosten, terwijl kerndepartementen kiezen voor een eigen omgeving met volledige regie.',
+    wooKoepelIntro:
+      'OPMS is opgenomen in het open source ecosysteem van BZK. Het comply-or-explain beleid schrijft voor dat bestuursorganen eerst bestaande open source oplossingen beoordelen — OPMS is die oplossing.',
   },
 
   'woo-provincies': {
@@ -149,6 +189,17 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
       'Van omgevingsvisies en Statenbesluiten tot subsidietoekenningen: OPMS maakt openbaarmaking onderdeel van het reguliere werkproces. Naadloze aansluiting op uw bestaande documentbeheersystemen.',
     secondaryCta: { text: 'Bekijk het OPMS-platform', href: '/woo-oplossing' },
     doelgroepNaam: 'provincies',
+    wooUitdagingenIntro: 'Dit herkennen provincies die hun Woo-implementatie professionaliseren:',
+    wooUitdagingen: [
+      'Complexe documentstromen tussen Gedeputeerde Staten, Provinciale Staten en de ambtelijke organisatie die transparant moeten worden',
+      'Grote diversiteit aan publicatiecategorieën: omgevingsvisies, verordeningen, subsidiebesluiten en milieu-informatie',
+      'Voorbeeldfunctie richting gemeenten en waterschappen in de regio, die meekijken naar de provinciale aanpak van openbaarmaking',
+      'Integratie met bestaande provinciale documentbeheer- en archiveringssystemen die niet standaard publiceren',
+    ],
+    wooSystemenIntro:
+      'OPMS sluit aan op de documentbeheersystemen die provincies gebruiken, van Corsa tot OpenText. De koppeling met uw bestaande informatiehuishouding zorgt ervoor dat publicaties vanuit het werkproces worden aangemaakt. Statenbesluiten, omgevingsvisies en verordeningen worden automatisch klaargezet voor openbaarmaking.',
+    wooKoepelIntro:
+      'Het Interprovinciaal Overleg (IPO) coördineert de gezamenlijke aanpak van provincies op het gebied van openbaarmaking. Staterra ondersteunt provincies die hun Woo-implementatie willen professionaliseren.',
   },
 
   'woo-waterschappen': {
@@ -159,5 +210,16 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
       'Van keurvergunningen en peilbesluiten tot waterbeheerplannen: OPMS maakt openbaarmaking eenvoudig en controleerbaar. Snel implementeerbaar, passend bij de schaal van een waterschap.',
     secondaryCta: { text: 'Bekijk het OPMS-platform', href: '/woo-oplossing' },
     doelgroepNaam: 'waterschappen',
+    wooUitdagingenIntro: 'Dit herkennen waterschappen die met de Woo aan de slag gaan:',
+    wooUitdagingen: [
+      'Specifieke publicatiecategorieën die afwijken van andere bestuurslagen: keurvergunningen, peilbesluiten, waterbeheerplannen en calamiteitenplannen',
+      'Relatief kleine organisatie met beperkte ICT-capaciteit voor een Woo-implementatietraject',
+      'Documentstromen tussen dagelijks bestuur, algemeen bestuur en dijkgraaf die transparant moeten worden',
+      'Behoefte aan een werkbare oplossing zonder langdurig IT-project — snel live, eenvoudig te beheren',
+    ],
+    wooSystemenIntro:
+      'OPMS integreert met de document- en zaaksystemen die waterschappen gebruiken. De oplossing is specifiek geschikt voor organisaties met een compacte ICT-bezetting: snel implementeerbaar, eenvoudig te beheren en schaalbaar wanneer het waterschap groeit in publicatievolume.',
+    wooKoepelIntro:
+      'De Unie van Waterschappen stimuleert samenwerking op het gebied van openbaarmaking. Staterra biedt waterschappen de mogelijkheid om gezamenlijk op te trekken bij de Woo-implementatie.',
   },
 };

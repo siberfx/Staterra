@@ -135,7 +135,7 @@ export default function DynamicPage() {
             </div>
           </div>
         </section>
-        {/* Herkenbare uitdagingen voor deze doelgroep */}
+        {/* Herkenbare uitdagingen voor deze doelgroep (breed, niet Woo-specifiek) */}
         {heroConfig.uitdagingen && heroConfig.uitdagingen.length > 0 && (
           <section className="bg-white py-16 lg:py-24" aria-labelledby="uitdagingen-heading">
             <Container variant="content">
@@ -168,9 +168,88 @@ export default function DynamicPage() {
           </section>
         )}
 
-        {/* Systemen en integraties + koepelverwijzing */}
+        {/* Wat wij bieden — drie pijlers */}
+        <section className="bg-brand-100 py-16 lg:py-24" aria-labelledby="aanbod-heading">
+          <Container variant="content">
+            <div className="text-center mb-12">
+              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
+                Wat wij bieden
+              </span>
+              <h2 id="aanbod-heading" className="font-heading text-h2 font-semibold text-neutral-950 mb-4">
+                Drie aanpakken, passend bij uw vraagstuk
+              </h2>
+              <p className="text-body text-neutral-700 max-w-[560px] mx-auto">
+                Elk traject is anders. Staterra biedt de aanpak die past bij uw organisatie — van maatwerkoplossingen tot een bewezen Woo-platform.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Pijler 1: Samen ontwikkelen */}
+              <div className="rounded-[20px] border border-neutral-200 bg-white p-8 flex flex-col">
+                <div className="w-12 h-12 rounded-[10px] bg-brand-100 flex items-center justify-center mb-5">
+                  <svg className="w-6 h-6 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                  </svg>
+                </div>
+                <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-3">Samen ontwikkelen</h3>
+                <p className="text-body-sm text-neutral-700 leading-relaxed mb-6 flex-1">
+                  Heeft uw organisatie een specifiek vraagstuk? Wij bouwen samen met u
+                  nieuwe digitale oplossingen — van eerste verkenning tot werkend product.
+                  Open source, volledig eigendom bij uw organisatie.
+                </p>
+                <Link to="/samen-ontwikkelen" className="inline-flex items-center gap-1.5 text-body-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors duration-150 group/link">
+                  Meer over samen ontwikkelen
+                  <svg className="w-4 h-4 transition-transform duration-150 group-hover/link:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                </Link>
+              </div>
+
+              {/* Pijler 2: Open source */}
+              <div className="rounded-[20px] border border-neutral-200 bg-white p-8 flex flex-col">
+                <div className="w-12 h-12 rounded-[10px] bg-brand-100 flex items-center justify-center mb-5">
+                  <svg className="w-6 h-6 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+                  </svg>
+                </div>
+                <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-3">Open source implementatie</h3>
+                <p className="text-body-sm text-neutral-700 leading-relaxed mb-6 flex-1">
+                  Wij implementeren en beheren open source platformen zoals Nextcloud,
+                  Rocket.Chat en OPMS — op uw eigen infrastructuur, met professioneel
+                  beheer, updates en ondersteuning.
+                </p>
+                <Link to="/open-source" className="inline-flex items-center gap-1.5 text-body-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors duration-150 group/link">
+                  Meer over open source
+                  <svg className="w-4 h-4 transition-transform duration-150 group-hover/link:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                </Link>
+              </div>
+
+              {/* Pijler 3: OPMS / Woo-oplossing — met link naar woo-doelgroeppagina */}
+              <div className="rounded-[20px] border-2 border-brand-700 bg-white p-8 flex flex-col relative">
+                <span className="absolute -top-3 left-6 px-3 py-1 bg-brand-700 text-white text-caption font-semibold rounded-full">
+                  Direct beschikbaar
+                </span>
+                <div className="w-12 h-12 rounded-[10px] bg-brand-700 flex items-center justify-center mb-5">
+                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                  </svg>
+                </div>
+                <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-3">Woo-compliance (OPMS)</h3>
+                <p className="text-body-sm text-neutral-700 leading-relaxed mb-6 flex-1">
+                  {heroConfig.wooIntro}
+                </p>
+                {heroConfig.wooLink && (
+                  <Link to={heroConfig.wooLink} className="inline-flex items-center gap-1.5 text-body-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors duration-150 group/link">
+                    Woo-oplossing voor {heroConfig.doelgroepNaam}
+                    <svg className="w-4 h-4 transition-transform duration-150 group-hover/link:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                  </Link>
+                )}
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Systemen en integraties + koepelverwijzing (breed) */}
         {(heroConfig.systemenIntro || heroConfig.koepelIntro) && (
-          <section className="bg-brand-100 py-16 lg:py-24" aria-labelledby="systemen-heading">
+          <section className="bg-white py-16 lg:py-24" aria-labelledby="systemen-heading">
             <Container variant="content">
               <div className="text-center mb-12">
                 <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
@@ -183,7 +262,7 @@ export default function DynamicPage() {
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {heroConfig.systemenIntro && (
-                  <div className="rounded-[20px] border border-neutral-200 bg-white p-8 flex flex-col">
+                  <div className="rounded-[20px] border border-neutral-200 bg-neutral-50 p-8 flex flex-col">
                     <div className="w-12 h-12 rounded-[10px] bg-brand-100 flex items-center justify-center mb-5">
                       <svg className="w-6 h-6 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z" />
@@ -197,7 +276,7 @@ export default function DynamicPage() {
                 )}
 
                 {heroConfig.koepelIntro && (
-                  <div className="rounded-[20px] border border-neutral-200 bg-white p-8 flex flex-col">
+                  <div className="rounded-[20px] border border-neutral-200 bg-neutral-50 p-8 flex flex-col">
                     <div className="w-12 h-12 rounded-[10px] bg-brand-100 flex items-center justify-center mb-5">
                       <svg className="w-6 h-6 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
@@ -209,38 +288,6 @@ export default function DynamicPage() {
                     </p>
                   </div>
                 )}
-              </div>
-            </Container>
-          </section>
-        )}
-
-        {/* Woo-oplossing highlight met doelgroep-specifieke intro */}
-        {heroConfig.wooLink && heroConfig.wooIntro && (
-          <section className="bg-white py-16 lg:py-24" aria-labelledby="woo-highlight-heading">
-            <Container variant="content">
-              <div className="rounded-[20px] border border-brand-200 bg-brand-50 p-8 lg:p-10">
-                <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
-                  <div className="flex-1">
-                    <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-2">
-                      Direct beschikbaar
-                    </span>
-                    <h3 id="woo-highlight-heading" className="font-heading text-h4 font-semibold text-neutral-950 mb-3">
-                      Woo-compliance voor {heroConfig.doelgroepNaam}
-                    </h3>
-                    <p className="text-body-sm text-neutral-700 leading-relaxed">
-                      {heroConfig.wooIntro}
-                    </p>
-                  </div>
-                  <div className="flex-shrink-0">
-                    <Link
-                      to={heroConfig.wooLink}
-                      className="inline-flex items-center gap-2 bg-brand-700 text-white rounded-[10px] px-6 py-3.5 text-body-sm font-medium hover:bg-brand-900 transition-colors duration-150"
-                    >
-                      Woo-oplossing voor {heroConfig.doelgroepNaam}
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-                    </Link>
-                  </div>
-                </div>
               </div>
             </Container>
           </section>
@@ -265,8 +312,8 @@ export default function DynamicPage() {
                 <Button as="link" href="/contact" variant="secondary" size="lg">
                   Plan een gesprek
                 </Button>
-                <Button as="link" href="/oplossingen" size="lg" className="bg-transparent text-white border border-white/40 hover:bg-white/10">
-                  Bekijk alle oplossingen →
+                <Button as="link" href={heroConfig.wooLink || '/oplossingen'} size="lg" className="bg-transparent text-white border border-white/40 hover:bg-white/10">
+                  {heroConfig.wooLink ? `Woo-oplossing voor ${heroConfig.doelgroepNaam} →` : 'Bekijk alle oplossingen →'}
                 </Button>
               </div>
             </div>
@@ -366,7 +413,86 @@ export default function DynamicPage() {
         </div>
       </section>
 
-      {/* ── 2. Inhoud: long_body + kenmerken ────────────────── */}
+      {/* ── 2. Woo-specifieke uitdagingen (alleen op woo-doelgroeppagina's) ── */}
+      {solutionHero?.wooUitdagingen && solutionHero.wooUitdagingen.length > 0 && (
+        <section className="bg-white py-16 lg:py-24" aria-labelledby="woo-uitdagingen-heading">
+          <Container variant="content">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+              <div>
+                <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
+                  Herkenbaar?
+                </span>
+                <h2 id="woo-uitdagingen-heading" className="font-heading text-h2 font-semibold text-neutral-950 mb-5 leading-[1.1]">
+                  De Woo-uitdagingen die {solutionHero.doelgroepNaam} herkennen
+                </h2>
+                {solutionHero.wooUitdagingenIntro && (
+                  <p className="text-body text-neutral-700 leading-relaxed">
+                    {solutionHero.wooUitdagingenIntro}
+                  </p>
+                )}
+              </div>
+              <div className="space-y-4">
+                {solutionHero.wooUitdagingen.map((uitdaging, i) => (
+                  <div key={i} className="rounded-[16px] border border-neutral-200 bg-neutral-50 p-5 flex items-start gap-4">
+                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-brand-100 flex items-center justify-center mt-0.5">
+                      <span className="text-body-sm font-semibold text-brand-700">{i + 1}</span>
+                    </span>
+                    <p className="text-body-sm text-neutral-700 leading-relaxed">{uitdaging}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </section>
+      )}
+
+      {/* ── 2b. Woo-specifieke systemen en koepel ─────────────── */}
+      {(solutionHero?.wooSystemenIntro || solutionHero?.wooKoepelIntro) && (
+        <section className="bg-brand-100 py-16 lg:py-24" aria-labelledby="woo-systemen-heading">
+          <Container variant="content">
+            <div className="text-center mb-12">
+              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
+                Integratie en samenwerking
+              </span>
+              <h2 id="woo-systemen-heading" className="font-heading text-h2 font-semibold text-neutral-950 mb-4">
+                OPMS sluit aan op uw bestaande systemen
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {solutionHero.wooSystemenIntro && (
+                <div className="rounded-[20px] border border-neutral-200 bg-white p-8 flex flex-col">
+                  <div className="w-12 h-12 rounded-[10px] bg-brand-100 flex items-center justify-center mb-5">
+                    <svg className="w-6 h-6 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z" />
+                    </svg>
+                  </div>
+                  <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-3">Systemen en integraties</h3>
+                  <p className="text-body-sm text-neutral-700 leading-relaxed flex-1">
+                    {solutionHero.wooSystemenIntro}
+                  </p>
+                </div>
+              )}
+
+              {solutionHero.wooKoepelIntro && (
+                <div className="rounded-[20px] border border-neutral-200 bg-white p-8 flex flex-col">
+                  <div className="w-12 h-12 rounded-[10px] bg-brand-100 flex items-center justify-center mb-5">
+                    <svg className="w-6 h-6 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-3">Samenwerking</h3>
+                  <p className="text-body-sm text-neutral-700 leading-relaxed flex-1">
+                    {solutionHero.wooKoepelIntro}
+                  </p>
+                </div>
+              )}
+            </div>
+          </Container>
+        </section>
+      )}
+
+      {/* ── 3. Inhoud: long_body + kenmerken ────────────────── */}
       <section className="bg-white py-16 lg:py-24" aria-labelledby="content-heading">
         <Container variant="content">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
