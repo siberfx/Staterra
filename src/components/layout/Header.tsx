@@ -43,19 +43,17 @@ const DOELGROEPEN_ITEM: MenuItem = {
 }
 
 const FALLBACK_ITEMS: MenuItem[] = [
+  DOELGROEPEN_ITEM,
   { id: 9801, title: 'Oplossingen', subtitle: null, description: '', url: '#',
-    slug: null, page_type: '', template: '', order: 1, tags: [], sidebar: null,
+    slug: null, page_type: '', template: '', order: 2, tags: [], sidebar: null,
     children: [
       CHILD(9100, 'Alle oplossingen', 'Overzicht van al onze oplossingen', '/oplossingen'),
       ...OPLOSSINGEN_CHILDREN,
     ] },
-  DOELGROEPEN_ITEM,
-  { id: 9802, title: 'Aanpak', subtitle: null, description: '', url: '/aanpak',
-    slug: null, page_type: '', template: '', order: 3, tags: [], sidebar: null, children: [] },
   { id: 9804, title: 'Dienstverlening', subtitle: null, description: '', url: '/dienstverlening',
-    slug: null, page_type: '', template: '', order: 5, tags: [], sidebar: null, children: [] },
-  { id: 9805, title: 'Kennisbank', subtitle: null, description: '', url: '/kennisbank',
-    slug: null, page_type: '', template: '', order: 6, tags: [], sidebar: null, children: [] },
+    slug: null, page_type: '', template: '', order: 3, tags: [], sidebar: null, children: [] },
+  { id: 9802, title: 'Aanpak', subtitle: null, description: '', url: '/aanpak',
+    slug: null, page_type: '', template: '', order: 4, tags: [], sidebar: null, children: [] },
 ]
 
 function buildNavItems(cmsItems: MenuItem[]): MenuItem[] {
@@ -73,10 +71,10 @@ function buildNavItems(cmsItems: MenuItem[]): MenuItem[] {
     return item
   })
 
-  // Voeg Doelgroepen toe na eerste item (als het er niet al in zit)
+  // Voeg Doelgroepen toe als eerste item (als het er niet al in zit)
   const hasDoelgroepen = enriched.some((i) => i.title === 'Doelgroepen')
   if (!hasDoelgroepen) {
-    return [enriched[0], DOELGROEPEN_ITEM, ...enriched.slice(1)]
+    return [DOELGROEPEN_ITEM, ...enriched]
   }
   return enriched
 }
