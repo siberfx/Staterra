@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { PageMeta } from '@/components/PageMeta';
 import { Container } from '@/components/ui/Container';
-// CookiePreferencesButton removed — feature not yet ported
+import { useCookieConsent } from '@/components/cookies/CookieProvider';
 
 // ── Cookie-data ───────────────────────────────────────────────
 
@@ -110,6 +110,8 @@ function CategorieBlok({
 // ── Pagina ────────────────────────────────────────────────────
 
 export default function CookiesPage() {
+  const { showSettings } = useCookieConsent();
+
   return (
     <>
       <PageMeta title="Cookiebeleid" />
@@ -212,7 +214,16 @@ export default function CookiesPage() {
               U kunt uw cookievoorkeuren op elk moment aanpassen door op het cookie-icoon
               linksonder in uw scherm te klikken, of via de knop hieronder.
             </p>
-            {/* Cookie preferences button — feature not yet ported */}
+            <button
+              type="button"
+              onClick={showSettings}
+              className="inline-flex items-center gap-2 rounded-[10px] bg-brand-700 px-5 py-3 text-body-sm font-medium text-white hover:bg-brand-900 transition-colors duration-[180ms]"
+            >
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10c0-.34-.02-.674-.057-1.002a1.5 1.5 0 01-1.943-1.44 1.5 1.5 0 01.057-.408A8.003 8.003 0 0012 4a1.5 1.5 0 01-.002-2zm-2.5 7a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm-1 5a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm5.5 2a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm2-5a1 1 0 110-2 1 1 0 010 2zm-5 4a1 1 0 110-2 1 1 0 010 2z" />
+              </svg>
+              Cookievoorkeuren aanpassen
+            </button>
           </section>
 
           {/* § 4 */}

@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import { SiteProvider } from '@/contexts/SiteContext'
+import { CookieProvider } from '@/components/cookies/CookieProvider'
 import App from './App'
 import './index.css'
 
@@ -11,7 +12,9 @@ createRoot(document.getElementById('root')!).render(
     <HelmetProvider>
       <BrowserRouter>
         <SiteProvider>
-          <App />
+          <CookieProvider>
+            <App />
+          </CookieProvider>
         </SiteProvider>
       </BrowserRouter>
     </HelmetProvider>

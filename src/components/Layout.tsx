@@ -5,6 +5,9 @@ import { Footer } from '@/components/layout/Footer'
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { DefaultPageMeta } from '@/components/PageMeta'
 import ScrollToTop from '@/components/ScrollToTop'
+import { CookieBanner } from '@/components/cookies/CookieBanner'
+import { CookieSettingsModal } from '@/components/cookies/CookieSettingsModal'
+import { CookieFloatingIcon } from '@/components/cookies/CookieFloatingIcon'
 
 export function Layout() {
   const { settings, headerMenu, footerMenu } = useSite()
@@ -33,6 +36,11 @@ export function Layout() {
       </main>
 
       <Footer menu={footerMenu} settings={settings} />
+
+      {/* Cookie consent */}
+      <CookieBanner />
+      <CookieSettingsModal />
+      <CookieFloatingIcon />
     </>
   )
 }
