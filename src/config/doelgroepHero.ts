@@ -28,8 +28,12 @@ export interface DoelgroepHeroConfig {
   // ── Woo-specifieke herkenning (woo-* pagina's) ──────────────
   /** Woo-specifieke uitdagingen voor deze doelgroep */
   wooUitdagingen?: string[];
-  /** Intro-tekst boven de Woo-uitdagingen */
-  wooUitdagingenIntro?: string;
+  /** Per-pagina H2 voor de Herkenbaar?-sectie ("...uw gemeente herkent") */
+  wooHerkenbaarH2?: string;
+  /** Beschouwend scenario-citaat voor de linkerkolom (italic blockquote) */
+  wooHerkenbaarQuote?: string;
+  /** Korte observatie onder het citaat */
+  wooHerkenbaarObservatie?: string;
   /** Woo-specifieke systemen en integraties */
   wooSystemenIntro?: string;
   /** Koepel in Woo-context */
@@ -136,12 +140,12 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
     doelgroepNaam: 'de rijksoverheid',
     wooLink: '/woo-rijksoverheid',
     wooIntro:
-      'Met ruim 200 rijksbestuursorganen verdeeld over 14 departementen is de schaal van de Woo-opgave bij de rijksoverheid enorm. OPMS is ontwikkeld in samenwerking met het ministerie van JenV en past binnen het comply-or-explain beleid. Voor agentschappen en ZBO\u2019s is een SaaS-model beschikbaar.',
+      'Met ruim 200 rijksbestuursorganen verdeeld over 12 departementen is de schaal van de Woo-opgave bij de rijksoverheid enorm. OPMS is ontwikkeld in samenwerking met het ministerie van JenV en past binnen het comply-or-explain beleid. Voor agentschappen en ZBO\u2019s is een SaaS-model beschikbaar.',
     herkenbaarH2: 'Donderdagmiddag, 16:45. Een Kamervraag.',
     herkenbaarScenario:
       'Er komt een Kamervraag binnen over een besluit van twee jaar geleden. De beleidsmedewerker zoekt in een gedeelde schijf, vraagt het DMS op, stuurt drie collega\u2019s een mail. Het document wordt uiteindelijk gevonden \u2014 maar de bijbehorende correspondentie ligt ergens anders, de versiehistorie is onduidelijk, en niemand weet zeker of dit de definitieve versie is. De deadline voor de beantwoording is morgen 12:00.',
     herkenbaarObservatie:
-      'Dit is geen incident. Dit is dinsdag. En woensdag. En donderdag.',
+      'Dit is geen incident. Dit was dinsdag. En woensdag. En donderdag.',
     uitdagingen: [
       'Documenten, correspondentie en besluitvorming leven in gescheiden systemen \u2014 DMS, gedeelde schijven, mailboxen \u2014 zonder verbinding tussen wat bij wat hoort',
       'Versiehistorie en audit trail zijn niet centraal geborgd, waardoor niemand met zekerheid kan zeggen wat de definitieve versie is',
@@ -167,7 +171,11 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
       'Van raadsstukken en vergunningen tot Woo-verzoeken: OPMS maakt actieve openbaarmaking beheersbaar voor gemeenten van elke omvang. Implementeerbaar binnen 3\u00a0maanden, aansluitend op OpenZaak, Rx.Mission en uw DMS.',
     secondaryCta: { text: 'Bekijk het OPMS-platform', href: '/woo-oplossing' },
     doelgroepNaam: 'gemeenten',
-    wooUitdagingenIntro: 'Dit herkennen gemeenten die met de Woo aan de slag gaan:',
+    wooHerkenbaarH2: 'De Woo-uitdagingen die uw gemeente herkent',
+    wooHerkenbaarQuote:
+      'Het college heeft toegezegd dat de gemeente \u201cruim binnen de termijn\u201d Woo-compliant is. De informatieadviseur weet wat er moet gebeuren: collegebesluiten publiceren, raadsstukken ontsluiten, convenanten en subsidiebesluiten openbaar maken. Het zaaksysteem doet dat niet vanzelf, het DMS heeft geen publicatiestroom, en de afdeling communicatie kijkt naar IT. IT kijkt terug.',
+    wooHerkenbaarObservatie:
+      'De toezegging staat. Het werk moet nog beginnen \u2014 en de capaciteit is er niet.',
     wooUitdagingen: [
       'Geen centraal overzicht van publicatieverplichtingen per categorie actieve openbaarmaking',
       'Handmatige processen tussen griffie, vergunningen en Woo-coördinator die foutgevoelig en tijdrovend zijn',
@@ -185,10 +193,14 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
     h1Line1: 'Woo-compliance',
     h1Accent: 'voor ministeries en uitvoeringsorganisaties',
     subtitle:
-      'Van Kamerstukken en beleidsnotities tot Woo-besluiten: OPMS is de open source Woo-oplossing die past binnen het comply-or-explain beleid. Bewezen bij het ministerie van JenV, schaalbaar naar agentschappen en ZBO\u2019s.',
+      'Van Kamerstukken en beleidsnotities tot Woo-besluiten: OPMS is de open source Woo-oplossing die past binnen het comply-or-explain beleid. Ontwikkeld met het ministerie van JenV, schaalbaar naar agentschappen en ZBO\u2019s.',
     secondaryCta: { text: 'Bekijk het OPMS-platform', href: '/woo-oplossing' },
     doelgroepNaam: 'de rijksoverheid',
-    wooUitdagingenIntro: 'Dit herkennen rijksorganisaties die aan de Woo werken:',
+    wooHerkenbaarH2: 'De Woo-uitdagingen die uw directie herkent',
+    wooHerkenbaarQuote:
+      'Een nieuwe categorie actieve openbaarmaking treedt in werking. Binnen zes maanden moeten Kamerstukken, beleidsnotities en convenanten geautomatiseerd worden gepubliceerd \u2014 vindbaar voor het publiek, gelakt waar nodig, juridisch gecontroleerd. Drie directies, drie verschillende DMS\u2019en, \u00e9\u00e9n deadline. De vraag wie eindverantwoordelijk is voor de kwaliteitscheck staat al maanden op de agenda.',
+    wooHerkenbaarObservatie:
+      'De wet is duidelijk. De techniek is haalbaar. Het zijn de tussenstappen die de planning bepalen.',
     wooUitdagingen: [
       'Veelheid aan publicatiecategorieën: Kamerstukken, beleidsnotities, Woo-besluiten, convenanten en adviezen — elk met eigen procesafspraken',
       'Complexe DMS-landschappen (bijvoorbeeld Corsa, OpenText, DMS Next) die per organisatieonderdeel verschillen en niet automatisch publiceren',
@@ -209,7 +221,11 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
       'Van omgevingsvisies en Statenbesluiten tot subsidietoekenningen: OPMS maakt openbaarmaking onderdeel van het reguliere werkproces. Naadloze aansluiting op uw bestaande documentbeheersystemen.',
     secondaryCta: { text: 'Bekijk het OPMS-platform', href: '/woo-oplossing' },
     doelgroepNaam: 'provincies',
-    wooUitdagingenIntro: 'Dit herkennen provincies die hun Woo-implementatie professionaliseren:',
+    wooHerkenbaarH2: 'De Woo-uitdagingen die uw provincie herkent',
+    wooHerkenbaarQuote:
+      'Provinciale Staten neemt een motie aan over transparantie rond gebiedsontwikkeling. Alle relevante besluiten, MER-rapportages en correspondentie met initiatiefnemers moeten actief worden gepubliceerd. De stukken zitten verspreid over het zaaksysteem, het DMS van de afdeling Ruimte, en mailboxen van projectleiders. Sommige dossiers gaan vijftien jaar terug. De gedeputeerde wil binnen het kwartaal een werkende publicatiestroom.',
+    wooHerkenbaarObservatie:
+      'De motie is helder. Het ontsluiten van de bron is het werk.',
     wooUitdagingen: [
       'Complexe documentstromen tussen Gedeputeerde Staten, Provinciale Staten en de ambtelijke organisatie die transparant moeten worden',
       'Grote diversiteit aan publicatiecategorieën: omgevingsvisies, verordeningen, subsidiebesluiten en milieu-informatie',
@@ -230,7 +246,11 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
       'Van keurvergunningen en peilbesluiten tot waterbeheerplannen: OPMS maakt openbaarmaking eenvoudig en controleerbaar. Snel implementeerbaar, passend bij de schaal van een waterschap.',
     secondaryCta: { text: 'Bekijk het OPMS-platform', href: '/woo-oplossing' },
     doelgroepNaam: 'waterschappen',
-    wooUitdagingenIntro: 'Dit herkennen waterschappen die met de Woo aan de slag gaan:',
+    wooHerkenbaarH2: 'De Woo-uitdagingen die uw waterschap herkent',
+    wooHerkenbaarQuote:
+      'Het algemeen bestuur stelt vragen over een vergunningsbesluit rond een lozingspunt. De onderliggende stukken \u2014 vergunningaanvraag, technische beoordeling, communicatie met de aanvrager, inspectierapporten \u2014 moeten openbaar. Ze leven in vier verschillende systemen, drie ervan zijn technisch en niet voor publicatie ingericht. De afdeling vergunning is klein, de afdeling communicatie heeft geen toegang tot de operationele systemen.',
+    wooHerkenbaarObservatie:
+      'De vraag is legitiem. Het antwoord vraagt om mensen die normaal ander werk doen.',
     wooUitdagingen: [
       'Specifieke publicatiecategorieën die afwijken van andere bestuurslagen: keurvergunningen, peilbesluiten, waterbeheerplannen en calamiteitenplannen',
       'Relatief kleine organisatie met beperkte ICT-capaciteit voor een Woo-implementatietraject',

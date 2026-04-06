@@ -439,29 +439,50 @@ export default function DynamicPage() {
       {solutionHero?.wooUitdagingen && solutionHero.wooUitdagingen.length > 0 && (
         <section className="bg-white py-16 lg:py-24" aria-labelledby="woo-uitdagingen-heading">
           <Container variant="content">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-              <div>
-                <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
-                  Herkenbaar?
-                </span>
-                <h2 id="woo-uitdagingen-heading" className="font-heading text-h2 font-semibold text-neutral-950 mb-5 leading-[1.1]">
-                  De Woo-uitdagingen die {solutionHero.doelgroepNaam} herkennen
-                </h2>
-                {solutionHero.wooUitdagingenIntro && (
-                  <p className="text-body text-neutral-700 leading-relaxed">
-                    {solutionHero.wooUitdagingenIntro}
+            {/* Full-width header boven de twee kolommen */}
+            <div className="mb-10 lg:mb-12">
+              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
+                Herkenbaar?
+              </span>
+              <h2
+                id="woo-uitdagingen-heading"
+                className="font-heading text-[26px] sm:text-[32px] font-semibold text-neutral-950 leading-[1.15] max-w-[720px]"
+              >
+                {solutionHero.wooHerkenbaarH2 ?? `De Woo-uitdagingen die ${solutionHero.doelgroepNaam} herkennen`}
+              </h2>
+            </div>
+
+            {/* 5fr / 7fr 2-koloms layout */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+              {/* Linkerkolom: scenario-citaat */}
+              {solutionHero.wooHerkenbaarQuote && (
+                <blockquote className="lg:col-span-5 m-0 border-l-[3px] border-brand-400 pl-6">
+                  <p className="text-[17px] sm:text-[19px] leading-[1.65] italic text-neutral-800 mb-5">
+                    {solutionHero.wooHerkenbaarQuote}
                   </p>
-                )}
-              </div>
-              <div className="space-y-4">
-                {solutionHero.wooUitdagingen.map((uitdaging, i) => (
-                  <div key={i} className="rounded-[16px] border border-neutral-200 bg-neutral-50 p-5 flex items-start gap-4">
-                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-brand-100 flex items-center justify-center mt-0.5">
-                      <span className="text-body-sm font-semibold text-brand-700">{i + 1}</span>
-                    </span>
-                    <p className="text-body-sm text-neutral-700 leading-relaxed">{uitdaging}</p>
-                  </div>
-                ))}
+                  {solutionHero.wooHerkenbaarObservatie && (
+                    <p className="text-[17px] not-italic font-medium text-brand-700 leading-[1.5]">
+                      {solutionHero.wooHerkenbaarObservatie}
+                    </p>
+                  )}
+                </blockquote>
+              )}
+
+              {/* Rechterkolom: kopje + bullets */}
+              <div className={solutionHero.wooHerkenbaarQuote ? 'lg:col-span-7' : 'lg:col-span-12'}>
+                <h3 className="font-heading text-[18px] font-semibold text-neutral-950 mb-5">
+                  Wat dat in de praktijk betekent
+                </h3>
+                <div className="space-y-4">
+                  {solutionHero.wooUitdagingen.map((uitdaging, i) => (
+                    <div key={i} className="rounded-[16px] border border-neutral-200 bg-neutral-50 p-5 flex items-start gap-4">
+                      <span className="flex-shrink-0 w-8 h-8 rounded-full bg-brand-100 flex items-center justify-center mt-0.5">
+                        <span className="text-body-sm font-semibold text-brand-700">{i + 1}</span>
+                      </span>
+                      <p className="text-body-sm text-neutral-700 leading-relaxed">{uitdaging}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </Container>
