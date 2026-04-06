@@ -16,6 +16,10 @@ export interface DoelgroepHeroConfig {
   uitdagingen?: string[];
   /** Intro-tekst boven de uitdagingen */
   uitdagingenIntro?: string;
+  /** Concreet herkenbaar scenario (komt direct na de intro) */
+  herkenbaarScenario?: string;
+  /** Korte afsluitende observatie bij het scenario */
+  herkenbaarObservatie?: string;
   /** Brede systemen-intro (niet alleen Woo) */
   systemenIntro?: string;
   /** Koepelorganisatie / bestuurlijk netwerk (brede context) */
@@ -50,6 +54,10 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
     wooIntro:
       'De Woo verplicht alle 342 gemeenten tot actieve openbaarmaking. OPMS is direct inzetbaar — van kleine gemeenten in een gedeeld SaaS-model tot grote gemeenten met een eigen omgeving. Implementatie binnen 3\u00a0maanden, aansluiting op uw bestaande zaaksysteem inclusief.',
     uitdagingenIntro: 'Dit herkennen gemeenten die hun digitale voorzieningen willen professionaliseren:',
+    herkenbaarScenario:
+      'Uw gemeente heeft \u00e9\u00e9n informatieadviseur. Die adviseert over Woo-verzoeken, zorgt voor de actieve openbaarmaking, begeleidt de archivering \u00e9n is eerste aanspreekpunt voor de AVG. Tussendoor moet er nog een nieuw zaaksysteem worden ingericht. De wethouder vraagt naar de stand van zaken rond de publicatieverplichting \u2014 want de gemeenteraad heeft er vragen over gesteld.',
+    herkenbaarObservatie:
+      'Het probleem is niet dat uw mensen hun werk niet kunnen. Het probleem is dat u te weinig mensen heeft voor te veel verplichtingen met te weinig tijd.',
     uitdagingen: [
       'Afhankelijkheid van leveranciers met proprietary systemen, beperkte invloed op doorontwikkeling en hoge licentiekosten',
       'Beperkte interne ICT-capaciteit om grote digitaliseringsprojecten zelfstandig op te pakken',
@@ -74,6 +82,10 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
     wooIntro:
       'Alle 12 provincies vallen onder de Woo. Als middenbestuur met een voorbeeldfunctie is professionele openbaarmaking geen keuze maar een vereiste. OPMS maakt publicatie onderdeel van het reguliere werkproces — van omgevingsvisies tot Statenbesluiten.',
     uitdagingenIntro: 'Dit herkennen provincies die hun digitale voorzieningen willen versterken:',
+    herkenbaarScenario:
+      'Een omgevingsvergunning uit 2019 komt opnieuw in beeld omdat een journalist via een Woo-verzoek de onderliggende stukken opvraagt. De behandelaar is inmiddels met pensioen, het dossier is verspreid over het zaaksysteem, een gedeelde schijf en de mailbox van de toenmalig projectleider. Gedeputeerde Staten verwacht binnen vier weken een compleet beeld \u2014 inclusief de afwegingen die destijds zijn gemaakt.',
+    herkenbaarObservatie:
+      'U weet dat de informatie er ergens is. U weet alleen niet waar, en hoe u erbij komt zonder een week aan handwerk.',
     uitdagingen: [
       'Voorbeeldfunctie richting gemeenten en waterschappen in de regio, die meekijken naar de provinciale aanpak van digitalisering',
       'Grote diversiteit aan applicaties en systemen die historisch gegroeid zijn, zonder eenduidig beheermodel',
@@ -98,6 +110,10 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
     wooIntro:
       'Alle 21 waterschappen moeten voldoen aan de Woo. OPMS maakt openbaarmaking van besluitdocumenten, keurvergunningen en beleidsstukken eenvoudig en controleerbaar. Snel implementeerbaar, passend bij de schaal van een waterschap.',
     uitdagingenIntro: 'Dit herkennen waterschappen die hun digitale voorzieningen willen versterken:',
+    herkenbaarScenario:
+      'Na een calamiteit bij een gemaal komen er binnen een week drie verzoeken binnen: \u00e9\u00e9n van een omwonende, \u00e9\u00e9n van een lokale krant, en \u00e9\u00e9n van een belangengroep. Alle drie willen ze dezelfde stukken \u2014 inspectierapporten, onderhoudsschema\u2019s, communicatie met de aannemer \u2014 maar elk verzoek wordt apart behandeld door een andere medewerker. Niemand heeft tijd om te co\u00f6rdineren, en de informatie zit verspreid over technische systemen die niet voor publicatie zijn gebouwd.',
+    herkenbaarObservatie:
+      'U bent een uitvoeringsorganisatie met een kerntaak. Informatievoorziening is geen afleiding \u2014 het is inmiddels een tweede baan.',
     uitdagingen: [
       'Compacte organisatie met beperkte ICT-bezetting die toch aan dezelfde digitale eisen moet voldoen als grotere bestuursorganen',
       'Specifiek domein (waterbeheer, waterveiligheid, waterkwaliteit) dat vraagt om oplossingen die aansluiten op het werkveld',
@@ -122,6 +138,10 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
     wooIntro:
       'Met ruim 200 rijksbestuursorganen verdeeld over 14 departementen is de schaal van de Woo-opgave bij de rijksoverheid enorm. OPMS is ontwikkeld in samenwerking met het ministerie van JenV en past binnen het comply-or-explain beleid. Voor agentschappen en ZBO\u2019s is een SaaS-model beschikbaar.',
     uitdagingenIntro: 'Dit herkennen rijksorganisaties die hun digitale voorzieningen willen professionaliseren:',
+    herkenbaarScenario:
+      'Op donderdagmiddag komt er een Kamervraag binnen over een besluit van twee jaar geleden. De beleidsmedewerker zoekt in een gedeelde schijf, vraagt het DMS op, stuurt drie collega\u2019s een mail. Het document wordt uiteindelijk gevonden \u2014 maar de bijbehorende correspondentie ligt ergens anders, de versiehistorie is onduidelijk, en niemand weet zeker of dit de definitieve versie is. De deadline voor de beantwoording is morgen 12:00.',
+    herkenbaarObservatie:
+      'Dit is geen incident. Dit is dinsdag. En woensdag. En donderdag.',
     uitdagingen: [
       'Het comply-or-explain beleid vereist dat bestaande open source alternatieven worden beoordeeld vóór inkoop van proprietary oplossingen',
       'Complexe en historisch gegroeide IT-landschappen die per organisatieonderdeel verschillen, met hoge beheerkosten',
@@ -176,7 +196,7 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
       'Schaalverschillen: een kernministerie met duizenden documenten per jaar vraagt een ander model dan een klein agentschap',
     ],
     wooSystemenIntro:
-      'OPMS sluit aan op het DMS-landschap van de rijksoverheid: bijvoorbeeldCorsa, OpenText en DMS Next. Voor agentschappen en ZBO\u2019s biedt Staterra een SaaS-model met lagere instapkosten, terwijl kerndepartementen kiezen voor een eigen omgeving met volledige regie.',
+      'OPMS sluit aan op het DMS-landschap van de rijksoverheid: bijvoorbeeld Corsa, OpenText en DMS Next. Voor agentschappen en ZBO\u2019s biedt Staterra een SaaS-model met lagere instapkosten, terwijl kerndepartementen kiezen voor een eigen omgeving met volledige regie.',
     wooKoepelIntro:
       'OPMS is opgenomen in het open source ecosysteem van de overheid. Het comply-or-explain beleid schrijft voor dat bestuursorganen eerst bestaande open source oplossingen beoordelen — OPMS is die oplossing.',
   },

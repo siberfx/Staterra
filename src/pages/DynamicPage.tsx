@@ -164,6 +164,23 @@ export default function DynamicPage() {
                   ))}
                 </div>
               </div>
+
+              {/* Concreet herkenbaar scenario */}
+              {heroConfig.herkenbaarScenario && (
+                <aside
+                  aria-label="Herkenbaar scenario"
+                  className="max-w-[760px] mx-auto mt-12 lg:mt-14 rounded-[16px] bg-brand-100 border-l-4 border-brand-400 px-5 py-6 sm:px-10 sm:py-8"
+                >
+                  <p className="text-[17px] sm:text-[19px] leading-[1.6] text-neutral-800">
+                    {heroConfig.herkenbaarScenario}
+                  </p>
+                  {heroConfig.herkenbaarObservatie && (
+                    <p className="mt-4 text-[16px] sm:text-[17px] leading-[1.55] font-medium text-brand-700">
+                      {heroConfig.herkenbaarObservatie}
+                    </p>
+                  )}
+                </aside>
+              )}
             </Container>
           </section>
         )}
