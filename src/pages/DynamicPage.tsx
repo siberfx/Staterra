@@ -135,25 +135,42 @@ export default function DynamicPage() {
             </div>
           </div>
         </section>
-        {/* Herkenbare uitdagingen voor deze doelgroep (breed, niet Woo-specifiek) */}
-        {heroConfig.uitdagingen && heroConfig.uitdagingen.length > 0 && (
-          <section className="bg-white py-16 lg:py-24" aria-labelledby="uitdagingen-heading">
+        {/* Herkenbaar?-sectie: label \u2192 sc\u00e8ne-H2 \u2192 scenario \u2192 (optioneel) bullets */}
+        {(heroConfig.herkenbaarScenario || (heroConfig.uitdagingen && heroConfig.uitdagingen.length > 0)) && (
+          <section className="bg-white py-16 lg:py-24" aria-labelledby="herkenbaar-heading">
             <Container variant="content">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-                <div>
-                  <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
-                    Herkenbaar?
-                  </span>
-                  <h2 id="uitdagingen-heading" className="font-heading text-h2 font-semibold text-neutral-950 mb-5 leading-[1.1]">
-                    De uitdagingen die {heroConfig.doelgroepNaam} herkennen
+              <div className="max-w-[760px] mx-auto">
+                <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-4">
+                  Herkenbaar?
+                </span>
+                {heroConfig.herkenbaarH2 && (
+                  <h2
+                    id="herkenbaar-heading"
+                    className="font-heading text-[26px] sm:text-[32px] font-semibold text-neutral-950 leading-[1.15] max-w-[640px]"
+                  >
+                    {heroConfig.herkenbaarH2}
                   </h2>
-                  {heroConfig.uitdagingenIntro && (
-                    <p className="text-body text-neutral-700 leading-relaxed">
-                      {heroConfig.uitdagingenIntro}
+                )}
+
+                {heroConfig.herkenbaarScenario && (
+                  <aside
+                    aria-label="Praktijkvoorbeeld"
+                    className="mt-8 mb-6 rounded-[16px] bg-brand-100 border-l-4 border-brand-400 px-5 py-6 sm:px-10 sm:py-8"
+                  >
+                    <p className="text-[17px] sm:text-[19px] leading-[1.6] text-neutral-800">
+                      {heroConfig.herkenbaarScenario}
                     </p>
-                  )}
-                </div>
-                <div className="space-y-4">
+                    {heroConfig.herkenbaarObservatie && (
+                      <p className="mt-4 text-[17px] sm:text-[19px] leading-[1.55] font-medium text-brand-700">
+                        {heroConfig.herkenbaarObservatie}
+                      </p>
+                    )}
+                  </aside>
+                )}
+              </div>
+
+              {heroConfig.uitdagingen && heroConfig.uitdagingen.length > 0 && (
+                <div className="max-w-[760px] mx-auto mt-12 space-y-4">
                   {heroConfig.uitdagingen.map((uitdaging, i) => (
                     <div key={i} className="rounded-[16px] border border-neutral-200 bg-neutral-50 p-5 flex items-start gap-4">
                       <span className="flex-shrink-0 w-8 h-8 rounded-full bg-brand-100 flex items-center justify-center mt-0.5">
@@ -163,23 +180,6 @@ export default function DynamicPage() {
                     </div>
                   ))}
                 </div>
-              </div>
-
-              {/* Concreet herkenbaar scenario */}
-              {heroConfig.herkenbaarScenario && (
-                <aside
-                  aria-label="Herkenbaar scenario"
-                  className="max-w-[760px] mx-auto mt-12 lg:mt-14 rounded-[16px] bg-brand-100 border-l-4 border-brand-400 px-5 py-6 sm:px-10 sm:py-8"
-                >
-                  <p className="text-[17px] sm:text-[19px] leading-[1.6] text-neutral-800">
-                    {heroConfig.herkenbaarScenario}
-                  </p>
-                  {heroConfig.herkenbaarObservatie && (
-                    <p className="mt-4 text-[16px] sm:text-[17px] leading-[1.55] font-medium text-brand-700">
-                      {heroConfig.herkenbaarObservatie}
-                    </p>
-                  )}
-                </aside>
               )}
             </Container>
           </section>

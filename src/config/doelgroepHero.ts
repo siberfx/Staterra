@@ -14,11 +14,11 @@ export interface DoelgroepHeroConfig {
   // ── Brede doelgroepherkenning (staterra-* pagina's) ──────────
   /** Brede uitdagingen voor deze doelgroep (niet Woo-specifiek) */
   uitdagingen?: string[];
-  /** Intro-tekst boven de uitdagingen */
-  uitdagingenIntro?: string;
-  /** Concreet herkenbaar scenario (komt direct na de intro) */
+  /** Sc\u00e8ne-gedreven H2 voor de Herkenbaar?-sectie */
+  herkenbaarH2?: string;
+  /** Concreet herkenbaar scenario (de payoff onder de H2) */
   herkenbaarScenario?: string;
-  /** Korte afsluitende observatie bij het scenario */
+  /** Korte scherpe afsluiter onder het scenario */
   herkenbaarObservatie?: string;
   /** Brede systemen-intro (niet alleen Woo) */
   systemenIntro?: string;
@@ -53,7 +53,7 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
     wooLink: '/woo-gemeenten',
     wooIntro:
       'De Woo verplicht alle 342 gemeenten tot actieve openbaarmaking. OPMS is direct inzetbaar — van kleine gemeenten in een gedeeld SaaS-model tot grote gemeenten met een eigen omgeving. Implementatie binnen 3\u00a0maanden, aansluiting op uw bestaande zaaksysteem inclusief.',
-    uitdagingenIntro: 'Dit herkennen gemeenten die hun digitale voorzieningen willen professionaliseren:',
+    herkenbaarH2: 'E\u00e9n informatieadviseur. Vier verplichtingen. Geen tijd.',
     herkenbaarScenario:
       'Uw gemeente heeft \u00e9\u00e9n informatieadviseur. Die adviseert over Woo-verzoeken, zorgt voor de actieve openbaarmaking, begeleidt de archivering \u00e9n is eerste aanspreekpunt voor de AVG. Tussendoor moet er nog een nieuw zaaksysteem worden ingericht. De wethouder vraagt naar de stand van zaken rond de publicatieverplichting \u2014 want de gemeenteraad heeft er vragen over gesteld.',
     herkenbaarObservatie:
@@ -81,7 +81,7 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
     wooLink: '/woo-provincies',
     wooIntro:
       'Alle 12 provincies vallen onder de Woo. Als middenbestuur met een voorbeeldfunctie is professionele openbaarmaking geen keuze maar een vereiste. OPMS maakt publicatie onderdeel van het reguliere werkproces — van omgevingsvisies tot Statenbesluiten.',
-    uitdagingenIntro: 'Dit herkennen provincies die hun digitale voorzieningen willen versterken:',
+    herkenbaarH2: 'Een dossier uit 2019. Een journalist. Vier weken.',
     herkenbaarScenario:
       'Een omgevingsvergunning uit 2019 komt opnieuw in beeld omdat een journalist via een Woo-verzoek de onderliggende stukken opvraagt. De behandelaar is inmiddels met pensioen, het dossier is verspreid over het zaaksysteem, een gedeelde schijf en de mailbox van de toenmalig projectleider. Gedeputeerde Staten verwacht binnen vier weken een compleet beeld \u2014 inclusief de afwegingen die destijds zijn gemaakt.',
     herkenbaarObservatie:
@@ -109,7 +109,7 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
     wooLink: '/woo-waterschappen',
     wooIntro:
       'Alle 21 waterschappen moeten voldoen aan de Woo. OPMS maakt openbaarmaking van besluitdocumenten, keurvergunningen en beleidsstukken eenvoudig en controleerbaar. Snel implementeerbaar, passend bij de schaal van een waterschap.',
-    uitdagingenIntro: 'Dit herkennen waterschappen die hun digitale voorzieningen willen versterken:',
+    herkenbaarH2: 'Een calamiteit. Drie verzoeken. E\u00e9n week.',
     herkenbaarScenario:
       'Na een calamiteit bij een gemaal komen er binnen een week drie verzoeken binnen: \u00e9\u00e9n van een omwonende, \u00e9\u00e9n van een lokale krant, en \u00e9\u00e9n van een belangengroep. Alle drie willen ze dezelfde stukken \u2014 inspectierapporten, onderhoudsschema\u2019s, communicatie met de aannemer \u2014 maar elk verzoek wordt apart behandeld door een andere medewerker. Niemand heeft tijd om te co\u00f6rdineren, en de informatie zit verspreid over technische systemen die niet voor publicatie zijn gebouwd.',
     herkenbaarObservatie:
@@ -137,9 +137,9 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
     wooLink: '/woo-rijksoverheid',
     wooIntro:
       'Met ruim 200 rijksbestuursorganen verdeeld over 14 departementen is de schaal van de Woo-opgave bij de rijksoverheid enorm. OPMS is ontwikkeld in samenwerking met het ministerie van JenV en past binnen het comply-or-explain beleid. Voor agentschappen en ZBO\u2019s is een SaaS-model beschikbaar.',
-    uitdagingenIntro: 'Dit herkennen rijksorganisaties die hun digitale voorzieningen willen professionaliseren:',
+    herkenbaarH2: 'Donderdagmiddag, 16:45. Een Kamervraag.',
     herkenbaarScenario:
-      'Op donderdagmiddag komt er een Kamervraag binnen over een besluit van twee jaar geleden. De beleidsmedewerker zoekt in een gedeelde schijf, vraagt het DMS op, stuurt drie collega\u2019s een mail. Het document wordt uiteindelijk gevonden \u2014 maar de bijbehorende correspondentie ligt ergens anders, de versiehistorie is onduidelijk, en niemand weet zeker of dit de definitieve versie is. De deadline voor de beantwoording is morgen 12:00.',
+      'Er komt een Kamervraag binnen over een besluit van twee jaar geleden. De beleidsmedewerker zoekt in een gedeelde schijf, vraagt het DMS op, stuurt drie collega\u2019s een mail. Het document wordt uiteindelijk gevonden \u2014 maar de bijbehorende correspondentie ligt ergens anders, de versiehistorie is onduidelijk, en niemand weet zeker of dit de definitieve versie is. De deadline voor de beantwoording is morgen 12:00.',
     herkenbaarObservatie:
       'Dit is geen incident. Dit is dinsdag. En woensdag. En donderdag.',
     uitdagingen: [
