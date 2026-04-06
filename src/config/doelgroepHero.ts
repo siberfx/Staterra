@@ -59,10 +59,10 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
     herkenbaarObservatie:
       'Het probleem is niet dat uw mensen hun werk niet kunnen. Het probleem is dat u te weinig mensen heeft voor te veel verplichtingen met te weinig tijd.',
     uitdagingen: [
-      'Afhankelijkheid van leveranciers met proprietary systemen, beperkte invloed op doorontwikkeling en hoge licentiekosten',
-      'Beperkte interne ICT-capaciteit om grote digitaliseringsprojecten zelfstandig op te pakken',
-      'Toenemende druk vanuit wet- en regelgeving: Woo, Wmebv, Digitale Overheid — zonder duidelijk plan van aanpak',
-      'Behoefte aan regie over eigen systemen en data, zonder vendor lock-in',
+      'Er is geen platform dat publicatie, archivering en Woo-afhandeling in \u00e9\u00e9n werkproces samenbrengt \u2014 elk verzoek begint weer bij nul',
+      'De huidige systemen zijn ingekocht voor \u00e9\u00e9n doel en laten zich niet aanpassen aan nieuwe verplichtingen zonder dure leveranciersprojecten',
+      'Doorontwikkeling vraagt om een externe partij die maanden vooruit ingepland moet worden, terwijl de wethouder volgende week antwoord wil',
+      'De informatieadviseur is verantwoordelijk voor processen die over meerdere systemen lopen, zonder regie over hoe die systemen samenwerken',
     ],
     systemenIntro:
       'Staterra implementeert en beheert open source oplossingen die aansluiten op de gemeentelijke IT-omgeving: van Nextcloud en Rocket.Chat tot OPMS voor Woo-compliance. Wij werken met de GEMMA-referentiearchitectuur en sluiten aan op zaaksystemen, DMS\'en en bestaande werkprocessen.',
@@ -87,10 +87,10 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
     herkenbaarObservatie:
       'U weet dat de informatie er ergens is. U weet alleen niet waar, en hoe u erbij komt zonder een week aan handwerk.',
     uitdagingen: [
-      'Voorbeeldfunctie richting gemeenten en waterschappen in de regio, die meekijken naar de provinciale aanpak van digitalisering',
-      'Grote diversiteit aan applicaties en systemen die historisch gegroeid zijn, zonder eenduidig beheermodel',
-      'Behoefte aan transparantie en verantwoording — niet alleen door de Woo, maar ook in het kader van goed provinciaal bestuur',
-      'Beperkte capaciteit om naast het dagelijkse werk ook fundamentele digitaliseringsprojecten te draaien',
+      'Kennis over oude dossiers leeft in de hoofden van behandelaars, niet in de systemen \u2014 als iemand vertrekt, vertrekt het overzicht mee',
+      'Er is geen centraal register dat laat zien welke documenten, mails en besluiten bij \u00e9\u00e9n dossier horen, ongeacht waar ze zijn opgeslagen',
+      'Het zaaksysteem is gebouwd voor lopende zaken, niet voor reconstructie van historische besluitvorming jaren later',
+      'Elke Woo-aanvraag op een ouder dossier wordt een mini-archeologisch project, met dagen of weken aan handwerk per verzoek',
     ],
     systemenIntro:
       'Staterra implementeert en beheert open source oplossingen die passen in het provinciale IT-landschap. Van samenwerkingsplatformen tot het Woo-publicatieplatform OPMS — wij sluiten aan op bestaande documentbeheersystemen en werkprocessen.',
@@ -115,10 +115,10 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
     herkenbaarObservatie:
       'U bent een uitvoeringsorganisatie met een kerntaak. Informatievoorziening is geen afleiding \u2014 het is inmiddels een tweede baan.',
     uitdagingen: [
-      'Compacte organisatie met beperkte ICT-bezetting die toch aan dezelfde digitale eisen moet voldoen als grotere bestuursorganen',
-      'Specifiek domein (waterbeheer, waterveiligheid, waterkwaliteit) dat vraagt om oplossingen die aansluiten op het werkveld',
-      'Afhankelijkheid van externe leveranciers voor kritieke systemen, met beperkte invloed op kosten en doorontwikkeling',
-      'Toenemende eisen rond transparantie en openbaarmaking, naast de reguliere operationele taken',
+      'Operationele systemen \u2014 voor onderhoud, monitoring, asset management \u2014 zijn gebouwd voor uitvoering, niet voor publicatie of openbaarmaking',
+      'Inspectierapporten, onderhoudslogs en correspondentie met aannemers leven elk in een eigen omgeving, zonder gedeeld dossier per object of incident',
+      'Er is geen workflow die parallelle verzoeken over hetzelfde onderwerp herkent en bundelt \u2014 elk verzoek wordt apart behandeld door wie het toevallig binnenkrijgt',
+      'De medewerkers die de technische kennis hebben zijn niet de medewerkers die verzoeken afhandelen, waardoor elk antwoord een vertaalslag tussen disciplines vraagt',
     ],
     systemenIntro:
       'Staterra implementeert en beheert open source oplossingen die passen bij de schaal van een waterschap. Snel implementeerbaar, eenvoudig te beheren en schaalbaar wanneer nodig — van samenwerkingstools tot het Woo-publicatieplatform OPMS.',
@@ -143,10 +143,10 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
     herkenbaarObservatie:
       'Dit is geen incident. Dit is dinsdag. En woensdag. En donderdag.',
     uitdagingen: [
-      'Het comply-or-explain beleid vereist dat bestaande open source alternatieven worden beoordeeld vóór inkoop van proprietary oplossingen',
-      'Complexe en historisch gegroeide IT-landschappen die per organisatieonderdeel verschillen, met hoge beheerkosten',
-      'Departementsoverstijgende afstemming die een eenduidige aanpak bemoeilijken',
-      'Grote schaalverschillen tussen kerndepartementen, agentschappen en ZBO\u2019s die elk een passend model vragen',
+      'Documenten, correspondentie en besluitvorming leven in gescheiden systemen \u2014 DMS, gedeelde schijven, mailboxen \u2014 zonder verbinding tussen wat bij wat hoort',
+      'Versiehistorie en audit trail zijn niet centraal geborgd, waardoor niemand met zekerheid kan zeggen wat de definitieve versie is',
+      'Zoeken gebeurt op bestandsnaam en geheugen van collega\u2019s, niet op de inhoud of de beleidscontext van het document',
+      'Elke nieuwe Kamervraag of Woo-verzoek vraagt opnieuw handwerk, omdat eerdere reconstructies niet zijn vastgelegd in een herbruikbaar dossier',
     ],
     systemenIntro:
       'Staterra implementeert en beheert open source oplossingen die passen binnen de rijksoverheid IT-kaders. Van samenwerkingsplatformen tot het Woo-publicatieplatform OPMS — wij sluiten aan op bestaande DMS-landschappen (Corsa, OpenText, DMS Next) en werken conform BZK-richtlijnen.',

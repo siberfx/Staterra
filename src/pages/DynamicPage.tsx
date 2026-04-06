@@ -170,15 +170,20 @@ export default function DynamicPage() {
               </div>
 
               {heroConfig.uitdagingen && heroConfig.uitdagingen.length > 0 && (
-                <div className="max-w-[760px] mx-auto mt-12 space-y-4">
-                  {heroConfig.uitdagingen.map((uitdaging, i) => (
-                    <div key={i} className="rounded-[16px] border border-neutral-200 bg-neutral-50 p-5 flex items-start gap-4">
-                      <span className="flex-shrink-0 w-8 h-8 rounded-full bg-brand-100 flex items-center justify-center mt-0.5">
-                        <span className="text-body-sm font-semibold text-brand-700">{i + 1}</span>
-                      </span>
-                      <p className="text-body-sm text-neutral-700 leading-relaxed">{uitdaging}</p>
-                    </div>
-                  ))}
+                <div className="max-w-[760px] mx-auto mt-8">
+                  <h3 className="font-heading text-[22px] font-semibold text-neutral-950 mb-6">
+                    Waarom dit gebeurt
+                  </h3>
+                  <div className="space-y-4">
+                    {heroConfig.uitdagingen.map((uitdaging, i) => (
+                      <div key={i} className="rounded-[16px] border border-neutral-200 bg-neutral-50 p-5 flex items-start gap-4">
+                        <span className="flex-shrink-0 w-8 h-8 rounded-full bg-brand-100 flex items-center justify-center mt-0.5">
+                          <span className="text-body-sm font-semibold text-brand-700">{i + 1}</span>
+                        </span>
+                        <p className="text-body-sm text-neutral-700 leading-relaxed">{uitdaging}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
             </Container>
