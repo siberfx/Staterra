@@ -115,23 +115,23 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
     h1Line1: 'Digitale regie',
     h1Accent: 'voor ministeries en uitvoeringsorganisaties',
     subtitle:
-      'Het comply-or-explain beleid van BZK maakt open source de logische eerste keuze voor rijksorganisaties. Staterra helpt met implementatie, beheer en doorontwikkeling van open source oplossingen — van samenwerkingsplatformen tot het bewezen Woo-platform OPMS, ontwikkeld met het ministerie van JenV.',
+      'Het comply-or-explain beleid maakt open source de logische eerste keuze voor rijksorganisaties. Staterra helpt met implementatie, beheer en doorontwikkeling van open source oplossingen — van samenwerkingsplatformen tot het bewezen Woo-platform OPMS, ontwikkeld met het ministerie van JenV.',
     secondaryCta: { text: 'Woo-oplossing voor de rijksoverheid', href: '/woo-rijksoverheid' },
     doelgroepNaam: 'de rijksoverheid',
     wooLink: '/woo-rijksoverheid',
     wooIntro:
-      'Met 236 rijksbestuursorganen verdeeld over 14 departementen is de schaal van de Woo-opgave bij de rijksoverheid enorm. OPMS is ontwikkeld in samenwerking met het ministerie van JenV en past binnen het comply-or-explain beleid. Voor agentschappen en ZBO\u2019s is een SaaS-model beschikbaar.',
+      'Met ruim 200 rijksbestuursorganen verdeeld over 14 departementen is de schaal van de Woo-opgave bij de rijksoverheid enorm. OPMS is ontwikkeld in samenwerking met het ministerie van JenV en past binnen het comply-or-explain beleid. Voor agentschappen en ZBO\u2019s is een SaaS-model beschikbaar.',
     uitdagingenIntro: 'Dit herkennen rijksorganisaties die hun digitale voorzieningen willen professionaliseren:',
     uitdagingen: [
       'Het comply-or-explain beleid vereist dat bestaande open source alternatieven worden beoordeeld vóór inkoop van proprietary oplossingen',
       'Complexe en historisch gegroeide IT-landschappen die per organisatieonderdeel verschillen, met hoge beheerkosten',
-      'Departementsoverstijgende afstemming met CIO Rijk en BZK-kaders die een eenduidige aanpak bemoeilijken',
+      'Departementsoverstijgende afstemming die een eenduidige aanpak bemoeilijken',
       'Grote schaalverschillen tussen kerndepartementen, agentschappen en ZBO\u2019s die elk een passend model vragen',
     ],
     systemenIntro:
       'Staterra implementeert en beheert open source oplossingen die passen binnen de rijksoverheid IT-kaders. Van samenwerkingsplatformen tot het Woo-publicatieplatform OPMS — wij sluiten aan op bestaande DMS-landschappen (Corsa, OpenText, DMS Next) en werken conform BZK-richtlijnen.',
     koepelIntro:
-      'OPMS is opgenomen in het open source ecosysteem van BZK. Staterra werkt samen met rijksorganisaties die het comply-or-explain beleid niet als verplichting maar als kans zien om regie terug te pakken op hun digitale voorzieningen.',
+      'OPMS is opgenomen in het open source ecosysteem van de overheid. Staterra werkt samen met rijksorganisaties die het comply-or-explain beleid niet als verplichting maar als kans zien om regie terug te pakken op hun digitale voorzieningen.',
   },
 
   // ══════════════════════════════════════════════════════════════
@@ -171,14 +171,14 @@ export const DOELGROEP_HERO: Record<string, DoelgroepHeroConfig> = {
     wooUitdagingenIntro: 'Dit herkennen rijksorganisaties die aan de Woo werken:',
     wooUitdagingen: [
       'Veelheid aan publicatiecategorieën: Kamerstukken, beleidsnotities, Woo-besluiten, convenanten en adviezen — elk met eigen procesafspraken',
-      'Complexe DMS-landschappen (Corsa, OpenText, DMS Next) die per organisatieonderdeel verschillen en niet automatisch publiceren',
+      'Complexe DMS-landschappen (bijvoorbeeld Corsa, OpenText, DMS Next) die per organisatieonderdeel verschillen en niet automatisch publiceren',
       'Onduidelijkheid over verantwoordelijkheden: wie beoordeelt, wie publiceert, wie controleert?',
       'Schaalverschillen: een kernministerie met duizenden documenten per jaar vraagt een ander model dan een klein agentschap',
     ],
     wooSystemenIntro:
-      'OPMS sluit aan op het DMS-landschap van de rijksoverheid: Corsa, OpenText en DMS Next. De integratie is bewezen bij het ministerie van JenV. Voor agentschappen en ZBO\u2019s biedt Staterra een SaaS-model met lagere instapkosten, terwijl kerndepartementen kiezen voor een eigen omgeving met volledige regie.',
+      'OPMS sluit aan op het DMS-landschap van de rijksoverheid: bijvoorbeeldCorsa, OpenText en DMS Next. Voor agentschappen en ZBO\u2019s biedt Staterra een SaaS-model met lagere instapkosten, terwijl kerndepartementen kiezen voor een eigen omgeving met volledige regie.',
     wooKoepelIntro:
-      'OPMS is opgenomen in het open source ecosysteem van BZK. Het comply-or-explain beleid schrijft voor dat bestuursorganen eerst bestaande open source oplossingen beoordelen — OPMS is die oplossing.',
+      'OPMS is opgenomen in het open source ecosysteem van de overheid. Het comply-or-explain beleid schrijft voor dat bestuursorganen eerst bestaande open source oplossingen beoordelen — OPMS is die oplossing.',
   },
 
   'woo-provincies': {
