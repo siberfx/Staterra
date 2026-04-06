@@ -535,7 +535,11 @@ export default function DynamicPage() {
         </section>
       )}
 
-      {/* ── 3. Inhoud: long_body + kenmerken ────────────────── */}
+      {/* ── 3. Inhoud: long_body + kenmerken ──────────────────
+          Verborgen op woo-doelgroeppagina's: die hebben hun eigen
+          Herkenbaar/Systemen-blokken hierboven en de generieke CMS
+          long_body voegt op die pagina's niets toe. */}
+      {!(slug in LAYER_META) && (
       <section className="bg-white py-16 lg:py-24" aria-labelledby="content-heading">
         <Container variant="content">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
@@ -604,6 +608,7 @@ export default function DynamicPage() {
           </div>
         </Container>
       </section>
+      )}
 
       {/* ── 3. Testimonial ───────────────────────────────────── */}
       {solution.testimonial_quote && (
