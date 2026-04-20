@@ -9,8 +9,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: 'Staterra implementeert en beheert OPMS, het open source publicatieplatform voor Woo-compliance. Van installatie tot doorontwikkeling.',
   },
   '/woo-oplossing': {
-    title: 'Woo-oplossing (OPMS) — Staterra',
-    description: 'OPMS is het open source platform voor actieve openbaarmaking onder de Woo. Staterra verzorgt implementatie, hosting en beheer voor overheidsorganisaties.',
+    title: 'Woo-oplossing: oPub en OPMS — Staterra',
+    description: 'Staterra levert oPub en OPMS: het bewezen publicatieportaal en managementsysteem voor bestuursorganen onder de Wet open overheid.',
   },
   '/aanpak': {
     title: 'Aanpak — Staterra',

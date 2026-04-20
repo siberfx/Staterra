@@ -1,8 +1,6 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getSolution } from '@/services/cms';
 import { PageMeta } from '@/components/PageMeta';
-import type { SolutionDetail } from '@/lib/types';
+import type { FaqItem } from '@/lib/types';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -10,39 +8,100 @@ import { FaqAccordion } from '@/components/ui/FaqAccordion';
 import LeadMagnetBanner from '@/components/LeadMagnetBanner';
 import { BESTUURSORGANEN_STATS } from '@/lib/data/bestuursorganen-stats';
 
-// -- Deelnamemodellen --
+// -- Kenmerken (vervangt CMS list_items) --
 
-const PARTICIPATION_MODELS = [
+const SOLUTION_FEATURES: string[] = [
+  'Specifiek ontwikkeld voor de Wet open overheid',
+  'oPub standaard gekoppeld aan de Generieke Woo-voorziening (GWV)',
+  'Open source onder EUPL 1.2 — geen vendor lock-in',
+  'Doorlevering naar publiek portaal opub.nl',
+];
+
+// -- Abonnementsvormen (vijf lagen) --
+
+interface SubscriptionTier {
+  title: string;
+  price: string;
+  priceNote?: string;
+  description: string;
+  audience: string;
+  badge?: string;
+  featured?: boolean;
+}
+
+const SUBSCRIPTION_TIERS: SubscriptionTier[] = [
   {
-    title: 'Gedeelde omgeving',
+    title: 'Start',
+    price: 'Gratis',
     description:
-      'Uw organisatie sluit aan op een gedeelde OPMS-omgeving die Staterra beheert. Laagste instapkosten, snel operationeel.',
-    price: 'Laagste instapkosten',
-    ideal: 'Gemeenten en waterschappen',
+      'Self-service portaal op overheid.opub.nl. Claim uw omgeving, beheer uw Woo-contactpersoon en ontvangstdata, krijg inzicht in publicaties en bezoekersstatistieken.',
+    audience: 'Elk bestuursorgaan',
+    badge: 'Kosteloos instappen',
   },
   {
-    title: 'Eigen omgeving',
+    title: 'Publicatie Basis',
+    price: '€499 per maand',
+    priceNote: 'jaarcontract',
     description:
-      'OPMS wordt uitgerold in uw eigen infrastructuur. Volledige databescherming en maatwerk-configuratie mogelijk.',
-    price: 'Eigen investering',
-    ideal: 'Ministeries en provincies',
+      'Alles uit Start, plus handmatig publiceren via een aanleverformulier, AI-ondersteund metadateren, het Woo-zaaksysteem VIVO, 5 gebruikers, €50 AI-credits per maand en doorlevering naar het publieke portaal opub.nl.',
+    audience: 'Gemeenten, waterschappen, kleinere uitvoeringsorganisaties',
+    badge: 'Meest gekozen',
     featured: true,
   },
   {
-    title: 'Gezamenlijke doorontwikkeling',
+    title: 'Publicatie API',
+    price: '€499 + €250 per koppeling per maand',
+    priceNote: 'jaarcontract',
     description:
-      'U participeert actief in de doorontwikkeling van OPMS. Directe invloed op de roadmap en gedeelde kosten.',
-    price: 'Samenwerkingsmodel',
-    ideal: 'Koepelorganisaties en samenwerkingsverbanden',
+      "Alles uit Publicatie Basis, plus geautomatiseerd publiceren via API's. TOOI↔MDTO mapping, REST-, webhook- of cron-flow. Eén tarief per actieve bronsysteem-koppeling.",
+    audience: 'Organisaties met meerdere bronsystemen of hoog publicatievolume',
   },
   {
-    title: 'SaaS',
+    title: 'OPMS on-site',
+    price: 'Vanaf €2.500 per maand',
+    priceNote: 'jaarcontract',
     description:
-      'Volledige ontzorging: Staterra beheert hosting, updates en beveiliging. U gebruikt OPMS als dienst.',
-    price: 'Maandelijks abonnement',
-    ideal: 'Organisaties zonder eigen IT-capaciteit',
+      'OPMS volledig op uw eigen infrastructuur. Open source onder EUPL 1.2. Updates, doorontwikkeling en helpdesk inbegrepen. Tarief afhankelijk van omvang en implementatie.',
+    audience: 'Ministeries, provincies, grote uitvoeringsorganisaties',
+  },
+  {
+    title: 'OPMS Enterprise',
+    price: 'Maatwerk',
+    description:
+      'Multitenant-omgeving voor kerndepartementen en shared-service organisaties. Centrale regie over meerdere bestuursorganen, dedicated ondersteuning, governance per project charter.',
+    audience: "Logius, SSC-ICT, ODC's en vergelijkbare koepels",
   },
 ];
+
+// -- FAQ (hardcoded; vervangt CMS solution.faq) --
+
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    question: 'Wat is het verschil tussen oPub en OPMS?',
+    answer:
+      'oPub is het publicatieportaal waarop uw documenten openbaar gemaakt worden en waar burgers, journalisten en advocaten deze kunnen vinden. OPMS is het managementsysteem waarmee u het hele Woo-proces regisseert — intake, beoordeling, metadatering en publicatie. U kunt met oPub starten en later OPMS toevoegen voor volledige procesregie.',
+  },
+  {
+    question: 'Kan ik tussentijds op- of afschalen?',
+    answer:
+      'Ja. Binnen één contract kunt u op elk moment opschalen naar een hogere laag; het meertarief wordt pro rata berekend over de resterende maanden. Afschalen kan per de eerstvolgende kalendermaand, met pro rata verrekening van reeds betaalde maanden.',
+  },
+  {
+    question: 'Wat kost de implementatie?',
+    answer:
+      'Bekijk de vijf abonnementsvormen hierboven voor de tarieven. De kosten voor implementatiebegeleiding, training en projectmanagement worden afzonderlijk geoffreerd op basis van de omvang van uw organisatie.',
+  },
+];
+
+const FAQ_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ_ITEMS.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+};
 
 // -- Doelgroepen per bestuurslaag --
 
@@ -96,20 +155,22 @@ const TARGET_GROUPS = [
 ];
 
 export default function WooOplossing() {
-  const [solution, setSolution] = useState<SolutionDetail | null>(null);
-
-  useEffect(() => {
-    getSolution('woo-oplossing').then((data) => {
-      setSolution(data as SolutionDetail | null);
-    });
-  }, []);
-
   return (
     <>
       <PageMeta
-        title="Woo-oplossing (OPMS)"
-        description="De complete Woo-compliance oplossing. Open source, direct inzetbaar voor 611 bestuursorganen."
-        schemas={[{ '@context': 'https://schema.org', '@type': 'Service', serviceType: 'Woo-compliance oplossing', provider: { '@type': 'Organization', name: 'Staterra' }, areaServed: 'NL', name: 'OPMS Woo-oplossing' }]}
+        title="Woo-oplossing: oPub en OPMS"
+        description="Staterra levert oPub en OPMS: het bewezen publicatieportaal en managementsysteem voor bestuursorganen onder de Wet open overheid."
+        schemas={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Service',
+            serviceType: 'Woo-compliance oplossing',
+            provider: { '@type': 'Organization', name: 'Staterra' },
+            areaServed: 'NL',
+            name: 'oPub en OPMS — Woo-oplossing',
+          },
+          FAQ_SCHEMA,
+        ]}
       />
       {/* -- 1. Hero -- */}
       <section
@@ -127,7 +188,7 @@ export default function WooOplossing() {
             <div>
               {/* Label */}
               <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-200 mb-5">
-                Woo-oplossing — OPMS
+                Woo-oplossing — oPub en OPMS
               </span>
 
               {/* Krachtige openingszin uit briefing */}
@@ -140,8 +201,8 @@ export default function WooOplossing() {
               </h1>
 
               <p className="text-body-lg text-brand-200 mb-8 leading-relaxed">
-                {solution?.subtitle ??
-                  'Een bestaande oplossing voor publicaties binnen de Wet open overheid, gereed voor implementatie bij overheden.'}
+                oPub en OPMS: de bewezen Woo-oplossing van onze partner
+                CodeLabs, door Staterra gereed gemaakt voor uw bestuursorgaan.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -171,6 +232,61 @@ export default function WooOplossing() {
                   className="w-full h-auto object-cover object-center"
                 />
               </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* -- 1b. Architectuur: oPub + OPMS -- */}
+      <section className="bg-white py-16 lg:py-20" aria-labelledby="architectuur-heading">
+        <Container variant="content">
+          <div className="max-w-[820px] mx-auto text-center mb-10">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
+              De architectuur
+            </span>
+            <h2
+              id="architectuur-heading"
+              className="font-heading text-h2 font-semibold text-neutral-950 mb-5 leading-[1.15]"
+            >
+              Twee samenhangende componenten
+            </h2>
+            <p className="text-body text-neutral-700 leading-relaxed">
+              De Woo-oplossing bestaat uit twee samenhangende componenten,
+              ontwikkeld door onze partner <strong className="font-semibold text-neutral-900">CodeLabs B.V.</strong>{' '}
+              en beschikbaar onder de open source licentie{' '}
+              <strong className="font-semibold text-neutral-900">EUPL 1.2</strong>.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="rounded-[20px] border border-neutral-200 bg-brand-50 p-8">
+              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-2">
+                Publicatieportaal
+              </span>
+              <h3 className="font-heading text-h3 font-semibold text-neutral-950 mb-3">
+                oPub
+              </h3>
+              <p className="text-body-sm text-neutral-700 leading-relaxed">
+                Het federatieve publicatieportaal waarop bestuursorganen hun
+                documenten openbaar maken. Standaard gekoppeld aan de Generieke
+                Woo-voorziening (GWV) en aan het publieke portaal{' '}
+                <span className="font-semibold text-neutral-900">opub.nl</span>.
+              </p>
+            </div>
+
+            <div className="rounded-[20px] border border-neutral-200 bg-brand-50 p-8">
+              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-2">
+                Managementsysteem
+              </span>
+              <h3 className="font-heading text-h3 font-semibold text-neutral-950 mb-3">
+                OPMS
+              </h3>
+              <p className="text-body-sm text-neutral-700 leading-relaxed">
+                Het managementsysteem dat het volledige Woo-proces ondersteunt,
+                van intake en beoordeling tot publicatie. Open source, lokaal
+                installeerbaar, met koppelingen naar bestaande zaak- en
+                documentsystemen.
+              </p>
             </div>
           </div>
         </Container>
@@ -226,150 +342,169 @@ export default function WooOplossing() {
       </section>
 
       {/* -- 3. Wat biedt de oplossing -- */}
-      {solution && (
-        <section
-          className="bg-brand-100 py-16 lg:py-24"
-          aria-labelledby="features-heading"
-        >
-          <Container variant="content">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-              <div>
-                <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-4">
-                  De oplossing
-                </span>
-                <h2
-                  id="features-heading"
-                  className="font-heading text-h2 font-semibold text-neutral-950 mb-6 leading-[1.1]"
-                >
-                  {solution.title}
-                </h2>
+      <section
+        className="bg-brand-100 py-16 lg:py-24"
+        aria-labelledby="features-heading"
+      >
+        <Container variant="content">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            <div>
+              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-4">
+                De oplossing
+              </span>
+              <h2
+                id="features-heading"
+                className="font-heading text-h2 font-semibold text-neutral-950 mb-6 leading-[1.1]"
+              >
+                Een bewezen Woo-platform, direct inzetbaar
+              </h2>
 
-                {/* HTML-content uit CMS */}
-                <div
-                  className="prose prose-neutral max-w-none text-body-sm text-neutral-700 leading-relaxed [&_p]:mb-4 [&_p:last-child]:mb-0"
-                  dangerouslySetInnerHTML={{ __html: solution.long_body }}
-                />
+              <div className="text-body-sm text-neutral-700 leading-relaxed space-y-4">
+                <p>
+                  Staterra levert en begeleidt de Woo-oplossing bij
+                  bestuursorganen: van eerste verkenning en contract tot
+                  implementatie, training en eerstelijnssupport. De software
+                  zelf — oPub en OPMS — wordt gebouwd en technisch beheerd
+                  door onze partner CodeLabs B.V.
+                </p>
+                <p>
+                  Omdat oPub en OPMS open source zijn onder EUPL 1.2, behoudt
+                  u volledige regie. U kiest waar het draait, welke
+                  koppelingen u legt en in welk tempo u opschaalt. Geen
+                  vendor lock-in, geen licentiekosten per gebruiker.
+                </p>
               </div>
-
-              {/* Kenmerkenlijst */}
-              {solution.list_items?.length > 0 && (
-                <div>
-                  <Card padding="loose" hover={false}>
-                    <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-6">
-                      Kenmerken
-                    </h3>
-                    <ul className="space-y-4">
-                      {solution.list_items.map((item, i) => (
-                        <li key={i} className="flex items-start gap-3">
-                          <span
-                            aria-hidden="true"
-                            className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-brand-700 flex items-center justify-center"
-                          >
-                            <svg
-                              className="w-3 h-3 text-white"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              strokeWidth={2.5}
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M5 13l4 4L19 7"
-                              />
-                            </svg>
-                          </span>
-                          <span className="text-body-sm text-neutral-700">
-                            {item}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="mt-8 pt-6 border-t border-neutral-200">
-                      <p className="text-caption text-neutral-500 mb-4">
-                        OPMS is opgenomen in het open source ecosysteem van BZK.
-                        Het comply-or-explain beleid maakt OPMS de logische
-                        eerste keuze voor Woo-compliance.
-                      </p>
-                      <Button as="link" href="/contact" variant="primary" className="w-full justify-center">
-                        Vraag een demo aan
-                      </Button>
-                    </div>
-                  </Card>
-                </div>
-              )}
             </div>
-          </Container>
-        </section>
-      )}
 
-      {/* -- 4. Deelnamemodellen -- */}
+            {/* Kenmerkenlijst */}
+            <div>
+              <Card padding="loose" hover={false}>
+                <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-6">
+                  Kenmerken
+                </h3>
+                <ul className="space-y-4">
+                  {SOLUTION_FEATURES.map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span
+                        aria-hidden="true"
+                        className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-brand-700 flex items-center justify-center"
+                      >
+                        <svg
+                          className="w-3 h-3 text-white"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2.5}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      </span>
+                      <span className="text-body-sm text-neutral-700">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-8 pt-6 border-t border-neutral-200">
+                  <p className="text-caption text-neutral-500 mb-4">
+                    oPub en OPMS zijn opgenomen in het open source ecosysteem
+                    van BZK. Het comply-or-explain beleid maakt de oplossing
+                    de logische eerste keuze voor Woo-compliance.
+                  </p>
+                  <Button as="link" href="/contact" variant="primary" className="w-full justify-center">
+                    Vraag een demo aan
+                  </Button>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* -- 4. Abonnementsvormen -- */}
       <section
         className="bg-white py-16 lg:py-24"
-        aria-labelledby="models-heading"
+        aria-labelledby="tiers-heading"
       >
         <Container variant="content">
           <div className="text-center mb-12">
             <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
-              Deelname
+              Abonnementsvormen
             </span>
             <h2
-              id="models-heading"
+              id="tiers-heading"
               className="font-heading text-h2 font-semibold text-neutral-950 mb-4"
             >
-              Kies het model dat bij u past
+              Kies de abonnementsvorm die bij uw organisatie past
             </h2>
-            <p className="text-body text-neutral-700 max-w-[640px] mx-auto">
-              Van gedeelde omgeving tot volledige eigen installatie. U ervaart
-              de waarde van het platform voordat u besluit over een structurele
-              samenwerking.
+            <p className="text-body text-neutral-700 max-w-[720px] mx-auto">
+              De Woo-oplossing kent vijf lagen. U start zo licht of zo
+              volledig als u wilt, en schaalt op naarmate uw volume en
+              ambities groeien. Prijzen zijn weergegeven als maandbedragen;
+              contracten worden op jaarbasis aangegaan en jaarlijks verlengd.
+              Tarieven zijn exclusief btw.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {PARTICIPATION_MODELS.map((model) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {SUBSCRIPTION_TIERS.map((tier) => (
               <Card
-                key={model.title}
+                key={tier.title}
                 padding="loose"
-                className={
-                  model.featured
+                className={[
+                  'flex flex-col',
+                  tier.featured
                     ? 'border-brand-700 ring-1 ring-brand-700 relative'
-                    : ''
-                }
+                    : '',
+                ].join(' ')}
               >
-                {model.featured && (
-                  <span className="absolute -top-3 left-6 px-3 py-1 bg-brand-700 text-white text-caption font-semibold rounded-full">
-                    Meest gekozen
+                {tier.badge && (
+                  <span
+                    className={[
+                      'absolute -top-3 left-6 px-3 py-1 text-caption font-semibold rounded-full',
+                      tier.featured
+                        ? 'bg-brand-700 text-white'
+                        : 'bg-brand-100 text-brand-700 border border-brand-200',
+                    ].join(' ')}
+                  >
+                    {tier.badge}
                   </span>
                 )}
-                <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-3">
-                  {model.title}
+                <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-2">
+                  {tier.title}
                 </h3>
-                <p className="text-body-sm text-neutral-700 leading-relaxed mb-4">
-                  {model.description}
+                <p className="text-body-sm font-semibold text-brand-700 mb-3">
+                  {tier.price}
+                  {tier.priceNote && (
+                    <span className="font-normal text-neutral-500">
+                      {' '}
+                      ({tier.priceNote})
+                    </span>
+                  )}
                 </p>
-                <div className="flex flex-wrap gap-3 mt-auto pt-4 border-t border-neutral-100">
-                  <span className="inline-flex items-center gap-1.5 text-caption text-brand-700 font-medium">
-                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    {model.price}
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 text-caption text-neutral-500">
-                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                <p className="text-body-sm text-neutral-700 leading-relaxed mb-5 flex-1">
+                  {tier.description}
+                </p>
+                <div className="pt-4 border-t border-neutral-100">
+                  <span className="inline-flex items-start gap-1.5 text-caption text-neutral-500">
+                    <svg className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
-                    {model.ideal}
+                    <span>{tier.audience}</span>
                   </span>
                 </div>
               </Card>
             ))}
           </div>
 
-          <div className="text-center mt-10">
+          <div className="text-center mt-12">
             <Button as="link" href="/contact" variant="primary" size="lg">
-              Bespreek het juiste model voor uw organisatie
+              Plan een verkenningsgesprek
             </Button>
           </div>
         </Container>
@@ -428,30 +563,28 @@ export default function WooOplossing() {
       </section>
 
       {/* -- 7. FAQ -- */}
-      {solution?.faq && solution.faq.length > 0 && (
-        <section
-          className="bg-brand-100 py-16 lg:py-24"
-          aria-labelledby="faq-heading"
-        >
-          <Container variant="text">
-            <div className="text-center mb-10">
-              <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
-                Vragen
-              </span>
-              <h2
-                id="faq-heading"
-                className="font-heading text-h2 font-semibold text-neutral-950"
-              >
-                Veelgestelde vragen
-              </h2>
-            </div>
+      <section
+        className="bg-brand-100 py-16 lg:py-24"
+        aria-labelledby="faq-heading"
+      >
+        <Container variant="text">
+          <div className="text-center mb-10">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
+              Vragen
+            </span>
+            <h2
+              id="faq-heading"
+              className="font-heading text-h2 font-semibold text-neutral-950"
+            >
+              Veelgestelde vragen
+            </h2>
+          </div>
 
-            <Card hover={false} padding="loose">
-              <FaqAccordion items={solution.faq} />
-            </Card>
-          </Container>
-        </section>
-      )}
+          <Card hover={false} padding="loose">
+            <FaqAccordion items={FAQ_ITEMS} />
+          </Card>
+        </Container>
+      </section>
 
       {/* -- 8. Lead magnet -- */}
       <LeadMagnetBanner />

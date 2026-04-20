@@ -246,9 +246,10 @@ export default function HomePage() {
                   Woo-compliance met OPMS
                 </h3>
                 <p className="text-body-sm text-neutral-700 leading-relaxed">
-                  Onze Woo-oplossing is een concrete uitwerking van wat we samen met
-                  en voor de overheid hebben ontwikkeld. Het OPMS-platform is bewezen
-                  in de praktijk en direct inzetbaar — zonder langdurig ontwikkeltraject.
+                  Staterra levert en begeleidt de Woo-oplossing van onze partner
+                  CodeLabs B.V.: het bewezen oPub/OPMS-platform, samen met de
+                  overheid ontwikkeld en direct inzetbaar — zonder langdurig
+                  ontwikkeltraject.
                 </p>
               </div>
               <div className="flex-shrink-0">
@@ -271,6 +272,54 @@ export default function HomePage() {
       {homepage?.about_opms && (
         <AboutBlock data={homepage.about_opms} />
       )}
+
+      {/* 4b — Rolverdeling Staterra / CodeLabs */}
+      <section
+        className="bg-white pb-16 lg:pb-20 -mt-4"
+        aria-labelledby="partnership-heading"
+      >
+        <div className="max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-[20px] border border-neutral-200 bg-brand-50 p-8 lg:p-10">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
+              Onze partner
+            </span>
+            <h3
+              id="partnership-heading"
+              className="font-heading text-h3 font-semibold text-neutral-950 mb-4 leading-[1.2]"
+            >
+              CodeLabs bouwt, Staterra begeleidt
+            </h3>
+            <p className="text-body text-neutral-700 leading-relaxed mb-6 max-w-[760px]">
+              Voor onze Woo-oplossing werken wij samen met{' '}
+              <strong className="font-semibold text-neutral-900">CodeLabs B.V.</strong>{' '}
+              CodeLabs is eigenaar, bouwer en technisch beheerder van oPub en OPMS.
+              Staterra is de commerciële en bestuurlijke partner richting de
+              overheidsmarkt. Beide rollen zijn onvervreemdbaar van elkaar.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="rounded-[14px] bg-white border border-neutral-200 p-5">
+                <p className="font-heading text-caption font-semibold uppercase tracking-widest text-brand-700 mb-2">
+                  Staterra
+                </p>
+                <p className="text-body-sm text-neutral-700 leading-relaxed">
+                  Acquisitie, contractmanagement, implementatiebegeleiding,
+                  relatiebeheer en eerstelijnssupport voor bestuursorganen.
+                </p>
+              </div>
+              <div className="rounded-[14px] bg-white border border-neutral-200 p-5">
+                <p className="font-heading text-caption font-semibold uppercase tracking-widest text-brand-700 mb-2">
+                  CodeLabs
+                </p>
+                <p className="text-body-sm text-neutral-700 leading-relaxed">
+                  Eigendom, bouw, doorontwikkeling en technisch beheer van de
+                  oPub- en OPMS-software onder de EUPL 1.2-licentie.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* 5 — Gebruikersvoordelen */}
       {homepage?.user_features && (
