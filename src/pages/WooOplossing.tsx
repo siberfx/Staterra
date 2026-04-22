@@ -17,59 +17,36 @@ const SOLUTION_FEATURES: string[] = [
   'Doorlevering naar publiek portaal opub.nl',
 ];
 
-// -- Abonnementsvormen (vijf lagen) --
+// -- Abonnementsvormen (drie lagen) --
 
 interface SubscriptionTier {
   title: string;
   price: string;
   priceNote?: string;
   description: string;
-  audience: string;
-  badge?: string;
-  featured?: boolean;
 }
 
 const SUBSCRIPTION_TIERS: SubscriptionTier[] = [
   {
-    title: 'Start',
-    price: 'Gratis',
-    description:
-      'Self-service portaal op overheid.opub.nl. Claim uw omgeving, beheer uw Woo-contactpersoon en ontvangstdata, krijg inzicht in publicaties en bezoekersstatistieken.',
-    audience: 'Elk bestuursorgaan',
-    badge: 'Kosteloos instappen',
-  },
-  {
-    title: 'Publicatie Basis',
+    title: 'oPub Basis',
     price: '€499 per maand',
     priceNote: 'jaarcontract',
     description:
-      'Alles uit Start, plus handmatig publiceren via een aanleverformulier, AI-ondersteund metadateren, het Woo-zaaksysteem VIVO, 5 gebruikers, €50 AI-credits per maand en doorlevering naar het publieke portaal opub.nl.',
-    audience: 'Gemeenten, waterschappen, kleinere uitvoeringsorganisaties',
-    badge: 'Meest gekozen',
-    featured: true,
+      'Alles om te starten met publiceren: self-service portaal, aanleverformulier, AI-ondersteund metadateren, Woo-zaaksysteem, 5 gebruikers, doorlevering naar opub.nl en de Generieke Woo-voorziening.',
   },
   {
-    title: 'Publicatie API',
-    price: '€499 + €250 per koppeling per maand',
+    title: 'oPub API',
+    price: '€499 + €250 per maand per koppeling',
     priceNote: 'jaarcontract',
     description:
-      "Alles uit Publicatie Basis, plus geautomatiseerd publiceren via API's. TOOI↔MDTO mapping, REST-, webhook- of cron-flow. Eén tarief per actieve bronsysteem-koppeling.",
-    audience: 'Organisaties met meerdere bronsystemen of hoog publicatievolume',
+      'Alles uit oPub Basis, aangevuld met API-mappingdienst per bronsysteem, TOOI↔MDTO mapping en REST-, webhook- of cron-flow.',
   },
   {
     title: 'OPMS on-site',
     price: 'Vanaf €2.500 per maand',
     priceNote: 'jaarcontract',
     description:
-      'OPMS volledig op uw eigen infrastructuur. Open source onder EUPL 1.2. Updates, doorontwikkeling en helpdesk inbegrepen. Tarief afhankelijk van omvang en implementatie.',
-    audience: 'Ministeries, provincies, grote uitvoeringsorganisaties',
-  },
-  {
-    title: 'OPMS Enterprise',
-    price: 'Maatwerk',
-    description:
-      'Multitenant-omgeving voor kerndepartementen en shared-service organisaties. Centrale regie over meerdere bestuursorganen, dedicated ondersteuning, governance per project charter.',
-    audience: "Logius, SSC-ICT, ODC's en vergelijkbare koepels",
+      'Lokale installatie op eigen infrastructuur. Open source onder EUPL 1.2, geen vendor lock-in, updates inbegrepen, hogere SLA en named contact.',
   },
 ];
 
@@ -89,7 +66,7 @@ const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'Wat kost de implementatie?',
     answer:
-      'Bekijk de vijf abonnementsvormen hierboven voor de tarieven. De kosten voor implementatiebegeleiding, training en projectmanagement worden afzonderlijk geoffreerd op basis van de omvang van uw organisatie.',
+      'De Woo-oplossing kent drie abonnementslagen: oPub Basis (€499 per maand, jaarcontract), oPub API (€499 + €250 per maand per koppeling, jaarcontract) en OPMS on-site (vanaf €2.500 per maand, jaarcontract). De kosten voor implementatiebegeleiding, training en projectmanagement worden afzonderlijk geoffreerd op basis van de omvang van uw organisatie. Tarieven zijn exclusief btw.',
   },
 ];
 
@@ -440,45 +417,26 @@ export default function WooOplossing() {
               id="tiers-heading"
               className="font-heading text-h2 font-semibold text-neutral-950 mb-4"
             >
-              Kies de abonnementsvorm die bij uw organisatie past
+              Kies het model dat bij u past
             </h2>
             <p className="text-body text-neutral-700 max-w-[720px] mx-auto">
-              De Woo-oplossing kent vijf lagen. U start zo licht of zo
-              volledig als u wilt, en schaalt op naarmate uw volume en
-              ambities groeien. Prijzen zijn weergegeven als maandbedragen;
-              contracten worden op jaarbasis aangegaan en jaarlijks verlengd.
-              Tarieven zijn exclusief btw.
+              De Woo-oplossing kent drie abonnementslagen. U start licht en
+              schaalt op naarmate uw publicatievolume en integratiebehoeften
+              groeien.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {SUBSCRIPTION_TIERS.map((tier) => (
               <Card
                 key={tier.title}
                 padding="loose"
-                className={[
-                  'flex flex-col',
-                  tier.featured
-                    ? 'border-brand-700 ring-1 ring-brand-700 relative'
-                    : '',
-                ].join(' ')}
+                className="flex flex-col"
               >
-                {tier.badge && (
-                  <span
-                    className={[
-                      'absolute -top-3 left-6 px-3 py-1 text-caption font-semibold rounded-full',
-                      tier.featured
-                        ? 'bg-brand-700 text-white'
-                        : 'bg-brand-100 text-brand-700 border border-brand-200',
-                    ].join(' ')}
-                  >
-                    {tier.badge}
-                  </span>
-                )}
                 <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-2">
                   {tier.title}
                 </h3>
-                <p className="text-body-sm font-semibold text-brand-700 mb-3">
+                <p className="text-body-sm font-semibold text-brand-700 mb-4">
                   {tier.price}
                   {tier.priceNote && (
                     <span className="font-normal text-neutral-500">
@@ -487,22 +445,19 @@ export default function WooOplossing() {
                     </span>
                   )}
                 </p>
-                <p className="text-body-sm text-neutral-700 leading-relaxed mb-5 flex-1">
+                <p className="text-body-sm text-neutral-700 leading-relaxed flex-1">
                   {tier.description}
                 </p>
-                <div className="pt-4 border-t border-neutral-100">
-                  <span className="inline-flex items-start gap-1.5 text-caption text-neutral-500">
-                    <svg className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    <span>{tier.audience}</span>
-                  </span>
-                </div>
               </Card>
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          <p className="text-center text-caption text-neutral-500 mt-8 max-w-[640px] mx-auto">
+            Tarieven zijn exclusief btw. Contracten worden op jaarbasis
+            aangegaan.
+          </p>
+
+          <div className="text-center mt-10">
             <Button as="link" href="/contact" variant="primary" size="lg">
               Plan een verkenningsgesprek
             </Button>
