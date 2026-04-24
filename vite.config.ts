@@ -30,7 +30,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: 'dist',
+    outDir: 'public',
     emptyOutDir: true,
     rollupOptions: {
       output: {
@@ -41,5 +41,5 @@ export default defineConfig({
       },
     },
   },
-  publicDir: 'public',
+  publicDir: 'static',
 })
