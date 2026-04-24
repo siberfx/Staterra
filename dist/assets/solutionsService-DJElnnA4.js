@@ -1,0 +1,1 @@
+import{g as n}from"./api-DUPt4QgU.js";async function s(){const t=(await n("solutions"))?.data??[];return Array.isArray(t)?t:[]}async function r(a){const t=await n(`solutions/${a}`);return t?.data??t??null}export{r as a,s as g};

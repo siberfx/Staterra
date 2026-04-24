@@ -1,0 +1,1 @@
+const s="https://studio.staterra.nl".replace(/\/$/,""),r=(()=>{try{return new URL(s).origin}catch{return""}})();function e(t){return!t||typeof t!="string"?null:t.startsWith("http://")||t.startsWith("https://")||t.startsWith("data:")?t:t.startsWith("/")&&r?`${r}${t}`:t}export{e as r};

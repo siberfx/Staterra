@@ -1,0 +1,1 @@
+import{g as e}from"./api-DUPt4QgU.js";async function n(t={}){const a=await e("changelog",t);return{data:a?.data??[],meta:a?.meta??{current_page:1,last_page:1,per_page:10,total:0}}}async function o(t){const a=await e(`changelog/${t}`);return a?.data??a}export{o as a,n as g};
