@@ -17,7 +17,7 @@ const WAARDEN = [
     ),
   },
   {
-    titel: 'Eigenaarschap bij de overheid',
+    titel: 'Eigenaarschap bij de overheid!',
     tekst: 'Alles wat we bouwen is open source en wordt juridisch eigendom van de overheidsorganisatie. Geen black-box oplossingen, geen verborgen afhankelijkheden.',
     icoon: (
       <svg className="w-6 h-6 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
