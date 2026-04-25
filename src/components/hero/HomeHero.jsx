@@ -78,7 +78,7 @@ function HomeHero({ data, loading: hpLoading }) {
             {loading ? (
               <div className="absolute inset-0 bg-gray-100 animate-pulse" />
             ) : heroImage ? (
-              <img alt="" className="absolute inset-0 w-full h-full object-cover object-center" src={heroImage} />
+              <img alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-center" src={heroImage} />
             ) : (
               <div className="absolute inset-0 bg-gray-200" aria-hidden />
             )}

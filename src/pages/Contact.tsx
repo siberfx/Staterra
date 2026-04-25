@@ -110,10 +110,10 @@ export default function ContactPage() {
           <img
             src={bannerUrl}
             alt=""
+            aria-hidden="true"
             width={1920}
             height={600}
             className="absolute inset-0 w-full h-full object-cover opacity-20"
-            aria-hidden="true"
           />
         )}
         <div

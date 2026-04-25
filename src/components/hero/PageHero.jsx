@@ -9,6 +9,7 @@ function PageHero({ title, subtitle, breadcrumbs, stats, image, children }) {
       <img
         src={image ?? DEFAULT_IMAGE}
         alt=""
+        aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-black/60" aria-hidden />
