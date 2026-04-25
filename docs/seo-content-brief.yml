@@ -1,0 +1,192 @@
+# SEO Content Brief — staterra.nl
+#
+# Doel: per route de definitieve <title>, <meta description> en (optioneel)
+# overrides voor og:type, og:image en twitter:card vastleggen.
+#
+# Conventies:
+#   title       — bestuurlijk geformuleerd, max ~60 tekens, zonder " — Staterra"
+#                 (suffix wordt automatisch toegevoegd door PageMeta).
+#   description — uniek per pagina, ~155 tekens, eindigt op een duidelijke
+#                 CTA-strekking ("Lees meer", "Plan een oriëntatiegesprek", etc.).
+#   og_type     — "website" (default) of "article" voor blog/kennisbank-stukken.
+#   image       — pad naar 1200×630 JPG/PNG in /static (komt in /public na build).
+#                 Default: /og-default.jpg.
+#
+# Vul `final: true` in zodra de copy goedgekeurd is en in seoConfig.ts kan landen.
+# Velden die leeg blijven, vallen terug op de huidige waarde in seoConfig.ts.
+#
+# Bronmateriaal: OpenPublicatie-pakket april 2026 (propositie, NDS-leaflet,
+# aansluitvarianten, onepager). Tone of voice: bestuurlijk, zakelijk, scherp.
+
+routes:
+
+  # ── Hoofdpagina's ────────────────────────────────────────────
+
+  - path: /
+    final: false
+    title:
+    description:
+    og_type: website
+    image:
+
+  - path: /woo-oplossing
+    final: false
+    title:
+    description:
+    og_type: website
+    image:
+
+  - path: /oplossingen
+    final: false
+    title:
+    description:
+    og_type: website
+    image:
+
+  - path: /dienstverlening
+    final: false
+    title:
+    description:
+    og_type: website
+    image:
+
+  - path: /aanpak
+    final: false
+    title:
+    description:
+    og_type: website
+    image:
+
+  - path: /open-source
+    final: false
+    title:
+    description:
+    og_type: website
+    image:
+
+  - path: /samen-ontwikkelen
+    final: false
+    title:
+    description:
+    og_type: website
+    image:
+
+  - path: /over-ons
+    final: false
+    title:
+    description:
+    og_type: website
+    image:
+
+  - path: /contact
+    final: false
+    title:
+    description:
+    og_type: website
+    image:
+
+  # ── Woo-doelgroep pagina's (probleem-/intake-perspectief) ────
+
+  - path: /woo-gemeenten
+    final: false
+    title:
+    description:
+    og_type: website
+    image:
+
+  - path: /woo-provincies
+    final: false
+    title:
+    description:
+    og_type: website
+    image:
+
+  - path: /woo-rijksoverheid
+    final: false
+    title:
+    description:
+    og_type: website
+    image:
+
+  - path: /woo-waterschappen
+    final: false
+    title:
+    description:
+    og_type: website
+    image:
+
+  # ── Staterra-doelgroep pagina's (oplossings-/dienstenperspectief) ─
+
+  - path: /staterra-gemeenten
+    final: false
+    title:
+    description:
+    og_type: website
+    image:
+
+  - path: /staterra-provincies
+    final: false
+    title:
+    description:
+    og_type: website
+    image:
+
+  - path: /staterra-rijkspartijen
+    final: false
+    title:
+    description:
+    og_type: website
+    image:
+
+  - path: /staterra-waterschappen
+    final: false
+    title:
+    description:
+    og_type: website
+    image:
+
+  # ── Kennisbank ──────────────────────────────────────────────
+
+  - path: /kennisbank
+    final: false
+    title:
+    description:
+    og_type: website
+    image:
+
+  - path: /kennisbank/wat-is-de-woo
+    final: false
+    title:
+    description:
+    og_type: article
+    image:
+
+  - path: /kennisbank/opms-uitgelegd
+    final: false
+    title:
+    description:
+    og_type: article
+    image:
+
+  - path: /kennisbank/5-fouten-woo-compliance
+    final: false
+    title:
+    description:
+    og_type: article
+    image:
+
+  # ── Juridisch ───────────────────────────────────────────────
+
+  - path: /privacy
+    final: false
+    title:
+    description:
+    og_type: website
+    image:
+
+  - path: /cookies
+    final: false
+    title:
+    description:
+    og_type: website
+    image:
