@@ -126,11 +126,13 @@ export default function ContactPage() {
               Contact
             </span>
             <h1 className="font-heading text-h1 font-semibold text-white mb-5 leading-[1.05]">
-              {contact?.data?.title ?? 'In gesprek'}
+              Een gesprek over uw vraagstuk
             </h1>
             <p className="text-body-lg text-brand-200 leading-relaxed">
-              {contact?.data?.short_body ??
-                'Ontdek hoe we samen tot een werkende digitale oplossing komen. We denken graag met u mee over uw vraagstuk.'}
+              We denken graag met u mee. Of u nu een nieuwe digitale oplossing
+              wilt bouwen, een open source platform wilt implementeren, of
+              direct met onze Woo-oplossing wilt starten — vertel ons waar u
+              staat, wij komen met een eerlijke verkenning.
             </p>
 
             {/* Reactietermijn-badges */}
@@ -255,7 +257,7 @@ export default function ContactPage() {
                 </h3>
                 <ul className="space-y-2">
                   {[
-                    { to: '/woo-oplossing', label: 'De Woo-oplossing (OPMS)' },
+                    { to: '/woo-oplossing', label: 'De Woo-oplossing (oPub/OPMS)' },
                     { to: '/aanpak', label: 'Onze aanpak in 3 fasen' },
                     { to: '/samen-ontwikkelen', label: 'Samen nieuwe oplossingen bouwen' },
                     { to: '/over-ons', label: 'Over Staterra' },
