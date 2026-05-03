@@ -13,7 +13,7 @@ const ORGANIZATION_SCHEMA = {
   name: SITE_NAME,
   url: SITE_URL,
   logo: `${SITE_URL}/favicon.svg`,
-  description: 'Staterra implementeert OpenPublicatie (oPub + OPMS) bij Nederlandse bestuursorganen onder de Wet open overheid.',
+  description: 'Staterra is open source partner voor de Nederlandse overheid. Bouwen, implementeren en beheren van digitale oplossingen voor de publieke sector — van Woo-publicatie (OPMS) tot maatwerk.',
   areaServed: 'NL',
 };
 
