@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { mapMenuUrl, submitContactForm } from '@/services/cms';
 import type { FooterMenuResponse, SettingsResponse } from '@/lib/types';
 import { Container } from '@/components/ui/Container';
-import { BESTUURSORGANEN_STATS } from '@/lib/data/bestuursorganen-stats';
 
 interface FooterProps {
   menu: FooterMenuResponse | null;
@@ -108,7 +107,7 @@ const FALLBACK_KOLOMMEN = [
     links: [
       { href: '/samen-ontwikkelen', label: 'Samen ontwikkelen' },
       { href: '/open-source', label: 'Open source implementeren' },
-      { href: '/woo-oplossing', label: 'Woo-oplossing (OPMS)' },
+      { href: '/woo-oplossing', label: 'Woo-oplossing (oPub/OPMS)' },
     ],
   },
   {
@@ -171,7 +170,7 @@ export function Footer({ menu, settings }: FooterProps) {
             {/* Omschrijving */}
             <p className="text-body-sm text-brand-200/80 mb-7 leading-relaxed max-w-[260px]">
               {site?.description ??
-                `Infrastructuurpartner voor de publieke sector. Open source Woo-compliance voor ${BESTUURSORGANEN_STATS.totaal} bestuursorganen.`}
+                'Open source partner voor de publieke sector. Staterra bouwt, implementeert en beheert digitale oplossingen voor Nederlandse bestuursorganen.'}
             </p>
 
             {/* Contactgegevens — helder zichtbaar */}

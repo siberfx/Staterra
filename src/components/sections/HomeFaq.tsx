@@ -51,7 +51,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
     ],
   },
   {
-    title: 'Woo-oplossing (OPMS)',
+    title: 'Woo-oplossing (oPub/OPMS)',
     items: [
       {
         question: 'Wat is de Woo en waarom moet mijn organisatie hieraan voldoen?',

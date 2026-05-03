@@ -9,7 +9,7 @@ export const SEARCH_INDEX: SearchEntry[] = [
   // Hoofdpagina's
   { title: 'Home', url: '/', excerpt: 'Woo-compliance oplossing voor de overheid. Direct inzetbaar voor 611 bestuursorganen.', section: 'Hoofdpagina' },
   { title: 'Oplossingen', url: '/oplossingen', excerpt: 'Overzicht van al onze digitale oplossingen — van Woo-compliance tot open source platformen.', section: 'Oplossingen' },
-  { title: 'Woo-oplossing (OPMS)', url: '/woo-oplossing', excerpt: 'De complete Woo-compliance oplossing. Open source, direct inzetbaar, zonder vendor lock-in.', section: 'Oplossingen' },
+  { title: 'Woo-oplossing (oPub/OPMS)', url: '/woo-oplossing', excerpt: 'De complete Woo-compliance oplossing — oPub als gehost publicatieportaal en OPMS als open source verwerkingslaag op uw eigen infrastructuur.', section: 'Oplossingen' },
   { title: 'Samen ontwikkelen', url: '/samen-ontwikkelen', excerpt: 'Samen met overheden ontwikkelen we digitale oplossingen — van eerste verkenning tot een werkend product.', section: 'Oplossingen' },
   { title: 'Open source', url: '/open-source', excerpt: 'Open source oplossingen voor de overheid. Geen vendor lock-in, geen licentiekosten.', section: 'Oplossingen' },
   { title: 'Aanpak', url: '/aanpak', excerpt: 'Van verkenning tot implementatie. Ontdek hoe Staterra in 3 maanden een werkend systeem oplevert.', section: 'Over Staterra' },

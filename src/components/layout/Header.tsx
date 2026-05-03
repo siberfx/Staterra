@@ -28,7 +28,7 @@ const OPLOSSINGEN_CHILDREN: MenuItem[] = [
   CHILD(9102, 'Samen ontwikkelen', 'Nieuwe digitale oplossingen bouwen', '/samen-ontwikkelen'),
   CHILD(9103, 'Open source implementeren', 'Bestaande platformen uitrollen en beheren', '/open-source'),
   // Groep: Direct beschikbaar (scheiding in DropdownMenu)
-  CHILD(9101, 'Woo-oplossing (OPMS)', 'Bewezen platform, direct inzetbaar', '/woo-oplossing'),
+  CHILD(9101, 'Woo-oplossing (oPub/OPMS)', 'Bewezen platform, direct inzetbaar', '/woo-oplossing'),
 ]
 
 const DOELGROEPEN_ITEM: MenuItem = {

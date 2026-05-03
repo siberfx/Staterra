@@ -3,35 +3,63 @@ import { useLocation } from 'react-router-dom';
 import { getSeoForPath } from '@/config/seoConfig';
 
 const SITE_URL = 'https://staterra.nl';
-const DEFAULT_IMAGE = `${SITE_URL}/images/og-image.png`;
+const SITE_NAME = 'Staterra';
+const LOCALE = 'nl_NL';
+const DEFAULT_IMAGE = `${SITE_URL}/og-default.jpg`;
 
 const ORGANIZATION_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'Staterra',
+  name: SITE_NAME,
   url: SITE_URL,
   logo: `${SITE_URL}/favicon.svg`,
-  description: 'Staterra implementeert en beheert OPMS, het open source publicatieplatform voor Woo-compliance.',
+  description: 'Staterra is open source partner voor de Nederlandse overheid. Bouwen, implementeren en beheren van digitale oplossingen voor de publieke sector — van Woo-publicatie (OPMS) tot maatwerk.',
   areaServed: 'NL',
 };
 
 interface PageMetaProps {
-  /** Override title (otherwise uses seoConfig) */
+  /** Override title (otherwise uses seoConfig). Suffix " — Staterra" wordt automatisch toegevoegd. */
   title?: string;
   /** Override description (otherwise uses seoConfig) */
   description?: string;
+  /** Absolute of relatieve URL naar social-card afbeelding (1200×630). Default: /og-default.jpg */
   image?: string;
+  /** og:type — `website` voor reguliere pagina's, `article` voor blog/kennisbank-artikelen. */
+  ogType?: 'website' | 'article';
+  /** twitter:card variant. Default `summary_large_image`. */
+  twitterCard?: 'summary' | 'summary_large_image';
+  /** robots-directive override. Default `index, follow`. */
+  robots?: string;
+  /** Aanvullende JSON-LD-blokken bovenop Organization + BreadcrumbList. */
   schemas?: Record<string, unknown>[];
 }
 
-export function PageMeta({ title, description, image, schemas }: PageMetaProps) {
+export function PageMeta({
+  title,
+  description,
+  image,
+  ogType = 'website',
+  twitterCard = 'summary_large_image',
+  robots = 'index, follow',
+  schemas,
+}: PageMetaProps) {
   const { pathname } = useLocation();
   const seo = getSeoForPath(pathname);
 
-  const fullTitle = title ? `${title} — Staterra` : seo.title;
+  const fullTitle = title ? `${title} — ${SITE_NAME}` : seo.title;
   const desc = description ?? seo.description;
-  const url = `${SITE_URL}${pathname === '/' ? '' : pathname}`;
-  const img = image ?? DEFAULT_IMAGE;
+
+  // Canonical: lowercase + strip trailing slash (behalve root) zodat
+  // /Woo-Oplossing/ en /woo-oplossing nooit als verschillende kanonieke
+  // varianten worden gezien door zoekmachines.
+  const normalizedPath = pathname === '/'
+    ? ''
+    : pathname.toLowerCase().replace(/\/+$/, '');
+  const url = `${SITE_URL}${normalizedPath}`;
+
+  const img = image
+    ? (image.startsWith('http') ? image : `${SITE_URL}${image.startsWith('/') ? image : `/${image}`}`)
+    : DEFAULT_IMAGE;
 
   // Breadcrumb schema
   const segments = pathname.split('/').filter(Boolean);
@@ -59,13 +87,20 @@ export function PageMeta({ title, description, image, schemas }: PageMetaProps) 
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={desc} />
+      <meta name="robots" content={robots} />
       <link rel="canonical" href={url} />
 
+      <meta property="og:type" content={ogType} />
+      <meta property="og:locale" content={LOCALE} />
+      <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={desc} />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={img} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
 
+      <meta name="twitter:card" content={twitterCard} />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={desc} />
       <meta name="twitter:image" content={img} />

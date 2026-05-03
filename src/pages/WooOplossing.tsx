@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { PageMeta } from '@/components/PageMeta';
 import type { FaqItem } from '@/lib/types';
@@ -6,47 +7,78 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { FaqAccordion } from '@/components/ui/FaqAccordion';
 import LeadMagnetBanner from '@/components/LeadMagnetBanner';
+import { WooTierDiagram } from '@/components/sections/WooTierDiagram';
 import { BESTUURSORGANEN_STATS } from '@/lib/data/bestuursorganen-stats';
 
 // -- Kenmerken (vervangt CMS list_items) --
 
-const SOLUTION_FEATURES: string[] = [
+const OPUB_LINK = (
+  <a
+    href="https://opub.nl"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-brand-700 underline decoration-brand-700/40 hover:decoration-brand-700 hover:text-brand-900 transition-colors"
+  >
+    opub.nl
+  </a>
+);
+
+const SOLUTION_FEATURES: ReactNode[] = [
   'Specifiek ontwikkeld voor de Wet open overheid',
   'oPub standaard gekoppeld aan de Generieke Woo-voorziening (GWV)',
-  'Open source onder EUPL 1.2 — geen vendor lock-in',
-  'Doorlevering naar publiek portaal opub.nl',
+  'OPMS open source onder EUPL 1.2 — geen vendor lock-in (oPub als gehoste dienst)',
+  <>Doorlevering naar publiek portaal {OPUB_LINK}</>,
 ];
 
-// -- Abonnementsvormen (drie lagen) --
+// -- Abonnementsvormen (twee instapniveaus) --
 
 interface SubscriptionTier {
   title: string;
+  subtitle: string;
   price: string;
-  priceNote?: string;
+  priceUnit: string;
+  priceAddon: string;
+  priceNote: string;
   description: string;
+  features: string[];
 }
 
 const SUBSCRIPTION_TIERS: SubscriptionTier[] = [
   {
-    title: 'oPub Basis',
-    price: '€499 per maand',
-    priceNote: 'jaarcontract',
+    title: 'Opub-tier — Bestuursorgaan',
+    subtitle: 'Voor zelfstandige bestuursorganen',
+    price: '€500',
+    priceUnit: 'per maand',
+    priceAddon: '+ €250 per maand per API-koppeling',
+    priceNote: 'jaarcontract, gehoste dienst, exclusief btw',
     description:
-      'Alles om te starten met publiceren: self-service portaal, aanleverformulier, AI-ondersteund metadateren, Woo-zaaksysteem, 5 gebruikers, doorlevering naar opub.nl en de Generieke Woo-voorziening.',
+      'Direct publiceren naar opub.nl, KOOP en andere publicatie-platformen — zonder eigen verwerkingslaag en zonder installatie. oPub is een gehoste dienst; handmatige upload is inclusief, API-koppelingen schalen mee met uw bronsystemen.',
+    features: [
+      'Gehoste dienst — geen installatie of eigen infrastructuur nodig',
+      'Publicatie via Opub naar KOOP, open.minvws.nl en andere platformen',
+      'Handmatige upload inclusief (geen extra kosten)',
+      'API-koppelingen per bronsysteem: €250 per maand per koppeling',
+      'Self-service portaal en aanleverformulier',
+      'Geschikt voor enkelvoudige bestuursorganen',
+    ],
   },
   {
-    title: 'oPub API',
-    price: '€499 + €250 per maand per koppeling',
-    priceNote: 'jaarcontract',
+    title: 'OPMS-tier — Centraal Bestuursorgaan',
+    subtitle: 'Voor bestuursorganen met meerdere onderdelen',
+    price: '€2.500',
+    priceUnit: 'per maand',
+    priceAddon: '+ €750 per maand per publicatie-eenheid',
+    priceNote: 'jaarcontract, on-site, exclusief btw',
     description:
-      'Alles uit oPub Basis, aangevuld met API-mappingdienst per bronsysteem, TOOI↔MDTO mapping en REST-, webhook- of cron-flow.',
-  },
-  {
-    title: 'OPMS on-site',
-    price: 'Vanaf €2.500 per maand',
-    priceNote: 'jaarcontract',
-    description:
-      'Lokale installatie op eigen infrastructuur. Open source onder EUPL 1.2, geen vendor lock-in, updates inbegrepen, hogere SLA en named contact.',
+      'Centrale verwerkingslaag voor organisaties met meerdere onderdelen of publicatie-eenheden. OPMS wordt op uw eigen infrastructuur geïnstalleerd en is open source onder EUPL 1.2 — geen vendor lock-in. Per publicatie-eenheid komen één of meer bronsystemen binnen.',
+    features: [
+      'On-site installatie op uw eigen infrastructuur',
+      'Open source onder EUPL 1.2 — geen vendor lock-in',
+      'Centrale regie over meerdere publicatie-eenheden',
+      'Per publicatie-eenheid: €750 per maand, met eigen bronnen en koppelingen',
+      'Doorlevering via Opub naar KOOP, open.minvws.nl en andere platformen',
+      'Hogere SLA, named contact, updates inbegrepen',
+    ],
   },
 ];
 
@@ -56,17 +88,27 @@ const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'Wat is het verschil tussen oPub en OPMS?',
     answer:
-      'oPub is het publicatieportaal waarop uw documenten openbaar gemaakt worden en waar burgers, journalisten en advocaten deze kunnen vinden. OPMS is het managementsysteem waarmee u het hele Woo-proces regisseert — intake, beoordeling, metadatering en publicatie. U kunt met oPub starten en later OPMS toevoegen voor volledige procesregie.',
+      'oPub is het publicatieportaal waarop uw documenten openbaar gemaakt worden en waar burgers, journalisten en advocaten deze kunnen vinden. OPMS is het managementsysteem waarmee u het hele Woo-proces regisseert — intake, beoordeling, metadatering en publicatie. In de Opub-tier publiceert uw bestuursorgaan rechtstreeks via oPub; in de OPMS-tier komt OPMS daarbovenop als centrale verwerkingslaag voor meerdere publicatie-eenheden.',
+  },
+  {
+    question: 'Welke tier past bij mijn organisatie?',
+    answer:
+      'Heeft u één bestuursorgaan dat zelfstandig publiceert? Dan past de Opub-tier — u koppelt direct vanuit uw bronsystemen of uploadt handmatig. Heeft u een centraal bestuursorgaan met meerdere onderdelen die elk eigen publicaties hebben (zoals een ministerie met agentschappen, of een provincie met meerdere uitvoeringsorganisaties)? Dan biedt de OPMS-tier de centrale regie en schaalt u op publicatie-eenheid.',
+  },
+  {
+    question: 'Wat is een publicatie-eenheid?',
+    answer:
+      'Binnen de OPMS-tier is een publicatie-eenheid een logisch onderdeel van uw organisatie dat zelfstandig publiceert — bijvoorbeeld een ministerie, een agentschap of een uitvoeringsorganisatie binnen een centraal bestuursorgaan. Elke publicatie-eenheid heeft eigen bronsystemen (handmatig of via API) en publiceert via Opub naar KOOP, open.minvws.nl en andere kanalen. U schaalt OPMS op door eenheden toe te voegen, à €750 per maand per eenheid.',
   },
   {
     question: 'Kan ik tussentijds op- of afschalen?',
     answer:
-      'Ja. Binnen één contract kunt u op elk moment opschalen naar een hogere laag; het meertarief wordt pro rata berekend over de resterende maanden. Afschalen kan per de eerstvolgende kalendermaand, met pro rata verrekening van reeds betaalde maanden.',
+      'Ja. Binnen één contract kunt u op elk moment opschalen naar een hogere tier of extra publicatie-eenheden / API-koppelingen toevoegen; het meertarief wordt pro rata berekend over de resterende maanden. Afschalen kan per de eerstvolgende kalendermaand, met pro rata verrekening van reeds betaalde maanden.',
   },
   {
     question: 'Wat kost de implementatie?',
     answer:
-      'De Woo-oplossing kent drie abonnementslagen: oPub Basis (€499 per maand, jaarcontract), oPub API (€499 + €250 per maand per koppeling, jaarcontract) en OPMS on-site (vanaf €2.500 per maand, jaarcontract). De kosten voor implementatiebegeleiding, training en projectmanagement worden afzonderlijk geoffreerd op basis van de omvang van uw organisatie. Tarieven zijn exclusief btw.',
+      'De Woo-oplossing kent twee instapniveaus. Opub-tier (Bestuursorgaan) start vanaf €500 per maand voor zelfstandige bestuursorganen, met €250 per maand per API-koppeling — handmatige upload is inclusief. OPMS-tier (Centraal Bestuursorgaan) start vanaf €2.500 per maand on-site, met €750 per maand per publicatie-eenheid — voor organisaties met meerdere onderdelen. Implementatie, training en projectmanagement worden afzonderlijk geoffreerd op basis van de omvang van uw organisatie. Tarieven zijn exclusief btw, jaarcontract.',
   },
 ];
 
@@ -229,8 +271,11 @@ export default function WooOplossing() {
             </h2>
             <p className="text-body text-neutral-700 leading-relaxed">
               De Woo-oplossing bestaat uit twee samenhangende componenten,
-              ontwikkeld door onze partner <strong className="font-semibold text-neutral-900">CodeLabs B.V.</strong>{' '}
-              en beschikbaar onder de open source licentie{' '}
+              ontwikkeld door onze partner{' '}
+              <strong className="font-semibold text-neutral-900">CodeLabs B.V.</strong>{' '}
+              oPub is een gehoste dienst — u hoeft niets te installeren. OPMS
+              draait on-site op uw eigen infrastructuur en is beschikbaar onder
+              de open source licentie{' '}
               <strong className="font-semibold text-neutral-900">EUPL 1.2</strong>.
             </p>
           </div>
@@ -238,33 +283,61 @@ export default function WooOplossing() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="rounded-[20px] border border-neutral-200 bg-brand-50 p-8">
               <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-2">
-                Publicatieportaal
+                Publicatieportaal — gehoste dienst
               </span>
               <h3 className="font-heading text-h3 font-semibold text-neutral-950 mb-3">
                 oPub
               </h3>
               <p className="text-body-sm text-neutral-700 leading-relaxed">
                 Het federatieve publicatieportaal waarop bestuursorganen hun
-                documenten openbaar maken. Standaard gekoppeld aan de Generieke
-                Woo-voorziening (GWV) en aan het publieke portaal{' '}
-                <span className="font-semibold text-neutral-900">opub.nl</span>.
+                documenten openbaar maken. oPub is een gehoste dienst — er is
+                geen installatie nodig. Standaard gekoppeld aan de Generieke
+                Woo-voorziening (GWV) en aan het publieke portaal {OPUB_LINK}.
               </p>
             </div>
 
             <div className="rounded-[20px] border border-neutral-200 bg-brand-50 p-8">
               <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-2">
-                Managementsysteem
+                Managementsysteem — on-site, open source
               </span>
               <h3 className="font-heading text-h3 font-semibold text-neutral-950 mb-3">
                 OPMS
               </h3>
               <p className="text-body-sm text-neutral-700 leading-relaxed">
                 Het managementsysteem dat het volledige Woo-proces ondersteunt,
-                van intake en beoordeling tot publicatie. Open source, lokaal
-                installeerbaar, met koppelingen naar bestaande zaak- en
-                documentsystemen.
+                van intake en beoordeling tot publicatie. OPMS wordt op uw eigen
+                infrastructuur geïnstalleerd, is open source onder EUPL 1.2 en
+                koppelt met bestaande zaak- en documentsystemen.
               </p>
             </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* -- 1c. Architectuur-diagram: bron → tier → publicatie-platform → kanalen -- */}
+      <section className="bg-brand-50 py-16 lg:py-20" aria-labelledby="diagram-heading">
+        <Container variant="content">
+          <div className="max-w-[820px] mx-auto text-center mb-10">
+            <span className="inline-block text-caption font-semibold uppercase tracking-widest text-brand-700 mb-3">
+              Hoe het werkt
+            </span>
+            <h2
+              id="diagram-heading"
+              className="font-heading text-h2 font-semibold text-neutral-950 mb-5 leading-[1.15]"
+            >
+              Twee tiers, één publicatie-platform
+            </h2>
+            <p className="text-body text-neutral-700 leading-relaxed">
+              Beide instapniveaus leveren publicaties via Opub door naar
+              KOOP, open.minvws.nl en andere publicatie-platformen. Het
+              verschil zit in de verwerkingslaag: de OPMS-tier biedt
+              centrale regie over meerdere publicatie-eenheden, de
+              Opub-tier publiceert rechtstreeks vanuit één bestuursorgaan.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-[20px] border border-neutral-200 p-4 sm:p-8 overflow-x-auto">
+            <WooTierDiagram />
           </div>
         </Container>
       </section>
@@ -417,44 +490,71 @@ export default function WooOplossing() {
               id="tiers-heading"
               className="font-heading text-h2 font-semibold text-neutral-950 mb-4"
             >
-              Kies het model dat bij u past
+              Twee instapniveaus, één Woo-platform
             </h2>
             <p className="text-body text-neutral-700 max-w-[720px] mx-auto">
-              De Woo-oplossing kent drie abonnementslagen. U start licht en
-              schaalt op naarmate uw publicatievolume en integratiebehoeften
-              groeien.
+              De Woo-oplossing kent twee instapniveaus. Welk model bij u past
+              hangt af van uw organisatiestructuur: één bestuursorgaan met
+              enkelvoudige publicatie, of een centraal bestuursorgaan met
+              meerdere onderdelen.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[960px] mx-auto">
             {SUBSCRIPTION_TIERS.map((tier) => (
               <Card
                 key={tier.title}
                 padding="loose"
                 className="flex flex-col"
               >
-                <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-2">
+                <h3 className="font-heading text-h4 font-semibold text-neutral-950 mb-1">
                   {tier.title}
                 </h3>
-                <p className="text-body-sm font-semibold text-brand-700 mb-4">
-                  {tier.price}
-                  {tier.priceNote && (
-                    <span className="font-normal text-neutral-500">
-                      {' '}
-                      ({tier.priceNote})
-                    </span>
-                  )}
+                <p className="text-caption text-neutral-500 mb-5">
+                  {tier.subtitle}
                 </p>
-                <p className="text-body-sm text-neutral-700 leading-relaxed flex-1">
+                <div className="mb-5 pb-5 border-b border-neutral-200">
+                  <p className="font-heading text-h3 font-semibold text-brand-700 leading-none mb-1">
+                    {tier.price}
+                    <span className="text-body-sm font-normal text-neutral-500 ml-1.5">
+                      {tier.priceUnit}
+                    </span>
+                  </p>
+                  <p className="text-body-sm font-medium text-neutral-700 mt-2">
+                    {tier.priceAddon}
+                  </p>
+                  <p className="text-caption text-neutral-500 mt-1">
+                    {tier.priceNote}
+                  </p>
+                </div>
+                <p className="text-body-sm text-neutral-700 leading-relaxed mb-5">
                   {tier.description}
                 </p>
+                <ul className="space-y-2 flex-1" aria-label={`Inbegrepen bij ${tier.title}`}>
+                  {tier.features.map((feature) => (
+                    <li key={feature} className="flex gap-2.5 items-start text-body-sm text-neutral-700">
+                      <svg
+                        className="flex-shrink-0 w-4 h-4 text-brand-700 mt-0.5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2.5}
+                        aria-hidden="true"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </Card>
             ))}
           </div>
 
           <p className="text-center text-caption text-neutral-500 mt-8 max-w-[640px] mx-auto">
             Tarieven zijn exclusief btw. Contracten worden op jaarbasis
-            aangegaan.
+            aangegaan. Implementatie, training en projectmanagement worden
+            afzonderlijk geoffreerd.
           </p>
 
           <div className="text-center mt-10">
