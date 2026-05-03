@@ -16,8 +16,6 @@ export default function HomePage() {
   return (
     <>
       <PageMeta
-        title="Woo-compliance oplossing voor de overheid"
-        description="Staterra implementeert en beheert OPMS, het open source platform voor Woo-compliance. Direct inzetbaar voor 611 bestuursorganen."
         schemas={[{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Staterra', url: 'https://staterra.nl' }]}
       />
 
@@ -114,7 +112,7 @@ export default function HomePage() {
                       </svg>
                     </div>
                     <div className="pt-0.5">
-                      <p className="font-heading text-[14px] font-semibold text-white">Woo-oplossing (OPMS)</p>
+                      <p className="font-heading text-[14px] font-semibold text-white">Woo-oplossing (oPub/OPMS)</p>
                       <p className="text-[13px] text-white/50 leading-[1.45]">Ons bewezen platform, direct inzetbaar</p>
                     </div>
                   </div>
