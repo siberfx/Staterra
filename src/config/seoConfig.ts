@@ -5,8 +5,8 @@ export interface SeoEntry {
 
 export const SEO_CONFIG: Record<string, SeoEntry> = {
   '/': {
-    title: 'Woo-compliance oplossing voor de overheid — Staterra',
-    description: 'Staterra implementeert en beheert OPMS, het open source publicatieplatform voor Woo-compliance. Van installatie tot doorontwikkeling.',
+    title: 'Open source oplossingen voor de overheid — Staterra',
+    description: 'Open source partner voor de publieke sector. Samen ontwikkelen, bestaande platformen implementeren of direct starten met onze Woo-oplossing — u houdt regie.',
   },
   '/woo-oplossing': {
     title: 'Woo-oplossing: oPub en OPMS — Staterra',
@@ -104,8 +104,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
 };
 
 const DEFAULT_SEO: SeoEntry = {
-  title: 'Staterra — Woo-compliance oplossing voor de overheid',
-  description: 'Staterra implementeert en beheert OPMS, het open source publicatieplatform voor Woo-compliance. Direct inzetbaar voor 611 bestuursorganen.',
+  title: 'Staterra — Open source oplossingen voor de overheid',
+  description: 'Staterra bouwt, implementeert en beheert open source oplossingen voor Nederlandse bestuursorganen — van bewezen Woo-platform tot maatwerk. Regie en broncode blijven bij u.',
 };
 
 export function getSeoForPath(pathname: string): SeoEntry {
